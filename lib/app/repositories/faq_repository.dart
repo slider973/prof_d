@@ -4,10 +4,10 @@ import '../models/faq_category_model.dart';
 import '../providers/mock_provider.dart';
 
 class FaqRepository {
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   FaqRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<List<FaqCategory>> getCategoriesWithFaqs() {

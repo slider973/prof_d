@@ -18,15 +18,16 @@ import '../models/setting_model.dart';
 import '../models/user_model.dart';
 import '../services/global_service.dart';
 
-class MockApiClient {
+class ApiClient {
   final _globalService = Get.find<GlobalService>();
 
   String get baseUrl => _globalService.global.value.mockBaseUrl;
+  String get apiBaseUrl => _globalService.global.value.baseUrl;
 
   final Dio httpClient;
   final Options _options = buildCacheOptions(Duration(days: 3), forceRefresh: true);
 
-  MockApiClient({@required this.httpClient}) {
+  ApiClient({@required this.httpClient}) {
     httpClient.interceptors.add(DioCacheManager(CacheConfig(baseUrl: baseUrl)).interceptor);
   }
 
@@ -41,6 +42,8 @@ class MockApiClient {
       throw new Exception(response.statusMessage);
     }
   }
+
+
 
   Future<List<User>> getAllUsers() async{
     var response = await httpClient.get(baseUrl + "users/all.json",options: _options);

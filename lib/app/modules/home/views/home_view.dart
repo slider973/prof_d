@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-class HomeView extends GetView<HomeController>{
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController>{
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         //expandedHeight: 280,
         elevation: 0,
-        iconTheme: IconThemeData(color:  Get.theme.hintColor),
+        iconTheme: IconThemeData(color: Get.theme.hintColor),
         title: Text(
           Get.find<SettingsService>().setting.value.appName,
           style: Get.textTheme.headline6,
@@ -29,7 +29,7 @@ class HomeView extends GetView<HomeController>{
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: new IconButton(
-          icon: new Icon(Icons.sort, color:  Get.theme.hintColor),
+          icon: new Icon(Icons.sort, color: Get.theme.hintColor),
           onPressed: () => {Scaffold.of(context).openDrawer()},
         ),
         actions: [NotificationsButtonWidget()],
@@ -45,79 +45,62 @@ class HomeView extends GetView<HomeController>{
             SliverToBoxAdapter(
               child: Wrap(
                 children: [
-                  HomeSearchBarWidget(),
-                  EmergencyWidget().paddingOnly(bottom: 10),
+                  // HomeSearchBarWidget(),
+                  // EmergencyWidget().paddingOnly(bottom: 10),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text("Specialities".tr,
+                  //           style: Get.textTheme.bodyText2
+                  //               .merge(TextStyle(fontSize: 18))),
+                  //       FlatButton(
+                  //         onPressed: () {
+                  //           Get.toNamed(Routes.SPECIALITIES);
+                  //         },
+                  //         shape: StadiumBorder(),
+                  //         color: Get.theme.accentColor.withOpacity(0.1),
+                  //         child: Text("View All".tr,
+                  //             style: Get.textTheme.subtitle1),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SpecialitiesCarouselWidget().paddingOnly(bottom: 20),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                            "Specialities".tr,
-                            style: Get.textTheme.bodyText2.merge(
-                                TextStyle(
-                                    fontSize: 18
-                                )
-                            )
-
-                        ),
-                        FlatButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.SPECIALITIES);
-                          },
-                          shape: StadiumBorder(),
-                          color: Get.theme.accentColor.withOpacity(0.1),
-                          child: Text("View All".tr, style: Get.textTheme.subtitle1),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SpecialitiesCarouselWidget().paddingOnly(bottom: 20),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                            "Top Doctors".tr,
-                            style: Get.textTheme.bodyText2.merge(
-                              TextStyle(
-                                fontSize: 18
-                              )
-                            )
-
+                        Text("Top Doctors".tr,
+                            style: Get.textTheme.bodyText2
+                                .merge(TextStyle(fontSize: 18))),
+                        SizedBox(
+                          height: 10,
                         ),
-                        SizedBox(height: 10,),
                         Text(
-                            "Press to see doctor details and book an appointment".tr,
-                            style: Get.textTheme.bodyText1
-
-                        ),
+                            "Press to see doctor details and book an appointment"
+                                .tr,
+                            style: Get.textTheme.bodyText1),
                       ],
                     ),
                   ),
                   DoctorsListWidget().paddingOnly(bottom: 10),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                            "Clinics".tr,
-                            style: Get.textTheme.bodyText2.merge(
-                                TextStyle(
-                                    fontSize: 18
-                                )
-                            )
-
+                        Text("Clinics".tr,
+                            style: Get.textTheme.bodyText2
+                                .merge(TextStyle(fontSize: 18))),
+                        SizedBox(
+                          height: 10,
                         ),
-                        SizedBox(height: 10,),
-                        Text(
-                            "Enter your address to show clinics nearby you".tr,
-                            style: Get.textTheme.bodyText1
-
-                        ),
+                        Text("Enter your address to show clinics nearby you".tr,
+                            style: Get.textTheme.bodyText1),
                       ],
                     ),
                   ),
@@ -127,9 +110,7 @@ class HomeView extends GetView<HomeController>{
             ),
           ],
         ),
-
       ),
     );
   }
-
 }

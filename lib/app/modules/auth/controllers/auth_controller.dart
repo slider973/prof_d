@@ -1,12 +1,65 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:prof_b/app/models/media_model.dart';
+import 'package:prof_b/app/models/user_model.dart';
+import '../validator/register_validator.dart';
+import '../../../services/auth_service.dart';
+import '../../../../common/ui.dart';
 
-class AuthController extends GetxController{
-
+class AuthController extends GetxController {
   final hidePassword = true.obs;
+  final registerFormKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final hidePasswordController = TextEditingController();
   final checkedMale = false.obs;
   final checkedFeMale = false.obs;
-  final selectedDate=DateTime.now().obs;
+  final selectedDate = DateTime
+      .now()
+      .obs;
+  final authService = Get.find<AuthService>();
+
+  @override
+  void onInit() {
+    // Simulating obtaining the user name from some local storage
+    emailController.text = "Email address".tr;
+    passwordController.text = "".tr;
+    hidePasswordController.text = "".tr;
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    hidePasswordController.dispose();
+    super.onClose();
+  }
+
+  void register() async {
+    final isRegisterFormValid = RegisterValidator(
+        email: emailController.text,
+        password: passwordController.text,
+        hidePassword: hidePasswordController.text)
+        .isValid();
+    if (isRegisterFormValid) {
+      try {
+        final newUser = User();
+        newUser.email = emailController.text;
+        newUser.password = passwordController.text;
+        newUser.username = emailController.text.split("@")[0];
+        newUser.verifiedPhone = true;
+
+        await this.authService.register(newUser);
+      }
+      catch (e) {
+        print(e);
+        Get.showSnackbar(Ui.ErrorSnackBar(message: "unknowError".tr));
+        throw new Exception('error');
+
+      }
+    }
+  }
 
   Future<Null> showMyDatePicker(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -21,7 +74,8 @@ class AuthController extends GetxController{
     );
     if (picked != null) {
       selectedDate.update((val) {
-        val= DateTime(picked.year, picked.month, picked.day, val.hour, val.minute);
+        val = DateTime(
+            picked.year, picked.month, picked.day, val.hour, val.minute);
       });
     }
   }

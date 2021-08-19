@@ -3,10 +3,10 @@ import '../models/paramedic_model.dart';
 import '../providers/mock_provider.dart';
 
 class ParamedicRepository{
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   ParamedicRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<List<Paramedic>> getAllParamedics() {

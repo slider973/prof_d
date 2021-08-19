@@ -70,7 +70,6 @@
   "Apply": "Appliquer",
   "Search for home service...": "Recherche de service à domicile...",
   "Login": "Connexion",
-  "Register": "Registre",
   "Application preferences": "Préférences de l'application",
   "Help & Privacy": "Aide et confidentialité",
   "My Bookings": "Mes réservations",
@@ -156,5 +155,12 @@
   "Total Amount": "Montant total",
   "Favorites": "Favoris",
   "Privacy Policy": "Politique de confidentialité",
-  "Login account or create new one for free": "Connectez-vous à votre compte ou créez-en un nouveau gratuitement"
+  "Login account or create new one for free": "Connectez-vous à votre compte ou créez-en un nouveau gratuitement",
+  "Booking": "Réservation",
+  "Register": "S'inscrire",
+  "createAnAccount": "Créer",
+  "Error_email": "Insérer une adresse mail valide",
+  "Password_to_same": "Les deux champs de mots de passe doivent corresponde",
+  "unknowError": "Une erreur inconnue est survenue"
+
 }

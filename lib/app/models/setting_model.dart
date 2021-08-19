@@ -6,7 +6,7 @@ class Setting {
   String fcmKey;
   bool enablePaypal;
   String defaultTheme;
-  String mainColor;
+  final String mainColor = '#2f9985';
   String mainDarkColor;
   String secondColor;
   String secondDarkColor;
@@ -41,7 +41,6 @@ class Setting {
       this.defaultCurrency,
       this.fcmKey,
       this.enablePaypal,
-      this.mainColor,
       this.mainDarkColor,
       this.secondColor,
       this.secondDarkColor,
@@ -77,7 +76,6 @@ class Setting {
     fcmKey = json['fcm_key'];
     enablePaypal = json['enable_paypal'] == null || json['enable_paypal'] == '0' ? false : true;
     defaultTheme = json['default_theme'];
-    mainColor = json['main_color'];
     mainDarkColor = json['main_dark_color'];
     secondColor = json['second_color'];
     secondDarkColor = json['second_dark_color'];

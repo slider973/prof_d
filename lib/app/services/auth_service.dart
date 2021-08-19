@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -19,9 +20,8 @@ class AuthService extends GetxService {
   }
 
   Future<AuthService> init() async {
-
     user.value = await _usersRepo.login();
-    user.value.auth = true;
+    user.value.auth = false;
 
     address.listen((Address _address) {
       _box.write('current_address', _address);
@@ -32,6 +32,15 @@ class AuthService extends GetxService {
     return this;
   }
 
+  Future register(User userToSave) async {
+    try {
+      user.value = await _usersRepo.register(userToSave);
+      user.value.auth = true;
+    } on DioError catch (e) {
+      Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
+    }
+  }
+
   Future getAddress() async {
     try {
       if (_box.hasData('current_address')) {
@@ -39,7 +48,8 @@ class AuthService extends GetxService {
       } else {
         List<Address> _addresses = await _usersRepo.getAddresses();
         if (_addresses.isNotEmpty) {
-          address.value = _addresses.firstWhere((_address) => _address.isDefault, orElse: () {
+          address.value = _addresses
+              .firstWhere((_address) => _address.isDefault, orElse: () {
             return _addresses.first;
           });
         } else {

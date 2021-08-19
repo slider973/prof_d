@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 
 import '../models/booking_model.dart';
 class BookingRepository {
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   BookingRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<List<Booking>> getOngoingBookings() {

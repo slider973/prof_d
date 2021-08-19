@@ -30,17 +30,21 @@ class TabsView extends GetView<TabsController> {
                 label: "Home".tr,
                 color: Get.theme.accentColor),
             CustomBottomNavigationItem(
+                icon: Icons.dashboard_outlined,
+                label: "Home".tr,
+                color: Get.theme.accentColor),
+            CustomBottomNavigationItem(
                 icon: Icons.assignment_outlined,
                 label: "Booking".tr,
                 color: Get.theme.accentColor),
-            CustomBottomNavigationItem(
-                icon: Icons.message_outlined,
-                label: "Chats".tr,
-                color: Get.theme.accentColor),
-            CustomBottomNavigationItem(
-                icon: Icons.alarm_on_outlined,
-                label: "Alarms".tr,
-                color: Get.theme.accentColor),
+            // CustomBottomNavigationItem(
+            //     icon: Icons.message_outlined,
+            //     label: "Chats".tr,
+            //     color: Get.theme.accentColor),
+            // CustomBottomNavigationItem(
+            //     icon: Icons.alarm_on_outlined,
+            //     label: "Alarms".tr,
+            //     color: Get.theme.accentColor),
             CustomBottomNavigationItem(
                 icon: Icons.person_outline,
                 label: "Account".tr,

@@ -5,10 +5,10 @@ import '../models/notification_model.dart';
 import '../providers/mock_provider.dart';
 
 class AlarmRepository {
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   AlarmRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<List<Alarm>> getAll() {

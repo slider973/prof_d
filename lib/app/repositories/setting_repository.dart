@@ -4,10 +4,10 @@ import '../models/setting_model.dart';
 import '../providers/mock_provider.dart';
 
 class SettingRepository {
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   SettingRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<Setting> get() {

@@ -4,10 +4,10 @@ import '../providers/mock_provider.dart';
 
 class SpecialityRepository {
 
-  MockApiClient _apiClient;
+  ApiClient _apiClient;
 
   SpecialityRepository() {
-    this._apiClient = MockApiClient(httpClient: Dio());
+    this._apiClient = ApiClient(httpClient: Dio());
   }
 
   Future<List<Speciality>> getAll() {

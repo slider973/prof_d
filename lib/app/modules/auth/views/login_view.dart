@@ -46,7 +46,8 @@ class LoginView extends GetView<AuthController> {
               child: Center(
                 child: Text(
                   "Login".tr,
-                  style: Get.textTheme.headline6.merge(TextStyle(
+                  style: Get.textTheme.headline6.merge(
+                      TextStyle(
                       color: context.theme.accentColor, fontSize: 22)),
                 ),
               ),

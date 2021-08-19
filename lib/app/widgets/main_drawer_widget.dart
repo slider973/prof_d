@@ -95,7 +95,7 @@ class MainDrawerWidget extends StatelessWidget{
                     color: Theme.of(context).hintColor.withOpacity(0.1),
                   ),
                   accountName: Text(
-                    Get.find<AuthService>().user.value.name,
+                    Get.find<AuthService>().user.value.username,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   accountEmail: Text(
@@ -113,7 +113,7 @@ class MainDrawerWidget extends StatelessWidget{
                             height: 80,
                             width: double.infinity,
                             fit: BoxFit.cover,
-                            imageUrl: Get.find<AuthService>().user.value.media.thumb,
+                            imageUrl: Get.find<AuthService>().user.value.media?.thumb != null ? Get.find<AuthService>().user.value.media.thumb :  "http://doctors.smartersvision.com/mock/users/media/user.png",
                             placeholder: (context, url) => Image.asset(
                               'assets/img/loading.gif',
                               fit: BoxFit.cover,
