@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prof_b/app/models/media_model.dart';
-import 'package:prof_b/app/models/user_model.dart';
+import '../../../models/user_model.dart';
 import '../validator/register_validator.dart';
 import '../../../services/auth_service.dart';
 import '../../../../common/ui.dart';
@@ -12,6 +11,7 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final hidePasswordController = TextEditingController();
+  final fullNameController = TextEditingController();
   final checkedMale = false.obs;
   final checkedFeMale = false.obs;
   final selectedDate = DateTime
@@ -25,6 +25,7 @@ class AuthController extends GetxController {
     emailController.text = "Email address".tr;
     passwordController.text = "".tr;
     hidePasswordController.text = "".tr;
+    fullNameController.text = "".tr;
     super.onInit();
   }
 
@@ -33,14 +34,18 @@ class AuthController extends GetxController {
     emailController.dispose();
     passwordController.dispose();
     hidePasswordController.dispose();
+    fullNameController.dispose();
     super.onClose();
   }
 
   void register() async {
+
     final isRegisterFormValid = RegisterValidator(
         email: emailController.text,
         password: passwordController.text,
-        hidePassword: hidePasswordController.text)
+        hidePassword: hidePasswordController.text,
+        fullName: fullNameController.text
+    )
         .isValid();
     if (isRegisterFormValid) {
       try {
@@ -48,12 +53,13 @@ class AuthController extends GetxController {
         newUser.email = emailController.text;
         newUser.password = passwordController.text;
         newUser.username = emailController.text.split("@")[0];
+        newUser.fullName = fullNameController.text;
+        print(newUser.toJson());
         newUser.verifiedPhone = true;
 
         await this.authService.register(newUser);
       }
       catch (e) {
-        print(e);
         Get.showSnackbar(Ui.ErrorSnackBar(message: "unknowError".tr));
         throw new Exception('error');
 

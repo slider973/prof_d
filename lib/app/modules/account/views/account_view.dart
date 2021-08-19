@@ -13,7 +13,7 @@ import '../widgets/account_link_widget.dart';
 class AccountView extends GetView<TabsController> {
   @override
   Widget build(BuildContext context) {
-    var _currentUser = Get.find<AuthService>().user;
+    final _currentUser = Get.find<AuthService>().user;
     return Scaffold(
         appBar: AppBar(
           title: Text(

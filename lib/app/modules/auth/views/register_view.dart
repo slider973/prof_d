@@ -1,4 +1,6 @@
 
+import '../widgets/full_name_field.dart';
+
 import '../widgets/confirm_password_field.dart';
 import '../widgets/password_field.dart';
 
@@ -90,6 +92,7 @@ class RegisterView extends GetView<AuthController> {
       ),
 
       emailField(controller),
+      fullNameField(controller),
       passwordField(context, controller),
       confirmPasswordField(context, controller)
     ];

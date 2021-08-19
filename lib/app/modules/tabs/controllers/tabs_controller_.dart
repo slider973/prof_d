@@ -23,7 +23,6 @@ class TabsController extends GetxController{
   List<Widget> pages = [
     HomeView(),
     BookingsView(),
-    MessagesView(),
     AlarmsView(),
     AccountView(),
   ];

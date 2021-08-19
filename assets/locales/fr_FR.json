@@ -161,6 +161,7 @@
   "createAnAccount": "Créer",
   "Error_email": "Insérer une adresse mail valide",
   "Password_to_same": "Les deux champs de mots de passe doivent corresponde",
-  "unknowError": "Une erreur inconnue est survenue"
+  "unknowError": "Une erreur inconnue est survenue",
+  "FullName":  "Nom complet"
 
 }

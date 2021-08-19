@@ -18,6 +18,7 @@ class User extends MediaModel {
   String verificationId;
   String address;
   String bio;
+  String fullName;
 
   bool auth;
 
@@ -38,11 +39,13 @@ class User extends MediaModel {
       this.verifiedPhone,
       this.verificationId,
       this.address,
+      this.fullName,
       this.bio});
 
   User.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+    name = json['fullName'];
     username = json['username'];
+    fullName = json['fullName'];
     email = json['email'];
     password = json['password'];
     apiToken = json['apiToken'];
@@ -61,8 +64,9 @@ class User extends MediaModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
-    data['name'] = this.name;
+    data['name'] = this.fullName;
     data['username'] = this.username;
+    data['fullName'] = this.fullName;
     data['email'] = this.email;
     data['password'] = this.password;
     data['provider'] = this.provider;
@@ -86,6 +90,7 @@ class User extends MediaModel {
     map["id"] = id;
     map["email"] = email;
     map["name"] = name;
+    map["fullName"] = fullName;
     map["username"] = username;
     map["thumb"] = mediaThumb;
     map["device_token"] = deviceToken;
