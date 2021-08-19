@@ -1,4 +1,6 @@
-import 'package:prof_b/app/modules/doctor/widgets/doctor_til_widget.dart';
+import 'package:prof_b/app/services/auth_service.dart';
+
+import '../../doctor/widgets/doctor_til_widget.dart';
 import 'package:prof_b/common/ui.dart';
 
 import '../../../routes/app_pages.dart';
@@ -36,7 +38,7 @@ class LoginView extends GetView<AuthController> {
             Container(
               height: 80,
               child: Center(
-                child: Image.asset("assets/icon/icon.png"),
+                child: Image.asset("assets/icon/icon.jpeg"),
               ),
             ),
             SizedBox(
@@ -68,6 +70,7 @@ class LoginView extends GetView<AuthController> {
                 title: Text("Password".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   initialValue: "".tr,
+                  obscureText: controller.hidePassword.value,
                   style: Get.textTheme.caption,
                   decoration: Ui.getInputDecoration(
                     hintText: "••••••••••••".tr,
@@ -86,81 +89,12 @@ class LoginView extends GetView<AuthController> {
                 ),
               );
             }),
-            Obx(() {
-              return DoctorTilWidget(
-                title: Text("Confirm Password".tr, style: Get.textTheme.subtitle2),
-                content: TextFormField(
-                  initialValue: "".tr,
-                  style: Get.textTheme.caption,
-                  decoration: Ui.getInputDecoration(
-                    hintText: "••••••••••••".tr,
-                    iconData: Icons.lock_outline,
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        controller.hidePassword.value =
-                        !controller.hidePassword.value;
-                      },
-                      color: Theme.of(context).focusColor,
-                      icon: Icon(controller.hidePassword.value
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined),
-                    ),
-                  ),
-                ),
-              );
-            }),
           ],
         ),
         bottomNavigationBar: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           alignment: WrapAlignment.center,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: Center(
-                child: Text(
-                  'or continue using',
-                  style: Get.textTheme.bodyText1,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    child: BlockButtonWidget(
-                      color: Get.theme.primaryColor,
-                      text: Text(
-                        'Google',
-                        style: Get.textTheme.button,
-                      ),
-                      icon: Image.asset('assets/img/google.png'),
-                      onPressed: () {
-                        Get.offAndToNamed(Routes.PROFILE_FILLING);
-                      },
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    child: BlockButtonWidget(
-                      color: Get.theme.primaryColor,
-                      text: Text(
-                        'Facebook',
-                        style: Get.textTheme.button,
-                      ),
-                      icon: Image.asset('assets/img/facebook.png'),
-                      onPressed: () {
-                        Get.offAndToNamed(Routes.PROFILE_FILLING);
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
             SizedBox(
               height: 20,
             ),
@@ -176,7 +110,9 @@ class LoginView extends GetView<AuthController> {
                   ),
                   icon: null,
                   onPressed: () {
-                    Get.offAndToNamed(Routes.TABS);
+                    if(Get.find<AuthService>().isAuth) {
+                      Get.offAndToNamed(Routes.TABS);
+                    }
                   }),
             ),
             SizedBox(

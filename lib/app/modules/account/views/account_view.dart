@@ -14,6 +14,7 @@ class AccountView extends GetView<TabsController> {
   @override
   Widget build(BuildContext context) {
     final _currentUser = Get.find<AuthService>().user;
+    print(_currentUser);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -57,7 +58,7 @@ class AccountView extends GetView<TabsController> {
                     child: Column(
                       children: [
                         Text(
-                          _currentUser.value.name,
+                          _currentUser.value.name != null ? _currentUser.value.name : _currentUser.value.username,
                           style: Get.textTheme.headline6.merge(TextStyle(color: Get.theme.primaryColor)),
                         ),
                         SizedBox(height: 5),
