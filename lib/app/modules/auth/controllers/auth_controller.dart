@@ -63,6 +63,7 @@ class AuthController extends GetxController {
   void login() async {
     final isLoginFormValid =
         RegisterValidator(email: emailController.text).isValid(true);
+    print('toto');
     if (isLoginFormValid) {
       try {
         final user = User();
