@@ -20,9 +20,7 @@ class AuthService extends GetxService {
   }
 
   Future<AuthService> init() async {
-    user.value = await _usersRepo.login();
     user.value.auth = false;
-
     address.listen((Address _address) {
       _box.write('current_address', _address);
     });
@@ -37,6 +35,17 @@ class AuthService extends GetxService {
       user.value = await _usersRepo.register(userToSave);
       user.value.auth = true;
     } on DioError catch (e) {
+      Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
+    }
+  }
+
+  Future login(User userLogin) async {
+    try {
+      print('je suis la');
+      user.value = await _usersRepo.login(userLogin);
+      user.value.auth = true;
+    } on DioError catch (e) {
+      print(e);
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     }
   }

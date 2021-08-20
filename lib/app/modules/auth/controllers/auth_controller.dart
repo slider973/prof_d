@@ -14,9 +14,7 @@ class AuthController extends GetxController {
   final fullNameController = TextEditingController();
   final checkedMale = false.obs;
   final checkedFeMale = false.obs;
-  final selectedDate = DateTime
-      .now()
-      .obs;
+  final selectedDate = DateTime.now().obs;
   final authService = Get.find<AuthService>();
 
   @override
@@ -39,14 +37,12 @@ class AuthController extends GetxController {
   }
 
   void register() async {
-
     final isRegisterFormValid = RegisterValidator(
-        email: emailController.text,
-        password: passwordController.text,
-        hidePassword: hidePasswordController.text,
-        fullName: fullNameController.text
-    )
-        .isValid();
+            email: emailController.text,
+            password: passwordController.text,
+            hidePassword: hidePasswordController.text,
+            fullName: fullNameController.text)
+        .isValid(false);
     if (isRegisterFormValid) {
       try {
         final newUser = User();
@@ -54,15 +50,29 @@ class AuthController extends GetxController {
         newUser.password = passwordController.text;
         newUser.username = emailController.text.split("@")[0];
         newUser.fullName = fullNameController.text;
-        print(newUser.toJson());
         newUser.verifiedPhone = true;
 
         await this.authService.register(newUser);
-      }
-      catch (e) {
+      } catch (e) {
         Get.showSnackbar(Ui.ErrorSnackBar(message: "unknowError".tr));
         throw new Exception('error');
+      }
+    }
+  }
 
+  void login() async {
+    final isLoginFormValid =
+        RegisterValidator(email: emailController.text).isValid(true);
+
+    if (isLoginFormValid) {
+      try {
+        final user = User();
+        user.email = emailController.text;
+        user.password = passwordController.text;
+        await this.authService.login(user);
+      } catch (e) {
+        Get.showSnackbar(Ui.ErrorSnackBar(message: "unknowError".tr));
+        throw new Exception('error');
       }
     }
   }

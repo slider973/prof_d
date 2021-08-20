@@ -1,11 +1,10 @@
-import 'package:prof_b/app/services/auth_service.dart';
+import '../../../services/auth_service.dart';
 
 import '../../doctor/widgets/doctor_til_widget.dart';
-import 'package:prof_b/common/ui.dart';
+import '../../../../common/ui.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../widgets/block_button_widget.dart';
-import '../../../widgets/text_field_widget.dart';
 
 import '../../auth/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +47,7 @@ class LoginView extends GetView<AuthController> {
               child: Center(
                 child: Text(
                   "Login".tr,
-                  style: Get.textTheme.headline6.merge(
-                      TextStyle(
+                  style: Get.textTheme.headline6.merge(TextStyle(
                       color: context.theme.accentColor, fontSize: 22)),
                 ),
               ),
@@ -57,7 +55,7 @@ class LoginView extends GetView<AuthController> {
             DoctorTilWidget(
               title: Text("Email".tr, style: Get.textTheme.subtitle2),
               content: TextFormField(
-                initialValue: "".tr,
+                controller: controller.emailController,
                 style: Get.textTheme.caption,
                 decoration: Ui.getInputDecoration(
                   hintText: "johndoe@gmail.com".tr,
@@ -69,7 +67,7 @@ class LoginView extends GetView<AuthController> {
               return DoctorTilWidget(
                 title: Text("Password".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
-                  initialValue: "".tr,
+                  controller: controller.passwordController,
                   obscureText: controller.hidePassword.value,
                   style: Get.textTheme.caption,
                   decoration: Ui.getInputDecoration(
@@ -109,8 +107,9 @@ class LoginView extends GetView<AuthController> {
                         .merge(TextStyle(color: Colors.white)),
                   ),
                   icon: null,
-                  onPressed: () {
-                    if(Get.find<AuthService>().isAuth) {
+                  onPressed: () async {
+                    await controller.login();
+                    if (Get.find<AuthService>().isAuth) {
                       Get.offAndToNamed(Routes.TABS);
                     }
                   }),

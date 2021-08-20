@@ -8,7 +8,8 @@ class RegisterValidator {
   var _hidePassword = null;
   var _fullName = null;
 
-  RegisterValidator({String email, String password, String hidePassword, String fullName}) {
+  RegisterValidator(
+      {String email, String password, String hidePassword, String fullName}) {
     _email = email;
     _password = password;
     _hidePassword = hidePassword;
@@ -42,11 +43,15 @@ class RegisterValidator {
     }
   }
 
-  isValid() {
+  isValid(bool isLogin) {
     try {
-      email_validate();
-      password_validate();
-      full_name_validate();
+      if (isLogin) {
+        email_validate();
+      } else {
+        email_validate();
+        password_validate();
+        full_name_validate();
+      }
       return true;
     } catch (e) {
       return false;

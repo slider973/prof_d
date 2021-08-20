@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:prof_b/app/models/user_login_model.dart';
 import '../providers/auth_provider.dart';
 import '../models/address_model.dart';
 import '../models/user_model.dart';
@@ -17,13 +18,15 @@ class UserRepository {
     return _apiClient.getAllUsers();
   }
 
-  Future<User> login() {
-    return _apiClient.getLogin();
-  }
-
   Future<User> register(User user) {
     return _authApiClient.register(user);
+  }
 
+  Future<User> login(User user) {
+    final userLogin = new UserLogin();
+    userLogin.identifier = user.email;
+    userLogin.password = user.password;
+    return _authApiClient.login(userLogin);
   }
 
   Future<List<Address>> getAddresses() {
