@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:prof_b/app/models/user_login_model.dart';
+import '../models/user_login_model.dart';
 import '../providers/auth_provider.dart';
 import '../models/address_model.dart';
 import '../models/user_model.dart';
