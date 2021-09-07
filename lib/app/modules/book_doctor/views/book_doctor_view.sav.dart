@@ -10,7 +10,7 @@ import '../../../models/booking_model.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/book_doctor_controller.dart';
 
-class BookingView extends GetView<BookDoctorController> {
+class BookDoctorView extends GetView<BookDoctorController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

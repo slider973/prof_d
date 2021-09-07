@@ -1,8 +1,7 @@
-import 'package:prof_b/app/models/booking_model.dart';
-import 'package:prof_b/app/models/clinic_model.dart';
-import 'package:prof_b/app/models/review_model.dart';
-import 'package:prof_b/app/repositories/booking_repository.dart';
-import 'package:prof_b/app/repositories/clinic_repository.dart';
+import 'package:prof_b/app/models/user_model.dart';
+
+import '../../../models/clinic_model.dart';
+import '../../../repositories/clinic_repository.dart';
 
 import '../../../models/address_model.dart';
 import '../../../models/doctor_model.dart';
@@ -14,13 +13,11 @@ import '../../../services/auth_service.dart';
 import '../../../../common/ui.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController{
-
+class HomeController extends GetxController {
   UserRepository _userRepository;
   SpecialityRepository _specialityRepository;
   DoctorRepository _doctorRepository;
   ClinicRepository _clinicRepository;
-
 
   final addresses = <Address>[].obs;
   final specialities = <Speciality>[].obs;
@@ -29,7 +26,7 @@ class HomeController extends GetxController{
   final clinics = <Clinic>[].obs;
   final clinicsNearbyYou = <Clinic>[].obs;
 
-  HomeController(){
+  HomeController() {
     _userRepository = new UserRepository();
     _specialityRepository = new SpecialityRepository();
     _doctorRepository = new DoctorRepository();
@@ -49,12 +46,17 @@ class HomeController extends GetxController{
     await getClinicsNearbyYou();
 
     if (showMessage) {
-      Get.showSnackbar(Ui.SuccessSnackBar(message: "Home page refreshed successfully".tr));
+      Get.showSnackbar(
+          Ui.SuccessSnackBar(message: "Home page refreshed successfully".tr));
     }
   }
 
   Address get currentAddress {
     return Get.find<AuthService>().address.value;
+  }
+
+  User get currentUser {
+    return Get.find<AuthService>().user.value;
   }
 
   Future getAddresses() async {
@@ -66,35 +68,35 @@ class HomeController extends GetxController{
   }
 
   Future getSpecialities() async {
-    try{
+    try {
       specialities.value = await _specialityRepository.getAll();
-    }catch(e){
+    } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     }
   }
 
   Future getFeaturedSpecialities() async {
-    try{
-      featuredSpecialities.value = await _specialityRepository.getFeaturedSpecialities();
-    }catch(e){
+    try {
+      featuredSpecialities.value =
+          await _specialityRepository.getFeaturedSpecialities();
+    } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     }
   }
 
-  Future getTopDoctors () async{
-    try{
+  Future getTopDoctors() async {
+    try {
       topDoctors.value = await _doctorRepository.getTopDoctors();
-    }catch(e){
+    } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     }
   }
 
-  Future getClinicsNearbyYou() async{
-    try{
+  Future getClinicsNearbyYou() async {
+    try {
       clinicsNearbyYou.value = await _clinicRepository.getClinicsNearbyYou();
-    }catch(e){
+    } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     }
   }
-
 }

@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart' as DioLib;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as GetLib;
-import 'package:prof_b/app/models/user_login_model.dart';
+import '../models/api/api_response_result_model.dart';
+import '../models/user_login_model.dart';
 import '../models/auth_model.dart';
 
 import '../models/user_model.dart';
@@ -30,6 +31,8 @@ class AuthApiClient {
     var newAuth = Auth.fromJson(response.data);
     var userAuth = new User();
     userAuth.apiToken = newAuth.jwt;
+    userAuth.name = newAuth.user.name;
+    userAuth.id = newAuth.user.id;
     userAuth.username = newAuth.user.username;
     userAuth.provider = newAuth.user.provider;
     userAuth.email = newAuth.user.email;
@@ -41,12 +44,16 @@ class AuthApiClient {
         new DioLib.FormData.fromMap(userObjectToLogin.toJson());
     var response = await httpClient.post(baseUrl + "auth/local",
         data: formData, options: _options);
-    var newAuth = Auth.fromJson(response.data);
+    var newAuth = ApiResonseResult.fromJson(response.data);
     var userAuth = new User();
     userAuth.apiToken = newAuth.jwt;
+    userAuth.name = newAuth.user.name;
+    userAuth.id = newAuth.user.id;
     userAuth.username = newAuth.user.username;
     userAuth.provider = newAuth.user.provider;
     userAuth.email = newAuth.user.email;
+    userAuth.isParent = newAuth.user.isParent;
+    userAuth.appointments = newAuth.user.appointments;
     return userAuth;
   }
 }

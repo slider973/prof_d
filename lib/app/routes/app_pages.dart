@@ -64,7 +64,7 @@ class AppPages {
     GetPage(name: Routes.ALARM, page: () => AddAlarmView(), binding: AlarmsBinding()),
     GetPage(name: Routes.CLINIC, page: () => ClinicView(), binding: ClinicBinding(),transition: Transition.downToUp),
     GetPage(name: Routes.DOCTOR, page: () => DoctorView(), binding: DoctorBinding(),transition: Transition.downToUp),
-    GetPage(name: Routes.BOOK_DOCTOR, page: () => BookDoctorView(), binding: BookDoctorBinding()),
+    GetPage(name: Routes.BOOK_DOCTOR, page: () => BookingView(), binding: BookDoctorBinding()),
     GetPage(name: Routes.CHECKOUT, page: () => CheckoutView(), binding: CheckoutBinding()),
     GetPage(name: Routes.CONFIRMATION, page: () => ConfirmationView(), binding: CheckoutBinding()),
   ];

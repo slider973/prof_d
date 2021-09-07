@@ -162,6 +162,8 @@
   "Error_email": "Insérer une adresse mail valide",
   "Password_to_same": "Les deux champs de mots de passe doivent corresponde",
   "unknowError": "Une erreur inconnue est survenue",
-  "FullName":  "Nom complet"
+  "FullName":  "Nom complet",
+  "hello {name}": "Bonjour à vous {name}",
+  "Display today": "voici la liste de vos reservation pour vos enfant"
 
 }

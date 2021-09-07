@@ -16,7 +16,7 @@ class BookDoctorController extends GetxController {
     this.booking.value = Booking(
       dateTime: DateTime.now(),
       address: Get.find<AuthService>().address.value,
-      doctor: Get.arguments['doctor'] as Doctor,
+      appointments: Get.find<AuthService>().user.value.appointments,
       user: Get.find<AuthService>().user.value,
     );
     super.onInit();
@@ -28,7 +28,8 @@ class BookDoctorController extends GetxController {
 
   TextStyle getTextTheme(bool selected) {
     if (selected) {
-      return Get.textTheme.bodyText2.merge(TextStyle(color: Get.theme.primaryColor));
+      return Get.textTheme.bodyText2
+          .merge(TextStyle(color: Get.theme.primaryColor));
     }
     return Get.textTheme.bodyText2;
   }
@@ -53,7 +54,8 @@ class BookDoctorController extends GetxController {
     );
     if (picked != null) {
       booking.update((val) {
-        val.dateTime = DateTime(picked.year, picked.month, picked.day, val.dateTime.hour, val.dateTime.minute);
+        val.dateTime = DateTime(picked.year, picked.month, picked.day,
+            val.dateTime.hour, val.dateTime.minute);
         ;
       });
     }
@@ -70,7 +72,9 @@ class BookDoctorController extends GetxController {
     //print(picked);
     if (picked != null) {
       booking.update((val) {
-        val.dateTime = DateTime(booking.value.dateTime.year, booking.value.dateTime.month, booking.value.dateTime.day).add(Duration(minutes: picked.minute + picked.hour * 60));
+        val.dateTime = DateTime(booking.value.dateTime.year,
+                booking.value.dateTime.month, booking.value.dateTime.day)
+            .add(Duration(minutes: picked.minute + picked.hour * 60));
       });
     }
   }

@@ -15,10 +15,12 @@ class User extends MediaModel {
   String deviceToken;
   String phone;
   bool verifiedPhone;
+  bool isParent;
   String verificationId;
   String address;
   String bio;
   String fullName;
+  List<dynamic> appointments;
 
   bool auth;
 
@@ -39,6 +41,7 @@ class User extends MediaModel {
       this.verifiedPhone,
       this.verificationId,
       this.address,
+      this.isParent,
       this.fullName,
       this.bio});
 
@@ -50,6 +53,7 @@ class User extends MediaModel {
     password = json['password'];
     apiToken = json['apiToken'];
     provider = json['provider'];
+    appointments = List<dynamic>.from(json["appointments"].map((x) => x));
     resetPasswordToken = json['resetPasswordToken'];
     confirmationToken = json['confirmationToken'];
     deviceToken = json['deviceToken'];
@@ -57,6 +61,7 @@ class User extends MediaModel {
     verifiedPhone = json['verifiedPhone'];
     verificationId = json['verificationId'];
     address = json['address'];
+    isParent = json['isParent'];
     bio = json['bio'];
     super.fromJson(json);
   }
@@ -78,7 +83,9 @@ class User extends MediaModel {
     data['verifiedPhone'] = this.verifiedPhone;
     data['verificationId'] = this.verificationId;
     data['address'] = this.address;
+    data['isParent'] = this.isParent;
     data['bio'] = this.bio;
+    data['appointments'] = List<dynamic>.from(appointments.map((x) => x));
     if (this.media != null) {
       data['media'] = this.media.toJson();
     }
@@ -94,6 +101,8 @@ class User extends MediaModel {
     map["username"] = username;
     map["thumb"] = mediaThumb;
     map["device_token"] = deviceToken;
+    map["isParent"] = isParent;
+    map['appointments'] = appointments;
     return map;
   }
 }

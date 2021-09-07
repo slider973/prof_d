@@ -20,8 +20,8 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     // Simulating obtaining the user name from some local storage
-    emailController.text = "Email address".tr;
-    passwordController.text = "".tr;
+    emailController.text = "test@jojo.fr".tr;
+    passwordController.text = "123456".tr;
     hidePasswordController.text = "".tr;
     fullNameController.text = "".tr;
     super.onInit();
@@ -70,6 +70,7 @@ class AuthController extends GetxController {
         user.password = passwordController.text;
         await this.authService.login(user);
       } catch (e) {
+        print(e);
         Get.showSnackbar(Ui.ErrorSnackBar(message: "unknowError".tr));
         throw new Exception('error');
       }

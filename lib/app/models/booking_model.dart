@@ -15,10 +15,23 @@ class Booking extends Model {
   double rate;
   User user;
   Doctor doctor;
+  List<dynamic> appointments;
   Address address;
   PaymentMethod paymentMethod;
 
-  Booking({this.id, this.dateTime, this.description, this.status, this.progress, this.total, this.tax, this.rate, this.user, this.doctor, this.address, this.paymentMethod});
+  Booking(
+      {this.id,
+      this.dateTime,
+      this.description,
+      this.status,
+      this.progress,
+      this.total,
+      this.tax,
+      this.rate,
+      this.user,
+      this.appointments,
+      this.address,
+      this.paymentMethod});
 
   Booking.fromJson(Map<String, dynamic> json) {
     dateTime = DateTime.parse(json['date_time']);
@@ -29,9 +42,13 @@ class Booking extends Model {
     rate = json['rate']?.toDouble();
     tax = json['tax']?.toDouble();
     user = json['user'] != null ? User.fromJson(json['user']) : null;
-    paymentMethod = json['payment_method'] != null ? PaymentMethod.fromJson(json['payment_method']) : null;
+    paymentMethod = json['payment_method'] != null
+        ? PaymentMethod.fromJson(json['payment_method'])
+        : null;
+    appointments = json['appointments'].map((app) => app);
+    address =
+        json['address'] != null ? Address.fromJson(json['address']) : null;
     doctor = json['doctor'] != null ? Doctor.fromJson(json['doctor']) : null;
-    address = json['address'] != null ? Address.fromJson(json['address']) : null;
     super.fromJson(json);
   }
 
@@ -54,6 +71,9 @@ class Booking extends Model {
     if (this.doctor != null) {
       data['doctor'] = this.doctor.toJson();
     }
+    if (this.appointments != null) {
+      data["appointments"] = List<dynamic>.from(appointments.map((x) => x));
+    }
     return data;
   }
 
@@ -65,25 +85,36 @@ class Booking extends Model {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          super == other &&
-              other is Booking &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              description == other.description &&
-              rate == other.rate &&
-              dateTime == other.dateTime &&
-              status == other.status &&
-              progress == other.progress &&
-              total == other.total &&
-              tax == other.tax &&
-              user == other.user &&
-              doctor == other.doctor &&
-              address == other.address &&
-              paymentMethod == other.paymentMethod ;
-
+      super == other &&
+          other is Booking &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          description == other.description &&
+          rate == other.rate &&
+          dateTime == other.dateTime &&
+          status == other.status &&
+          progress == other.progress &&
+          total == other.total &&
+          tax == other.tax &&
+          user == other.user &&
+          doctor == other.doctor &&
+          appointments == other.appointments &&
+          address == other.address &&
+          paymentMethod == other.paymentMethod;
 
   @override
   int get hashCode =>
-      super.hashCode ^ id.hashCode ^ description.hashCode ^ rate.hashCode ^ dateTime.hashCode ^ status.hashCode ^ progress.hashCode ^ total.hashCode ^ tax.hashCode ^ user.hashCode ^ doctor.hashCode ^ address.hashCode ^ paymentMethod.hashCode ;
-
+      super.hashCode ^
+      id.hashCode ^
+      description.hashCode ^
+      rate.hashCode ^
+      dateTime.hashCode ^
+      status.hashCode ^
+      progress.hashCode ^
+      total.hashCode ^
+      tax.hashCode ^
+      user.hashCode ^
+      appointments.hashCode ^
+      address.hashCode ^
+      paymentMethod.hashCode;
 }

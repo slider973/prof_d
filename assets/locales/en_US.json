@@ -159,5 +159,7 @@
   "Privacy Policy": "Privacy Policy",
   "Login account or create new one for free": "Login account or create new one for free",
   "Error_email": "Insert a valid email address",
-  "Password_to_same": "The two password fields must match"
+  "Password_to_same": "The two password fields must match",
+  "hello {name}": "hello {name}",
+  "Display today": "here is the list of your reservations for your children"
 }

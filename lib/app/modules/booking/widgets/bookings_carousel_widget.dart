@@ -14,7 +14,8 @@ class BookingsCarouselWidget extends StatelessWidget {
   final List<Booking> bookings;
   final selectedBooking = Booking().obs;
 
-  BookingsCarouselWidget({Key key, List<Booking> this.bookings}) : super(key: key);
+  BookingsCarouselWidget({Key key, List<Booking> this.bookings})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class BookingsCarouselWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: bookings.length,
                   itemBuilder: (_, index) {
-                    var _doctor = bookings.elementAt(index).doctor;
+                    var _doctor = bookings.elementAt(index).appointments;
                     var _task = bookings.elementAt(index);
                     return GestureDetector(
                       onTap: () {
@@ -42,19 +43,28 @@ class BookingsCarouselWidget extends StatelessWidget {
                       },
                       child: Container(
                         width: 200,
-                        margin: EdgeInsetsDirectional.only(end: 20, start: index == 0 ? 20 : 0, top: 20, bottom: 10),
+                        margin: EdgeInsetsDirectional.only(
+                            end: 20,
+                            start: index == 0 ? 20 : 0,
+                            top: 20,
+                            bottom: 10),
                         // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
-                            BoxShadow(color: Get.theme.focusColor.withOpacity(0.1), blurRadius: 10, offset: Offset(0, 5)),
+                            BoxShadow(
+                                color: Get.theme.focusColor.withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: Offset(0, 5)),
                           ],
                         ),
                         child: Column(
                           //alignment: AlignmentDirectional.topStart,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10)),
                               child: CachedNetworkImage(
                                 height: 100,
                                 width: double.infinity,
@@ -66,18 +76,24 @@ class BookingsCarouselWidget extends StatelessWidget {
                                   width: double.infinity,
                                   height: 100,
                                 ),
-                                errorWidget: (context, url, error) => Icon(Icons.error_outline),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error_outline),
                               ),
                             ),
                             Obx(
-                                  () => AnimatedContainer(
+                              () => AnimatedContainer(
                                 duration: Duration(milliseconds: 300),
-                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 10),
                                 // height: 45,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: selectedBooking.value == _task ? Get.theme.accentColor : Get.theme.primaryColor,
-                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                  color: selectedBooking.value == _task
+                                      ? Get.theme.accentColor
+                                      : Get.theme.primaryColor,
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10)),
                                 ),
                                 child: Wrap(
                                   direction: Axis.vertical,
@@ -89,16 +105,31 @@ class BookingsCarouselWidget extends StatelessWidget {
                                       maxLines: 1,
                                       softWrap: false,
                                       overflow: TextOverflow.fade,
-                                      style: Get.textTheme.bodyText2.merge(TextStyle(color: selectedBooking.value == _task ? Get.theme.primaryColor : Get.theme.hintColor)),
+                                      style: Get.textTheme.bodyText2.merge(
+                                          TextStyle(
+                                              color:
+                                                  selectedBooking.value == _task
+                                                      ? Get.theme.primaryColor
+                                                      : Get.theme.hintColor)),
                                     ),
                                     SizedBox(height: 5),
                                     Text(
                                       '${DateFormat.yMMMMd().format(selectedBooking.value.dateTime)}',
-                                      style: Get.textTheme.caption.merge(TextStyle(color: selectedBooking.value == _task ? Get.theme.primaryColor : Get.theme.focusColor)),
+                                      style: Get.textTheme.caption.merge(
+                                          TextStyle(
+                                              color:
+                                                  selectedBooking.value == _task
+                                                      ? Get.theme.primaryColor
+                                                      : Get.theme.focusColor)),
                                     ),
                                     Text(
                                       'At ${DateFormat('HH:mm').format(selectedBooking.value.dateTime)}',
-                                      style: Get.textTheme.caption.merge(TextStyle(color: selectedBooking.value == _task ? Get.theme.primaryColor : Get.theme.focusColor)),
+                                      style: Get.textTheme.caption.merge(
+                                          TextStyle(
+                                              color:
+                                                  selectedBooking.value == _task
+                                                      ? Get.theme.primaryColor
+                                                      : Get.theme.focusColor)),
                                     ),
                                   ],
                                 ),
@@ -109,8 +140,7 @@ class BookingsCarouselWidget extends StatelessWidget {
                       ),
                     );
                   });
-            })
-        ),
+            })),
         Obx(() {
           if (!selectedBooking.value.hasData) {
             return CircularLoadingWidget(height: 300);
@@ -122,7 +152,10 @@ class BookingsCarouselWidget extends StatelessWidget {
               color: Get.theme.primaryColor,
               borderRadius: BorderRadius.all(Radius.circular(10)),
               boxShadow: [
-                BoxShadow(color: Get.theme.focusColor.withOpacity(0.1), blurRadius: 10, offset: Offset(0, 5)),
+                BoxShadow(
+                    color: Get.theme.focusColor.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: Offset(0, 5)),
               ],
             ),
             child: Column(
@@ -136,14 +169,16 @@ class BookingsCarouselWidget extends StatelessWidget {
                         height: 70,
                         width: 70,
                         fit: BoxFit.cover,
-                        imageUrl: selectedBooking.value.doctor.media.thumb,
+                        imageUrl:
+                            selectedBooking.value.appointements.media.thumb,
                         placeholder: (context, url) => Image.asset(
                           'assets/img/loading.gif',
                           fit: BoxFit.cover,
                           width: double.infinity,
                           height: 70,
                         ),
-                        errorWidget: (context, url, error) => Icon(Icons.error_outline),
+                        errorWidget: (context, url, error) =>
+                            Icon(Icons.error_outline),
                       ),
                     ),
                     SizedBox(width: 20),
@@ -153,15 +188,17 @@ class BookingsCarouselWidget extends StatelessWidget {
                         direction: Axis.vertical,
                         children: [
                           Text(
-                            selectedBooking.value.doctor?.name ?? '',
+                            selectedBooking.value.appointments.indexOf(0)?.name ?? '',
                             style: Get.textTheme.bodyText2,
                             maxLines: 3,
                             // textAlign: TextAlign.end,
                           ),
                           Container(
-                            padding: const EdgeInsets.only(right: 12, left: 12, top: 6, bottom: 6),
+                            padding: const EdgeInsets.only(
+                                right: 12, left: 12, top: 6, bottom: 6),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
                               color: Get.theme.focusColor.withOpacity(0.1),
                             ),
                             child: Text(
@@ -185,28 +222,39 @@ class BookingsCarouselWidget extends StatelessWidget {
                         Text(
                           '${DateFormat.yMMMMd().format(selectedBooking.value.dateTime)}',
                         ),
-                        Text('At ${DateFormat('HH:mm').format(selectedBooking.value.dateTime)}'),
+                        Text(
+                            'At ${DateFormat('HH:mm').format(selectedBooking.value.dateTime)}'),
                       ],
                     ),
                     hasDivider: true),
-                TaskRowWidget(description: "Payment Method".tr, value: selectedBooking.value.paymentMethod.name, hasDivider: true),
+                TaskRowWidget(
+                    description: "Payment Method".tr,
+                    value: selectedBooking.value.paymentMethod.name,
+                    hasDivider: true),
                 TaskRowWidget(
                   description: "Tax Amount".tr,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Ui.getPrice(selectedBooking.value.tax, style: Get.textTheme.bodyText2),
+                    child: Ui.getPrice(selectedBooking.value.tax,
+                        style: Get.textTheme.bodyText2),
                   ),
                 ),
                 TaskRowWidget(
                   description: "Total Amount".tr,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Ui.getPrice(selectedBooking.value.total, style: Get.textTheme.headline6),
+                    child: Ui.getPrice(selectedBooking.value.total,
+                        style: Get.textTheme.headline6),
                   ),
                   hasDivider: true,
                 ),
-                TaskRowWidget(description: "Address".tr, value: selectedBooking.value.address.address, hasDivider: true),
-                TaskRowWidget(description: "Description".tr, value: selectedBooking.value.description),
+                TaskRowWidget(
+                    description: "Address".tr,
+                    value: selectedBooking.value.address.address,
+                    hasDivider: true),
+                TaskRowWidget(
+                    description: "Description".tr,
+                    value: selectedBooking.value.description),
               ],
             ),
           );

@@ -41,9 +41,13 @@ class AuthService extends GetxService {
 
   Future login(User userLogin) async {
     try {
-      print('je suis la');
-      user.value = await _usersRepo.login(userLogin);
-      user.value.auth = true;
+      if (_box.hasData('current_user')) {
+        user.value = User.fromJson(await _box.read('current_user'));
+      } else {
+        user.value = await _usersRepo.login(userLogin);
+        print(user.toJson());
+        user.value.auth = true;
+      }
     } on DioError catch (e) {
       print(e);
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
