@@ -7,14 +7,14 @@ import 'dart:convert';
 import 'role_model.dart';
 import 'user_strapi_model.dart';
 
-ApiResonseResult apiResonseResultFromJson(String str) =>
-    ApiResonseResult.fromJson(json.decode(str));
+ApiResponseResult apiResponseResultFromJson(String str) =>
+    ApiResponseResult.fromJson(json.decode(str));
 
-String apiResonseResultToJson(ApiResonseResult data) =>
+String apiResponseResultToJson(ApiResponseResult data) =>
     json.encode(data.toJson());
 
-class ApiResonseResult {
-  ApiResonseResult({
+class ApiResponseResult {
+  ApiResponseResult({
     this.jwt,
     this.user,
   });
@@ -22,8 +22,8 @@ class ApiResonseResult {
   String jwt;
   UserStrapi user;
 
-  factory ApiResonseResult.fromJson(Map<String, dynamic> json) =>
-      ApiResonseResult(
+  factory ApiResponseResult.fromJson(Map<String, dynamic> json) =>
+      ApiResponseResult(
         jwt: json["jwt"],
         user: UserStrapi.fromJson(json["user"]),
       );

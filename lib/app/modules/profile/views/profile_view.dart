@@ -1,4 +1,4 @@
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../../widgets/gender_card_widget.dart';
 import '../../../../common/ui.dart';
 import '../../../widgets/text_field_widget.dart';
@@ -76,7 +76,7 @@ class ProfileView extends GetView<ProfileController> {
             children: [
               Text("Profile details".tr, style: Get.textTheme.headline5).paddingOnly(top: 25, bottom: 0, right: 22, left: 22),
               Text("Change the following details and save them".tr, style: Get.textTheme.caption).paddingSymmetric(horizontal: 22, vertical: 5),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Full Name".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   onSaved: (input) => controller.user.value.name = input,
@@ -89,7 +89,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Email".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   onSaved: (input) => controller.user.value.email = input,
@@ -102,7 +102,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Phone Number".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   initialValue: controller.user.value.phone,
@@ -115,7 +115,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Address".tr, style: Get.textTheme.subtitle2),
                 content:TextFormField(
                   onSaved: (input) => controller.user.value.address = input,
@@ -128,7 +128,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Gender".tr, style: Get.textTheme.subtitle2),
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +170,7 @@ class ProfileView extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Date Of Birth".tr, style: Get.textTheme.subtitle2),
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,7 +196,7 @@ class ProfileView extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Height".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   initialValue: "".tr,
@@ -211,7 +211,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              DoctorTilWidget(
+              ProdDFieldWidget(
                 title: Text("Weight".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   initialValue: "".tr,
@@ -229,7 +229,7 @@ class ProfileView extends GetView<ProfileController> {
               Text("Change password".tr, style: Get.textTheme.headline5).paddingOnly(top: 25, bottom: 0, right: 22, left: 22),
               Text("Fill your old password and type new password and confirm it".tr, style: Get.textTheme.caption).paddingSymmetric(horizontal: 22, vertical: 5),
               Obx(() {
-                return DoctorTilWidget(
+                return ProdDFieldWidget(
                   title: Text("Old Password".tr, style: Get.textTheme.subtitle2),
                   content: TextFormField(
                     initialValue: "".tr,
@@ -252,7 +252,7 @@ class ProfileView extends GetView<ProfileController> {
                 );
               }),
               Obx(() {
-                return DoctorTilWidget(
+                return ProdDFieldWidget(
                   title: Text("New Password".tr, style: Get.textTheme.subtitle2),
                   content: TextFormField(
                     initialValue: "".tr,

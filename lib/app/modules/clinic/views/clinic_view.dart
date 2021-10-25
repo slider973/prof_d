@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:prof_b/app/models/media_model.dart';
 import '../../../models/clinic_model.dart';
 import '../controllers/clinic_controller.dart';
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../doctor/widgets/doctor_title_bar_widget.dart';
 import '../../doctor/widgets/review_item_widget.dart';
 import '../../../widgets/circular_loading_widget.dart';
@@ -93,13 +93,13 @@ class ClinicView extends GetView<ClinicController> {
                     children: [
                       SizedBox(height: 10),
                       buildDoctors(_clinic),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Description".tr,
                             style: Get.textTheme.subtitle2),
                         content:
                         Text(_clinic.about, style: Get.textTheme.bodyText1),
                       ),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Reviews & Ratings".tr,
                             style: Get.textTheme.subtitle2),
                         content: Column(

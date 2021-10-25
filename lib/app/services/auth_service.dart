@@ -25,7 +25,7 @@ class AuthService extends GetxService {
       _box.write('current_address', _address);
     });
 
-    await getAddress();
+    // await getAddress();
 
     return this;
   }
@@ -45,7 +45,6 @@ class AuthService extends GetxService {
         user.value = User.fromJson(await _box.read('current_user'));
       } else {
         user.value = await _usersRepo.login(userLogin);
-        print(user.toJson());
         user.value.auth = true;
       }
     } on DioError catch (e) {

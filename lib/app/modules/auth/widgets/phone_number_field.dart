@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../../../common/ui.dart';
 
-DoctorTilWidget phoneNumberField() {
-  return DoctorTilWidget(
+ProdDFieldWidget phoneNumberField() {
+  return ProdDFieldWidget(
     title: Text("Phone Number".tr, style: Get.textTheme.subtitle2),
     content: TextFormField(
       initialValue: "".tr,

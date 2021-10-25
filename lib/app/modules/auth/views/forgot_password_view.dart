@@ -1,4 +1,4 @@
-import 'package:prof_b/app/modules/doctor/widgets/doctor_til_widget.dart';
+import 'package:prof_b/app/modules/doctor/widgets/prof_d_field_widget.dart';
 import 'package:prof_b/common/ui.dart';
 
 import '../../../routes/app_pages.dart';
@@ -57,7 +57,7 @@ class ForgotPasswordView extends GetView{
           SizedBox(
             height: 50,
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text("Email".tr, style: Get.textTheme.subtitle2),
             content: TextFormField(
               initialValue: "".tr,

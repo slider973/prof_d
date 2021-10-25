@@ -1,5 +1,5 @@
-import 'package:prof_b/app/modules/doctor/widgets/doctor_til_widget.dart';
-import 'package:prof_b/common/ui.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
+import '../../../../common/ui.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../widgets/block_button_widget.dart';
@@ -62,7 +62,7 @@ class PhoneVerificationView extends GetView {
           SizedBox(
             height: 50,
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text('OTP Code'.tr, style: Get.textTheme.subtitle2),
             content: TextFormField(
               initialValue: "".tr,

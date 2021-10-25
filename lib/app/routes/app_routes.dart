@@ -35,8 +35,7 @@ abstract class Routes {
   static const DOCTORS = '/doctors';
   static const DOCTOR = '/doctor';
   static const BOOK_DOCTOR = '/book_doctor';
+  static const BOOK_APPOINTMENT = '/book_appaintment';
   static const CHECKOUT = '/checkout';
   static const CONFIRMATION = '/confirmation';
-
-
 }

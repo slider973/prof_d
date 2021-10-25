@@ -1,4 +1,4 @@
-import 'package:prof_b/app/modules/doctor/widgets/doctor_til_widget.dart';
+import 'package:prof_b/app/modules/doctor/widgets/prof_d_field_widget.dart';
 import 'package:prof_b/app/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +31,7 @@ class BookingView extends GetView<BookDoctorController> {
         bottomNavigationBar: buildBlockButtonWidget(controller.booking.value),
         body: ListView(
           children: [
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("Your Address".tr,
                   style: Get.textTheme.subtitle2),
               content:Text(
@@ -40,7 +40,7 @@ class BookingView extends GetView<BookDoctorController> {
               ),
             ),
             //SizedBox(height: 20),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("A Hint for the Doctor".tr,
                   style: Get.textTheme.subtitle2),
               content:TextFormField(

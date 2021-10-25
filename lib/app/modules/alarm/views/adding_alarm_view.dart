@@ -1,4 +1,4 @@
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../../../common/ui.dart';
 import '../../../widgets/block_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class AddAlarmView extends GetView<AlarmsController> {
           children: [
             Text("Alarm details".tr, style: Get.textTheme.headline5).paddingOnly(top: 25, bottom: 0, right: 22, left: 22),
             Text("Change the following details and save them".tr,style: Get.textTheme.caption).paddingSymmetric(horizontal: 22, vertical: 5),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("Select Drug".tr, style: Get.textTheme.subtitle2),
               content:TextFormField(
                 initialValue: "Vitamin C".tr,
@@ -47,7 +47,7 @@ class AddAlarmView extends GetView<AlarmsController> {
                 ),
             ),
             ),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("frequencies".tr, style: Get.textTheme.subtitle2),
               content:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +73,7 @@ class AddAlarmView extends GetView<AlarmsController> {
                 ],
               ),
             ),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("Start from".tr, style: Get.textTheme.subtitle2),
               content:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +99,7 @@ class AddAlarmView extends GetView<AlarmsController> {
                 ],
               ),
             ),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("End at".tr, style: Get.textTheme.subtitle2),
               content:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

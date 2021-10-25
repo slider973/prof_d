@@ -1,6 +1,6 @@
 import '../../../services/auth_service.dart';
 
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../../../common/ui.dart';
 
 import '../../../routes/app_pages.dart';
@@ -52,7 +52,7 @@ class LoginView extends GetView<AuthController> {
                 ),
               ),
             ),
-            DoctorTilWidget(
+            ProdDFieldWidget(
               title: Text("Email".tr, style: Get.textTheme.subtitle2),
               content: TextFormField(
                 controller: controller.emailController,
@@ -64,7 +64,7 @@ class LoginView extends GetView<AuthController> {
               ),
             ),
             Obx(() {
-              return DoctorTilWidget(
+              return ProdDFieldWidget(
                 title: Text("Password".tr, style: Get.textTheme.subtitle2),
                 content: TextFormField(
                   controller: controller.passwordController,

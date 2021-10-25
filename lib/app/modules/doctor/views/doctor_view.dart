@@ -5,7 +5,7 @@ import '../../../models/doctor_model.dart';
 import '../widgets/doctor_title_bar_widget.dart';
 import '../../../routes/app_pages.dart';
 import '../../../widgets/block_button_widget.dart';
-import '../widgets/doctor_til_widget.dart';
+import '../widgets/prof_d_field_widget.dart';
 import '../../../../common/ui.dart';
 import 'package:flutter/material.dart';
 import '../controllers/doctor_controller.dart';
@@ -87,13 +87,13 @@ class DoctorView extends GetView<DoctorController> {
                     children: [
                       SizedBox(height: 10),
                       buildSpecialities(_doctor),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Description".tr,
                             style: Get.textTheme.subtitle2),
                         content:
                             Text(_doctor.about, style: Get.textTheme.bodyText1),
                       ),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Reviews & Ratings".tr,
                             style: Get.textTheme.subtitle2),
                         content: Column(

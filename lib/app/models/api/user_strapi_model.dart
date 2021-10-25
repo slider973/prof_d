@@ -1,6 +1,8 @@
+import '../parents/model.dart';
+
 import 'role_model.dart';
 
-class UserStrapi {
+class UserStrapi extends Model{
   UserStrapi({
     this.confirmed,
     this.blocked,

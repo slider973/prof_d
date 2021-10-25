@@ -1,7 +1,7 @@
 import 'package:prof_b/app/widgets/text_field_widget.dart';
 import 'package:prof_b/common/ui.dart';
 
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../doctor/widgets/doctor_title_bar_widget.dart';
 import '../../../services/auth_service.dart';
 import '../../../widgets/notification_button_widget.dart';
@@ -63,7 +63,7 @@ class Emergency2View extends GetView{
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(height: 10),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Your Address".tr,
                             style: Get.textTheme.subtitle2),
                         content: Obx(() {
@@ -71,7 +71,7 @@ class Emergency2View extends GetView{
                             return Text(addressValue?.address ,style: Get.textTheme.caption);
                         }),
                       ),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("What is the case ?".tr,
                             style: Get.textTheme.subtitle2),
                         content:TextFormField(
@@ -83,7 +83,7 @@ class Emergency2View extends GetView{
                           ),
                         ),
                       ),
-                      DoctorTilWidget(
+                      ProdDFieldWidget(
                         title: Text("Comments".tr, style: Get.textTheme.subtitle2),
                         content:TextFormField(
                           initialValue: "Voluptate eu laborum enim cillum".tr,

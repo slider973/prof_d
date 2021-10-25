@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prof_b/app/routes/app_pages.dart';
-import 'package:prof_b/app/widgets/block_button_widget.dart';
+import '../../../routes/app_pages.dart';
+import '../../../widgets/block_button_widget.dart';
 
 class ParentView extends StatelessWidget {
   final String name;
@@ -38,7 +38,7 @@ class ParentView extends StatelessWidget {
                     ),
                     icon: null,
                     onPressed: () async {
-                      Get.offAndToNamed(Routes.BOOK_DOCTOR);
+                      Get.toNamed(Routes.BOOK_APPOINTMENT);
                     }),
               ],
             ),

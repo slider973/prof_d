@@ -1,6 +1,6 @@
 import 'package:prof_b/common/ui.dart';
 
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import '../controllers/auth_controller.dart';
 import '../../../routes/app_pages.dart';
@@ -54,7 +54,7 @@ class ProfileFillingView extends GetView<AuthController> {
           SizedBox(
             height: 20,
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text("Gender".tr, style: Get.textTheme.subtitle2),
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,7 +96,7 @@ class ProfileFillingView extends GetView<AuthController> {
               ],
             ),
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text("Date Of Birth".tr, style: Get.textTheme.subtitle2),
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,7 +122,7 @@ class ProfileFillingView extends GetView<AuthController> {
               ],
             ),
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text("Height".tr, style: Get.textTheme.subtitle2),
             content: TextFormField(
               initialValue: "".tr,
@@ -137,7 +137,7 @@ class ProfileFillingView extends GetView<AuthController> {
               ),
             ),
           ),
-          DoctorTilWidget(
+          ProdDFieldWidget(
             title: Text("Weight".tr, style: Get.textTheme.subtitle2),
             content: TextFormField(
               initialValue: "".tr,

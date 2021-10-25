@@ -44,7 +44,7 @@ class AuthApiClient {
         new DioLib.FormData.fromMap(userObjectToLogin.toJson());
     var response = await httpClient.post(baseUrl + "auth/local",
         data: formData, options: _options);
-    var newAuth = ApiResonseResult.fromJson(response.data);
+    var newAuth = ApiResponseResult.fromJson(response.data);
     var userAuth = new User();
     userAuth.apiToken = newAuth.jwt;
     userAuth.name = newAuth.user.name;
@@ -56,4 +56,7 @@ class AuthApiClient {
     userAuth.appointments = newAuth.user.appointments;
     return userAuth;
   }
+
+
+
 }

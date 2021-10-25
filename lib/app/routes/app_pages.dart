@@ -1,3 +1,6 @@
+import '../modules/book_appointement/bindings/book_appointment_binding.dart';
+import '../modules/book_appointement/views/book_appointement_view.dart';
+
 import '../modules/clinic/bindings/clinic_bindings.dart';
 import '../modules/clinic/views/clinic_view.dart';
 import '../modules/checkout/bindings/checkout_binding.dart';
@@ -64,6 +67,7 @@ class AppPages {
     GetPage(name: Routes.ALARM, page: () => AddAlarmView(), binding: AlarmsBinding()),
     GetPage(name: Routes.CLINIC, page: () => ClinicView(), binding: ClinicBinding(),transition: Transition.downToUp),
     GetPage(name: Routes.DOCTOR, page: () => DoctorView(), binding: DoctorBinding(),transition: Transition.downToUp),
+    GetPage(name: Routes.BOOK_APPOINTMENT, page: () => BookingAppointmentView(), binding: BookingAppointmentBinding(),transition: Transition.downToUp),
     GetPage(name: Routes.BOOK_DOCTOR, page: () => BookingView(), binding: BookDoctorBinding()),
     GetPage(name: Routes.CHECKOUT, page: () => CheckoutView(), binding: CheckoutBinding()),
     GetPage(name: Routes.CONFIRMATION, page: () => ConfirmationView(), binding: CheckoutBinding()),

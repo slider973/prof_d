@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:prof_b/app/models/alarm_model.dart';
+import '../models/alarm_model.dart';
 
 import '../models/notification_model.dart';
 import '../providers/mock_provider.dart';

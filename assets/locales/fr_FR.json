@@ -164,6 +164,8 @@
   "unknowError": "Une erreur inconnue est survenue",
   "FullName":  "Nom complet",
   "hello {name}": "Bonjour à vous {name}",
-  "Display today": "voici la liste de vos reservation pour vos enfant"
+  "Display today": "voici la liste de vos reservation pour vos enfant",
+  "Book an Appointment": "Prendre un rendez-vous",
+  "When would you like us to come to your address?": ""
 
 }

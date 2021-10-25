@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../../../../common/ui.dart';
-import '../../doctor/widgets/doctor_til_widget.dart';
+import '../../doctor/widgets/prof_d_field_widget.dart';
 
 Obx confirmPasswordField(BuildContext context, AuthController controller) {
   return Obx(() {
-    return DoctorTilWidget(
+    return ProdDFieldWidget(
       title:
       Text("Confirm Password".tr, style: Get.textTheme.subtitle2),
       content: TextFormField(

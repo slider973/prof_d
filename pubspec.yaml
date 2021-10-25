@@ -24,6 +24,8 @@ dependencies:
   # GET
   get: 4.0.0-nullsafety.2
   get_storage: 2.0.1
+  # Lottie
+  lottie: ^1.2.1
   # DIO
   dio: 4.0.0-beta7
   dio_http_cache:
@@ -89,6 +91,7 @@ flutter:
     - assets/img/
     - assets/icon/
     - assets/locales/
+    - assets/animation/madame/female-call-center-operator.json
     - config/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
