@@ -1,4 +1,5 @@
 import 'package:prof_b/app/models/api/Appointments.dart';
+import 'package:prof_b/app/models/api/slotAppointments.dart';
 
 import '../../../models/address_model.dart';
 import '../../../repositories/booking_repository.dart';

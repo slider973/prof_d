@@ -1,3 +1,6 @@
+import '../modules/ask_confirmations/bindings/ask_confimation_binding.dart';
+import '../modules/ask_confirmations/views/ask_confirmation_views.dart';
+
 import '../modules/book_appointement/bindings/book_appointment_binding.dart';
 import '../modules/book_appointement/views/book_appointement_view.dart';
 
@@ -71,5 +74,6 @@ class AppPages {
     GetPage(name: Routes.BOOK_DOCTOR, page: () => BookingView(), binding: BookDoctorBinding()),
     GetPage(name: Routes.CHECKOUT, page: () => CheckoutView(), binding: CheckoutBinding()),
     GetPage(name: Routes.CONFIRMATION, page: () => ConfirmationView(), binding: CheckoutBinding()),
+    GetPage(name: Routes.ASK_CONFIRMATION, page: () => AskConfirmationViews(), binding: AskConfirmationBinding(), transition: Transition.downToUp),
   ];
 }

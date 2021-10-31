@@ -38,4 +38,5 @@ abstract class Routes {
   static const BOOK_APPOINTMENT = '/book_appaintment';
   static const CHECKOUT = '/checkout';
   static const CONFIRMATION = '/confirmation';
+  static const ASK_CONFIRMATION = '/ask_confirmation';
 }

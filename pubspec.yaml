@@ -92,6 +92,7 @@ flutter:
     - assets/icon/
     - assets/locales/
     - assets/animation/madame/female-call-center-operator.json
+    - assets/animation/green_contact/83358-contact-green.json
     - config/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

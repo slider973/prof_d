@@ -1,3 +1,5 @@
+import '../../../models/api/Appointments.dart';
+
 import '../../doctor/widgets/prof_d_field_widget.dart';
 import '../../../widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,7 @@ class BookingAppointmentView extends GetView<BookingAppointmentController> {
           ),
           elevation: 0,
         ),
-        bottomNavigationBar: buildBlockButtonWidget(controller.booking.value),
+        bottomNavigationBar: buildBlockButtonWidget(controller.appointments.value, context),
         body: ListView(
           children: [
 
@@ -121,7 +123,7 @@ class BookingAppointmentView extends GetView<BookingAppointmentController> {
         ));
   }
 
-  Widget buildBlockButtonWidget(Booking _booking) {
+  Widget buildBlockButtonWidget(Appointments _appointments, BuildContext _buildContext) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
@@ -144,7 +146,25 @@ class BookingAppointmentView extends GetView<BookingAppointmentController> {
         ),
         color: Get.theme.accentColor,
         onPressed: () {
-          print(_booking);
+          print(_appointments);
+          showDialog<String>(
+              context: _buildContext,
+          builder: (BuildContext context) => AlertDialog(
+            title: Text('confirmer'),
+            content:  Text('Voulez-vous confirmer la demande de réservation',
+                style: Get.textTheme.subtitle1),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Get.toNamed(Routes.ASK_CONFIRMATION, arguments: _appointments),
+                child: const Text('oui'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'non'),
+                child: const Text('non'),
+              ),
+            ],
+          )
+          );
           //Get.toNamed(Routes.CHECKOUT, arguments: _booking);
         },
         icon: null,

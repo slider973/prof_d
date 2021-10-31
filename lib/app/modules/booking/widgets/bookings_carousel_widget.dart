@@ -69,7 +69,7 @@ class BookingsCarouselWidget extends StatelessWidget {
                                 height: 100,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
-                                imageUrl: _doctor.media.thumb,
+                                imageUrl: null,
                                 placeholder: (context, url) => Image.asset(
                                   'assets/img/loading.gif',
                                   fit: BoxFit.cover,
