@@ -1,5 +1,7 @@
 on: push
 name: Deploy
+env:
+  API_UR: "google.fr"
 jobs:
   build:
     runs-on: macos-latest
