@@ -1,8 +1,8 @@
-name: prof_b
-description: Doctors Appointments Patient Aapp
+name: prof_d
+description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -18,62 +18,33 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
 dependencies:
-  # GET
-  get: 4.0.0-nullsafety.2
-  get_storage: 2.0.1
-  # Lottie
-  lottie: ^1.2.1
-  # DIO
-  dio: 4.0.0-beta7
-  dio_http_cache:
-    git:
-      url: git://github.com/shinayser/dio-http-cache.git
-  # FONT
-  google_fonts: 2.0.0
-  #IMAGES, SLIDERS, LAYOUTS
-  cached_network_image: 3.0.0-nullsafety
-  carousel_slider: 3.0.0
-  flutter_svg: 0.21.0-nullsafety.0
-  flutter_staggered_grid_view: 0.3.4
-  cupertino_icons: any
-  onboarding: ^1.0.5
-  fancy_on_boarding: ^1.7.0
-  flutter_datetime_picker: ^1.5.0
-  # WEB
-  webview_flutter: 2.0.2
-  flutter_html: 2.0.0-nullsafety.0
-  url_launcher: 6.0.2
-  # FIREBASE
-  firebase_messaging: 9.0.0
-  cloud_firestore: 1.0.1
-  firebase_auth: 1.0.1
-  firebase_core: 1.0.1
-  # GOOGLE MAPS
-  google_maps_flutter: 2.0.1
-  google_maps_place_picker: 2.0.0-nullsafety.3
-  #google_map_location_picker: ^4.1.7
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-  flutter_dotenv: ^5.0.2
-  graphql_flutter: ^5.0.0
-  validators: ^3.0.0
 
 
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: 0.9.0
 
-flutter_icons:
-  android: "ic_launcher"
-  ios: true
-  image_path: "assets/icon/icon.png"
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -87,13 +58,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/img/
-    - assets/icon/
-    - assets/locales/
-    - assets/animation/madame/female-call-center-operator.json
-    - assets/animation/green_contact/83358-contact-green.json
-    - config/
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
