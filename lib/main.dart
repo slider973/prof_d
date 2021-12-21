@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:sizer/sizer.dart';
 import 'screens/auth/register_page.dart';
 import 'store/counter/counter.state.dart';
 import 'store/login/login.state.dart';
@@ -40,11 +41,15 @@ class ProfBApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
         store: store,
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.themeProfD1,
-          home: const RegisterPage(),
+        child: Sizer(
+          builder:  (context, orientation, deviceType) {
+           return  MaterialApp(
+             title: 'Flutter Demo',
+             debugShowCheckedModeBanner: false,
+             theme: AppTheme.themeProfD1,
+             home: const RegisterPage(),
+           );
+          },
         ));
   }
 }

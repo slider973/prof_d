@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'header_section.dart';
+
 class ProfDContainer extends StatelessWidget {
   final List<Widget> childrenList;
 
@@ -9,11 +11,12 @@ class ProfDContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.teal,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const _HeaderSection(),
+          const HeaderSection(),
           _FieldSection(
             childrenList: childrenList,
           )
@@ -23,20 +26,7 @@ class ProfDContainer extends StatelessWidget {
   }
 }
 
-class _HeaderSection extends StatelessWidget {
-  const _HeaderSection({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 300,
-      decoration: const BoxDecoration(color: Colors.teal),
-    );
-  }
-}
 
 class _FieldSection extends StatelessWidget {
   List<Widget> childrenList= [];
@@ -50,7 +40,9 @@ class _FieldSection extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(43.0), topLeft: Radius.circular(43.0)),
+              topRight: Radius.circular(43.0),
+              topLeft: Radius.circular(43.0)
+          ),
         ),
         child: Column(
           children: childrenList,

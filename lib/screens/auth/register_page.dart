@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../views/prof_d_container/prof_d_container.dart';
+import 'package:sizer/sizer.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -10,31 +11,33 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProfDContainer(
       childrenList: [
-        const SizedBox(
-          height: 57.0,
+        SizedBox(
+          height: (MediaQuery.of(context).size.height * 0.05),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: marge, right: marge),
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.height * 0.05,
+              right: MediaQuery.of(context).size.height * 0.05),
           child: Row(
             children: [
               Text(
                 'Inscription',
                 style: TextStyle(
-                    fontSize: 23,
+                    fontSize: 3.0.h,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary),
               ),
             ],
           ),
         ),
-        _fieldSection(),
+        const FieldSection(),
       ],
     );
   }
 }
 
-class _fieldSection extends StatelessWidget {
-  const _fieldSection({
+class FieldSection extends StatelessWidget {
+  const FieldSection({
     Key? key,
   }) : super(key: key);
 
@@ -45,31 +48,34 @@ class _fieldSection extends StatelessWidget {
           right: RegisterPage.marge, left: RegisterPage.marge),
       child: Column(
         children: [
-          const SizedBox(
-            height: 37.0,
+          SizedBox(
+            height: (MediaQuery.of(context).size.height * 0.005.h),
           ),
           const TextField(
             decoration: InputDecoration(hintText: "Email"),
+            keyboardType: TextInputType.emailAddress,
           ),
-          const SizedBox(
-            height: 17.0,
-          ),
-          const TextField(
-            decoration: InputDecoration(hintText: "Password"),
-          ),
-          const SizedBox(
-            height: 17.0,
+          SizedBox(
+            height: (MediaQuery.of(context).size.height * 0.005.h),
           ),
           const TextField(
             decoration: InputDecoration(hintText: "Password"),
+            obscureText: true,
           ),
-          const SizedBox(
-            height: 37.0,
+          SizedBox(
+            height: (MediaQuery.of(context).size.height * 0.005.h),
           ),
-           SizedBox(
-             width: MediaQuery.of(context).size.width,
+          const TextField(
+            decoration: InputDecoration(hintText: "Password"),
+            obscureText: true,
+          ),
+          SizedBox(
+            height: (MediaQuery.of(context).size.height * 0.010.h),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
             child: ElevatedButton(
-              child:  const Text('valider'),
+              child: const Text('valider'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.teal,
                 onPrimary: Colors.white,
