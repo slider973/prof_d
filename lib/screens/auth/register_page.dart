@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'field_section.dart';
+import 'login_page.dart';
 import '../../views/prof_d_container/prof_d_container.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,69 +32,20 @@ class RegisterPage extends StatelessWidget {
             ],
           ),
         ),
-        const FieldSection(),
+        const FieldSection(
+          typeAuth: TypeAuth.register,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
+            },
+            child: const Text('Me connecter'),
+          ),
+        )
       ],
-    );
-  }
-}
-
-class FieldSection extends StatelessWidget {
-  const FieldSection({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-          right: RegisterPage.marge, left: RegisterPage.marge),
-      child: Column(
-        children: [
-          SizedBox(
-            height: (MediaQuery.of(context).size.height * 0.005.h),
-          ),
-          const TextField(
-            decoration: InputDecoration(hintText: "Email"),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).size.height * 0.005.h),
-          ),
-          const TextField(
-            decoration: InputDecoration(hintText: "Password"),
-            obscureText: true,
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).size.height * 0.005.h),
-          ),
-          const TextField(
-            decoration: InputDecoration(hintText: "Password"),
-            obscureText: true,
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).size.height * 0.010.h),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
-              child: const Text('valider'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.teal,
-                onPrimary: Colors.white,
-                onSurface: Colors.grey,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(52),
-                  ),
-                ),
-              ),
-              onPressed: () {
-                print('Pressed');
-              },
-            ),
-          )
-        ],
-      ),
     );
   }
 }
