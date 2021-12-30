@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:prof_d/screens/auth/register_page.dart';
+import 'register_page.dart';
 import '../../views/prof_d_container/prof_d_container.dart';
 import 'package:sizer/sizer.dart';
 
-import 'field_section.dart';
+import 'auth_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -29,14 +29,14 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 'Login',
                 style: TextStyle(
-                    fontSize: 3.0.h,
+                    fontSize: 20.0.sp,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary),
               ),
             ],
           ),
         ),
-        const FieldSection(
+        const AuthField(
           typeAuth: TypeAuth.login,
         ),
         Padding(

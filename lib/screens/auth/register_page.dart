@@ -1,9 +1,9 @@
+import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'field_section.dart';
+import 'auth_field.dart';
 import 'login_page.dart';
 import '../../views/prof_d_container/prof_d_container.dart';
-import 'package:sizer/sizer.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -25,14 +25,14 @@ class RegisterPage extends StatelessWidget {
               Text(
                 'Inscription',
                 style: TextStyle(
-                    fontSize: 3.0.h,
+                    fontSize: 20.0.sp,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary),
               ),
             ],
           ),
         ),
-        const FieldSection(
+        const AuthField(
           typeAuth: TypeAuth.register,
         ),
         Padding(
