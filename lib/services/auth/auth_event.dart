@@ -12,3 +12,9 @@ class RegisterEvent extends AuthEvent {
   final String password;
   const RegisterEvent(this.email, this.password);
 }
+
+class LoginEvent extends AuthEvent {
+  final String email;
+  final String password;
+  const LoginEvent(this.email, this.password);
+}

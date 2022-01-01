@@ -1,13 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prof_d/services/auth/auth_bloc.dart';
+import 'services/auth/auth_bloc.dart';
+import 'widgets/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'screens/auth/register_page.dart';
 
 import 'theme/app_theme.dart';
 
-void initServices() async {
+Future<void> initServices() async {
   print('starting services ...');
   await Firebase.initializeApp();
   print('All services started...');
@@ -15,8 +16,7 @@ void initServices() async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  initServices();
+  await initServices();
 
   runApp(const ProfBApp());
 }
@@ -33,9 +33,7 @@ class ProfBApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.themeProfD1,
-          home: MultiBlocProvider(providers: [
-            BlocProvider<AuthBloc>(create: (context) => AuthBloc())
-          ], child: const RegisterPage()),
+          home: const SplashScreen(),
         );
       },
     );

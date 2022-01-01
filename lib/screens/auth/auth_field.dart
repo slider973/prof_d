@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prof_d/widgets/splash_screen.dart';
 import '../../services/auth/auth_bloc.dart';
 import 'package:provider/provider.dart';
 import 'register_page.dart';
@@ -30,7 +32,7 @@ class _AuthFieldState extends State<AuthField> {
         ? TextEditingController(text: "jonathan.lemaine@hotmail.fr")
         : TextEditingController();
     _passwordController = widget.typeAuth == TypeAuth.login
-        ? TextEditingController(text: "123456789")
+        ? TextEditingController(text: "Jonathan5")
         : TextEditingController();
   }
 
@@ -81,7 +83,7 @@ class _AuthFieldState extends State<AuthField> {
         obscureText: true,
       ),
       SizedBox(
-        height: (MediaQuery.of(context).size.height * 0.003.h),
+        height: (MediaQuery.of(context).size.height * 0.004.h),
       ),
       SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -101,11 +103,20 @@ class _AuthFieldState extends State<AuthField> {
           ),
           onPressed: () {
             setState(() => _submitted = true);
-            if (_errorText == null) {
+            if (widget.typeAuth == TypeAuth.register && _errorText == null) {
               context.read<AuthBloc>().add(
                     RegisterEvent(
                         _emailController.text, _passwordController.text),
                   );
+            } else {
+              context.read<AuthBloc>().add(
+                    LoginEvent(_emailController.text, _passwordController.text),
+                  );
+
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SplashScreen()),
+                  (route) => false);
             }
           },
         ),

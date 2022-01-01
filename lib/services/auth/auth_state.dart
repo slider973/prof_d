@@ -13,3 +13,8 @@ class RegisterState extends AuthState {
   final UserCredential userCredential;
   const RegisterState(this.userCredential);
 }
+
+class LoginState extends AuthState {
+  final User? user;
+  const LoginState(this.user);
+}

@@ -17,5 +17,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(RegisterState(userInput));
       }
     });
+
+    on<LoginEvent>((event, emit) async {
+      final authContext = AuthContextStrategy();
+      authContext.setAuthStrategy(FirebaseAuthStrategy());
+      final userInput = await authContext.login(event.email, event.password);
+      if (userInput is User) {
+        emit(LoginState(userInput));
+      }
+    });
   }
 }

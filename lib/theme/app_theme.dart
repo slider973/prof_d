@@ -5,9 +5,9 @@ class AppTheme {
     primarySwatch: Colors.teal,
     primaryColor: Colors.teal,
     textTheme: const TextTheme(
-      bodyText1: TextStyle(
-        fontSize: 23,
-      ),
-    ),
+        bodyText1: TextStyle(
+          fontSize: 23,
+        ),
+        bodyText2: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
   );
 }
