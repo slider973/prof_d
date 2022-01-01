@@ -1,10 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'services/auth/auth_bloc.dart';
-import 'widgets/splash_screen.dart';
+import 'widgets/bottom_tab_bar.dart';
 import 'package:sizer/sizer.dart';
-import 'screens/auth/register_page.dart';
 
 import 'theme/app_theme.dart';
 
@@ -33,7 +30,7 @@ class ProfBApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.themeProfD1,
-          home: const SplashScreen(),
+          home: const BottomTabBarController(),
         );
       },
     );
