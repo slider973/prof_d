@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prof_d/widgets/home_handle/home_handle_screen.dart';
 import '../screens/account_page.dart';
 import '../screens/home_page.dart';
 
@@ -16,7 +17,7 @@ class _BottomTabBarControllerState extends State<BottomTabBarController> {
   @override
   void initState() {
     super.initState();
-    listScreens = [const HomePage(), const AccountPage()];
+    listScreens = [const HomeHandleScreen(), const AccountPage()];
   }
 
   @override
@@ -39,7 +40,7 @@ class _BottomTabBarControllerState extends State<BottomTabBarController> {
                 label: "Accueil",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.account_circle),
                 label: "Mon compte",
               ),
             ]));

@@ -24,7 +24,12 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: const Center(
-        child: Text('Cette vue est bientôt disponible'),
+        child: Text('Vous devez vous créer un profile'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text('Créer un profile'),
+        icon: const Icon(Icons.add),
       ),
     );
   }

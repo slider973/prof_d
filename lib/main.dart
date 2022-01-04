@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:prof_d/config/routes.dart';
 import 'widgets/bottom_tab_bar.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,7 +31,8 @@ class ProfBApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.themeProfD1,
-          home: const BottomTabBarController(),
+          initialRoute: '/',
+          routes: routes,
         );
       },
     );

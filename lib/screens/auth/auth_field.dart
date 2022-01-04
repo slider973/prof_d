@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prof_d/widgets/splash_screen.dart';
+import '../../widgets/splash_screen.dart';
 import '../../services/auth/auth_bloc.dart';
 import 'package:provider/provider.dart';
 import 'register_page.dart';
