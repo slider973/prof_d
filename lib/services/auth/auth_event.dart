@@ -18,3 +18,14 @@ class LoginEvent extends AuthEvent {
   final String password;
   const LoginEvent(this.email, this.password);
 }
+
+class AuthenticationStatusChanged extends AuthEvent {
+  const AuthenticationStatusChanged(this.status);
+
+  final AuthenticationStatus status;
+
+  @override
+  List<Object> get props => [status];
+}
+
+class AuthenticationLogoutRequested extends AuthEvent {}

@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'bottom_tab_bar.dart';
+
+import '../services/user_prof_d/user_profd_bloc.dart';
+import '../screens/home_page.dart';
 import '../services/auth/auth_bloc.dart';
-import '../screens/auth/login_page.dart';
+import '../screens/auth/login_page_new.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
           FirebaseAuth.instance.authStateChanges().listen((user) {
             Widget screen = const LoginPage();
             if (user != null) {
-              screen = const BottomTabBarController();
+              screen = const HomePage();
             }
 
             if (mounted) {
@@ -33,7 +35,9 @@ class _SplashScreenState extends State<SplashScreen>
                   MaterialPageRoute(
                       builder: (context) => MultiBlocProvider(providers: [
                             BlocProvider<AuthBloc>(
-                                create: (context) => AuthBloc())
+                                create: (context) => AuthBloc()),
+                            BlocProvider<UserProfdBloc>(
+                                create: (context) => UserProfdBloc()),
                           ], child: screen)),
                   (route) => false);
             }

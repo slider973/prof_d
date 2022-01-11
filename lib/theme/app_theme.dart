@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class AppTheme {
   static ThemeData themeProfD1 = ThemeData(
     primarySwatch: Colors.teal,
     primaryColor: Colors.teal,
-    textTheme: const TextTheme(
-        bodyText1: TextStyle(
+    textTheme:  TextTheme(
+      headline1: TextStyle(
+        fontSize: 15.0.sp,
+        fontWeight: FontWeight.bold,
+        color: Colors.teal
+      ),
+        bodyText1: const TextStyle(
           fontSize: 23,
         ),
-        bodyText2: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+        bodyText2: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
   );
 }

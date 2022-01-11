@@ -11,8 +11,13 @@ class FirebaseAuthStrategy implements AuthStrategy {
 
       CollectionReference users =
           FirebaseFirestore.instance.collection('users');
+
       users
-          .add({'displayName': userCredential.user?.displayName})
+          .doc(userCredential.user?.uid)
+          .set({
+        'email': userCredential.user?.email,
+        'isProfileCreated': false
+      })
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
 

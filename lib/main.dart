@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:prof_d/config/routes.dart';
+import 'config/routes.dart';
 import 'widgets/bottom_tab_bar.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'theme/app_theme.dart';
 
@@ -33,6 +34,15 @@ class ProfBApp extends StatelessWidget {
           theme: AppTheme.themeProfD1,
           initialRoute: '/',
           routes: routes,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('fr'),
+            Locale('en'),// Spanish, no country code
+          ],
         );
       },
     );

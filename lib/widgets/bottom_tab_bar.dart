@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prof_d/widgets/home_handle/home_handle_screen.dart';
+import 'home_handle/home_handle_screen.dart';
 import '../screens/account_page.dart';
-import '../screens/home_page.dart';
 
 class BottomTabBarController extends StatefulWidget {
   const BottomTabBarController({Key? key}) : super(key: key);

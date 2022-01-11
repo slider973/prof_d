@@ -1,5 +1,7 @@
+import 'package:animate_navigator_transition_do/animate_navigator_transition_do.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../../screens/home_page.dart';
 
 class HomeHandleScreen extends StatefulWidget {
   const HomeHandleScreen({Key? key}) : super(key: key);
@@ -68,7 +70,18 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 17)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => const HomePage(),
+                  transitionDuration:  const Duration(milliseconds: 300),
+                  transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                      position:
+                      Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                          .animate(animation),
+                      child: child))
+              );
+
+            },
             child: const Text('Creer un profile'),
           ),
         ],
