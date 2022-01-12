@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../widgets/profd_field_phone.dart';
+
+import '../widgets/build_civitily.dart';
 import '../widgets/profd_field.dart';
 import '../widgets/profd_date_time_field.dart';
 import '../models/user.dart';
@@ -21,12 +24,13 @@ enum CivilityCharacter { mrs, mr }
 
 class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
-  CivilityCharacter? _character = CivilityCharacter.mrs;
   final TextEditingController _firstnameController = TextEditingController();
   final TextEditingController _lastnameController = TextEditingController();
   final TextEditingController _dateOfBirthController = TextEditingController();
   final TextEditingController _nameOfBirdController = TextEditingController();
-  final TextEditingController _civility = TextEditingController();
+  final TextEditingController _cityOfBirdController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _civilityController = TextEditingController();
 
   @override
   void dispose() {
@@ -34,7 +38,9 @@ class _HomePageState extends State<HomePage> {
     _lastnameController.dispose();
     _dateOfBirthController.dispose();
     _nameOfBirdController.dispose();
-    _civility.dispose();
+    _cityOfBirdController.dispose();
+    _civilityController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 
@@ -87,7 +93,9 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.only(left: 18.0),
                                 child: Text("Civilité"),
                               ),
-                              _buildCivilite(),
+                              BuildCivitily(
+                                controller: _civilityController,
+                              ),
                             ],
                           ),
                           ProfdField(
@@ -106,7 +114,13 @@ class _HomePageState extends State<HomePage> {
                             labelText: "Date de naissance",
                             controller: _dateOfBirthController,
                           ),
-                          const GooglePlaceField(),
+                          ProfdFieldPhone(
+                            labelText: "Téléphone",
+                            controller: _phoneController,
+                          ),
+                          GooglePlaceField(
+                            controller: _cityOfBirdController,
+                          ),
                         ],
                       ),
                     )
@@ -125,22 +139,19 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }
-//TODO mettre un vrai loader
+          //TODO mettre un vrai loader
           return const Text("loading");
         });
   }
 
-void getRadioValueFromString(String value, CivilityCharacter character) {
-    for(value in character.) {
-
-    }
-
-}
   void initCheckData(Map<String, dynamic> data) {
     checkData(data, 'firstname', _firstnameController);
     checkData(data, 'dateOfBirth', _dateOfBirthController);
     checkData(data, 'lastname', _lastnameController);
     checkData(data, 'nameOfBirth', _nameOfBirdController);
+    checkData(data, 'cityOfBird', _cityOfBirdController);
+    checkData(data, 'civility', _civilityController);
+    checkData(data, 'phone', _phoneController);
   }
 
   void checkData(
@@ -166,51 +177,16 @@ void getRadioValueFromString(String value, CivilityCharacter character) {
     newUserProfD.email = FirebaseAuth.instance.currentUser!.email!;
     newUserProfD.dateOfBirth =
         DateFormat("dd-MM-yyyy").parse(_dateOfBirthController.text);
-    newUserProfD.civility = _character.toString().split('.').last;
+    newUserProfD.civility = _civilityController.text;
     newUserProfD.nameOfBirth = _nameOfBirdController.text;
+    newUserProfD.cityOfBird = _cityOfBirdController.text;
+    newUserProfD.phone = _phoneController.text;
     return newUserProfD;
   }
+}
 
-  Row _buildCivilite() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Radio<CivilityCharacter>(
-                value: CivilityCharacter.mrs,
-                groupValue: _character,
-                onChanged: (CivilityCharacter? value) {
-                  setState(() {
-                    _character = value;
-                    _civility.text = _character.toString().split('.').last;
-                  });
-                },
-              ),
-              const Text('Madame')
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Row(
-            children: [
-              Radio<CivilityCharacter>(
-                value: CivilityCharacter.mr,
-                groupValue: _character,
-                onChanged: (CivilityCharacter? value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
-              ),
-              const Text('Monsieur'),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+CivilityCharacter getRadioValueFromString(String value) {
+  return CivilityCharacter.values
+      .where((element) => element.toString().split('.').last == value)
+      .last;
 }

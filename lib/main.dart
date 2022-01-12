@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'config/routes.dart';
-import 'widgets/bottom_tab_bar.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -41,7 +40,7 @@ class ProfBApp extends StatelessWidget {
           ],
           supportedLocales: const [
             Locale('fr'),
-            Locale('en'),// Spanish, no country code
+            Locale('en'), // Spanish, no country code
           ],
         );
       },

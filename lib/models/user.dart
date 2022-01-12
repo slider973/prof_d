@@ -1,17 +1,19 @@
 class UserProfd {
-   String id = '';
-   String firstname = '';
-   String lastname = '';
-   String email = '';
-   String apiToken = '';
-   String deviceToken = '';
-   String phone = '';
-   bool verifiedPhone = false;
-   String verificationId = '';
-   String address = '';
-   String civility = '';
-   DateTime dateOfBirth = DateTime.now();
-   String nameOfBirth = '';
+  String id = '';
+  String firstname = '';
+  String lastname = '';
+  String email = '';
+  String apiToken = '';
+  String deviceToken = '';
+  String phone = '';
+  bool verifiedPhone = false;
+  String verificationId = '';
+  String address = '';
+  String civility = '';
+  DateTime dateOfBirth = DateTime.now();
+  String nameOfBirth = '';
+  String cityOfBird = '';
+  bool isProfileCreated = false;
 
   UserProfd();
 
@@ -26,14 +28,17 @@ class UserProfd {
       deviceToken = jsonMap['device_token'];
       dateOfBirth = jsonMap['dateOfBirth'];
       nameOfBirth = jsonMap['nameOfBirth'];
+      cityOfBird = jsonMap['cityOfBird'];
+      isProfileCreated = jsonMap['isProfileCreated'];
       try {
         phone = jsonMap['custom_fields']['phone']['view'];
       } catch (e) {
         phone = "";
       }
       try {
-        verifiedPhone =
-        jsonMap['custom_fields']['verifiedPhone']['view'] == '1' ? true : false;
+        verifiedPhone = jsonMap['custom_fields']['verifiedPhone']['view'] == '1'
+            ? true
+            : false;
       } catch (e) {
         verifiedPhone = false;
       }
@@ -60,10 +65,10 @@ class UserProfd {
     map["dateOfBirth"] = dateOfBirth;
     map["nameOfBirth"] = nameOfBirth;
     map["civility"] = civility;
+    map["cityOfBird"] = cityOfBird;
+    map["isProfileCreated"] = isProfileCreated;
     return map;
   }
-
-
 
   Map toRestrictMap() {
     var map = <String, dynamic>{};
