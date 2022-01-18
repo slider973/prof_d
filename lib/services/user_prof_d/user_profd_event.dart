@@ -13,3 +13,11 @@ class UpdateUserProfdEvent extends UserProfdEvent {
   List<Object?> get props => [user];
 }
 
+class SetUserProfdEvent extends UserProfdEvent {
+  final UserProfd user;
+  const SetUserProfdEvent(this.user);
+
+  @override
+  List<Object?> get props => [user];
+}
+

@@ -1,12 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../config/config_route_collection.dart';
 import '../models/user.dart';
 
 class UserRepository {
   static addUserDoc(UserProfd _user)  {
-    CollectionReference users =
-    FirebaseFirestore.instance.collection('users');
+    final String route = eventsCollection.replaceAll(':id', FirebaseAuth.instance.currentUser!.uid);
+    print(route);
+    CollectionReference usersRef =
+      FirebaseFirestore.instance.collection(userCollection);
 
-    users
+    usersRef
         .doc(_user.id)
         .set(_user.toMap())
         .then((value) => print("User Added"))

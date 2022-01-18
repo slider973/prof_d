@@ -11,6 +11,11 @@ class AppTheme {
         fontWeight: FontWeight.bold,
         color: Colors.teal
       ),
+        headline2: TextStyle(
+        fontSize: 15.0.sp,
+        fontWeight: FontWeight.bold,
+        color: Colors.black
+      ),
         bodyText1: const TextStyle(
           fontSize: 23,
         ),

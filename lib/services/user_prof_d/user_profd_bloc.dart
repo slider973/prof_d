@@ -15,5 +15,8 @@ class UserProfdBloc extends Bloc<UserProfdEvent, UserProfdState> {
       UserRepository.addUserDoc(event.user);
       emit(UpdateUserProfdState(event.user));
     });
+    on<SetUserProfdEvent>((event, emit) {
+      emit(GetProfdState(event.user));
+    });
   }
 }

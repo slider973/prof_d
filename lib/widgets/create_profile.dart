@@ -113,8 +113,9 @@ class _CreateProfileState extends State<CreateProfile> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          UserProfd newUserProfD = createNewProfile();
+          UserProfd newUserProfD = buildNewProfileObject();
           context.read<UserProfdBloc>().add(UpdateUserProfdEvent(newUserProfD));
+          Navigator.pop(context);
         },
         label: const Text('Créer un profile'),
         icon: const Icon(Icons.add),
@@ -147,7 +148,7 @@ class _CreateProfileState extends State<CreateProfile> {
     checkData(data, 'phone', _phoneController);
   }
 
-  UserProfd createNewProfile() {
+  UserProfd buildNewProfileObject() {
     final newUserProfD = UserProfd();
     newUserProfD.id = FirebaseAuth.instance.currentUser!.uid;
     newUserProfD.firstname = _firstnameController.value.text;

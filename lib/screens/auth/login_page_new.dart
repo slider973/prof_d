@@ -4,12 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login/flutter_login.dart';
 import '../../widgets/bottom_tab_bar.dart';
 import '../../services/auth/auth_bloc.dart';
-import 'register_page.dart';
-import '../../views/prof_d_container/prof_d_container.dart';
-import 'package:sizer/sizer.dart';
 
-import 'auth_field.dart';
-const users = const {
+const users = {
   'dribbble@gmail.com': '12345',
   'hunter@gmail.com': 'hunter',
   'test@test.com': 'test',

@@ -1,0 +1,11 @@
+UserModel:
+  path: firebase/user
+  to_string: true
+  properties:
+
+    id:
+      type: int
+    name:
+      type: string
+      default_value: "''"
+

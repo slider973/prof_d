@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:prof_d/config/config_route_collection.dart';
 import 'auth_context.dart';
 
 class FirebaseAuthStrategy implements AuthStrategy {
@@ -10,7 +11,7 @@ class FirebaseAuthStrategy implements AuthStrategy {
           .createUserWithEmailAndPassword(email: email, password: password);
 
       CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+          FirebaseFirestore.instance.collection(userCollection);
 
       users
           .doc(userCredential.user?.uid)

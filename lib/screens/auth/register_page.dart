@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../services/auth/auth_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'auth_field.dart';
 import '../../views/prof_d_container/prof_d_container.dart';
 

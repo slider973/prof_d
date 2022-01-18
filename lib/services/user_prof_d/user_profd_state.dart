@@ -7,7 +7,6 @@ abstract class UserProfdState extends Equatable {
 class UserProfdInitial extends UserProfdState {
   @override
   List<Object> get props => [];
-
 }
 
 class UpdateUserProfdState extends UserProfdState {
@@ -17,4 +16,15 @@ class UpdateUserProfdState extends UserProfdState {
   @override
   List<Object?> get props => [user];
 }
+
+
+class GetProfdState extends UserProfdState {
+  final UserProfd user;
+  const GetProfdState(this.user);
+
+  @override
+  List<Object?> get props => [user];
+}
+
+
 
