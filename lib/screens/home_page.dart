@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text('Bonjour ${widget.user.firstname}',
-                          style: Theme.of(context).textTheme.headline2),
+                          style: Theme.of(context).textTheme.headline5),
                     )
                   ],
                 ),

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prof_d/config/config_route_collection.dart';
+import '../config/config_route_collection.dart';
 import 'auth_context.dart';
 
 class FirebaseAuthStrategy implements AuthStrategy {

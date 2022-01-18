@@ -37,7 +37,7 @@ class CardProfDContainer extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: const Icon(Icons.event),
-                        title: Text(DateFormat("yMMMMEEEEd").format(
+                        title: Text(DateFormat("yMMMMEEEEd", 'fr_FR').format(
                             DateTime.fromMicrosecondsSinceEpoch(
                                 (data['date'] as Timestamp)
                                     .microsecondsSinceEpoch))),
@@ -56,7 +56,9 @@ class CardProfDContainer extends StatelessWidget {
                                   child: Text(DateFormat("Hm").format(
                                       DateTime.fromMicrosecondsSinceEpoch(
                                           (data['slots'][index] as Timestamp)
-                                              .microsecondsSinceEpoch))),
+                                              .microsecondsSinceEpoch)
+                                  ),
+                                  ),
                                   onPressed: () {
                                     /* ... */
                                   },

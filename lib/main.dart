@@ -30,7 +30,7 @@ class ProfBApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.themeProfD1,
+          theme: AppTheme.theme,
           initialRoute: '/',
           routes: routes,
           localizationsDelegates: const [
