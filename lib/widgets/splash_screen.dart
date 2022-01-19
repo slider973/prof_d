@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'bottom_tab_bar.dart';
 
-import '../services/user_prof_d/user_profd_bloc.dart';
 import '../services/auth/auth_bloc.dart';
 import '../screens/auth/login_page_new.dart';
 

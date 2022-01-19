@@ -70,8 +70,8 @@ class AppTheme {
 
   static ThemeData getTheme([ThemeType? themeType]) {
     themeType = themeType ?? AppTheme.themeType;
-    if (themeType == ThemeType.light) return lightTheme;
-    return darkTheme;
+    if (themeType == ThemeType.dark) return darkTheme ;
+    return lightTheme;
   }
 
   static CustomTheme getCustomTheme([ThemeType? themeType]) {
@@ -94,7 +94,7 @@ class AppTheme {
     brightness: Brightness.light,
 
     /// Primary Color
-    primaryColor: const Color(0xff3C4EC5),
+    primaryColor: CustomTheme().profDPrimary,
 
     /// Scaffold and Background color
     backgroundColor: const Color(0xffffffff),
@@ -114,16 +114,16 @@ class AppTheme {
         headline6: GoogleFonts.aBeeZee(), bodyText1: GoogleFonts.abel()),
 
     /// Colorscheme
-    colorScheme: const ColorScheme.light(
-        primary: Color(0xff3C4EC5),
-        onPrimary: Color(0xffeeeeee),
-        primaryVariant: Color(0xff3C4EC5),
-        secondary: Color(0xff3C4EC5),
-        secondaryVariant: Color(0xffeeeeee),
-        onSecondary: Color(0xffeeeeee),
-        surface: Color(0xffeeeeee),
-        background: Color(0xffeeeeee),
-        onBackground: Color(0xff495057)),
+    colorScheme:  ColorScheme.light(
+        primary: CustomTheme().profDPrimary,
+        onPrimary: CustomTheme().profDOnPrimary,
+        primaryVariant: const Color(0xff3C4EC5),
+        secondary: const Color(0xff3C4EC5),
+        secondaryVariant: const Color(0xffeeeeee),
+        onSecondary: const Color(0xffeeeeee),
+        surface: const Color(0xffeeeeee),
+        background: const Color(0xffeeeeee),
+        onBackground: const Color(0xff495057)),
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(

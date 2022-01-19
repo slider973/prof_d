@@ -55,6 +55,13 @@ class CustomTheme {
       homemadeOnSecondary;
   final Color muviPrimary, muviOnPrimary;
 
+
+  final Color profDPrimary,
+      profDSecondary,
+      profDOnPrimary,
+      profDOnSecondary;
+
+
   @deprecated
   final Color learningPrimary,
       learningOnPrimary,
@@ -143,6 +150,14 @@ class CustomTheme {
     this.magenta = const Color(0xff8B5587),
     this.oliveGreen = const Color(0xff4aa359),
     this.carolinaBlue = const Color(0xff069DEF),
+
+    //ProfD Primary
+    this.profDPrimary = Colors.teal,
+    this.profDOnPrimary = Colors.white,
+    this.profDOnSecondary = Colors.yellow,
+    this.profDSecondary = Colors.orange,
+
+
   });
 
   //--------------------------------------  Custom App Theme ----------------------------------------//
