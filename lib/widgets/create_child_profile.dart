@@ -1,12 +1,14 @@
 ///Library
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutx/flutx.dart';
+import '../models/user_child_prod.dart';
+import '../services/child_profd/child_profd_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 ///widgets
-import '../widgets/profd_field_phone.dart';
 import '../widgets/build_civitily.dart';
 import '../widgets/profd_field.dart';
 import '../widgets/profd_date_time_field.dart';
@@ -14,25 +16,27 @@ import '../services/user_prof_d/user_profd_bloc.dart';
 import '../widgets/place_google_field.dart';
 import '../models/user.dart';
 
+enum CreateChildProfileAction { update, create }
 
-
-class CreateProfile extends StatefulWidget {
+class CreateChildProfile extends StatefulWidget {
   final Map<String, dynamic>? data;
+  final CreateChildProfileAction action;
+  final String? idChild;
 
-  const CreateProfile({Key? key, required this.data}) : super(key: key);
+  const CreateChildProfile({Key? key, required this.data, required this.action, this.idChild})
+      : super(key: key);
 
   @override
-  _CreateProfileState createState() => _CreateProfileState();
+  _CreateChildProfileState createState() => _CreateChildProfileState();
 }
 
-class _CreateProfileState extends State<CreateProfile> {
+class _CreateChildProfileState extends State<CreateChildProfile> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _firstnameController = TextEditingController();
   final TextEditingController _lastnameController = TextEditingController();
   final TextEditingController _dateOfBirthController = TextEditingController();
   final TextEditingController _nameOfBirdController = TextEditingController();
   final TextEditingController _cityOfBirdController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _civilityController = TextEditingController();
 
   @override
@@ -43,27 +47,45 @@ class _CreateProfileState extends State<CreateProfile> {
     _nameOfBirdController.dispose();
     _cityOfBirdController.dispose();
     _civilityController.dispose();
-    _phoneController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    if(widget.data != null) {
+    if (widget.data != null) {
       initCheckData(widget.data!);
     }
-
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 9.0.h),
-            Text(
-              'Formulaire de creation de profile',
-              style: Theme.of(context).textTheme.subtitle1,
+            widget.action == CreateChildProfileAction.update
+                ? SizedBox(height: 4.0.h)
+                : FxSpacing.height(50),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.close),
+                ),
+              ],
             ),
+            if (widget.action == CreateChildProfileAction.create)
+              Text(
+                'Formulaire d\'ajout d\'un enfant',
+                style: Theme.of(context).textTheme.subtitle1,
+                textAlign: TextAlign.center,
+              )
+            else
+              Text(
+                'Mise à jour de la fiche \n    de l\'enfant '
+                '${_firstnameController.text}',
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
             SizedBox(height: 3.0.h),
             Form(
               key: _formKey,
@@ -98,10 +120,6 @@ class _CreateProfileState extends State<CreateProfile> {
                     labelText: "Date de naissance",
                     controller: _dateOfBirthController,
                   ),
-                  ProfdFieldPhone(
-                    labelText: "Téléphone",
-                    controller: _phoneController,
-                  ),
                   GooglePlaceField(
                     controller: _cityOfBirdController,
                   ),
@@ -113,11 +131,17 @@ class _CreateProfileState extends State<CreateProfile> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          UserProfd newUserProfD = buildNewProfileObject();
-          context.read<UserProfdBloc>().add(UpdateUserProfdEvent(newUserProfD));
+          UserChildProfd newUserProfD = buildNewChildObject();
+          final eventAction = widget.action == CreateChildProfileAction.create
+              ? SetChildProfdEvent(newUserProfD)
+              : UpdateChildProfdEvent(widget.idChild!, newUserProfD);
+
+          context.read<ChildProfdBloc>().add(eventAction);
           Navigator.pop(context);
         },
-        label: const Text('Créer un profile'),
+        label: widget.action == CreateChildProfileAction.create
+            ? const Text('Ajouter')
+            : const Text('Mettre à jour'),
         icon: const Icon(Icons.add),
       ),
     );
@@ -145,21 +169,18 @@ class _CreateProfileState extends State<CreateProfile> {
     checkData(data, 'nameOfBirth', _nameOfBirdController);
     checkData(data, 'cityOfBird', _cityOfBirdController);
     checkData(data, 'civility', _civilityController);
-    checkData(data, 'phone', _phoneController);
   }
 
-  UserProfd buildNewProfileObject() {
-    final newUserProfD = UserProfd();
-    newUserProfD.id = FirebaseAuth.instance.currentUser!.uid;
-    newUserProfD.firstname = _firstnameController.value.text;
-    newUserProfD.lastname = _lastnameController.value.text;
-    newUserProfD.email = FirebaseAuth.instance.currentUser!.email!;
-    newUserProfD.dateOfBirth =
+  UserChildProfd buildNewChildObject() {
+    final newChildUserProfD = UserChildProfd();
+    newChildUserProfD.id = widget.idChild ?? '';
+    newChildUserProfD.firstname = _firstnameController.value.text;
+    newChildUserProfD.lastname = _lastnameController.value.text;
+    newChildUserProfD.dateOfBirth =
         DateFormat("dd-MM-yyyy").parse(_dateOfBirthController.text);
-    newUserProfD.civility = _civilityController.text;
-    newUserProfD.nameOfBirth = _nameOfBirdController.text;
-    newUserProfD.cityOfBird = _cityOfBirdController.text;
-    newUserProfD.phone = _phoneController.text;
-    return newUserProfD;
+    newChildUserProfD.civility = _civilityController.text;
+    newChildUserProfD.nameOfBirth = _nameOfBirdController.text;
+    newChildUserProfD.cityOfBird = _cityOfBirdController.text;
+    return newChildUserProfD;
   }
 }

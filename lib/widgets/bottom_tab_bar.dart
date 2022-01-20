@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../views/profile_screens.dart';
 import '../services/user_prof_d/user_profd_bloc.dart';
+import 'create_child_profile.dart';
 import 'home_handle/home_handle_screen.dart';
 
 class BottomTabBarController extends StatefulWidget {

@@ -117,7 +117,7 @@ class AppTheme {
     colorScheme:  ColorScheme.light(
         primary: CustomTheme().profDPrimary,
         onPrimary: CustomTheme().profDOnPrimary,
-        primaryVariant: const Color(0xff3C4EC5),
+        primaryVariant: CustomTheme().profDPrimary,
         secondary: const Color(0xff3C4EC5),
         secondaryVariant: const Color(0xffeeeeee),
         onSecondary: const Color(0xffeeeeee),
@@ -127,7 +127,7 @@ class AppTheme {
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: const Color(0xff3C4EC5),
+        backgroundColor: CustomTheme().profDPrimary,
         splashColor: const Color(0xffeeeeee).withAlpha(100),
         highlightElevation: 8,
         elevation: 4,
@@ -161,7 +161,7 @@ class AppTheme {
 
     /// Radio theme
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(const Color(0xff3C4EC5)),
+      fillColor: MaterialStateProperty.all(CustomTheme().profDPrimary),
     ),
 
     ///Switch Theme
@@ -194,11 +194,11 @@ class AppTheme {
 
     /// Slider Theme
     sliderTheme: SliderThemeData(
-      activeTrackColor: const Color(0xff3d63ff),
-      inactiveTrackColor: const Color(0xff3d63ff).withAlpha(140),
+      activeTrackColor: CustomTheme().profDPrimary,
+      inactiveTrackColor: CustomTheme().profDPrimary.withAlpha(140),
       trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,
-      thumbColor: const Color(0xff3d63ff),
+      thumbColor: CustomTheme().profDPrimary,
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
       overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
       tickMarkShape: const RoundSliderTickMarkShape(),
@@ -269,7 +269,7 @@ class AppTheme {
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: const Color(0xff069DEF),
+        backgroundColor: CustomTheme().profDPrimary,
         splashColor: Colors.white.withAlpha(100),
         highlightElevation: 8,
         elevation: 4,

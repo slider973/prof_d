@@ -50,7 +50,9 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegisterPage()));
+                          builder: (context) => const RegisterPage(),
+                      ),
+                  );
                 },
                 child: const Text('Créer un compte'),
               ),

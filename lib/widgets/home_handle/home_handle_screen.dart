@@ -43,7 +43,7 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
         stream: userReference.snapshots(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          print(snapshot.connectionState);
+
           if (snapshot.hasError) {
             return const Text("Something went wrong");
           }
