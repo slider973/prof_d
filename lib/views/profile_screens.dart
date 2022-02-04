@@ -1,7 +1,15 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
+import 'package:prof_d/services/notification/notification.dart';
+import 'package:prof_d/services/user_prof_d/user_profd_bloc.dart';
+import 'package:prof_d/widgets/handle_update_profil.dart';
+import 'package:prof_d/widgets/image_profile_widget.dart';
 import '../container/handle_child_profile.dart';
 import '../screens/auth/login_page_new.dart';
 import '../theme/app_theme.dart';
@@ -23,6 +31,12 @@ class _ProfDProfileScreenState extends State<ProfDProfileScreen> {
     theme = AppTheme.theme;
     customTheme = AppTheme.customTheme;
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
 
   Widget _buildSingleRow({String? title, IconData? icon, void Function()? cb}) {
     return Padding(
@@ -59,16 +73,26 @@ class _ProfDProfileScreenState extends State<ProfDProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final List buildRowList = [
-      _buildSingleRow(title: 'Paramètres du profil', icon: FeatherIcons.user),
-      _buildSingleRow(title: 'Mot de passe', icon: FeatherIcons.lock),
+      _buildSingleRow(title: 'Paramètres du profil', icon: FeatherIcons.user, cb: () {
+        Navigator.push( context, MaterialPageRoute( builder: (context) => HandleUpdateProfile()), ).then((value) => setState(() {}));
+      },),
+      _buildSingleRow(title: 'Mot de passe', icon: FeatherIcons.lock, cb: () {
+        PushNotificationService.showNotification(
+          title: 'Mot de passe',
+          body: 'erlkgnbherznboerbhoeiroibth',
+          payload: 'sarah.abs'
+        );
+      }),
       _buildSingleRow(
           title: 'Les enfants',
           icon: FeatherIcons.users,
           cb: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HandleChildProfile()));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HandleChildProfile(),
+              ),
+            );
           }),
       _buildSingleRow(
           title: 'Se déconnecter',
@@ -81,58 +105,60 @@ class _ProfDProfileScreenState extends State<ProfDProfileScreen> {
                 (route) => false);
           }),
     ];
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          FxSpacing.height(54),
-          const Center(
-            child: FxContainer(
-              paddingAll: 0,
-              borderRadiusAll: 24,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(24),
-                ),
-                child: Image(
-                  fit: BoxFit.cover,
-                  width: 100,
-                  height: 100,
-                  image: AssetImage('assets/images/profile/avatar_4.jpg'),
-                ),
-              ),
-            ),
-          ),
-          FxSpacing.height(24),
-          FxText.t1(
-            'Jonathan lemaine',
-            textAlign: TextAlign.center,
-            fontWeight: 600,
-            letterSpacing: 0.8,
-          ),
-          FxSpacing.height(4),
-          FxSpacing.height(24),
-          FxText.b3(
-            'General',
-            color: theme.colorScheme.onBackground,
-            xMuted: true,
-          ),
-          ListView.builder(
-            itemCount: buildRowList.length,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  const Divider(),
-                  FxSpacing.height(8),
-                  buildRowList[index]
-                ],
+    final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('users').snapshots();
+    return StreamBuilder<QuerySnapshot>(
+      stream: _usersStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return const Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Loading");
+        }
+        final document = snapshot.data!.docs.firstWhere((document) =>
+        document.id == FirebaseAuth.instance.currentUser!.uid);
+        Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+        return Scaffold(
+                body: SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    FxSpacing.height(54),
+                     Center(
+                      child: ImageProfileWidget(userPhotoUrl: data['image']),
+                    ),
+                    FxSpacing.height(24),
+                    FxText.t1(
+                      '${data['firstname']} ${data['lastname']}',
+                      textAlign: TextAlign.center,
+                      fontWeight: 600,
+                      letterSpacing: 0.8,
+                    ),
+                    FxSpacing.height(4),
+                    FxSpacing.height(24),
+                    FxText.b3(
+                      'General',
+                      color: theme.colorScheme.onBackground,
+                      xMuted: true,
+                    ),
+                    ListView.builder(
+                      itemCount: buildRowList.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            const Divider(),
+                            FxSpacing.height(8),
+                            buildRowList[index]
+                          ],
+                        );
+                      },
+                    )
+                  ],
+                )),
               );
-            },
-          )
-        ],
-      )),
+      }
     );
   }
 }

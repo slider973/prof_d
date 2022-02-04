@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutx/flutx.dart';
-import '../models/user_child_prod.dart';
 import '../theme/app_theme.dart';
 import '../config/config_route_collection.dart';
 import '../services/child_profd/child_profd_bloc.dart';
@@ -15,7 +14,7 @@ class HandleChildProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Stream<QuerySnapshot> childRef = FirebaseFirestore.instance
-        .collection('users')
+        .collection(userCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(childCollection)
         .snapshots();
@@ -32,22 +31,42 @@ class HandleChildProfile extends StatelessWidget {
         }
 
         if (snapshot.data!.docs.isEmpty) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider<ChildProfdBloc>(
-                  create: (context) => ChildProfdBloc())
-            ],
-            child: const CreateChildProfile(
-              data: null,
-              action: CreateChildProfileAction.create,
-            ),
-          );
+          return const CreateChildView();
         }
 
         return Scaffold(
           appBar: AppBar(
             title: const Text('Liste de vos enfants'),
             backgroundColor: CustomTheme().profDPrimary,
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider<ChildProfdBloc>(
+                          create: (context) => ChildProfdBloc())
+                    ],
+                    child: const CreateChildProfile(
+                    data: null,
+                    action: CreateChildProfileAction.create,
+                  ),
+                  ),
+                  transitionDuration:
+                  const Duration(milliseconds: 300),
+                  transitionsBuilder: (_, animation, __, child) =>
+                      SlideTransition(
+                          position: Tween<Offset>(
+                              begin: const Offset(0, 1),
+                              end: Offset.zero)
+                              .animate(animation),
+                          child: child),
+                ),
+              );
+            },
+            child: const Icon(Icons.add),
           ),
           body: FxContainer(
             child: Column(
@@ -58,11 +77,10 @@ class HandleChildProfile extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final data = snapshot.data!.docs[index].data()
                         as Map<String, dynamic>;
-                    final childProfd = UserChildProfd.fromJson(data);
+
                     return ListTile(
                       title: Text(data['firstname']),
                       onTap: () {
-                        print(snapshot.data!.docs[index].id);
                         Navigator.push(
                           context,
                           PageRouteBuilder(
@@ -97,6 +115,26 @@ class HandleChildProfile extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class CreateChildView extends StatelessWidget {
+  const CreateChildView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ChildProfdBloc>(
+            create: (context) => ChildProfdBloc())
+      ],
+      child: const CreateChildProfile(
+        data: null,
+        action: CreateChildProfileAction.create,
+      ),
     );
   }
 }

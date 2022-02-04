@@ -18,8 +18,9 @@ import '../models/user.dart';
 
 class CreateProfile extends StatefulWidget {
   final Map<String, dynamic>? data;
+  bool isUpdated;
 
-  const CreateProfile({Key? key, required this.data}) : super(key: key);
+   CreateProfile({Key? key, required this.data, required this.isUpdated}) : super(key: key);
 
   @override
   _CreateProfileState createState() => _CreateProfileState();
@@ -34,6 +35,7 @@ class _CreateProfileState extends State<CreateProfile> {
   final TextEditingController _cityOfBirdController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _civilityController = TextEditingController();
+  final TextEditingController _imageController = TextEditingController();
 
   @override
   void dispose() {
@@ -44,6 +46,7 @@ class _CreateProfileState extends State<CreateProfile> {
     _cityOfBirdController.dispose();
     _civilityController.dispose();
     _phoneController.dispose();
+    _imageController.dispose();
     super.dispose();
   }
 
@@ -61,7 +64,7 @@ class _CreateProfileState extends State<CreateProfile> {
           children: [
             SizedBox(height: 9.0.h),
             Text(
-              'Formulaire de creation de profile',
+              'Formulaire de création de profil',
               style: Theme.of(context).textTheme.subtitle1,
             ),
             SizedBox(height: 3.0.h),
@@ -114,10 +117,10 @@ class _CreateProfileState extends State<CreateProfile> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           UserProfd newUserProfD = buildNewProfileObject();
-          context.read<UserProfdBloc>().add(UpdateUserProfdEvent(newUserProfD));
+          widget.isUpdated ?  context.read<UserProfdBloc>().add(UpdateUserProfdEvent(newUserProfD)) : context.read<UserProfdBloc>().add(CreateUserProfdEvent(newUserProfD)) ;
           Navigator.pop(context);
         },
-        label: const Text('Créer un profile'),
+        label: widget.isUpdated ? const Text('Mêttre à jour le profil') : const Text('Créer un profil'),
         icon: const Icon(Icons.add),
       ),
     );
@@ -146,6 +149,7 @@ class _CreateProfileState extends State<CreateProfile> {
     checkData(data, 'cityOfBird', _cityOfBirdController);
     checkData(data, 'civility', _civilityController);
     checkData(data, 'phone', _phoneController);
+    checkData(data, 'image', _imageController);
   }
 
   UserProfd buildNewProfileObject() {
@@ -160,6 +164,7 @@ class _CreateProfileState extends State<CreateProfile> {
     newUserProfD.nameOfBirth = _nameOfBirdController.text;
     newUserProfD.cityOfBird = _cityOfBirdController.text;
     newUserProfD.phone = _phoneController.text;
+    newUserProfD.image = _imageController.text;
     return newUserProfD;
   }
 }

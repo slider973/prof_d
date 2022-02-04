@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/appointments.dart';
 import '../config/config_route_collection.dart';
 import 'auth_context.dart';
 
@@ -15,10 +16,7 @@ class FirebaseAuthStrategy implements AuthStrategy {
 
       users
           .doc(userCredential.user?.uid)
-          .set({
-        'email': userCredential.user?.email,
-        'isProfileCreated': false
-      })
+          .set({'email': userCredential.user?.email, 'isProfileCreated': false})
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
 
@@ -52,4 +50,6 @@ class FirebaseAuthStrategy implements AuthStrategy {
       }
     }
   }
+
+
 }

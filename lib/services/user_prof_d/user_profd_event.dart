@@ -5,9 +5,9 @@ abstract class UserProfdEvent extends Equatable {
 }
 
 
-class UpdateUserProfdEvent extends UserProfdEvent {
+class CreateUserProfdEvent extends UserProfdEvent {
   final UserProfd user;
-  const UpdateUserProfdEvent(this.user);
+  const CreateUserProfdEvent(this.user);
 
   @override
   List<Object?> get props => [user];
@@ -15,7 +15,17 @@ class UpdateUserProfdEvent extends UserProfdEvent {
 
 class SetUserProfdEvent extends UserProfdEvent {
   final UserProfd user;
+
   const SetUserProfdEvent(this.user);
+
+
+  @override
+  List<Object?> get props => [user];
+}
+
+class UpdateUserProfdEvent extends UserProfdEvent {
+  final UserProfd user;
+  const UpdateUserProfdEvent(this.user);
 
   @override
   List<Object?> get props => [user];

@@ -1,4 +1,8 @@
 const userCollection = 'users';
-const eventsCollection = '$userCollection/:id/booked-events';
 const childCollection = 'childs';
+const appointmentCollection = 'appointments';
+
+//sub collection
+const eventsCollection = '$userCollection/:id/booked-events';
+
 

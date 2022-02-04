@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:prof_d/models/user_child_prod.dart';
+import '../models/user_child_prod.dart';
 import '../config/config_route_collection.dart';
 import '../models/user.dart';
 

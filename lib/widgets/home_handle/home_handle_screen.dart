@@ -67,7 +67,7 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
                   const SizedBox(
                     height: 35.0,
                   ),
-                  const Text('Profile'),
+                  const Text('Profil'),
                   const SizedBox(
                     height: 30.0,
                   ),
@@ -82,7 +82,7 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
                     height: 30.0,
                   ),
                   Text(
-                    'Vous n\'avez pas de profile',
+                    'Vous n\'avez pas de profil',
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   const SizedBox(
@@ -96,12 +96,8 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
                         context,
                         PageRouteBuilder(
                           pageBuilder: (_, __, ___) => MultiBlocProvider(
-                            providers: [
-                              BlocProvider<UserProfdBloc>(
-                                  create: (context) => UserProfdBloc()
-                              ),
-                            ],
-                            child: const CreateProfile(data: null),
+                            providers: [],
+                            child: CreateProfile(data: null, isUpdated: false,),
                           ),
                           transitionDuration: const Duration(milliseconds: 300),
                           transitionsBuilder: (_, animation, __, child) =>
@@ -113,7 +109,7 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
                         ),
                       );
                     },
-                    child: const Text('Creer un profile'),
+                    child: const Text('Créer un profil'),
                   ),
                 ],
               ),

@@ -2,6 +2,7 @@ part of 'user_profd_bloc.dart';
 
 abstract class UserProfdState extends Equatable {
   const UserProfdState();
+
 }
 
 class UserProfdInitial extends UserProfdState {
@@ -9,9 +10,9 @@ class UserProfdInitial extends UserProfdState {
   List<Object> get props => [];
 }
 
-class UpdateUserProfdState extends UserProfdState {
+class CreateUserProfdState extends UserProfdState {
   final UserProfd user;
-  const UpdateUserProfdState(this.user);
+  const CreateUserProfdState(this.user);
 
   @override
   List<Object?> get props => [user];

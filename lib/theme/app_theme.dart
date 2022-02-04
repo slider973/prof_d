@@ -104,7 +104,7 @@ class AppTheme {
     /// AppBar Theme
     appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xffffffff),
-        iconTheme: IconThemeData(color: Color(0xff495057)),
+        iconTheme: IconThemeData(color: Colors.white),
         actionsIconTheme: IconThemeData(color: Color(0xff495057))),
 
     /// Card Theme

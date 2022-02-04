@@ -13,6 +13,7 @@ class UserProfd {
   DateTime dateOfBirth = DateTime.now();
   String nameOfBirth = '';
   String cityOfBird = '';
+  String image =  'https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg';
   bool isProfileCreated = false;
 
   UserProfd();
@@ -26,7 +27,7 @@ class UserProfd {
       apiToken = jsonMap['api_token'];
       civility = jsonMap['civility'];
       deviceToken = jsonMap['device_token'];
-      dateOfBirth = jsonMap['dateOfBirth'];
+      image = jsonMap['image'];
       nameOfBirth = jsonMap['nameOfBirth'];
       cityOfBird = jsonMap['cityOfBird'];
       isProfileCreated = jsonMap['isProfileCreated'];
@@ -66,6 +67,7 @@ class UserProfd {
     map["nameOfBirth"] = nameOfBirth;
     map["civility"] = civility;
     map["cityOfBird"] = cityOfBird;
+    map["image"] = image;
     map["isProfileCreated"] = isProfileCreated;
     return map;
   }
