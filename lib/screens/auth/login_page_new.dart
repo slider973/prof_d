@@ -11,14 +11,14 @@ const users = {
   'test@test.com': 'test',
 };
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   Duration get loginTime => const Duration(milliseconds: 2250);
   FirebaseAuth auth = FirebaseAuth.instance;
 

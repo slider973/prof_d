@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) => {
           FirebaseAuth.instance.authStateChanges().listen((user) {
-            Widget screen = const LoginPage();
+            Widget screen = const LoginScreen();
             if (user != null) {
               screen = const BottomTabBarController();
             }

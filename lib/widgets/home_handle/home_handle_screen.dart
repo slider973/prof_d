@@ -126,6 +126,7 @@ class _HomeHandleScreenState extends State<HomeHandleScreen>
             return BlocBuilder<UserProfdBloc, UserProfdState>(
                 builder: (context, state) {
                   if (state is GetProfdState) {
+                    print(state);
                     return HomePage(user: state.user);
                   }
                   return const SizedBox.shrink();

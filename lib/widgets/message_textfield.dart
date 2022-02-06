@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../core/models/payload_model.dart';
+import '../core/services/init_services/local_notification_service.dart';
+import '../core/utils/routes.dart';
+
 class MessageTextField extends StatefulWidget {
   final String currentId;
   final String friendId;
@@ -50,6 +54,10 @@ class _MessageTextFieldState extends State<MessageTextField> {
           ),
           GestureDetector(
             onTap: () async {
+              const _payloadModel = PayloadModel(
+                route: RoutePaths.home,
+                data: {'orderId': null},
+              );
               String message = _controller.text;
               _controller.clear();
               await FirebaseFirestore.instance
@@ -94,6 +102,12 @@ class _MessageTextFieldState extends State<MessageTextField> {
                     .collection('messages')
                     .doc(widget.currentId)
                     .set({"last_msg": message});
+
+                LocalNotificationService.instance.showInstantNotification(
+                  title: 'test',
+                  body: message,
+                  payload: _payloadModel.toJsonString(),
+                );
               });
             },
             child: Container(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/card_prof_d_container.dart';
-import 'package:sizer/sizer.dart';
 import '../models/user.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 40.h,
+            height: 280.h,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: Center(

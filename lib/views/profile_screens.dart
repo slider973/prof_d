@@ -101,7 +101,7 @@ class _ProfDProfileScreenState extends State<ProfDProfileScreen> {
             await FirebaseAuth.instance.signOut();
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
                 (route) => false);
           }),
     ];
