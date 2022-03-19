@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import '../localization/app_localization.dart';
 import '../services/init_services/connectivity_service.dart';
 import '../styles/app_colors.dart';
 import '../styles/font_styles.dart';
@@ -40,7 +38,7 @@ class NoInternetConnection extends StatelessWidget {
           ),
           CustomText.h2(
             context,
-            tr('noInternetConnection'),
+            'Plus de connection internet',
             alignment: Alignment.center,
             textAlign: TextAlign.center,
           ),
@@ -49,7 +47,7 @@ class NoInternetConnection extends StatelessWidget {
           ),
           CustomText.h5(
             context,
-            tr('pleaseCheckYourDeviceNetwork'),
+            'Vous n\'avez plus de connection internet',
             alignment: Alignment.center,
             textAlign: TextAlign.center,
           ),
@@ -59,7 +57,7 @@ class NoInternetConnection extends StatelessWidget {
           CustomButton(
             child: CustomText.h5(
               context,
-              tr('retry'),
+              'Réessayer',
               color: Colors.white,
               weight: FontStyles.fontWeightMedium,
               alignment: Alignment.center,

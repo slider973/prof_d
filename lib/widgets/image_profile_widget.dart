@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:async';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -15,7 +14,8 @@ FirebaseFunctions cloudFunctions = FirebaseFunctions.instance;
 class ImageProfileWidget extends StatefulWidget {
   final String userPhotoUrl;
   const ImageProfileWidget({
-    Key? key, required this.userPhotoUrl,
+    Key? key,
+    required this.userPhotoUrl,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,6 @@ class _ImageProfileWidgetState extends State<ImageProfileWidget> {
     final String link = await storageRef.getDownloadURL();
     UserRepository.updatePathUserDoc(userID, 'image', link);
   }
-
 
   Future getImage() async {
     try {

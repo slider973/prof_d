@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'create_profile.dart';
+import '../modules/home/screens/create_profile_screen.dart';
 
 class HandleUpdateProfile extends StatelessWidget {
   final Stream<QuerySnapshot> _usersStream =
@@ -29,7 +29,7 @@ class HandleUpdateProfile extends StatelessWidget {
             final document = snapshot.data!.docs.firstWhere((document) =>
                 document.id == FirebaseAuth.instance.currentUser!.uid);
             Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-            return  CreateProfile(data: data, isUpdated: true);
+            return  CreateProfileScreen();
           }),
     );
   }

@@ -1,4 +1,3 @@
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -58,7 +57,7 @@ class ConnectivityService {
 
   Future<bool> checkIfConnectedByConnectivity() async {
     ConnectivityResult connectivityResult =
-    (await Connectivity().checkConnectivity());
+        (await Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       return false;
     } else {

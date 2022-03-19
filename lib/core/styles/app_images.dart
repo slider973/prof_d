@@ -8,9 +8,11 @@ class AppImages {
   static const String dialogWidgetIconsPath =
       coreImagesPath + 'dialog_widget_icons/';
   static const String appIconsPath = 'assets/images/app_icons/';
+  static const String appLogoPath = 'assets/image/';
   static const String appImagesPath = 'assets/images/app_images/';
   static const String appScreensIconsPath = appIconsPath + 'screens_icons/';
   static const String appLanguagesIconsPath = appIconsPath + 'languages_icons/';
+
 
   /// Splash Screen + OnBoarding
   static const String splash = welcomeImagesPath + 'splash.png';
@@ -20,6 +22,7 @@ class AppImages {
   static const String loginBackground =
       loginImagesPath + 'login_background.png';
   static const String hiHand = loginImagesPath + 'hi_hand.png';
+  static const String logo = appLogoPath + 'logo.jpg';
 
   /// Core
   static const String loadingAnimation = jsonPath + 'loading_animation.json';

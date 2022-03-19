@@ -13,15 +13,15 @@ class LocalNotificationService {
 
   Future initNotificationSettings() async {
     const AndroidInitializationSettings _androidInitializationSettings =
-    AndroidInitializationSettings('notification_icon');
+        AndroidInitializationSettings('notification_icon');
     const IOSInitializationSettings _iosInitializationSettings =
-    IOSInitializationSettings(
+        IOSInitializationSettings(
       requestAlertPermission: true,
       requestSoundPermission: true,
       requestBadgePermission: false,
     );
     const InitializationSettings _initializationSettings =
-    InitializationSettings(
+        InitializationSettings(
       android: _androidInitializationSettings,
       iOS: _iosInitializationSettings,
     );

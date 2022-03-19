@@ -1,13 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
-import 'package:prof_d/widgets/bottom_tab_bar.dart';
 import '../models/confirmed.dart';
 import '../widgets/field_date_view.dart';
 import 'package:provider/src/provider.dart';
-import '../models/appointments.dart';
 import '../services/appointment_profd/appointment_bloc.dart';
 import '../widgets/child_select_radio.dart';
 import '../config/config_route_collection.dart';
