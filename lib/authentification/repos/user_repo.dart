@@ -1,15 +1,14 @@
 import 'dart:io';
 
-
 import 'package:flutter/foundation.dart';
 
+import '../../api_prof_d/api_json.swagger.dart';
 import '../../core/services/apis_services/api_caller.dart';
 import '../../core/services/apis_services/apis_paths.dart';
-import '../../core/services/firebase_services/firebase_caller.dart';
-import '../../core/services/firebase_services/firestore_paths.dart';
 import '../../core/services/init_services/auth_service.dart';
 import '../models/authentification_model.dart';
 import '../models/user_model.dart';
+import '../services/api_json_caller.dart';
 import '../services/firebase_auth_api.dart';
 
 class UserRepo {
@@ -18,23 +17,24 @@ class UserRepo {
   static final UserRepo instance = UserRepo._();
   final AuthService _authService = AuthService.instance;
   final ApisCaller _apiCaller = ApisCaller.instance;
+  final ApiJson apiJson = ApiJsonCaller.instance.apiJsonInstance!;
 
-  final FirebaseCaller _firebaseCaller = FirebaseCaller.instance;
   String? uid;
   UserModel? userModel;
   AuthentificationModel authentificationModel = AuthentificationModel();
 
   Future<UserModel?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    return await _apiCaller.postData(
-        path: ApisPaths.signInWithEmailAndPasswordPath(),
-        builder: (data) {
-          if (data != null) {
-            authentificationModel = AuthentificationModel.fromJson(data);
-          }
-          return null;
-        },
-        dataParams: {'username': email.toLowerCase(), 'password': password});
+
+    final result = await apiJson.authLoginPost(
+        body: LoginDto.fromJson(
+            {'username': email.toLowerCase(), 'password': password}));
+    if (result.statusCode == 200 | 201) {
+      if (result.body != null) {
+        authentificationModel = AuthentificationModel.fromJson(result.body);
+      }
+    }
+    return null;
   }
 
   Future<UserModel?> signUpWithEmailAndPassword(
@@ -76,55 +76,28 @@ class UserRepo {
         });
   }
 
-  Future updateUser(UserModel userData) async {
-    await _firebaseCaller.setData(
-      path: FirestorePaths.userDocument(uid!),
-      data: userData.toMap(),
-      merge: true,
-    );
-    userModel = userData;
-  }
-
   Future updateUserName({required String name}) async {
-    await _firebaseCaller.setData(
-      path: FirestorePaths.userDocument(uid!),
-      data: {"name": name},
-      merge: true,
-    );
     userModel = userModel!.copyWith(name: name);
   }
 
   Future updateUserTokenPush({required String token}) async {
-    await _firebaseCaller.setData(
-      path: FirestorePaths.userDocument(uid!),
-      data: {"token": token},
-      merge: true,
-    );
     userModel = userModel!.copyWith(token: token);
   }
 
-  Future updateUserPhone({required String phone}) async {
-    await _firebaseCaller.setData(
-      path: FirestorePaths.userDocument(uid!),
-      data: {"phone": phone},
-      merge: true,
-    );
-    userModel = userModel!.copyWith(phone: phone);
+  Future updateUser({required Map<String, dynamic> user}) async {
+    return await _apiCaller.patchData(
+        path: ApisPaths.updateUserProfilePath(),
+        dataParams: user,
+        builder: (user) {
+          if (user != null) {
+            print('in updateUser $user');
+            return UserModel.fromMap(user);
+          }
+        });
   }
 
   Future updateUserImage({required File? imageFile}) async {
-    String? _picUrl = await _firebaseCaller.uploadImage(
-      path: FirestorePaths.profilesImagesPath(userModel!.id!),
-      file: imageFile!,
-    );
-    if (_picUrl != null) {
-      await _firebaseCaller.setData(
-        path: FirestorePaths.userDocument(uid!),
-        data: {"image": _picUrl},
-        merge: true,
-      );
-      userModel = userModel!.copyWith(image: _picUrl);
-    }
+    userModel = userModel!.copyWith(image: imageFile?.path);
   }
 
   Future logoutUser() async {

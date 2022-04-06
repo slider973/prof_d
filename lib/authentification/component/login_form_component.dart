@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/localization/app_localization.dart';
 import '../../core/styles/app_colors.dart';
 import '../../core/styles/sizes.dart';
 import '../../core/widgets/custom_button.dart';

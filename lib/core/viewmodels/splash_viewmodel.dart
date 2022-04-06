@@ -11,7 +11,7 @@ import '../utils/routes.dart';
 import 'main_core_viewmodel.dart';
 
 final splashViewModel = ChangeNotifierProvider.autoDispose<SplashViewModel>(
-    (ref) => SplashViewModel(ref.read(mainCoreViewModel)));
+    (ref) => SplashViewModel(ref.read(mainCoreViewModelProvider)));
 
 class SplashViewModel extends ChangeNotifier {
   final MainCoreViewModel _mainCoreVM;

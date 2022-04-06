@@ -9,7 +9,7 @@ import '../../authentification/models/user_model.dart';
 import '../../authentification/repos/user_repo.dart';
 import '../services/location_service.dart';
 
-final mainCoreViewModel =
+final mainCoreViewModelProvider =
     ChangeNotifierProvider<MainCoreViewModel>((ref) => MainCoreViewModel());
 
 class MainCoreViewModel extends ChangeNotifier {

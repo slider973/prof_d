@@ -1,7 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'connectivity_service.dart';
 import 'firebase_messaging_service.dart';
 import 'local_notification_service.dart';

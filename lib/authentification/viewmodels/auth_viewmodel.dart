@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/services/init_services/firebase_messaging_service.dart';
-import '../../core/services/navigation_service.dart';
 import '../../core/utils/dialogs.dart';
-import '../../core/utils/routes.dart';
+import '../../core/utils/navigate.dart';
 import '../../core/utils/validators.dart';
 import '../../core/viewmodels/main_core_viewmodel.dart';
 import '../models/user_model.dart';
@@ -18,12 +17,12 @@ enum AuthType {
 }
 
 final authViewModel =
-ChangeNotifierProvider<AuthViewModel>((ref) => AuthViewModel(ref));
+ChangeNotifierProvider.autoDispose<AuthViewModel>((ref) => AuthViewModel(ref));
 
 class AuthViewModel extends ChangeNotifier {
 
   AuthViewModel(this.ref) {
-    _mainCoreVM = ref.read(mainCoreViewModel);
+    _mainCoreVM = ref.watch(mainCoreViewModelProvider);
   }
 
   final Ref ref;
@@ -109,7 +108,7 @@ class AuthViewModel extends ChangeNotifier {
           .getUserData(token: UserRepo.instance.authentificationModel.accessToken);
       _mainCoreVM.setCurrentUser(userModel: client!);
       // subscribeUserToTopic();
-     navigationToHomeScreen();
+     NavigateUtils.instance.navigationToHomeScreen();
     } catch (e) {
       debugPrint(e.toString());
       AppDialogs.showDefaultErrorDialog();
@@ -118,25 +117,6 @@ class AuthViewModel extends ChangeNotifier {
   subscribeUserToTopic() {
     FirebaseMessagingService.instance.subscribeToTopic(
       topic: 'general',
-    );
-  }
-
-  navigationToHomeScreen() {
-    NavigationService.offAll(
-      isNamed: true,
-      page: RoutePaths.home,
-    );
-  }
-  navigationToRegisterScreen() {
-    NavigationService.offAll(
-      isNamed: true,
-      page: RoutePaths.register,
-    );
-  }
-  navigationToLoginScreen() {
-    NavigationService.offAll(
-      isNamed: true,
-      page: RoutePaths.authLogin,
     );
   }
 }

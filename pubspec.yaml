@@ -44,11 +44,16 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^8.0.1
   flutter_riverpod: ^1.0.3
+  flutter_hooks: ^0.18.2+1
+  hooks_riverpod: ^1.0.3
 
   # LocalStorage
   shared_preferences: ^2.0.13
   sqflite: ^2.0.2
   image_picker: ^0.8.4+10
+
+  # Swagger
+  chopper: ^4.0.5
 
   #Ecosystem
   get: ^4.6.1
@@ -116,6 +121,8 @@ dev_dependencies:
   json_serializable: ^6.1.5
   flutter_launcher_icons: ^0.9.2
   flutter_lints: ^1.0.4
+  chopper_generator: ^4.0.5
+  swagger_dart_code_generator: any
   flutter_test:
     sdk: flutter
 
@@ -134,6 +141,7 @@ flutter:
     - assets/home_page_image.svg
     - assets/image/logo.jpg
     - assets/images/
+    - assets/images/core/
     - assets/images/apps/medicare/
     - assets/images/profile/
     - assets/images/welcome/

@@ -1,14 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
+import '../../../authentification/repos/user_repo.dart';
+import '../../../core/services/navigation_service.dart';
+import '../../../core/utils/routes.dart';
+import '../../../core/viewmodels/main_core_viewmodel.dart';
+import 'home_viewmodel.dart';
 
-import '../../../models/user.dart';
-final createProfileViewModel = ChangeNotifierProvider<CreateProfileFormViewModel>((ref) => CreateProfileFormViewModel(ref));
+final createProfileViewModelProvider =
+    ChangeNotifierProvider<CreateProfileFormViewModel>(
+        (ref) => CreateProfileFormViewModel(ref));
+
 class CreateProfileFormViewModel extends ChangeNotifier {
   final Ref ref;
-  
-  
-  CreateProfileFormViewModel(this.ref);
+  late MainCoreViewModel _mainCoreVM;
+  late HomeViewModel _homeViewModel;
+
+  CreateProfileFormViewModel(this.ref) {
+    _mainCoreVM = ref.read(mainCoreViewModelProvider.notifier);
+  }
 
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController lastnameController = TextEditingController();
@@ -19,56 +28,28 @@ class CreateProfileFormViewModel extends ChangeNotifier {
   final TextEditingController civilityController = TextEditingController();
   final TextEditingController imageController = TextEditingController();
 
-  void checkData(
-      Map<String, dynamic> data, String key, TextEditingController controller) {
-    if (key == 'dateOfBirth' &&
-        data[key] != null &&
-        data[key].toString().isNotEmpty) {
-      dateOfBirthController.text = DateFormat("dd-MM-yyyy").format(
-          DateTime.fromMicrosecondsSinceEpoch(
-              (data[key]).microsecondsSinceEpoch));
-      return;
-    }
-    if (data[key] != null && data[key].toString().isNotEmpty) {
-      controller.text = data[key];
-    }
+  Map<String, dynamic> buildNewProfileObject() {
+    return {
+      "firstname": firstnameController.value.text,
+      "lastname": lastnameController.value.text,
+      "civility": civilityController.text,
+      "nameOfBirth": nameOfBirdController.text,
+      "cityOfBird": cityOfBirdController.text,
+      "phone": phoneController.text,
+      "isProfileCreated": true,
+    };
   }
 
-  void initCheckData(Map<String, dynamic> data) {
-    checkData(data, 'firstname', firstnameController);
-    checkData(data, 'dateOfBirth', dateOfBirthController);
-    checkData(data, 'lastname', lastnameController);
-    checkData(data, 'nameOfBirth', nameOfBirdController);
-    checkData(data, 'cityOfBird', cityOfBirdController);
-    checkData(data, 'civility', civilityController);
-    checkData(data, 'phone', phoneController);
-    checkData(data, 'image', imageController);
-  }
-
-  UserProfd buildNewProfileObject() {
-    final newUserProfD = UserProfd();
-    newUserProfD.firstname = firstnameController.value.text;
-    newUserProfD.lastname = lastnameController.value.text;
-    newUserProfD.civility = civilityController.text;
-    newUserProfD.nameOfBirth = nameOfBirdController.text;
-    newUserProfD.cityOfBird = cityOfBirdController.text;
-    newUserProfD.phone = phoneController.text;
-    newUserProfD.image = imageController.text;
-    return newUserProfD;
-  }
-
-  sendData(BuildContext context) {
+  sendData(BuildContext context) async {
     removeAllFocus(context);
-    final user = buildNewProfileObject();
-    debugPrint(user.toString());
+    _mainCoreVM.setCurrentUser(userModel: await UserRepo.instance.updateUser(user: buildNewProfileObject()));
+    NavigationService.offAll(
+      isNamed: true,
+      page: RoutePaths.home,
+    );
   }
 
   void removeAllFocus(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
-
-
-
-
 }
-

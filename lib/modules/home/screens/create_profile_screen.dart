@@ -22,7 +22,7 @@ class CreateProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final createProfileMV = ref.watch(createProfileViewModel.notifier);
+    final createProfileMV = ref.watch(createProfileViewModelProvider.notifier);
 
 
     return Scaffold(
@@ -90,6 +90,7 @@ class CreateProfileScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState!.validate()) {
+            createProfileMV.sendData(context);
             print('yes');
           }
         },

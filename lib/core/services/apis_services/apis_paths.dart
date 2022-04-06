@@ -15,4 +15,9 @@ class ApisPaths {
       '/auth/register';
   static String mePatch() =>
       '/auth/me';
+
+
+  //PROFILE
+  static String updateUserProfilePath() =>
+      '/settings/profile';
 }

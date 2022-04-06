@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:prof_d/services/appointment_profd/appointment_bloc.dart';
-import 'package:prof_d/views/create_events.dart';
+import '../services/appointment_profd/appointment_bloc.dart';
+import '../views/create_events.dart';
 
 class CardProfDContainer extends StatelessWidget {
   CardProfDContainer({
@@ -44,10 +44,13 @@ class CardProfDContainer extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: const Icon(Icons.event),
-                        title: Text(DateFormat("yMMMMEEEEd", 'fr_FR').format(
+                        title: Text(
+                          DateFormat("yMMMMEEEEd", 'fr_FR').format(
                             DateTime.fromMicrosecondsSinceEpoch(
                                 (data['date'] as Timestamp)
-                                    .microsecondsSinceEpoch))),
+                                    .microsecondsSinceEpoch),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 30.0,
@@ -81,12 +84,15 @@ class CardProfDContainer extends StatelessWidget {
                                                     AppointmentBloc())
                                           ],
                                           child: CreateEvents(
-                                            dateSelected: DateTime.fromMicrosecondsSinceEpoch(
-                                                (data['date'] as Timestamp)
-                                                    .microsecondsSinceEpoch),
-                                            slotSelected: DateTime.fromMicrosecondsSinceEpoch(
-                                                (data['slots'][index] as Timestamp)
-                                                    .microsecondsSinceEpoch),
+                                            dateSelected: DateTime
+                                                .fromMicrosecondsSinceEpoch(
+                                                    (data['date'] as Timestamp)
+                                                        .microsecondsSinceEpoch),
+                                            slotSelected: DateTime
+                                                .fromMicrosecondsSinceEpoch(
+                                                    (data['slots'][index]
+                                                            as Timestamp)
+                                                        .microsecondsSinceEpoch),
                                           ),
                                         ),
                                         transitionDuration:

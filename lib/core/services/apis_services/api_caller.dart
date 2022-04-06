@@ -1,9 +1,7 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../../../api_prof_d/api_json.swagger.dart';
 import '../../utils/dialogs.dart';
 
 class ApisCaller {
@@ -19,6 +17,10 @@ class ApisCaller {
   static final instance = ApisCaller._();
 
   late Dio dio;
+
+  getApiJsonInstance() {
+    return ApiJson.create(baseUrl: 'http://localhost:3000');
+  }
 
   Future<T> getData<T>({
     required String path,
@@ -46,6 +48,25 @@ class ApisCaller {
     try {
       debugPrint(dataParams.toString());
       Response response = await dio.post(path, data: dataParams);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return builder(response.data);
+      }
+      return builder(null);
+    } on DioError catch (e) {
+      print(e.response.toString());
+      AppDialogs.showDefaultErrorDialog();
+      return builder(null);
+    }
+  }
+
+  Future<T> patchData<T>({
+    required String path,
+    required Map<String, dynamic> dataParams,
+    required T Function(Map<String, dynamic>? data) builder,
+  }) async {
+    try {
+      debugPrint(dataParams.toString());
+      Response response = await dio.patch(path, data: dataParams);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return builder(response.data);
       }

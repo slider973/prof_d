@@ -11,14 +11,14 @@ import '../viewmodels/auth_viewmodel.dart';
 class RegisterFormComponent extends ConsumerWidget {
   const RegisterFormComponent({Key? key}) : super(key: key);
 
-  static final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, ref) {
     final authVM = ref.watch(authViewModel.notifier);
 
     return Form(
-      key: _loginFormKey,
+      key: _registerFormKey,
       child: Column(
         children: [
           CustomTextField(
@@ -42,7 +42,7 @@ class RegisterFormComponent extends ConsumerWidget {
             controller: authVM.passwordController,
             validator: authVM.validateLoginPassword(),
             onFieldSubmitted: (value) {
-              if (_loginFormKey.currentState!.validate()) {
+              if (_registerFormKey.currentState!.validate()) {
                 authVM.signInWithEmailAndPassword(context);
               }
             },
@@ -65,7 +65,7 @@ class RegisterFormComponent extends ConsumerWidget {
             controller: authVM.confirmPasswordController,
             validator: authVM.validateConfirmLoginPassword(),
             onFieldSubmitted: (value) {
-              if (_loginFormKey.currentState!.validate()) {
+              if (_registerFormKey.currentState!.validate()) {
                 authVM.signUpWithEmailAndPassword(context);
               }
             },
@@ -94,7 +94,7 @@ class RegisterFormComponent extends ConsumerWidget {
                   buttonColor: Colors.teal,
                   splashColor: Colors.white,
                   onPressed: () {
-                    if (_loginFormKey.currentState!.validate()) {
+                    if (_registerFormKey.currentState!.validate()) {
                       authVM.signUpWithEmailAndPassword(context);
                     }
                   },
