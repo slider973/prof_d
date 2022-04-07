@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/styles/sizes.dart';
 import '../../../../../../core/widgets/custom_text.dart';
 
 Container subTitleSection(BuildContext context) {

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'routes.dart';
 
 import '../services/navigation_service.dart';
@@ -21,6 +23,29 @@ class NavigateUtils {
     NavigationService.offAll(
       isNamed: true,
       page: RoutePaths.authLogin,
+    );
+  }
+  navigationFromTheBottomAnimation(BuildContext context, page) {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) =>
+        const SizedBox.shrink(),
+        transitionDuration:
+        const Duration(
+            milliseconds: 300),
+        transitionsBuilder: (_,
+            animation, __, child) =>
+            SlideTransition(
+                position: Tween<Offset>(
+                    begin:
+                    const Offset(
+                        0, 1),
+                    end:
+                    Offset.zero)
+                    .animate(animation),
+                child: child),
+      ),
     );
   }
 
