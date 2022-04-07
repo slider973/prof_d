@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Sizes {
   static const designHeight = 895.0;
+  static const designHeightSmallest = 85.0;
   static const designWidth = 414.0;
   static get screenHeight => ScreenUtil().screenHeight;
   static get screenWidth => ScreenUtil().screenWidth;

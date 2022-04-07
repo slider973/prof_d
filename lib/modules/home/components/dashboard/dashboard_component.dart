@@ -4,7 +4,7 @@ import '../../../../core/styles/app_colors.dart';
 import '../../../../core/styles/app_images.dart';
 import '../../../../core/styles/sizes.dart';
 import 'app_bar.dart';
-import 'child_dashboard_component.dart';
+import 'child_dashboard_component/child_dashboard_component.dart';
 
 class DashboardComponent extends StatelessWidget {
   const DashboardComponent({Key? key}) : super(key: key);

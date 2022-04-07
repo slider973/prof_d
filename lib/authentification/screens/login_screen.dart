@@ -18,10 +18,6 @@ class LoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
 
-    final authComponent = authType == AuthType.login
-        ? const LoginFormComponent()
-        : const LoginFormComponent();
-
     return PopUpPage(
       child: SingleChildScrollView(
         child: Container(
@@ -52,7 +48,7 @@ class LoginScreen extends ConsumerWidget {
               SizedBox(
                 height: Sizes.vMarginHigh,
               ),
-              authComponent,
+              const LoginFormComponent(),
               SizedBox(
                 height: Sizes.vMarginHigh,
               ),
