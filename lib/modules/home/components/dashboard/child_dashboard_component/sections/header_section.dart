@@ -6,7 +6,7 @@ import '../../../../../../core/widgets/custom_text.dart';
 
 Container headerSection(UserModel? currentUser, BuildContext context) {
   return Container(
-    width: Sizes.designHeight,
+    width: MediaQuery.of(context).size.width,
     height: Sizes.designHeightSmallest,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +18,7 @@ Container headerSection(UserModel? currentUser, BuildContext context) {
           CustomText.h2(context, 'Bonjour')
         ]),
         SizedBox(
-          height: Sizes.vMarginSmallest,
+          height: Sizes.vMarginComment,
         ),
         Wrap(
           children: [
