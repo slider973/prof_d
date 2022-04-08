@@ -108,7 +108,7 @@ class AuthViewModel extends ChangeNotifier {
           .getUserData(token: UserRepo.instance.authentificationModel.accessToken);
       _mainCoreVM.setCurrentUser(userModel: client!);
       // subscribeUserToTopic();
-     NavigateUtils.instance.navigationToHomeScreen();
+     NavigateUtils.instance.navigationToIntroductionScreen();
     } catch (e) {
       debugPrint(e.toString());
       AppDialogs.showDefaultErrorDialog();

@@ -59,7 +59,10 @@ dependencies:
   get: ^4.6.1
 
   # Webview
-  webview_flutter: ^3.0.1
+  webview_flutter: ^3.0.2
+
+  #Screen Introduction
+  introduction_screen: ^3.0.2
 
   # Responsive
   sizer: ^2.0.15
@@ -74,10 +77,10 @@ dependencies:
   location: ^4.3.0
 
   # Apis
-  dio: ^4.0.4
+  dio: ^4.0.6
 
   # Widget
-  flutter_login: ^3.1.0
+  flutter_login: ^3.2.0
 
   # Images
   lottie: ^1.2.2
@@ -147,6 +150,9 @@ flutter:
     - assets/images/welcome/
     - assets/images/login/
     - assets/json/
+    - assets/images/introduction_screen/
+    - assets/images/introduction_screen/profile.jpg
+    - assets/images/introduction_screen/4238140.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

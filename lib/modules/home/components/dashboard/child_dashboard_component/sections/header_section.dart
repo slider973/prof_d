@@ -12,19 +12,11 @@ Container headerSection(UserModel? currentUser, BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-          CustomText.h2(context, 'Bonjour')
-        ]),
-        SizedBox(
-          height: Sizes.vMarginComment,
-        ),
         Wrap(
-          children: [
-            CustomText.h3(context, '${currentUser?.firstname}', alignment: Alignment.center,),
-          ],
-        ),
+            children: [
+          CustomText.h2(context, 'Bonjour ${currentUser?.firstname}', alignment: Alignment.center)
+        ]),
+
       ],
     ),
 

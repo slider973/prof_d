@@ -13,6 +13,12 @@ class NavigateUtils {
       page: RoutePaths.home,
     );
   }
+  navigationToIntroductionScreen() {
+    NavigationService.offAll(
+      isNamed: true,
+      page: RoutePaths.introduceScreen,
+    );
+  }
   navigationToRegisterScreen() {
     NavigationService.offAll(
       isNamed: true,

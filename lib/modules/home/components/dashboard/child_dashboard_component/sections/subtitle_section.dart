@@ -6,10 +6,10 @@ Container subTitleSection(BuildContext context) {
     color: Colors.grey[300],
     width: MediaQuery.of(context).size.width,
     child: Padding(
-      padding: const EdgeInsets.only(left: 25.0, bottom: 8.0),
+      padding: const EdgeInsets.only(left: 15.0, bottom: 8.0),
       child: CustomText.h4(
         context,
-        'Voici la liste de reservation selectionner une ci desous',
+        'Sélectionnez le créneau qui vous convient ci-desous:',
         alignment: Alignment.center,
       ),
     ),

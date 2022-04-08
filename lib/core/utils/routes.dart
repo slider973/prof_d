@@ -3,6 +3,7 @@ import '../../authentification/screens/login_screen.dart';
 import '../../authentification/screens/register_screen.dart';
 import '../../authentification/viewmodels/auth_viewmodel.dart';
 import '../../widgets/bottom_tab_bar.dart';
+import '../screens/my_custom_introduction_screen.dart';
 import '../screens/no_internet_connection_screen.dart';
 import '../screens/splash_screen.dart';
 
@@ -11,6 +12,7 @@ class RoutePaths {
   static const coreNoInternet = '/no_internet';
   static const authLogin = '/auth/login';
   static const home = '/home';
+  static const introduceScreen = '/introduce_screen';
   static const register = '/register';
   static const profile = '/profile';
   static const settings = '/settings';
@@ -35,6 +37,15 @@ class AppRouter {
       case RoutePaths.authLogin:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const LoginScreen(),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: const Duration(seconds: 1),
+        );
+
+        //Introduce screen
+      case RoutePaths.introduceScreen:
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const MyCustomIntroductionScreen(),
           transitionsBuilder: (_, a, __, c) =>
               FadeTransition(opacity: a, child: c),
           transitionDuration: const Duration(seconds: 1),
