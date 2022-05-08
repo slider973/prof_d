@@ -44,7 +44,7 @@ class AppColors {
   static const Color lightDark = Color(0x3c000000);
   static const Color carbonic = Color(0x1fffffff);
   static const LinearGradient primaryIngredientColor = LinearGradient(
-    colors: [Color(0xFFd74747), Color(0xFFC11718)],
+    colors: [Color(0xff008080), Color(0xFF008080)],
     stops: [0, 1],
   );
 }

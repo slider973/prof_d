@@ -13,10 +13,25 @@ class NavigateUtils {
       page: RoutePaths.home,
     );
   }
+
+  navigationToPageScreen(page) {
+    NavigationService.navigateTo(
+      isNamed: false,
+      page: page,
+      navigationMethod: NavigationMethod.push,
+    );
+  }
   navigationToIntroductionScreen() {
     NavigationService.offAll(
       isNamed: true,
       page: RoutePaths.introduceScreen,
+    );
+  }
+
+  navigationToAdminScreen() {
+    NavigationService.offAll(
+      isNamed: true,
+      page: RoutePaths.admin,
     );
   }
   navigationToRegisterScreen() {
@@ -36,7 +51,7 @@ class NavigateUtils {
       context,
       PageRouteBuilder(
         pageBuilder: (_, __, ___) =>
-        const SizedBox.shrink(),
+        page,
         transitionDuration:
         const Duration(
             milliseconds: 300),

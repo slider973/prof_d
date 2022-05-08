@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
@@ -18,35 +19,52 @@ class SplashViewModel extends ChangeNotifier {
   late String secondPage;
 
   SplashViewModel(this._mainCoreVM) {
-    ConnectivityService.instance.checkIfConnected().then((value) async {
-      await Future.delayed(const Duration(seconds: 2), () {});
-      if (value) {
-        initializeData().then(
-          (_) {
-            NavigationService.offAll(
-              isNamed: true,
-              page: secondPage,
-            );
-            if (secondPage == RoutePaths.home) {
-              FirebaseMessagingService.instance.getInitialMessage();
-            }
-          },
-        );
-      } else {
-        NavigationService.offAll(
-          isNamed: true,
-          page: RoutePaths.coreNoInternet,
-          arguments: {'fromSplash': true},
-        );
-      }
-    });
+    if(!kIsWeb) {
+      ConnectivityService.instance.checkIfConnected().then((value) async {
+        await Future.delayed(const Duration(seconds: 2), () {});
+        if (value) {
+          initializeData().then(
+                (_) {
+              NavigationService.offAll(
+                isNamed: true,
+                page: secondPage,
+              );
+              if (secondPage == RoutePaths.home) {
+                FirebaseMessagingService.instance.getInitialMessage();
+              }
+            },
+          );
+        } else {
+          NavigationService.offAll(
+            isNamed: true,
+            page: RoutePaths.coreNoInternet,
+            arguments: {'fromSplash': true},
+          );
+        }
+      });
+    }
+    if(kIsWeb){
+      initializeData().then(
+            (_) {
+          NavigationService.offAll(
+            isNamed: true,
+            page: RoutePaths.authLogin,
+          );
+
+        },
+      );
+    }
+
+
   }
 
   Future initializeData() async {
     List futures = [
       ServiceInitializer.instance.initializeData(),
-      checkForCachedUser(),
     ];
+    if(!kIsWeb){
+      futures.add(checkForCachedUser());
+    }
     await Future.wait<dynamic>([...futures]);
   }
 

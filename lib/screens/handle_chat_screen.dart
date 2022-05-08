@@ -29,8 +29,7 @@ class _HandleChatScreen extends State<HandleChatScreen> {
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        actions: [
-        ],
+        actions: [],
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance

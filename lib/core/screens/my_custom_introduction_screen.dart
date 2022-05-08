@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../modules/home/screens/home_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../widgets/bottom_tab_bar.dart';
@@ -23,22 +22,12 @@ class _MyCustomIntroductionScreenState
     );
   }
 
-  Widget _buildFullscreenImage() {
-    return Image.asset(
-      'assets/fullscreen.jpg',
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
-    );
-  }
-
   Widget _buildImage(String assetName, [double width = 350]) {
     return Image.asset('assets/images/introduction_screen/$assetName',
         width: width);
   }
 
-  Widget _buildLoginBackground([double width = 350]) {
+  Widget _buildLoginBackground() {
     return Image.asset('assets/images/login/login_background.png',
         fit: BoxFit.cover,
         height: double.infinity,
@@ -99,7 +88,6 @@ class _MyCustomIntroductionScreenState
             image: _buildImage('35232.jpg'),
             decoration: pageDecoration,
           ),
-
         ],
         onDone: () {
           // When done button is press

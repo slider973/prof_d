@@ -294,11 +294,45 @@ class DeleteRoomMessageDto {
 
 @JsonSerializable(explicitToJson: true)
 class AddChildDto {
-  AddChildDto();
+  AddChildDto({
+    this.firstname,
+    this.lastname,
+    this.dateOfBirth,
+    this.numberOfBrotherAndSister,
+    this.placeInTheSiblingGroup,
+    this.placeOfSchooling,
+    this.classLevel,
+    this.followUpsInProgress,
+    this.identifiedDisordersAndOrDifficulties,
+    this.arrangementsInTheClassroom,
+    this.behaviourInTheHome,
+  });
 
   factory AddChildDto.fromJson(Map<String, dynamic> json) =>
       _$AddChildDtoFromJson(json);
 
+  @JsonKey(name: 'firstname', includeIfNull: true)
+  final String? firstname;
+  @JsonKey(name: 'lastname', includeIfNull: true)
+  final String? lastname;
+  @JsonKey(name: 'dateOfBirth', includeIfNull: true)
+  final DateTime? dateOfBirth;
+  @JsonKey(name: 'numberOfBrotherAndSister', includeIfNull: true)
+  final double? numberOfBrotherAndSister;
+  @JsonKey(name: 'placeInTheSiblingGroup', includeIfNull: true)
+  final String? placeInTheSiblingGroup;
+  @JsonKey(name: 'placeOfSchooling', includeIfNull: true)
+  final String? placeOfSchooling;
+  @JsonKey(name: 'classLevel', includeIfNull: true)
+  final String? classLevel;
+  @JsonKey(name: 'followUpsInProgress', includeIfNull: true)
+  final String? followUpsInProgress;
+  @JsonKey(name: 'identifiedDisordersAndOrDifficulties', includeIfNull: true)
+  final String? identifiedDisordersAndOrDifficulties;
+  @JsonKey(name: 'arrangementsInTheClassroom', includeIfNull: true)
+  final String? arrangementsInTheClassroom;
+  @JsonKey(name: 'behaviourInTheHome', includeIfNull: true)
+  final String? behaviourInTheHome;
   static const fromJsonFactory = _$AddChildDtoFromJson;
   static const toJsonFactory = _$AddChildDtoToJson;
   Map<String, dynamic> toJson() => _$AddChildDtoToJson(this);
@@ -307,7 +341,98 @@ class AddChildDto {
   String toString() => jsonEncode(this);
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AddChildDto &&
+            (identical(other.firstname, firstname) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstname, firstname)) &&
+            (identical(other.lastname, lastname) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastname, lastname)) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateOfBirth, dateOfBirth)) &&
+            (identical(
+                    other.numberOfBrotherAndSister, numberOfBrotherAndSister) ||
+                const DeepCollectionEquality().equals(
+                    other.numberOfBrotherAndSister,
+                    numberOfBrotherAndSister)) &&
+            (identical(other.placeInTheSiblingGroup, placeInTheSiblingGroup) ||
+                const DeepCollectionEquality().equals(
+                    other.placeInTheSiblingGroup, placeInTheSiblingGroup)) &&
+            (identical(other.placeOfSchooling, placeOfSchooling) ||
+                const DeepCollectionEquality()
+                    .equals(other.placeOfSchooling, placeOfSchooling)) &&
+            (identical(other.classLevel, classLevel) ||
+                const DeepCollectionEquality()
+                    .equals(other.classLevel, classLevel)) &&
+            (identical(other.followUpsInProgress, followUpsInProgress) ||
+                const DeepCollectionEquality()
+                    .equals(other.followUpsInProgress, followUpsInProgress)) &&
+            (identical(other.identifiedDisordersAndOrDifficulties,
+                    identifiedDisordersAndOrDifficulties) ||
+                const DeepCollectionEquality().equals(
+                    other.identifiedDisordersAndOrDifficulties,
+                    identifiedDisordersAndOrDifficulties)) &&
+            (identical(other.arrangementsInTheClassroom,
+                    arrangementsInTheClassroom) ||
+                const DeepCollectionEquality().equals(
+                    other.arrangementsInTheClassroom,
+                    arrangementsInTheClassroom)) &&
+            (identical(other.behaviourInTheHome, behaviourInTheHome) ||
+                const DeepCollectionEquality()
+                    .equals(other.behaviourInTheHome, behaviourInTheHome)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(firstname) ^
+      const DeepCollectionEquality().hash(lastname) ^
+      const DeepCollectionEquality().hash(dateOfBirth) ^
+      const DeepCollectionEquality().hash(numberOfBrotherAndSister) ^
+      const DeepCollectionEquality().hash(placeInTheSiblingGroup) ^
+      const DeepCollectionEquality().hash(placeOfSchooling) ^
+      const DeepCollectionEquality().hash(classLevel) ^
+      const DeepCollectionEquality().hash(followUpsInProgress) ^
+      const DeepCollectionEquality()
+          .hash(identifiedDisordersAndOrDifficulties) ^
+      const DeepCollectionEquality().hash(arrangementsInTheClassroom) ^
+      const DeepCollectionEquality().hash(behaviourInTheHome) ^
+      runtimeType.hashCode;
+}
+
+extension $AddChildDtoExtension on AddChildDto {
+  AddChildDto copyWith(
+      {String? firstname,
+      String? lastname,
+      DateTime? dateOfBirth,
+      double? numberOfBrotherAndSister,
+      String? placeInTheSiblingGroup,
+      String? placeOfSchooling,
+      String? classLevel,
+      String? followUpsInProgress,
+      String? identifiedDisordersAndOrDifficulties,
+      String? arrangementsInTheClassroom,
+      String? behaviourInTheHome}) {
+    return AddChildDto(
+        firstname: firstname ?? this.firstname,
+        lastname: lastname ?? this.lastname,
+        dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+        numberOfBrotherAndSister:
+            numberOfBrotherAndSister ?? this.numberOfBrotherAndSister,
+        placeInTheSiblingGroup:
+            placeInTheSiblingGroup ?? this.placeInTheSiblingGroup,
+        placeOfSchooling: placeOfSchooling ?? this.placeOfSchooling,
+        classLevel: classLevel ?? this.classLevel,
+        followUpsInProgress: followUpsInProgress ?? this.followUpsInProgress,
+        identifiedDisordersAndOrDifficulties:
+            identifiedDisordersAndOrDifficulties ??
+                this.identifiedDisordersAndOrDifficulties,
+        arrangementsInTheClassroom:
+            arrangementsInTheClassroom ?? this.arrangementsInTheClassroom,
+        behaviourInTheHome: behaviourInTheHome ?? this.behaviourInTheHome);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)

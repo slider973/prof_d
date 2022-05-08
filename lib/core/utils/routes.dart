@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../authentification/screens/login_screen.dart';
 import '../../authentification/screens/register_screen.dart';
-import '../../authentification/viewmodels/auth_viewmodel.dart';
+import '../../widgets/admin_tab_bar.dart';
 import '../../widgets/bottom_tab_bar.dart';
 import '../screens/my_custom_introduction_screen.dart';
 import '../screens/no_internet_connection_screen.dart';
@@ -12,6 +12,7 @@ class RoutePaths {
   static const coreNoInternet = '/no_internet';
   static const authLogin = '/auth/login';
   static const home = '/home';
+  static const admin = '/admin';
   static const introduceScreen = '/introduce_screen';
   static const register = '/register';
   static const profile = '/profile';
@@ -50,6 +51,14 @@ class AppRouter {
               FadeTransition(opacity: a, child: c),
           transitionDuration: const Duration(seconds: 1),
         );
+        //AdminBar Screen
+        case RoutePaths.admin:
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const AdminBottomTabBarController(),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: const Duration(seconds: 1),
+        );
       case RoutePaths.register:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const RegisterScreen(),
@@ -60,7 +69,8 @@ class AppRouter {
 
       default:
         return MaterialPageRoute(
-            builder: (_) => const BottomTabBarController());
+            builder: (_) => const BottomTabBarController(),
+        );
     }
   }
 }

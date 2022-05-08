@@ -8,7 +8,7 @@ import '../../../widgets/profd_field_phone.dart';
 import '../../../widgets/build_civitily.dart';
 
 import '../viewmodel/create_profile_form_viewmodel.dart';
-import '../components/profd_field_component.dart';
+import '../components/profd_text_field_component.dart';
 import '../../../widgets/profd_date_time_field.dart';
 import '../../../widgets/place_google_field.dart';
 
@@ -57,15 +57,15 @@ class CreateProfileScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    ProfdFieldComponent(
+                    ProfdTextFieldComponent(
                       labelText: "Prénom",
                       controller: createProfileMV.firstnameController,
                     ),
-                    ProfdFieldComponent(
+                    ProfdTextFieldComponent(
                       labelText: "Nom",
                       controller: createProfileMV.lastnameController,
                     ),
-                    ProfdFieldComponent(
+                    ProfdTextFieldComponent(
                       labelText: "Nom de naissance",
                       controller: createProfileMV.nameOfBirdController,
                     ),

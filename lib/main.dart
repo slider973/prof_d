@@ -6,10 +6,17 @@ import 'core/services/init_services/services_initializer.dart';
 import 'core/utils/routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
+
+
 
 import 'theme/app_theme.dart';
 
 Future<void> main() async {
+  tz.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation('Europe/Paris'));
   WidgetsFlutterBinding.ensureInitialized();
   List results = await ServiceInitializer.instance.initializeSettings();
   runApp(ProviderScope(
@@ -54,10 +61,11 @@ class ProfBApp extends StatelessWidget {
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
+              SfGlobalLocalizations.delegate,
             ],
             supportedLocales: const [
               Locale('fr'),
-              Locale('en'), // Spanish, no country code
+              Locale('en'), // English, no country code
             ],
           ),
         ),

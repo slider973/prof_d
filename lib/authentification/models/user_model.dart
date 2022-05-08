@@ -5,6 +5,7 @@ class UserModel {
   final String? image;
   final String? token;
   final String? firstname;
+  final String? lastname;
   final bool? online;
   final bool? isProfileCreated;
   final String? role;
@@ -18,6 +19,7 @@ class UserModel {
     required this.image,
     required this.token,
     required this.firstname,
+    required this.lastname,
     required this.online,
     required this.isProfileCreated,
     required this.role,
@@ -32,6 +34,7 @@ class UserModel {
       'phone': phone ?? '',
       'image': image ?? '',
       'firstname': firstname ?? '',
+      'lastname': lastname ?? '',
       'token': token ?? '',
       'online': online ?? false,
       'role': role ?? '',
@@ -45,6 +48,7 @@ class UserModel {
         email: map['email'] ?? '',
         name: map['name'] ?? '',
         firstname: map['firstname'] ?? '',
+        lastname: map['lastname'] ?? '',
         phone: map['phone'] ?? '',
         image: map['image'] ?? '',
         isProfileCreated: map['isProfileCreated'] ?? false,
@@ -63,6 +67,7 @@ class UserModel {
     String? phone,
     String? token,
     String? firstname,
+    String? lastname,
     String? online,
     bool? isProfileCreated,
     String? role,
@@ -74,6 +79,7 @@ class UserModel {
       email: email ?? this.email,
       image: image ?? this.image,
       firstname: firstname ?? this.firstname,
+      lastname: lastname ?? this.lastname,
       phone: phone ?? this.phone,
       isProfileCreated: isProfileCreated ?? this.isProfileCreated,
       token: token ?? this.token,
@@ -89,6 +95,7 @@ class UserModel {
     return '{email: $email, '
         'name: $name, '
         'firstname: $firstname, '
+        'lastname: $lastname, '
         'phone: $phone, '
         'image: $image, '
         'token: $token,  '

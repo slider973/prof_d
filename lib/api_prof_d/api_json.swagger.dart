@@ -485,6 +485,15 @@ abstract class ApiJson extends ChopperService {
       {@Path('id') required String? id});
 
   ///
+  Future<chopper.Response> childGet() {
+    return _childGet();
+  }
+
+  ///
+  @Get(path: '/child')
+  Future<chopper.Response> _childGet();
+
+  ///
   Future<chopper.Response> childAddChildToParentPost(
       {required AddChildDto? body}) {
     return _childAddChildToParentPost(body: body);
@@ -761,6 +770,15 @@ abstract class ApiJson extends ChopperService {
   ///
   @Get(path: '/appointment')
   Future<chopper.Response> _appointmentGet();
+
+  ///
+  Future<chopper.Response> appointmentGetByParentGet() {
+    return _appointmentGetByParentGet();
+  }
+
+  ///
+  @Get(path: '/appointment/getByParent')
+  Future<chopper.Response> _appointmentGetByParentGet();
 
   ///
   ///@param id

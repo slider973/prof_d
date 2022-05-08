@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../modules/account/models/child_model.dart';
 import '../views/create_events.dart';
 
 class ChildRadioSelect extends StatefulWidget {
-  final List<QueryDocumentSnapshot> dataList;
+  final List<ChildModel> dataList;
 
   const ChildRadioSelect({Key? key, required this.dataList}) : super(key: key);
 
@@ -19,36 +20,24 @@ class _ChildRadioSelectState extends State<ChildRadioSelect> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration.zero,(){
-      setState(() {
-        CreateEvents.of(context)?.childSelected = {
-          'first_name': widget.dataList[_currentChildValue]['firstname'],
-          'last_name': widget.dataList[_currentChildValue]['lastname'],
-          'id': widget.dataList[_currentChildValue].id,
-          'child': true
-        };
-      });
+      setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       padding: const EdgeInsets.all(8.0),
       children: widget.dataList.map((child) {
         return RadioListTile(
           groupValue: _currentChildValue,
-          title: Text(child['firstname']),
+          title: Text(child.firstname),
           value: buildIndexWhere(child),
           onChanged: (val) {
             setState(() {
               _currentChildValue = buildIndexWhere(child);
-              CreateEvents.of(context)?.childSelected = {
-                'first_name': child['firstname'],
-                'last_name': child['lastname'],
-                'id': child.id,
-                'child': true
-              };
             });
           },
         );
@@ -56,7 +45,7 @@ class _ChildRadioSelectState extends State<ChildRadioSelect> {
     );
   }
 
-  int buildIndexWhere(QueryDocumentSnapshot<Object?> child) {
+  int buildIndexWhere(ChildModel child) {
     return widget.dataList.indexWhere((element) {
       return element.id == child.id;
     });

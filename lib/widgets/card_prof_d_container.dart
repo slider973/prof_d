@@ -83,17 +83,7 @@ class CardProfDContainer extends StatelessWidget {
                                                 create: (context) =>
                                                     AppointmentBloc())
                                           ],
-                                          child: CreateEvents(
-                                            dateSelected: DateTime
-                                                .fromMicrosecondsSinceEpoch(
-                                                    (data['date'] as Timestamp)
-                                                        .microsecondsSinceEpoch),
-                                            slotSelected: DateTime
-                                                .fromMicrosecondsSinceEpoch(
-                                                    (data['slots'][index]
-                                                            as Timestamp)
-                                                        .microsecondsSinceEpoch),
-                                          ),
+                                          child: SizedBox.shrink(),
                                         ),
                                         transitionDuration:
                                             const Duration(milliseconds: 300),

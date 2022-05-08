@@ -321,7 +321,7 @@ class AppTheme {
 
     /// Slider Theme
     sliderTheme: SliderThemeData(
-      activeTrackColor: const Color(0xff069DEF),
+      activeTrackColor: const Color(0xff069def),
       inactiveTrackColor: const Color(0xff069DEF).withAlpha(100),
       trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,

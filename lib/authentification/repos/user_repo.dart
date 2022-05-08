@@ -31,7 +31,12 @@ class UserRepo {
             {'username': email.toLowerCase(), 'password': password}));
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
+
         authentificationModel = AuthentificationModel.fromJson(result.body);
+        if(authentificationModel.accessToken != null) {
+          _authService.setUserTokenApi(authentificationModel.accessToken!);
+        }
+
       }
     }
     return null;

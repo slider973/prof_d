@@ -78,6 +78,8 @@ dependencies:
 
   # Apis
   dio: ^4.0.6
+  # Grid
+  flutter_staggered_grid_view: ^0.6.1
 
   # Widget
   flutter_login: ^3.2.0
@@ -86,6 +88,7 @@ dependencies:
   lottie: ^1.2.2
   cached_network_image: ^3.2.0
   flutter_svg: ^1.0.3
+
 
   # Utils
   flutter_fadein: ^2.0.0
@@ -101,6 +104,9 @@ dependencies:
   google_place: ^0.4.7
   json_annotation: ^4.4.0
   dio_logging_interceptor: ^1.0.1
+  timezone: ^0.8.0
+  syncfusion_flutter_calendar: ^20.1.51 # TODO à ranger
+  syncfusion_localizations: ^20.1.51
 
   # UI
   flutx:
@@ -153,6 +159,15 @@ flutter:
     - assets/images/introduction_screen/
     - assets/images/introduction_screen/profile.jpg
     - assets/images/introduction_screen/4238140.jpg
+    - assets/images/home/empty_state/bg-4.svg
+    - assets/images/home/empty_state/bg-4.png
+    - assets/images/home/empty_state/
+    - assets/images/profile/flying-a-kite.svg
+    - assets/images/appointment/clock.svg
+    - assets/images/appointment/empty_state/
+    - assets/images/admin/
+    - packages/timezone/data/2020a.tzf
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

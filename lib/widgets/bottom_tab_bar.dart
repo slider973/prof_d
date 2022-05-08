@@ -2,11 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../modules/account/screens/account_screens.dart';
+import '../modules/appointement/screens/appointment_screen.dart';
 import '../modules/home/screens/home_screen.dart';
 import '../screens/news_screen.dart';
 import '../screens/handle_chat_screen.dart';
 import '../services/appointment_profd/appointment_bloc.dart';
-import '../modules/profil/screens/profile_screens.dart';
+
 import '../services/user_prof_d/user_profd_bloc.dart';
 import '../modules/home/viewmodel/home_viewmodel.dart';
 
@@ -26,8 +28,9 @@ class _BottomTabBarControllerState extends State<BottomTabBarController> {
     super.initState();
     listScreens = [
       const HomeScreen(),
+      const AppointmentScreen(),
       const NewsScreen(),
-      const ProfDProfileScreen(),
+      AccountScreen(),
     ];
   }
 
@@ -54,14 +57,19 @@ class _BottomTabBarControllerState extends State<BottomTabBarController> {
                 label: "Accueil",
               ),
               BottomNavigationBarItem(
+                icon:   Icon(Icons.event_outlined ) ,
+                activeIcon: Icon(Icons.event_rounded),
+                label: "Rendez-vous",
+              ),
+              BottomNavigationBarItem(
                 icon:   Icon(Icons.article_outlined ) ,
                 activeIcon: Icon(Icons.article_rounded),
                 label: "Actualité",
               ),
               BottomNavigationBarItem(
-                icon:   Icon(Icons.settings_outlined) ,
-                activeIcon: Icon(Icons.settings),
-                label: "Réglages",
+                icon:   Icon(Icons.account_circle_outlined) ,
+                activeIcon: Icon(Icons.account_circle),
+                label: "Compte",
               )
             ],
         ),

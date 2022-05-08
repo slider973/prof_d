@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../../../core/styles/sizes.dart';
 import '../../../core/widgets/custom_text.dart';
-import 'dashboard/child_dashboard_component/sections/slot_section.dart';
+import '../../../shared/component/child_dashboard_component/sections/slot_section.dart';
 
 class CarteTimeTableComponent extends StatelessWidget {
   final String date;
@@ -38,10 +38,10 @@ class CarteTimeTableComponent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: slots.length,
               itemBuilder: (context, index) {
-                final DateFormat formatter = DateFormat("Hm");
+                final DateFormat formatter = DateFormat("Hm",'fr_FR');
                 final DateTime currentHours = DateTime.parse(slots[index]);
                 final String slot = formatter.format(currentHours);
-                return SlotSection(slot: slot);
+                return SlotSection(slot: slot, date: date,);
               }),
         ),
       ]),

@@ -92,6 +92,7 @@ class Sizes {
   static get cardVPadding => 16.h;
   static get cardHRadius => 20.w;
   static get cardRadius => 14.r;
+  static get cardHRegular => 240.h;
 
   //Dialogs
   static get dialogVPadding => 30.h;

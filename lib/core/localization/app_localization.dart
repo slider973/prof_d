@@ -33,11 +33,10 @@ class AppLocalizations {
       dataType: DataType.string,
     ) ??
         defaultLocal;
-    print('locale $locale');
+
     return Locale(locale);
   } catch(e) {
-    print(e);
-    return const Locale('en');
+    return const Locale('fr');
   }
   }
 

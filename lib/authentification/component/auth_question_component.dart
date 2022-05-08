@@ -20,8 +20,8 @@ class AuthQuestionComponent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final authVM = ref.watch(authViewModel.notifier);
     return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         CustomText.h6(
           context,

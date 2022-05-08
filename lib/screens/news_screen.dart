@@ -50,9 +50,6 @@ class _NewsScreenState extends State<NewsScreen> {
   Future<void> _onAddToCache(
       WebViewController controller, BuildContext context) async {
         // ignore: deprecated_member_use
-    Scaffold.of(context).showSnackBar(const SnackBar(
-      content: Text('Added a test entry to cache.'),
-    ));
   }
 
 }

@@ -6,7 +6,7 @@ import '../../core/screens/popup_page.dart';
 import '../../core/styles/sizes.dart';
 import '../component/app_logo_component.dart';
 import '../component/auth_question_component.dart';
-import '../component/register_form_component.dart';
+import '../form/register_form.dart';
 import '../component/welcome_component.dart';
 import '../viewmodels/auth_viewmodel.dart';
 

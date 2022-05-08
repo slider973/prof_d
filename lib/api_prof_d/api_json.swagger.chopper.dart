@@ -357,6 +357,13 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
+  Future<Response<dynamic>> _childGet() {
+    final $url = '/child';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _childAddChildToParentPost(
       {required AddChildDto? body}) {
     final $url = '/child/addChildToParent';
@@ -546,6 +553,13 @@ class _$ApiJson extends ApiJson {
   @override
   Future<Response<dynamic>> _appointmentGet() {
     final $url = '/appointment';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _appointmentGetByParentGet() {
+    final $url = '/appointment/getByParent';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<dynamic, dynamic>($request);
   }

@@ -87,10 +87,39 @@ Map<String, dynamic> _$DeleteRoomMessageDtoToJson(
         DeleteRoomMessageDto instance) =>
     <String, dynamic>{};
 
-AddChildDto _$AddChildDtoFromJson(Map<String, dynamic> json) => AddChildDto();
+AddChildDto _$AddChildDtoFromJson(Map<String, dynamic> json) => AddChildDto(
+      firstname: json['firstname'] as String?,
+      lastname: json['lastname'] as String?,
+      dateOfBirth: json['dateOfBirth'] == null
+          ? null
+          : DateTime.parse(json['dateOfBirth'] as String),
+      numberOfBrotherAndSister:
+          (json['numberOfBrotherAndSister'] as num?)?.toDouble(),
+      placeInTheSiblingGroup: json['placeInTheSiblingGroup'] as String?,
+      placeOfSchooling: json['placeOfSchooling'] as String?,
+      classLevel: json['classLevel'] as String?,
+      followUpsInProgress: json['followUpsInProgress'] as String?,
+      identifiedDisordersAndOrDifficulties:
+          json['identifiedDisordersAndOrDifficulties'] as String?,
+      arrangementsInTheClassroom: json['arrangementsInTheClassroom'] as String?,
+      behaviourInTheHome: json['behaviourInTheHome'] as String?,
+    );
 
 Map<String, dynamic> _$AddChildDtoToJson(AddChildDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'firstname': instance.firstname,
+      'lastname': instance.lastname,
+      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
+      'numberOfBrotherAndSister': instance.numberOfBrotherAndSister,
+      'placeInTheSiblingGroup': instance.placeInTheSiblingGroup,
+      'placeOfSchooling': instance.placeOfSchooling,
+      'classLevel': instance.classLevel,
+      'followUpsInProgress': instance.followUpsInProgress,
+      'identifiedDisordersAndOrDifficulties':
+          instance.identifiedDisordersAndOrDifficulties,
+      'arrangementsInTheClassroom': instance.arrangementsInTheClassroom,
+      'behaviourInTheHome': instance.behaviourInTheHome,
+    };
 
 CreateAddressDto _$CreateAddressDtoFromJson(Map<String, dynamic> json) =>
     CreateAddressDto();

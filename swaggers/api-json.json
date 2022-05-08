@@ -14,6 +14,13 @@
   ],
   "servers": [],
   "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
     "schemas": {
       "LoginDto": {
         "type": "object",
@@ -98,7 +105,55 @@
       },
       "AddChildDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "numberOfBrotherAndSister": {
+            "type": "number"
+          },
+          "placeInTheSiblingGroup": {
+            "type": "string"
+          },
+          "placeOfSchooling": {
+            "type": "string"
+          },
+          "classLevel": {
+            "type": "string"
+          },
+          "followUpsInProgress": {
+            "type": "string"
+          },
+          "identifiedDisordersAndOrDifficulties": {
+            "type": "string"
+          },
+          "arrangementsInTheClassroom": {
+            "type": "string"
+          },
+          "behaviourInTheHome": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "firstname",
+          "lastname",
+          "dateOfBirth",
+          "numberOfBrotherAndSister",
+          "placeInTheSiblingGroup",
+          "placeOfSchooling",
+          "classLevel",
+          "followUpsInProgress",
+          "identifiedDisordersAndOrDifficulties",
+          "arrangementsInTheClassroom",
+          "behaviourInTheHome"
+        ]
       },
       "CreateAddressDto": {
         "type": "object",
@@ -916,6 +971,31 @@
         }
       }
     },
+    "/child": {
+      "get": {
+        "operationId": "ChildController_GetChildByParent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Child list as been successfully founded."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          }
+        },
+        "tags": [
+          "child"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/child/addChildToParent": {
       "post": {
         "operationId": "ChildController_CreateAndAddChildToParent",
@@ -932,9 +1012,23 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "The Child has been successfully added to parent."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
           }
-        }
+        },
+        "tags": [
+          "child"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/child/{id}": {
@@ -954,7 +1048,15 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "child"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/address": {
@@ -1398,7 +1500,10 @@
           "201": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "appointment"
+        ]
       },
       "get": {
         "operationId": "AppointmentController_findAll",
@@ -1407,7 +1512,30 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "appointment"
+        ]
+      }
+    },
+    "/appointment/getByParent": {
+      "get": {
+        "operationId": "AppointmentController_getByParent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Appointment list as been successfully founded."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          }
+        },
+        "tags": [
+          "appointment"
+        ]
       }
     },
     "/appointment/{id}": {
@@ -1427,7 +1555,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "appointment"
+        ]
       },
       "patch": {
         "operationId": "AppointmentController_update",
@@ -1455,7 +1586,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "appointment"
+        ]
       },
       "delete": {
         "operationId": "AppointmentController_remove",
@@ -1473,7 +1607,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "appointment"
+        ]
       }
     },
     "/pdf": {

@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 
 ///widgets
 import '../widgets/build_civitily.dart';
-import '../modules/home/components/profd_field_component.dart';
+import '../modules/home/components/profd_text_field_component.dart';
 import '../widgets/profd_date_time_field.dart';
 import '../services/user_prof_d/user_profd_bloc.dart';
 import '../widgets/place_google_field.dart';
@@ -105,15 +105,15 @@ class _CreateChildProfileState extends State<CreateChildProfile> {
                       ),
                     ],
                   ),
-                  ProfdFieldComponent(
+                  ProfdTextFieldComponent(
                     labelText: "Prénom",
                     controller: _firstnameController,
                   ),
-                  ProfdFieldComponent(
+                  ProfdTextFieldComponent(
                     labelText: "Nom",
                     controller: _lastnameController,
                   ),
-                  ProfdFieldComponent(
+                  ProfdTextFieldComponent(
                     labelText: "Nom de naissance",
                     controller: _nameOfBirdController,
                   ),
