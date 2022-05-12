@@ -473,11 +473,24 @@ class UpdateAddressDto {
 
 @JsonSerializable(explicitToJson: true)
 class CreateTimeTableDto {
-  CreateTimeTableDto();
+  CreateTimeTableDto({
+    this.title,
+    this.start,
+    this.end,
+    this.desc,
+  });
 
   factory CreateTimeTableDto.fromJson(Map<String, dynamic> json) =>
       _$CreateTimeTableDtoFromJson(json);
 
+  @JsonKey(name: 'title', includeIfNull: true)
+  final String? title;
+  @JsonKey(name: 'start', includeIfNull: true)
+  final DateTime? start;
+  @JsonKey(name: 'end', includeIfNull: true)
+  final DateTime? end;
+  @JsonKey(name: 'desc', includeIfNull: true)
+  final String? desc;
   static const fromJsonFactory = _$CreateTimeTableDtoFromJson;
   static const toJsonFactory = _$CreateTimeTableDtoToJson;
   Map<String, dynamic> toJson() => _$CreateTimeTableDtoToJson(this);
@@ -486,7 +499,37 @@ class CreateTimeTableDto {
   String toString() => jsonEncode(this);
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreateTimeTableDto &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.start, start) ||
+                const DeepCollectionEquality().equals(other.start, start)) &&
+            (identical(other.end, end) ||
+                const DeepCollectionEquality().equals(other.end, end)) &&
+            (identical(other.desc, desc) ||
+                const DeepCollectionEquality().equals(other.desc, desc)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(start) ^
+      const DeepCollectionEquality().hash(end) ^
+      const DeepCollectionEquality().hash(desc) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateTimeTableDtoExtension on CreateTimeTableDto {
+  CreateTimeTableDto copyWith(
+      {String? title, DateTime? start, DateTime? end, String? desc}) {
+    return CreateTimeTableDto(
+        title: title ?? this.title,
+        start: start ?? this.start,
+        end: end ?? this.end,
+        desc: desc ?? this.desc);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -582,20 +625,20 @@ class UpdateFollowUpDetailDto {
 @JsonSerializable(explicitToJson: true)
 class CreateAppointmentDto {
   CreateAppointmentDto({
-    this.parent,
-    this.to,
-    this.date,
+    this.patient,
+    this.profile,
+    this.timeTableId,
   });
 
   factory CreateAppointmentDto.fromJson(Map<String, dynamic> json) =>
       _$CreateAppointmentDtoFromJson(json);
 
-  @JsonKey(name: 'parent', includeIfNull: true)
-  final String? parent;
-  @JsonKey(name: 'to', includeIfNull: true)
-  final String? to;
-  @JsonKey(name: 'date', includeIfNull: true)
-  final String? date;
+  @JsonKey(name: 'patient', includeIfNull: true)
+  final String? patient;
+  @JsonKey(name: 'profile', includeIfNull: true)
+  final String? profile;
+  @JsonKey(name: 'timeTableId', includeIfNull: true)
+  final String? timeTableId;
   static const fromJsonFactory = _$CreateAppointmentDtoFromJson;
   static const toJsonFactory = _$CreateAppointmentDtoToJson;
   Map<String, dynamic> toJson() => _$CreateAppointmentDtoToJson(this);
@@ -607,28 +650,32 @@ class CreateAppointmentDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is CreateAppointmentDto &&
-            (identical(other.parent, parent) ||
-                const DeepCollectionEquality().equals(other.parent, parent)) &&
-            (identical(other.to, to) ||
-                const DeepCollectionEquality().equals(other.to, to)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)));
+            (identical(other.patient, patient) ||
+                const DeepCollectionEquality()
+                    .equals(other.patient, patient)) &&
+            (identical(other.profile, profile) ||
+                const DeepCollectionEquality()
+                    .equals(other.profile, profile)) &&
+            (identical(other.timeTableId, timeTableId) ||
+                const DeepCollectionEquality()
+                    .equals(other.timeTableId, timeTableId)));
   }
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(parent) ^
-      const DeepCollectionEquality().hash(to) ^
-      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(patient) ^
+      const DeepCollectionEquality().hash(profile) ^
+      const DeepCollectionEquality().hash(timeTableId) ^
       runtimeType.hashCode;
 }
 
 extension $CreateAppointmentDtoExtension on CreateAppointmentDto {
-  CreateAppointmentDto copyWith({String? parent, String? to, String? date}) {
+  CreateAppointmentDto copyWith(
+      {String? patient, String? profile, String? timeTableId}) {
     return CreateAppointmentDto(
-        parent: parent ?? this.parent,
-        to: to ?? this.to,
-        date: date ?? this.date);
+        patient: patient ?? this.patient,
+        profile: profile ?? this.profile,
+        timeTableId: timeTableId ?? this.timeTableId);
   }
 }
 

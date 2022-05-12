@@ -134,10 +134,22 @@ Map<String, dynamic> _$UpdateAddressDtoToJson(UpdateAddressDto instance) =>
     <String, dynamic>{};
 
 CreateTimeTableDto _$CreateTimeTableDtoFromJson(Map<String, dynamic> json) =>
-    CreateTimeTableDto();
+    CreateTimeTableDto(
+      title: json['title'] as String?,
+      start: json['start'] == null
+          ? null
+          : DateTime.parse(json['start'] as String),
+      end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
+      desc: json['desc'] as String?,
+    );
 
 Map<String, dynamic> _$CreateTimeTableDtoToJson(CreateTimeTableDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'title': instance.title,
+      'start': instance.start?.toIso8601String(),
+      'end': instance.end?.toIso8601String(),
+      'desc': instance.desc,
+    };
 
 UpdateTimeTableDto _$UpdateTimeTableDtoFromJson(Map<String, dynamic> json) =>
     UpdateTimeTableDto();
@@ -176,17 +188,17 @@ Map<String, dynamic> _$UpdateFollowUpDetailDtoToJson(
 CreateAppointmentDto _$CreateAppointmentDtoFromJson(
         Map<String, dynamic> json) =>
     CreateAppointmentDto(
-      parent: json['parent'] as String?,
-      to: json['to'] as String?,
-      date: json['date'] as String?,
+      patient: json['patient'] as String?,
+      profile: json['profile'] as String?,
+      timeTableId: json['timeTableId'] as String?,
     );
 
 Map<String, dynamic> _$CreateAppointmentDtoToJson(
         CreateAppointmentDto instance) =>
     <String, dynamic>{
-      'parent': instance.parent,
-      'to': instance.to,
-      'date': instance.date,
+      'patient': instance.patient,
+      'profile': instance.profile,
+      'timeTableId': instance.timeTableId,
     };
 
 UpdateAppointmentDto _$UpdateAppointmentDtoFromJson(

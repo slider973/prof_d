@@ -46,6 +46,7 @@ class AdminDashboardModelView extends ChangeNotifier {
       meetings.add(Meeting(
           timetable.title, timetable.start, timetable.end, const Color(0xFF009688), timetable.isAllDay));
     }
+    print('toto');
     return meetings;
   }
 

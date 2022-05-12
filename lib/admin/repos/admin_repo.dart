@@ -26,4 +26,11 @@ class AdminRepo {
     ApiJsonCaller.instance.getInstanceWithAuth(userToken!)!;
     return await apiJson.timeTableGet();
   }
+
+  Future<chopper.Response> createTimeTable(CreateTimeTableDto body)  async {
+    final userToken = await _authService.getUserTokenApiStored();
+    final ApiJson apiJson =
+    ApiJsonCaller.instance.getInstanceWithAuth(userToken!)!;
+    return await apiJson.timeTablePost(body: body);
+  }
 }

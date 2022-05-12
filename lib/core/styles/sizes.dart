@@ -35,6 +35,7 @@ class Sizes {
   static get screenHPaddingMedium => 36.w;
 
   //Widgets Padding
+  static get vPaddingCustomHighest => 60.h;
   static get vPaddingHighest => 40.h;
   static get vPaddingHigh => 30.h;
   static get vPaddingMedium => 22.h;

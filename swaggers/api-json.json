@@ -165,7 +165,28 @@
       },
       "CreateTimeTableDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "start",
+          "end",
+          "desc"
+        ]
       },
       "UpdateTimeTableDto": {
         "type": "object",
@@ -190,20 +211,20 @@
       "CreateAppointmentDto": {
         "type": "object",
         "properties": {
-          "parent": {
+          "patient": {
             "type": "string"
           },
-          "to": {
+          "profile": {
             "type": "string"
           },
-          "date": {
+          "timeTableId": {
             "type": "string"
           }
         },
         "required": [
-          "parent",
-          "to",
-          "date"
+          "patient",
+          "profile",
+          "timeTableId"
         ]
       },
       "UpdateAppointmentDto": {
@@ -422,9 +443,18 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": ""
+            "description": "The Parent list as been successfully founded."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
           }
-        }
+        },
+        "tags": [
+          "user"
+        ]
       }
     },
     "/user/{username}": {
@@ -444,7 +474,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "user"
+        ]
       }
     },
     "/settings/username": {
@@ -1498,7 +1531,13 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "The Appointment as been successfully created."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
           }
         },
         "tags": [

@@ -9,7 +9,8 @@ class CarteTimeTableComponent extends StatelessWidget {
   final String date;
   final dynamic slots;
 
-  const CarteTimeTableComponent({Key? key, required this.date, required this.slots})
+  const CarteTimeTableComponent(
+      {Key? key, required this.date, required this.slots})
       : super(key: key);
 
   @override
@@ -17,7 +18,6 @@ class CarteTimeTableComponent extends StatelessWidget {
     final DateFormat formatter = DateFormat("yMMMMEEEEd", 'fr_FR');
     final DateTime dateSelected = DateTime.parse(date);
     final String formatted = formatter.format(dateSelected);
-
     return Card(
       elevation: 6,
       shape: RoundedRectangleBorder(
@@ -38,10 +38,14 @@ class CarteTimeTableComponent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: slots.length,
               itemBuilder: (context, index) {
-                final DateFormat formatter = DateFormat("Hm",'fr_FR');
-                final DateTime currentHours = DateTime.parse(slots[index]);
+                final DateFormat formatter = DateFormat("Hm", 'fr_FR');
+                final DateTime currentHours = DateTime.parse(slots[index]['date']);
                 final String slot = formatter.format(currentHours);
-                return SlotSection(slot: slot, date: date,);
+                return SlotSection(
+                  slot: slot,
+                  date: date,
+                  id: slots[index]['id'],
+                );
               }),
         ),
       ]),

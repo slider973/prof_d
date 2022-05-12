@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../modules/account/models/child_model.dart';
+import '../modules/appointement/viewmodel/appointment_view_model.dart';
 import '../views/create_events.dart';
 
-class ChildRadioSelect extends StatefulWidget {
+class ChildRadioSelect extends ConsumerStatefulWidget {
   final List<ChildModel> dataList;
 
   const ChildRadioSelect({Key? key, required this.dataList}) : super(key: key);
@@ -12,20 +14,21 @@ class ChildRadioSelect extends StatefulWidget {
   _ChildRadioSelectState createState() => _ChildRadioSelectState();
 }
 
-class _ChildRadioSelectState extends State<ChildRadioSelect> {
+class _ChildRadioSelectState extends ConsumerState<ChildRadioSelect> {
   int _currentChildValue = 0;
 
   @override
   void initState() {
-    // TODO: implement initState
+    ref.read(appointmentViewModel);
     super.initState();
-    Future.delayed(Duration.zero,(){
+    Future.delayed(Duration.zero, () {
       setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final _appointmentViewModel = ref.watch<AppointmentViewModel>(appointmentViewModel);
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -38,6 +41,8 @@ class _ChildRadioSelectState extends State<ChildRadioSelect> {
           onChanged: (val) {
             setState(() {
               _currentChildValue = buildIndexWhere(child);
+
+              _appointmentViewModel.setChild(child.id);
             });
           },
         );

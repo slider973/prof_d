@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/child.dart';
+
 import '../models/parent.dart';
 import '../viewmodels/dahsboard_viewmodel.dart';
 
@@ -38,7 +39,7 @@ class PatientListComponent extends ConsumerWidget {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       _adminDashVM.navigateToChildListScreen(
-                          parent.childList as List<Child>);
+                          parent.childList);
                     },
                     child: Text(
                         '${parent.lastname.toUpperCase()} ${parent.firstname}'),
@@ -46,7 +47,9 @@ class PatientListComponent extends ConsumerWidget {
                   leading: GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      print('test jojo');
+                      if (kDebugMode) {
+                        print('test jojo');
+                      }
                     },
                     child: CircleAvatar(
                       backgroundColor: Theme.of(context).primaryColor,
