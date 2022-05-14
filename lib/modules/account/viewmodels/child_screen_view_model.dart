@@ -25,7 +25,6 @@ class ChildViewModel extends ChangeNotifier {
     }).toList();
     childList = finalChildList;
     return childList;
-
   }
 
   void setListChild(AddChildDto newChild) async {

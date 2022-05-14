@@ -1,5 +1,4 @@
 import 'appointment_rules.dart';
-import 'patient.dart';
 import 'practice.dart';
 import 'profile.dart';
 
@@ -31,7 +30,7 @@ class Confirmed {
     Practice? practice,
     List<AppointmentRules>? appointmentRules,
     String? country,
-    Patient? patient,
+
     dynamic documentCount,}){
     _substituteName = substituteName;
     _substitutionWording = substitutionWording;
@@ -59,7 +58,6 @@ class Confirmed {
     _practice = practice;
     _appointmentRules = appointmentRules;
     _country = country;
-    _patient = patient;
     _documentCount = documentCount;
   }
 
@@ -96,7 +94,6 @@ class Confirmed {
       });
     }
     _country = json['country'];
-    _patient = json['patient'] != null ? Patient.fromJson(json['patient']) : null;
     _documentCount = json['document_count'];
   }
   dynamic _substituteName;
@@ -125,7 +122,6 @@ class Confirmed {
   Practice? _practice;
   List<AppointmentRules>? _appointmentRules;
   String? _country;
-  Patient? _patient;
   dynamic _documentCount;
 
   dynamic get substituteName => _substituteName;
@@ -154,7 +150,6 @@ class Confirmed {
   Practice? get practice => _practice;
   List<AppointmentRules>? get appointmentRules => _appointmentRules;
   String? get country => _country;
-  Patient? get patient => _patient;
   dynamic get documentCount => _documentCount;
 
   Map<String, dynamic> toJson() {
@@ -193,9 +188,7 @@ class Confirmed {
       map['appointment_rules'] = _appointmentRules?.map((v) => v.toJson()).toList();
     }
     map['country'] = _country;
-    if (_patient != null) {
-      map['patient'] = _patient?.toJson();
-    }
+
     map['document_count'] = _documentCount;
     return map;
   }

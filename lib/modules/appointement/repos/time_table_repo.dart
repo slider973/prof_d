@@ -12,10 +12,11 @@ class TimeTableRepo {
     return await apiJson.timeTableFindByDateGet();
   }
 
-  Future<chopper.Response> getAppointment()  async {
+  Future<Map<String, dynamic>> getAppointment()  async {
     final userToken = await _authService.getUserTokenApiStored();
     final ApiJson apiJson =
     ApiJsonCaller.instance.getInstanceWithAuth(userToken!)!;
-    return await apiJson.appointmentGetByParentGet();
+    final result = await apiJson.appointmentGetByParentGet();
+    return result.body;
   }
 }

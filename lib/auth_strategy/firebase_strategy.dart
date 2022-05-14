@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/appointments.dart';
 import '../config/config_route_collection.dart';
 import 'auth_context.dart';
 

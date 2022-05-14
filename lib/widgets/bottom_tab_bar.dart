@@ -1,16 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../modules/account/screens/account_screens.dart';
 import '../modules/appointement/screens/appointment_screen.dart';
 import '../modules/home/screens/home_screen.dart';
 import '../screens/news_screen.dart';
-import '../screens/handle_chat_screen.dart';
-import '../services/appointment_profd/appointment_bloc.dart';
 
-import '../services/user_prof_d/user_profd_bloc.dart';
-import '../modules/home/viewmodel/home_viewmodel.dart';
 
 class BottomTabBarController extends StatefulWidget {
   const BottomTabBarController({Key? key}) : super(key: key);

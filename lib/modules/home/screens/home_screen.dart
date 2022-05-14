@@ -15,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
 
     if (_userModel!.isProfileCreated != null &&
         _userModel.isProfileCreated == true) {
-      return const DashboardComponent();
+      return DashboardComponent(_userModel);
     }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

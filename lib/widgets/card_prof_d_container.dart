@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../services/appointment_profd/appointment_bloc.dart';
+
 import '../views/create_events.dart';
 
 class CardProfDContainer extends StatelessWidget {
@@ -78,11 +78,7 @@ class CardProfDContainer extends StatelessWidget {
                                       PageRouteBuilder(
                                         pageBuilder: (_, __, ___) =>
                                             MultiBlocProvider(
-                                          providers: [
-                                            BlocProvider<AppointmentBloc>(
-                                                create: (context) =>
-                                                    AppointmentBloc())
-                                          ],
+                                          providers: [],
                                           child: SizedBox.shrink(),
                                         ),
                                         transitionDuration:

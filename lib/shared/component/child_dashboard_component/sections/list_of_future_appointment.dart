@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/sizes.dart';
+import '../../../../modules/appointement/models/coming_soon.dart';
 import '../../../../services/date_parser.dart';
 
-class ListComingAppointment extends StatelessWidget {
+class ListComingAppointment<T> extends StatelessWidget {
   final List<dynamic> appointmentList;
+  final bool isPast;
 
-  const ListComingAppointment({Key? key, required this.appointmentList})
+  const ListComingAppointment({Key? key, required this.appointmentList, required this.isPast})
       : super(key: key);
 
   @override
@@ -15,15 +17,22 @@ class ListComingAppointment extends StatelessWidget {
       itemCount: appointmentList.length,
       itemBuilder: (context, index) {
         final data = appointmentList[index];
-        final appointment = DateTime.parse(data['appointment']);
-        final patient = data['patient'];
+        final appointment = DateTime.parse(data.appointment);
+        final patient = data.patient;
+
 
         return Padding(
           padding: const EdgeInsets.only(left: 9.0, right: 9.0, bottom: 9.0),
           child: SizedBox(
-            height: 260,
+            height: 240,
             child: Container(
-              color: Colors.white,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(color: Colors.teal, spreadRadius: 3),
+                ],
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -41,7 +50,7 @@ class ListComingAppointment extends StatelessWidget {
                     thickness: 0.1,
                     color: Colors.black,
                   ),
-                  _buildElevatedButton
+                  isPast ? _buildMakeAppointmentAgainButton : _buildCancelButton,
                 ],
               ),
             ),
@@ -51,22 +60,34 @@ class ListComingAppointment extends StatelessWidget {
     );
   }
 
-  ElevatedButton get _buildElevatedButton {
+  ElevatedButton get _buildCancelButton {
     return ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(fontSize: 20),
-                      shape: const StadiumBorder(),
-                    elevation: 0
+      style: ElevatedButton.styleFrom(
+        primary: Colors.red,
+          textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          shape: const StadiumBorder(),
+          elevation: 0),
+      onPressed: () {},
+      child: const Text(
+        'Annulez le rendez vous',
+        style: TextStyle(height: 1.0, fontSize: 12),
+      ),
+    );
+  }
 
-                  ),
-                  onPressed: () {},
-                  child: const Text('Annulez le rendez vous',
-                  style: TextStyle(
-                    height: 1.0,
-                    fontSize: 12
-                  ),
-                  ),
-                );
+  ElevatedButton get _buildMakeAppointmentAgainButton {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.teal,
+          textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          shape: const StadiumBorder(),
+          elevation: 0),
+      onPressed: () {},
+      child: const Text(
+        'Reprendre rendez vous',
+        style: TextStyle(height: 1.0, fontSize: 12),
+      ),
+    );
   }
 
   _buildHeader(BuildContext context, DateTime day) {
@@ -119,7 +140,7 @@ class ListComingAppointment extends StatelessWidget {
 
   _buildContentSection(BuildContext context) {
     return SizedBox(
-      height: Sizes.vPaddingCustomHighest,
+      height: Sizes.vPaddingHighest,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -141,7 +162,7 @@ class ListComingAppointment extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                'Lazzarotto sylvie',
+                'Lazzarotto Sylvie',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text('Psychopedagogue'),
@@ -168,9 +189,16 @@ class ListComingAppointment extends StatelessWidget {
           SizedBox(
             width: Sizes.hPaddingSmallest,
           ),
-          Text('${patient['firstname']} ${patient['lastname']}')
+          Text('${patient.firstname} ${patient.lastname}')
         ],
       ),
     );
+  }
+  _buildMarginHeader(int index){
+    if(index == 0){
+      return SizedBox(
+        height: Sizes.vPaddingHighest,
+      );
+    }
   }
 }

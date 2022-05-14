@@ -6,9 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../authentification/models/user_model.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../shared/component/my_custom_box_decoration.dart';
 import '../../../../shared/component/my_custom_box_decoration_with_border_radius.dart';
+import '../../viewmodel/home_viewmodel.dart';
+import '../empty_state_consulting.dart';
+import 'card_component/consulting_component.dart';
 import 'text_accueil.dart';
 import '../../../../core/styles/sizes.dart';
 import '../../../../core/viewmodels/main_core_viewmodel.dart';
@@ -17,11 +21,18 @@ import 'app_bar.dart';
 import '../../../../shared/component/child_dashboard_component/sections/subtitle_section.dart';
 
 class DashboardComponent extends ConsumerWidget {
-  const DashboardComponent({Key? key}) : super(key: key);
+  final UserModel currentUser;
+
+  const DashboardComponent(this.currentUser, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
     final currentUser = ref.watch(mainCoreViewModelProvider).getCurrentUser();
+    final _homeVM = ref.watch(homeViewModelViewModelProvider);
+
+    Widget? hasAppointment = _homeVM.appointmentList.comingSoon.isNotEmpty
+        ? const ConsultingComponent()
+        : const EmptyStateConsulting();
 
     return Scaffold(
       appBar: buildAppBarComponent,
@@ -50,34 +61,14 @@ class DashboardComponent extends ConsumerWidget {
                         StaggeredGrid.count(
                           crossAxisCount: 4,
                           children: [
-                            StaggeredGridTile.count(
+                             StaggeredGridTile.count(
                               crossAxisCellCount: 4,
                               mainAxisCellCount: 2,
                               child: Center(
                                   child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Card(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      CustomText.h3(
-                                        context,
-                                        'Consultation',
-                                        alignment: Alignment.center,
-                                        weight: FontWeight.bold,
-                                      ),
-                                      SvgPicture.asset(
-                                        'assets/image/home_page_image.svg',
-                                        height: 100,
-                                      ),
-                                      CustomText.h6(
-                                        context,
-                                        'Vous n\'avez pas de consultation pour vos enfants aujourd\'hui',
-                                        alignment: Alignment.center,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
+                                  child: hasAppointment,
                                 ),
                               )),
                             ),

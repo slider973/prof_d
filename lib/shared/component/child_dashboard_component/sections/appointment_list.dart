@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../modules/appointement/models/appointment.dart';
 import 'list_of_future_appointment.dart';
 
 class MenuSectionStyleAppointment extends StatefulWidget {
-  final AsyncSnapshot<dynamic> snapshot;
+  final AsyncSnapshot<Appointment> snapshot;
 
   const MenuSectionStyleAppointment({required this.snapshot, Key? key})
       : super(key: key);
@@ -20,18 +21,22 @@ class _MenuSectionStyleAppointmentState
 
   @override
   Widget build(BuildContext context) {
-    final appointmentComingSoon = widget.snapshot.data["comingSoon"];
-    final appointmentPast = widget.snapshot.data["pass"];
+    final appointmentComingSoon = widget.snapshot.data!.comingSoon;
+    final appointmentPast = widget.snapshot.data!.pass;
     List<Widget> lisViewToShow = [
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListComingAppointment(
           appointmentList: appointmentComingSoon,
+          isPast: false,
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Center(child: Text('jojo')),
+       Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListComingAppointment(
+          appointmentList: appointmentPast,
+          isPast: true,
+        ),
       )
     ];
     return PreferredSize(
