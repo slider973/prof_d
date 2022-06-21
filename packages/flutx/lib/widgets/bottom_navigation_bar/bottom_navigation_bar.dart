@@ -80,11 +80,10 @@ class FxBottomNavigationBar extends StatefulWidget {
       this.activeIconSize,
       this.containerDecoration,
       this.containerShape,
-        this.outerPadding,
-        this.outerMargin,
-        this.containerRadius,
-        this.containerPadding
-      });
+      this.outerPadding,
+      this.outerMargin,
+      this.containerRadius,
+      this.containerPadding});
 
   @override
   _FxBottomNavigationBarState createState() => _FxBottomNavigationBarState();
@@ -249,10 +248,9 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
 
       return (_currentIndex == index)
           ? FxContainer(
-             padding: containerPadding??FxSpacing.all(8),
-
-              borderRadiusAll: containerRadius??8,
-              shape: containerShape??BoxShape.rectangle,
+              padding: containerPadding ?? FxSpacing.all(8),
+              borderRadiusAll: containerRadius ?? 8,
+              shape: containerShape ?? BoxShape.rectangle,
               color: activeContainerColor,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -342,8 +340,8 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
     containerShape = widget.containerShape;
     outerPadding = widget.outerPadding;
     outerMargin = widget.outerMargin;
-    containerRadius=widget.containerRadius;
-    containerPadding=widget.containerPadding;
+    containerRadius = widget.containerRadius;
+    containerPadding = widget.containerPadding;
 
     return Column(
       children: [
@@ -355,8 +353,8 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
           ),
         ),
         Container(
-          padding: outerPadding??FxSpacing.all(16),
-          margin: outerMargin??FxSpacing.zero,
+          padding: outerPadding ?? FxSpacing.all(16),
+          margin: outerMargin ?? FxSpacing.zero,
           decoration: containerDecoration ??
               BoxDecoration(
                 color: backgroundColor,

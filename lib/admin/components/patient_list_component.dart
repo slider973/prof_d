@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 import '../models/parent.dart';
 import '../viewmodels/dahsboard_viewmodel.dart';
 
@@ -38,8 +37,7 @@ class PatientListComponent extends ConsumerWidget {
                   title: GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      _adminDashVM.navigateToChildListScreen(
-                          parent.childList);
+                      _adminDashVM.navigateToChildListScreen(parent.childList);
                     },
                     child: Text(
                         '${parent.lastname.toUpperCase()} ${parent.firstname}'),

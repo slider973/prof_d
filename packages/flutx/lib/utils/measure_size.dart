@@ -9,7 +9,6 @@ import 'package:flutter/scheduler.dart';
 
 typedef void OnWidgetSizeChange(Size? size);
 
-
 class FxMeasureSize extends StatefulWidget {
   final Widget child;
   final OnWidgetSizeChange onChange;

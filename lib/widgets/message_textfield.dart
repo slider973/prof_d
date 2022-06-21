@@ -9,10 +9,8 @@ class MessageTextField extends StatefulWidget {
   final String currentId;
   final String friendId;
 
-  const MessageTextField(
-      this.currentId,
-      this.friendId, {Key? key}
-      ) : super(key: key);
+  const MessageTextField(this.currentId, this.friendId, {Key? key})
+      : super(key: key);
 
   @override
   _MessageTextFieldState createState() => _MessageTextFieldState();

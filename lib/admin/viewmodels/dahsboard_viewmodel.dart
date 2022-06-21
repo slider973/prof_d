@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/utils/navigate.dart';
 import '../models/child.dart';
 import '../models/meeting.dart';
-import '../models/parent.dart';
 import '../models/time_table.dart';
 import '../repos/admin_repo.dart';
 import '../screens/child_list_parent_screen.dart';
@@ -43,14 +42,12 @@ class AdminDashboardModelView extends ChangeNotifier {
       timeTableList.add(newTimeTable);
     }
     for (var timetable in timeTableList) {
-      meetings.add(Meeting(
-          timetable.title, timetable.start, timetable.end, const Color(0xFF009688), timetable.isAllDay));
+      meetings.add(Meeting(timetable.title, timetable.start, timetable.end,
+          const Color(0xFF009688), timetable.isAllDay));
     }
-    print('toto');
+
     return meetings;
   }
-
-
 
   navigateToChildListScreen(List<Child> childList) {
     NavigateUtils.instance.navigationToPageScreen(() => ChildListParentScreen(

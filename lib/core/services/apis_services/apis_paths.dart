@@ -8,16 +8,11 @@ class ApisPaths {
       'https://maps.googleapis.com/maps/api/directions/json';
 
   ///CONNECTION
-  static String signInWithEmailAndPasswordPath() =>
-      '/auth/login';
+  static String signInWithEmailAndPasswordPath() => '/auth/login';
 
-  static String signUpWithEmailAndPasswordPath() =>
-      '/auth/register';
-  static String mePatch() =>
-      '/auth/me';
-
+  static String signUpWithEmailAndPasswordPath() => '/auth/register';
+  static String mePatch() => '/auth/me';
 
   //PROFILE
-  static String updateUserProfilePath() =>
-      '/settings/profile';
+  static String updateUserProfilePath() => '/settings/profile';
 }

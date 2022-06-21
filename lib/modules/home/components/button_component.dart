@@ -8,21 +8,18 @@ class CreateProfileButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 17)),
+      style: ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 17)),
       onPressed: () {
         Navigator.push(
           context,
           PageRouteBuilder(
             pageBuilder: (_, __, ___) => const CreateProfileScreen(),
             transitionDuration: const Duration(milliseconds: 300),
-            transitionsBuilder: (_, animation, __, child) =>
-                SlideTransition(
-                    position: Tween<Offset>(
-                        begin: const Offset(0, 1),
-                        end: Offset.zero)
+            transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                position:
+                    Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
                         .animate(animation),
-                    child: child),
+                child: child),
           ),
         );
       },

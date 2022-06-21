@@ -50,17 +50,15 @@ class HandleChildProfile extends StatelessWidget {
                           create: (context) => ChildProfdBloc())
                     ],
                     child: const CreateChildProfile(
-                    data: null,
-                    action: CreateChildProfileAction.create,
+                      data: null,
+                      action: CreateChildProfileAction.create,
+                    ),
                   ),
-                  ),
-                  transitionDuration:
-                  const Duration(milliseconds: 300),
+                  transitionDuration: const Duration(milliseconds: 300),
                   transitionsBuilder: (_, animation, __, child) =>
                       SlideTransition(
                           position: Tween<Offset>(
-                              begin: const Offset(0, 1),
-                              end: Offset.zero)
+                                  begin: const Offset(0, 1), end: Offset.zero)
                               .animate(animation),
                           child: child),
                 ),
@@ -90,10 +88,9 @@ class HandleChildProfile extends StatelessWidget {
                                     create: (context) => ChildProfdBloc())
                               ],
                               child: CreateChildProfile(
-                                data: data,
-                                action: CreateChildProfileAction.update,
-                                idChild: snapshot.data!.docs[index].id
-                              ),
+                                  data: data,
+                                  action: CreateChildProfileAction.update,
+                                  idChild: snapshot.data!.docs[index].id),
                             ),
                             transitionDuration:
                                 const Duration(milliseconds: 300),
@@ -128,8 +125,7 @@ class CreateChildView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ChildProfdBloc>(
-            create: (context) => ChildProfdBloc())
+        BlocProvider<ChildProfdBloc>(create: (context) => ChildProfdBloc())
       ],
       child: const CreateChildProfile(
         data: null,

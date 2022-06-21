@@ -102,7 +102,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     leading: CircleAvatar(
                       child: Image.network(
                         searchResult[index]['image'],
-
                       ),
                     ),
                     title: Text(

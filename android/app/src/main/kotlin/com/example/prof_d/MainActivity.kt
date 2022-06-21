@@ -1,4 +1,4 @@
-package com.example.prof_d
+package com.jonathanlemaine.profb
 
 import io.flutter.embedding.android.FlutterActivity
 

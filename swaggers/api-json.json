@@ -6,12 +6,7 @@
     "version": "1.0",
     "contact": {}
   },
-  "tags": [
-    {
-      "name": "profd",
-      "description": ""
-    }
-  ],
+  "tags": [],
   "servers": [],
   "components": {
     "securitySchemes": {
@@ -58,6 +53,17 @@
           "accessToken",
           "authorizationCode",
           "type"
+        ]
+      },
+      "RefreshTokenDto": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "refreshToken"
         ]
       },
       "RegisterDto": {
@@ -194,19 +200,40 @@
       },
       "CreateFollowUpDto": {
         "type": "object",
-        "properties": {}
-      },
-      "UpdateFollowUpDto": {
-        "type": "object",
-        "properties": {}
+        "properties": {
+          "stateBefore": {
+            "type": "string"
+          },
+          "stateAfter": {
+            "type": "string"
+          },
+          "child": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "stateBefore",
+          "stateAfter",
+          "child"
+        ]
       },
       "CreateFollowUpDetailDto": {
         "type": "object",
-        "properties": {}
-      },
-      "UpdateFollowUpDetailDto": {
-        "type": "object",
-        "properties": {}
+        "properties": {
+          "appointment": {
+            "type": "string"
+          },
+          "followUpSubjects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "appointment",
+          "followUpSubjects"
+        ]
       },
       "CreateAppointmentDto": {
         "type": "object",
@@ -238,6 +265,17 @@
       "UpdatePdfDto": {
         "type": "object",
         "properties": {}
+      },
+      "CreateFollowUpSubjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
       }
     }
   },
@@ -355,9 +393,25 @@
       "post": {
         "operationId": "AuthController_refreshToken",
         "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenDto"
+              }
+            }
+          }
+        },
         "responses": {
-          "201": {
-            "description": ""
+          "200": {
+            "description": "The user has been successfully created."
+          },
+          "400": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden."
           }
         },
         "tags": [
@@ -1341,7 +1395,10 @@
           "201": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "follow-up"
+        ]
       },
       "get": {
         "operationId": "FollowUpController_findAll",
@@ -1350,12 +1407,15 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "follow-up"
+        ]
       }
     },
-    "/follow-up/{id}": {
+    "/follow-up/child/{id}": {
       "get": {
-        "operationId": "FollowUpController_findOne",
+        "operationId": "FollowUpController_findOneBidChild",
         "parameters": [
           {
             "name": "id",
@@ -1367,56 +1427,19 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      },
-      "patch": {
-        "operationId": "FollowUpController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateFollowUpDto"
-              }
-            }
+          "201": {
+            "description": "The follow-up  has been successfully founded."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden."
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "operationId": "FollowUpController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "tags": [
+          "follow-up"
+        ]
       }
     },
     "/follow-up-details": {
@@ -1435,9 +1458,18 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "The follow-up details has been successfully created."
+          },
+          "400": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden."
           }
-        }
+        },
+        "tags": [
+          "follow-up-details"
+        ]
       },
       "get": {
         "operationId": "FollowUpDetailsController_findAll",
@@ -1446,7 +1478,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "follow-up-details"
+        ]
       }
     },
     "/follow-up-details/{id}": {
@@ -1466,53 +1501,10 @@
           "200": {
             "description": ""
           }
-        }
-      },
-      "patch": {
-        "operationId": "FollowUpDetailsController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateFollowUpDetailDto"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "operationId": "FollowUpDetailsController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "tags": [
+          "follow-up-details"
+        ]
       }
     },
     "/appointment": {
@@ -1777,6 +1769,54 @@
             "description": ""
           }
         }
+      }
+    },
+    "/follow-up-subject": {
+      "post": {
+        "operationId": "FollowUpSubjectController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFollowUpSubjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The follow-up subject has been successfully created."
+          },
+          "400": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden."
+          }
+        },
+        "tags": [
+          "follow-up-subject"
+        ]
+      },
+      "get": {
+        "operationId": "FollowUpSubjectController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The follow-up details has been successfully find all."
+          },
+          "400": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden."
+          }
+        },
+        "tags": [
+          "follow-up-subject"
+        ]
       }
     }
   }

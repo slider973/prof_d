@@ -4,7 +4,6 @@
 
 /// [FxOnBoarding] - Gives a custom page onBoarding widget with 2 buttons for SKIP and DONE.
 
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'animation_gesture/page_dragger.dart';
@@ -19,9 +18,16 @@ class FxOnBoarding extends StatefulWidget {
   final List<PageViewModel> pages;
   final Color selectedIndicatorColor;
   final Color unSelectedIndicatorColor;
-  final Widget skipWidget,doneWidget;
+  final Widget skipWidget, doneWidget;
 
-  const FxOnBoarding({Key? key, required this.pages, required this.selectedIndicatorColor, required this.unSelectedIndicatorColor, required this.skipWidget, required this.doneWidget}) : super(key: key);
+  const FxOnBoarding(
+      {Key? key,
+      required this.pages,
+      required this.selectedIndicatorColor,
+      required this.unSelectedIndicatorColor,
+      required this.skipWidget,
+      required this.doneWidget})
+      : super(key: key);
 
   @override
   _FxOnBoardingState createState() => new _FxOnBoardingState();
@@ -123,8 +129,7 @@ class _FxOnBoardingState extends State<FxOnBoarding>
                 widget.selectedIndicatorColor,
                 widget.unSelectedIndicatorColor,
                 widget.skipWidget,
-                widget.doneWidget
-            ),
+                widget.doneWidget),
           ),
           new FxPageDragger(
             canDragLeftToRight: activeIndex > 0,

@@ -13,7 +13,8 @@ class HoursListButton extends StatelessWidget {
     required this.id,
     required this.fistChild,
     required this.date,
-  }) : _appointmentViewModel = appointmentViewModel, super(key: key);
+  })  : _appointmentViewModel = appointmentViewModel,
+        super(key: key);
 
   final String slot;
   final AppointmentViewModel _appointmentViewModel;

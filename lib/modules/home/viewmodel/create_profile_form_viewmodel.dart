@@ -42,7 +42,9 @@ class CreateProfileFormViewModel extends ChangeNotifier {
 
   sendData(BuildContext context) async {
     removeAllFocus(context);
-    _mainCoreVM.setCurrentUser(userModel: await UserRepo.instance.updateUser(user: buildNewProfileObject()));
+    _mainCoreVM.setCurrentUser(
+        userModel:
+            await UserRepo.instance.updateUser(user: buildNewProfileObject()));
     NavigationService.offAll(
       isNamed: true,
       page: RoutePaths.home,

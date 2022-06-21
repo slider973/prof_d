@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,17 +26,17 @@ class AppLocalizations {
   }
 
   Future<Locale> getUserStoredLocale() async {
-  try {
-    String locale = await HistoryService.instance.restoreData(
-      key: 'user_stored_locale',
-      dataType: DataType.string,
-    ) ??
-        defaultLocal;
+    try {
+      String locale = await HistoryService.instance.restoreData(
+            key: 'user_stored_locale',
+            dataType: DataType.string,
+          ) ??
+          defaultLocal;
 
-    return Locale(locale);
-  } catch(e) {
-    return const Locale('fr');
-  }
+      return Locale(locale);
+    } catch (e) {
+      return const Locale('fr');
+    }
   }
 
   String getLanguageCode() {

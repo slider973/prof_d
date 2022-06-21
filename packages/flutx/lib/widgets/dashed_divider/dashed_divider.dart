@@ -6,14 +6,17 @@
 
 import 'package:flutter/material.dart';
 
-
 class FxDashedDivider extends StatelessWidget {
   final double height;
   final Color color;
   final double dashWidth;
   final double dashSpace;
 
-  const FxDashedDivider({this.height = 1, this.color = Colors.black, this.dashWidth=10, this.dashSpace=10});
+  const FxDashedDivider(
+      {this.height = 1,
+      this.color = Colors.black,
+      this.dashWidth = 10,
+      this.dashSpace = 10});
 
   @override
   Widget build(BuildContext context) {

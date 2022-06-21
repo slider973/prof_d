@@ -11,28 +11,28 @@ childListFutureBuilder(BuildContext context, WidgetRef ref) {
   return FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         // WHILE THE CALL IS BEING MADE AKA LOADING
-        if (ConnectionState.active != null && !snapshot.hasData) {
+        if (!snapshot.hasData) {
           return const Center(child: Text('Loading'));
         }
 
         // WHEN THE CALL IS DONE BUT HAPPENS TO HAVE AN ERROR
-        if (ConnectionState.done != null && snapshot.hasError) {
+        if (snapshot.hasError) {
           return Center(child: Text(snapshot.error.toString()));
         }
         if (_childViewModel.childList.isEmpty) {
           return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //TODO ajouter en valiare dans le fichier de configuration
-                  SvgPicture.asset('assets/images/profile/flying-a-kite.svg',
-                      height: 200),
-                  SizedBox(
-                    height: Sizes.hPaddingSmallest,
-                  ),
-                  const Text('Ajouter un de vos enfants'),
-                ],
-              ));
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //TODO ajouter en valiare dans le fichier de configuration
+              SvgPicture.asset('assets/images/profile/flying-a-kite.svg',
+                  height: 200),
+              SizedBox(
+                height: Sizes.hPaddingSmallest,
+              ),
+              const Text('Ajouter un de vos enfants'),
+            ],
+          ));
         }
 
         return ListView.builder(
@@ -51,7 +51,8 @@ childListFutureBuilder(BuildContext context, WidgetRef ref) {
                       transitionsBuilder: (_, animation, __, child) =>
                           SlideTransition(
                               position: Tween<Offset>(
-                                  begin: const Offset(0, 1), end: Offset.zero)
+                                      begin: const Offset(0, 1),
+                                      end: Offset.zero)
                                   .animate(animation),
                               child: child),
                     ),

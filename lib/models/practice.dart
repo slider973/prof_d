@@ -22,7 +22,8 @@ class Practice {
     List<OpeningHours>? openingHours,
     String? practiceFloor,
     List<String>? accessInformations,
-    String? placeSlug,}){
+    String? placeSlug,
+  }) {
     _id = id;
     _address = address;
     _zipcode = zipcode;
@@ -71,7 +72,9 @@ class Practice {
       });
     }
     _practiceFloor = json['practice_floor'];
-    _accessInformations = json['access_informations'] != null ? json['access_informations'].cast<String>() : [];
+    _accessInformations = json['access_informations'] != null
+        ? json['access_informations'].cast<String>()
+        : [];
     _placeSlug = json['place_slug'];
   }
   int? _id;
@@ -145,5 +148,4 @@ class Practice {
     map['place_slug'] = _placeSlug;
     return map;
   }
-
 }

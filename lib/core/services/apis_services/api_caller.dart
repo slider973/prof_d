@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../api_prof_d/api_json.swagger.dart';
 import '../../utils/dialogs.dart';
 
+
+
+// TODO remove
 class ApisCaller {
   ApisCaller._() {
     dio = Dio(
       BaseOptions(
-          baseUrl: 'http://localhost:3000',
+          baseUrl: 'http://192.168.68.120:3000',
           connectTimeout: 20000,
           receiveTimeout: 20000),
     );
@@ -19,7 +22,7 @@ class ApisCaller {
   late Dio dio;
 
   getApiJsonInstance() {
-    return ApiJson.create(baseUrl: 'http://localhost:3000');
+    return ApiJson.create(baseUrl: 'http://192.168.68.120:3000');
   }
 
   Future<T> getData<T>({
@@ -34,7 +37,6 @@ class ApisCaller {
       }
       return builder(null);
     } catch (e) {
-      debugPrint(e.toString());
       AppDialogs.showDefaultErrorDialog();
       return builder(null);
     }
@@ -53,7 +55,6 @@ class ApisCaller {
       }
       return builder(null);
     } on DioError catch (e) {
-      print(e.response.toString());
       AppDialogs.showDefaultErrorDialog();
       return builder(null);
     }
@@ -72,7 +73,6 @@ class ApisCaller {
       }
       return builder(null);
     } on DioError catch (e) {
-      print(e.response.toString());
       AppDialogs.showDefaultErrorDialog();
       return builder(null);
     }

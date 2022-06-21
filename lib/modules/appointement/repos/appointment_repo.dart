@@ -6,14 +6,12 @@ class AppointmentRepo {
   final AuthService _authService = AuthService.instance;
 
   AppointmentRepo._();
-
+  final ApiJson apiJson = ApiJsonCaller.instance.apiJsonInstance!;
   static final AppointmentRepo instance = AppointmentRepo._();
 
   createAppointment(CreateAppointmentDto body) async {
-    final userToken = await _authService.getUserTokenApiStored();
-    final ApiJson apiJson =
-    ApiJsonCaller.instance.getInstanceWithAuth(userToken!)!;
     final result = await apiJson.appointmentPost(body: body);
+    print(result.headers);
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
         return result.body;

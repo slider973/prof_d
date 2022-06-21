@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class ProfdTextFieldComponent extends StatelessWidget {
@@ -19,21 +16,21 @@ class ProfdTextFieldComponent extends StatelessWidget {
       padding: const EdgeInsets.only(left: 18.0, right: 50.0, top: 20.0),
       child: TextFormField(
         decoration: InputDecoration(
-            labelText: labelText,
-            fillColor: Colors.white,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                color: Colors.teal,
-              ),
+          labelText: labelText,
+          fillColor: Colors.white,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: const BorderSide(
+              color: Colors.teal,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                color: Colors.black,
-                width: 0.5,
-              ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 0.5,
             ),
+          ),
         ),
         // The validator receives the text that the user has entered.
         validator: (value) {

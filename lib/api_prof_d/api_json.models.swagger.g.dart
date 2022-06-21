@@ -32,6 +32,16 @@ Map<String, dynamic> _$AppleLoginDtoToJson(AppleLoginDto instance) =>
       'type': instance.type,
     };
 
+RefreshTokenDto _$RefreshTokenDtoFromJson(Map<String, dynamic> json) =>
+    RefreshTokenDto(
+      refreshToken: json['refreshToken'] as String?,
+    );
+
+Map<String, dynamic> _$RefreshTokenDtoToJson(RefreshTokenDto instance) =>
+    <String, dynamic>{
+      'refreshToken': instance.refreshToken,
+    };
+
 RegisterDto _$RegisterDtoFromJson(Map<String, dynamic> json) => RegisterDto(
       password: json['password'] as String?,
       email: json['email'] as String?,
@@ -158,32 +168,35 @@ Map<String, dynamic> _$UpdateTimeTableDtoToJson(UpdateTimeTableDto instance) =>
     <String, dynamic>{};
 
 CreateFollowUpDto _$CreateFollowUpDtoFromJson(Map<String, dynamic> json) =>
-    CreateFollowUpDto();
+    CreateFollowUpDto(
+      stateBefore: json['stateBefore'] as String?,
+      stateAfter: json['stateAfter'] as String?,
+      child: json['child'] as String?,
+    );
 
 Map<String, dynamic> _$CreateFollowUpDtoToJson(CreateFollowUpDto instance) =>
-    <String, dynamic>{};
-
-UpdateFollowUpDto _$UpdateFollowUpDtoFromJson(Map<String, dynamic> json) =>
-    UpdateFollowUpDto();
-
-Map<String, dynamic> _$UpdateFollowUpDtoToJson(UpdateFollowUpDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'stateBefore': instance.stateBefore,
+      'stateAfter': instance.stateAfter,
+      'child': instance.child,
+    };
 
 CreateFollowUpDetailDto _$CreateFollowUpDetailDtoFromJson(
         Map<String, dynamic> json) =>
-    CreateFollowUpDetailDto();
+    CreateFollowUpDetailDto(
+      appointment: json['appointment'] as String?,
+      followUpSubjects: (json['followUpSubjects'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
 
 Map<String, dynamic> _$CreateFollowUpDetailDtoToJson(
         CreateFollowUpDetailDto instance) =>
-    <String, dynamic>{};
-
-UpdateFollowUpDetailDto _$UpdateFollowUpDetailDtoFromJson(
-        Map<String, dynamic> json) =>
-    UpdateFollowUpDetailDto();
-
-Map<String, dynamic> _$UpdateFollowUpDetailDtoToJson(
-        UpdateFollowUpDetailDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'appointment': instance.appointment,
+      'followUpSubjects': instance.followUpSubjects,
+    };
 
 CreateAppointmentDto _$CreateAppointmentDtoFromJson(
         Map<String, dynamic> json) =>
@@ -220,3 +233,15 @@ UpdatePdfDto _$UpdatePdfDtoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$UpdatePdfDtoToJson(UpdatePdfDto instance) =>
     <String, dynamic>{};
+
+CreateFollowUpSubjectDto _$CreateFollowUpSubjectDtoFromJson(
+        Map<String, dynamic> json) =>
+    CreateFollowUpSubjectDto(
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$CreateFollowUpSubjectDtoToJson(
+        CreateFollowUpSubjectDto instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+    };

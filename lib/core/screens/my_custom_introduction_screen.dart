@@ -70,14 +70,14 @@ class _MyCustomIntroductionScreenState
           PageViewModel(
             title: "Création de profil",
             body:
-            "Commencer par créer un profil afin de rajouter votre enfant et prendre des rendez-vous.",
+                "Commencer par créer un profil afin de rajouter votre enfant et prendre des rendez-vous.",
             image: _buildImage('profile.jpg'),
             decoration: pageDecoration,
           ),
           PageViewModel(
             title: "Ajout d'un enfant",
             body:
-            "Ajouter votre enfant à votre profil afin de lui pendre un rendez-vous.",
+                "Ajouter votre enfant à votre profil afin de lui pendre un rendez-vous.",
             image: _buildImage('4238140.jpg'),
             decoration: pageDecoration,
           ),
@@ -95,7 +95,8 @@ class _MyCustomIntroductionScreenState
         showBackButton: false,
         showSkipButton: true,
         skip: const Text("Passer à la fin"),
-        done: const Text("Terminer", style: TextStyle(fontWeight: FontWeight.w600)),
+        done: const Text("Terminer",
+            style: TextStyle(fontWeight: FontWeight.w600)),
       ),
     ]);
   }

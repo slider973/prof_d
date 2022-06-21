@@ -13,10 +13,10 @@ class PatientSectionComponent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final adminDashboardMV = ref.watch<AdminDashboardModelView>(adminDashboardModelViewProvider);
+    final adminDashboardMV =
+        ref.watch<AdminDashboardModelView>(adminDashboardModelViewProvider);
     return Padding(
-      padding: const EdgeInsets.only(
-          right: 8.0, top: 1.0, bottom: 8.0),
+      padding: const EdgeInsets.only(right: 8.0, top: 1.0, bottom: 8.0),
       child: GestureDetector(
         onTap: () {
           if (kDebugMode) {
@@ -26,8 +26,7 @@ class PatientSectionComponent extends ConsumerWidget {
         },
         child: Card(
           child: Column(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomText.h3(
                 context,

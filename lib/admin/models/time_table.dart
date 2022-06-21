@@ -46,14 +46,14 @@ class TimeTable {
   String toJson() => json.encode(toMap());
 
   factory TimeTable.fromMap(Map<String, dynamic> json) => TimeTable(
-    id: json["_id"],
-    title: json["title"] ?? '',
-    start: DateTime.parse(json["start"]),
-    end: DateTime.parse(json["end"]),
-    desc: json["desc"] ?? '',
-    isAllDay: json["isAllDay"],
-    isAvailable: json["isAvailable"],
-  );
+        id: json["_id"],
+        title: json["title"] ?? '',
+        start: DateTime.parse(json["start"]),
+        end: DateTime.parse(json["end"]),
+        desc: json["desc"] ?? '',
+        isAllDay: json["isAllDay"],
+        isAvailable: json["isAvailable"],
+      );
 
   Map<String, dynamic> toMap() => {
         "_id": id,

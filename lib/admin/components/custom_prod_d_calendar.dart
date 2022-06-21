@@ -19,8 +19,6 @@ class CustomProfDCalendar extends StatelessWidget {
 
   CustomProfDCalendar({Key? key, required this.meetings}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     return SfCalendar(

@@ -9,24 +9,24 @@ class Sizes {
 
   //Font sizes
   static get fontSizes => {
-    "h1": 32.0.sp,
-    "h2": 24.0.sp,
-    "h3": 20.0.sp,
-    "h4": 17.0.sp,
-    "h5": 14.0.sp,
-    "h6": 12.0.sp,
-  };
+        "h1": 32.0.sp,
+        "h2": 24.0.sp,
+        "h3": 20.0.sp,
+        "h4": 17.0.sp,
+        "h5": 14.0.sp,
+        "h6": 12.0.sp,
+      };
 
   //Icons sizes
   static get iconsSizes => {
-    "s1": 95.r,
-    "s2": 70.r,
-    "s3": 48.r,
-    "s4": 32.r,
-    "s5": 24.r,
-    "s6": 19.r,
-    "s7": 14.r,
-  };
+        "s1": 95.r,
+        "s2": 70.r,
+        "s3": 48.r,
+        "s4": 32.r,
+        "s5": 24.r,
+        "s6": 19.r,
+        "s7": 14.r,
+      };
 
   //Screens Padding
   static get screenVPaddingDefault => 20.h;

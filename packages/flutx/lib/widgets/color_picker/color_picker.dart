@@ -25,7 +25,9 @@ class FxColorPicker extends StatelessWidget {
         itemCount: colors.length,
         itemBuilder: (BuildContext context, int index) {
           Color newColor = colors[index];
-          bool selected = (colors.contains(selectedColor)) ? ( newColor == selectedColor) : (index==0);
+          bool selected = (colors.contains(selectedColor))
+              ? (newColor == selectedColor)
+              : (index == 0);
           return InkWell(
             onTap: () {
               onChangeColor(newColor);

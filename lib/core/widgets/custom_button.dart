@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../styles/app_colors.dart';
 import '../styles/font_styles.dart';
 import '../styles/sizes.dart';
@@ -55,10 +54,10 @@ class CustomButton extends StatelessWidget {
         ),
         decoration: buttonColor == null
             ? BoxDecoration(
-          borderRadius: gradientBorderRadius ??
-              BorderRadius.circular(Sizes.roundedButtonDefaultRadius),
-          gradient: gradientColor ?? AppColors.primaryIngredientColor,
-        )
+                borderRadius: gradientBorderRadius ??
+                    BorderRadius.circular(Sizes.roundedButtonDefaultRadius),
+                gradient: gradientColor ?? AppColors.primaryIngredientColor,
+              )
             : null,
         child: child ??
             CustomText.h4(

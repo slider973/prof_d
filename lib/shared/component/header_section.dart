@@ -11,7 +11,7 @@ Column headerSection(String text, BuildContext context) {
       Wrap(
         children: [
           Padding(
-            padding:  EdgeInsets.all(Sizes.hPaddingSmallest),
+            padding: EdgeInsets.all(Sizes.hPaddingSmallest),
             child: CustomText.h2(
               context,
               text,

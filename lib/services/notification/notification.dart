@@ -44,8 +44,7 @@ class PushNotificationService {
       _notifications.show(id, title, body, await _notificationDetails(),
           payload: payload);
 
-  initKIsWeb(
-      AndroidNotificationChannel _channel,
+  initKIsWeb(AndroidNotificationChannel _channel,
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     _channel = const AndroidNotificationChannel(
       'high_importance_channel', // id

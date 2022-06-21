@@ -1,10 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../../../authentification/http_client/custom_chooper_client.dart';
+import '../../../authentification/services/api_json_caller.dart';
 import 'connectivity_service.dart';
 import 'firebase_messaging_service.dart';
 import 'history_service.dart';
 import 'local_notification_service.dart';
+import 'push_notification_service.dart';
 import 'theme_service.dart';
 
 import '../../localization/app_localization.dart';
@@ -19,6 +22,7 @@ class ServiceInitializer {
     List futures = [
       initializeLocalization(),
       initializeScreensOrientation(),
+      initializeClientHttp()
     ];
 
     if (!kIsWeb) {
@@ -36,6 +40,11 @@ class ServiceInitializer {
     return result;
   }
 
+  initializeClientHttp() async {
+   final client = CustomChopperClient.createChopperClient();
+   ApiJsonCaller.instance.initClient(client);
+  }
+
   initializeLocalization() async {
     return await AppLocalizations.instance.getUserStoredLocale();
   }
@@ -51,10 +60,14 @@ class ServiceInitializer {
   initializeNotificationSettings() async {
     await LocalNotificationService.instance.initNotificationSettings();
   }
+  initPushNotificationSettings() async {
+    await PushNotificationService.instance.initPushNotificationSettings();
+  }
 
   initializeFirebase() async {
     await Firebase.initializeApp();
     await initializeFirebaseMessaging();
+    await initPushNotificationSettings();
   }
 
   initializeFirebaseMessaging() async {

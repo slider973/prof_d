@@ -3,8 +3,8 @@ import 'controller.dart';
 class FxControllerStore {
   static final Map<String, FxController> _controllers = {};
 
-  static T putOrFind<T extends FxController>(T controller, {String? tag, bool save=true}) {
-
+  static T putOrFind<T extends FxController>(T controller,
+      {String? tag, bool save = true}) {
     String key = tag ?? controller.getTag();
 
     if (_controllers.containsKey(key)) {
@@ -16,7 +16,8 @@ class FxControllerStore {
     }
   }
 
-  static T put<T extends FxController>(T controller, {String? tag, bool save=true}) {
+  static T put<T extends FxController>(T controller,
+      {String? tag, bool save = true}) {
     String key = tag ?? controller.getTag();
 
     _controllers[key] = controller;
@@ -25,14 +26,13 @@ class FxControllerStore {
     return controller;
   }
 
-  static void delete<T extends FxController>(T controller, {String? tag}){
+  static void delete<T extends FxController>(T controller, {String? tag}) {
     String key = tag ?? controller.getTag();
 
     _controllers.remove(key);
   }
 
-  static void resetStore(){
+  static void resetStore() {
     _controllers.clear();
   }
-
 }

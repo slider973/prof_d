@@ -23,10 +23,7 @@ class HeaderWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          width: MediaQuery.of(context).size.width,
           height: Sizes.designHeightSmallest,
           child: headerSection(title, context),
           decoration: myCustomBoxDecorationWithBorderRadius(),
@@ -37,5 +34,3 @@ class HeaderWidget extends StatelessWidget {
     );
   }
 }
-
-

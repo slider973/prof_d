@@ -4,6 +4,7 @@ import 'package:location/location.dart';
 const int locationChangeInterval = 5000; //in milliseconds
 const double locationChangeDistance = 5.0; //in meters
 const double locationArriveDistance = 200.0; //in meters
+
 class LocationService {
   LocationService._();
 

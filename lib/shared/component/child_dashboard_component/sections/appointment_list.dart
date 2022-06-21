@@ -5,9 +5,9 @@ import '../../../../modules/appointement/models/appointment.dart';
 import 'list_of_future_appointment.dart';
 
 class MenuSectionStyleAppointment extends StatefulWidget {
-  final AsyncSnapshot<Appointment> snapshot;
+  final AsyncSnapshot<Appointment> appointment;
 
-  const MenuSectionStyleAppointment({required this.snapshot, Key? key})
+  const MenuSectionStyleAppointment({required this.appointment, Key? key})
       : super(key: key);
 
   @override
@@ -21,8 +21,8 @@ class _MenuSectionStyleAppointmentState
 
   @override
   Widget build(BuildContext context) {
-    final appointmentComingSoon = widget.snapshot.data!.comingSoon;
-    final appointmentPast = widget.snapshot.data!.pass;
+    final appointmentComingSoon = widget.appointment.data!.comingSoon;
+    final appointmentPast = widget.appointment.data!.pass;
     List<Widget> lisViewToShow = [
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,7 +31,7 @@ class _MenuSectionStyleAppointmentState
           isPast: false,
         ),
       ),
-       Padding(
+      Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListComingAppointment(
           appointmentList: appointmentPast,
@@ -48,24 +48,25 @@ class _MenuSectionStyleAppointmentState
         child: CupertinoPageScaffold(
           backgroundColor: Colors.grey[300],
           navigationBar: CupertinoNavigationBar(
-              backgroundColor: Colors.grey[300],
-              border: null,
-              automaticallyImplyLeading: false,
-              middle: CupertinoSegmentedControl(
-                groupValue: count,
-                onValueChanged: (int value) {
-                  setState(() {
-                    count = value;
-                  });
-                },
-                children: const {
-                  0: Padding(
-                    padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Text('À venir'),
-                  ),
-                  1: Text('Passés')
-                },
-              )),
+            backgroundColor: Colors.grey[300],
+            border: null,
+            automaticallyImplyLeading: false,
+            middle: CupertinoSegmentedControl(
+              groupValue: count,
+              onValueChanged: (int value) {
+                setState(() {
+                  count = value;
+                });
+              },
+              children: const {
+                0: Padding(
+                  padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: Text('À venir'),
+                ),
+                1: Text('Passés')
+              },
+            ),
+          ),
           child: lisViewToShow[count],
         ),
       ),

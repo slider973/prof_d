@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "513910592098",
+    "firebase_url": "https://sylvie-profd-default-rtdb.firebaseio.com",
+    "project_id": "sylvie-profd",
+    "storage_bucket": "sylvie-profd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513910592098:android:fbad5b70acf0b644f8f73b",
+        "android_client_info": {
+          "package_name": "com.jonathanlemaine.profb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513910592098-388bn6cuij5nc8026efa0og0dhgjf0bg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrUKyS383zXEeT1OncinDBaV-t6elMmLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513910592098-388bn6cuij5nc8026efa0og0dhgjf0bg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "513910592098-kr0h0l7it6bsjg3hvv9t7q9lvsg92ove.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jonathanlemaine.profb",
+                "app_store_id": "121142430"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

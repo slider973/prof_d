@@ -13,7 +13,8 @@ class ChatScreen extends StatelessWidget {
   final String friendName;
   final String friendImage;
 
-  const ChatScreen({Key? key,
+  const ChatScreen({
+    Key? key,
     required this.currentUser,
     required this.friendId,
     required this.friendName,
@@ -35,7 +36,8 @@ class ChatScreen extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: friendImage,
-                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(
                     Icons.error,
                   ),
@@ -75,9 +77,9 @@ class ChatScreen extends StatelessWidget {
                     .doc(friendId)
                     .collection('chats')
                     .orderBy(
-                  "date",
-                  descending: true,
-                )
+                      "date",
+                      descending: true,
+                    )
                     .snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {

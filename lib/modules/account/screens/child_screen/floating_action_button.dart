@@ -8,16 +8,13 @@ FloatingActionButton childFloatingButtonAction(BuildContext context) {
       Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (_, __, ___) =>  CreateChildScreen(),
-          transitionDuration:
-          const Duration(milliseconds: 300),
-          transitionsBuilder: (_, animation, __, child) =>
-              SlideTransition(
-                  position: Tween<Offset>(
-                      begin: const Offset(0, 1),
-                      end: Offset.zero)
+          pageBuilder: (_, __, ___) => CreateChildScreen(),
+          transitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (_, animation, __, child) => SlideTransition(
+              position:
+                  Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
                       .animate(animation),
-                  child: child),
+              child: child),
         ),
       );
     },

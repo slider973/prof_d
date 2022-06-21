@@ -2,7 +2,8 @@ class PaymentMeans {
   PaymentMeans({
     String? cash,
     String? check,
-    String? creditCard,}){
+    String? creditCard,
+  }) {
     _cash = cash;
     _check = check;
     _creditCard = creditCard;
@@ -28,5 +29,4 @@ class PaymentMeans {
     map['credit_card'] = _creditCard;
     return map;
   }
-
 }

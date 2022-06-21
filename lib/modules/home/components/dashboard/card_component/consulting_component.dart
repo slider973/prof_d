@@ -17,7 +17,7 @@ class ConsultingComponent extends ConsumerWidget {
     final lastnameFirstAppointment =
         _homeVM.appointmentList.comingSoon.first.patient.lastname;
     final hours =
-    DateTime.parse(_homeVM.appointmentList.comingSoon.first.appointment);
+        DateTime.parse(_homeVM.appointmentList.comingSoon.first.appointment);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -65,8 +65,6 @@ class ConsultingComponent extends ConsumerWidget {
           SizedBox(
             height: Sizes.vPaddingSmall,
           ),
-
-
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -100,9 +98,7 @@ class ConsultingComponent extends ConsumerWidget {
               ),
               CustomText.h3(
                 context,
-                DateParser.instance
-                    .convertHourUTCToFrLocal(hours)
-                    .toString(),
+                DateParser.instance.convertHourUTCToFrLocal(hours).toString(),
               )
             ],
           ),

@@ -5,7 +5,7 @@ import '../../core/styles/sizes.dart';
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_field.dart';
 import '../../core/widgets/loading_indicators.dart';
-import '../viewmodels/auth_loading_provider_view_model.dart';
+import '../viewmodels/auth_loading_provider_viewmodel.dart';
 import '../viewmodels/auth_viewmodel.dart';
 
 class RegisterFormComponent extends ConsumerWidget {
@@ -60,7 +60,6 @@ class RegisterFormComponent extends ConsumerWidget {
             hintText: 'Mot de passe',
             key: const ValueKey('password'),
           ),
-
           CustomTextField(
             controller: authVM.confirmPasswordController,
             validator: authVM.validateConfirmLoginPassword(),

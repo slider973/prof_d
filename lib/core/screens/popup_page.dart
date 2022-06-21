@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,7 +54,7 @@ class PopUpPage extends StatelessWidget {
     this.showUpperShadow = false,
     this.safeAreaBottom,
   })  : assert((appBarSkippable ^ (skipBehaviour == null)) &&
-      (appBarWithMenu ^ (scaffoldKey == null))),
+            (appBarWithMenu ^ (scaffoldKey == null))),
         super(key: key);
 
   @override
@@ -75,31 +74,31 @@ class PopUpPage extends StatelessWidget {
           resizeToAvoidBottomInset: resizeToAvoidBottomInset,
           appBar: appBarSkippable
               ? CustomAppBar.skippable(
-            context,
-            children: appbarItems,
-            backButtonColor: backButtonColor,
-            height: appbarHeight,
-            skipBehaviour: skipBehaviour!,
-          )
+                  context,
+                  children: appbarItems,
+                  backButtonColor: backButtonColor,
+                  height: appbarHeight,
+                  skipBehaviour: skipBehaviour!,
+                )
               : appBarWithMenu
-              ? CustomAppBar.withMenu(
-            context,
-            scaffoldKey: scaffoldKey!,
-            children: appbarItems,
-            menuButtonColor: AppColors.primaryColor,
-          )
-              : appBarWithBack
-              ? CustomAppBar(
-            context,
-            canPop: true,
-            children: appbarItems,
-            height: appbarHeight,
-            backButtonColor: backButtonColor,
-            result: result,
-            color: appBarColor,
-            backButtonWidget: backButtonWidget,
-          )
-              : null,
+                  ? CustomAppBar.withMenu(
+                      context,
+                      scaffoldKey: scaffoldKey!,
+                      children: appbarItems,
+                      menuButtonColor: AppColors.primaryColor,
+                    )
+                  : appBarWithBack
+                      ? CustomAppBar(
+                          context,
+                          canPop: true,
+                          children: appbarItems,
+                          height: appbarHeight,
+                          backButtonColor: backButtonColor,
+                          result: result,
+                          color: appBarColor,
+                          backButtonWidget: backButtonWidget,
+                        )
+                      : null,
           drawer: drawer,
           floatingActionButton: floatingActionButton,
           body: Stack(alignment: Alignment.center, children: [

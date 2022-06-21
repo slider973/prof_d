@@ -4,7 +4,6 @@ abstract class UserProfdEvent extends Equatable {
   const UserProfdEvent();
 }
 
-
 class CreateUserProfdEvent extends UserProfdEvent {
   final UserProfd user;
   const CreateUserProfdEvent(this.user);
@@ -18,7 +17,6 @@ class SetUserProfdEvent extends UserProfdEvent {
 
   const SetUserProfdEvent(this.user);
 
-
   @override
   List<Object?> get props => [user];
 }
@@ -30,4 +28,3 @@ class UpdateUserProfdEvent extends UserProfdEvent {
   @override
   List<Object?> get props => [user];
 }
-

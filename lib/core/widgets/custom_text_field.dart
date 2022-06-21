@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -48,117 +47,117 @@ class CustomTextField extends Container {
     List<TextInputFormatter>? inputFormatters,
     Key? key,
   }) : super(
-    key: key,
-    height: height,
-    margin: margin,
-    padding: padding,
-    child: Column(
-      children: [
-        TextFormField(
-          maxLength: maxLength,
-          readOnly: readonly,
-          autofocus: autoFocus,
-          controller: controller,
-          initialValue: initialValue,
-          maxLines: maxLines,
-          minLines: minLines,
-          expands: expands,
-          keyboardType: keyboardType,
-          textInputAction: textInputAction,
-          style: TextStyle(
-            color: textColor,
-            fontFamily: FontStyles.fontFamily,
+          key: key,
+          height: height,
+          margin: margin,
+          padding: padding,
+          child: Column(
+            children: [
+              TextFormField(
+                maxLength: maxLength,
+                readOnly: readonly,
+                autofocus: autoFocus,
+                controller: controller,
+                initialValue: initialValue,
+                maxLines: maxLines,
+                minLines: minLines,
+                expands: expands,
+                keyboardType: keyboardType,
+                textInputAction: textInputAction,
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: FontStyles.fontFamily,
+                ),
+                textDirection: textDirection,
+                validator: validator,
+                inputFormatters: inputFormatters,
+                onChanged: onChanged,
+                onSaved: onSaved,
+                enabled: enabled,
+                focusNode: focusNode,
+                cursorColor: cursorColor,
+                onFieldSubmitted: onFieldSubmitted,
+                obscureText: obscureText,
+                key: formFieldKey,
+                decoration: //inputDecoration ??
+                    InputDecoration(
+                  prefixIcon: prefix,
+                  errorStyle: TextStyle(
+                    color: validationColor ?? const Color(0xffff0000),
+                    fontWeight:
+                        validationFontWeight ?? FontStyles.fontWeightNormal,
+                    fontSize: validationFontSize ?? Sizes.fontSizes["h5"],
+                    fontFamily: FontStyles.fontFamily,
+                  ),
+                  fillColor: fillColor,
+                  filled: true,
+                  contentPadding: contentPadding ??
+                      (AppLocalizations.instance.isAr()
+                          ? EdgeInsets.only(
+                              right: Sizes.textFieldHPaddingMedium,
+                            )
+                          : EdgeInsets.only(
+                              left: Sizes.textFieldHPaddingMedium,
+                            )),
+                  suffixIcon: suffixIcon != null
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Sizes.hPaddingSmallest,
+                            vertical: Sizes.vPaddingSmallest,
+                          ),
+                          child: suffixIcon,
+                        )
+                      : null,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Sizes.textFieldDefaultRadius),
+                    ),
+                    borderSide: const BorderSide(
+                      color: AppColors.grey,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Sizes.textFieldDefaultRadius),
+                    ),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Sizes.textFieldDefaultRadius),
+                    ),
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Sizes.textFieldDefaultRadius),
+                    ),
+                    borderSide: BorderSide(
+                      color: validationColor ?? const Color(0xffff0000),
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Sizes.textFieldDefaultRadius),
+                    ),
+                    borderSide: BorderSide(
+                      color: validationColor ?? const Color(0xffff0000),
+                    ),
+                  ),
+                  hintText: hintText ?? hintText!.tr,
+                  hintStyle: TextStyle(
+                    fontFamily: FontStyles.fontFamily,
+                    fontSize: Sizes.fontSizes['h5'],
+                    fontWeight: FontStyles.fontWeightBold,
+                    color: hintTextColor,
+                  ),
+                ),
+              ),
+            ],
           ),
-          textDirection: textDirection,
-          validator: validator,
-          inputFormatters: inputFormatters,
-          onChanged: onChanged,
-          onSaved: onSaved,
-          enabled: enabled,
-          focusNode: focusNode,
-          cursorColor: cursorColor,
-          onFieldSubmitted: onFieldSubmitted,
-          obscureText: obscureText,
-          key: formFieldKey,
-          decoration: //inputDecoration ??
-          InputDecoration(
-            prefixIcon: prefix,
-            errorStyle: TextStyle(
-              color: validationColor ?? const Color(0xffff0000),
-              fontWeight:
-              validationFontWeight ?? FontStyles.fontWeightNormal,
-              fontSize: validationFontSize ?? Sizes.fontSizes["h5"],
-              fontFamily: FontStyles.fontFamily,
-            ),
-            fillColor: fillColor,
-            filled: true,
-            contentPadding: contentPadding ??
-                (AppLocalizations.instance.isAr()
-                    ? EdgeInsets.only(
-                  right: Sizes.textFieldHPaddingMedium,
-                )
-                    : EdgeInsets.only(
-                  left: Sizes.textFieldHPaddingMedium,
-                )),
-            suffixIcon: suffixIcon != null
-                ? Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Sizes.hPaddingSmallest,
-                vertical: Sizes.vPaddingSmallest,
-              ),
-              child: suffixIcon,
-            )
-                : null,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(Sizes.textFieldDefaultRadius),
-              ),
-              borderSide: const BorderSide(
-                color: AppColors.grey,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(Sizes.textFieldDefaultRadius),
-              ),
-              borderSide: const BorderSide(
-                color: AppColors.primaryColor,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(Sizes.textFieldDefaultRadius),
-              ),
-              borderSide: BorderSide(
-                color: Colors.grey.shade400,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(Sizes.textFieldDefaultRadius),
-              ),
-              borderSide: BorderSide(
-                color: validationColor ?? const Color(0xffff0000),
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(Sizes.textFieldDefaultRadius),
-              ),
-              borderSide: BorderSide(
-                color: validationColor ?? const Color(0xffff0000),
-              ),
-            ),
-            hintText: hintText ?? hintText!.tr,
-            hintStyle: TextStyle(
-              fontFamily: FontStyles.fontFamily,
-              fontSize: Sizes.fontSizes['h5'],
-              fontWeight: FontStyles.fontWeightBold,
-              color: hintTextColor,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+        );
 }

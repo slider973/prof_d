@@ -18,7 +18,8 @@ class HandleUpdateProfile extends StatelessWidget {
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: _usersStream,
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
               return const Text('Something went wrong');
             }
@@ -28,8 +29,9 @@ class HandleUpdateProfile extends StatelessWidget {
             }
             final document = snapshot.data!.docs.firstWhere((document) =>
                 document.id == FirebaseAuth.instance.currentUser!.uid);
-            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-            return  CreateProfileScreen();
+            Map<String, dynamic> data =
+                document.data()! as Map<String, dynamic>;
+            return CreateProfileScreen();
           }),
     );
   }

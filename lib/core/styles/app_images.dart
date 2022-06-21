@@ -13,7 +13,6 @@ class AppImages {
   static const String appScreensIconsPath = appIconsPath + 'screens_icons/';
   static const String appLanguagesIconsPath = appIconsPath + 'languages_icons/';
 
-
   /// Splash Screen + OnBoarding
   static const String splash = welcomeImagesPath + 'splash.png';
   static const String splashAnimation = jsonPath + 'splash_animation.json';
@@ -49,8 +48,7 @@ class AppImages {
   //Languages Icons
   static const String languageIconEnglish =
       appLanguagesIconsPath + 'english.png';
-  static const String languageIconArabic =
-      appLanguagesIconsPath + 'arabic.png';
+  static const String languageIconArabic = appLanguagesIconsPath + 'arabic.png';
   //Map
   static const String mapLightStyle = jsonPath + 'map_styles/light.json';
   static const String mapDarkStyle = jsonPath + 'map_styles/dark.json';

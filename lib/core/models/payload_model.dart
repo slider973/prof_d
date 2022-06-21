@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class   PayloadModel {
+class PayloadModel {
   final String route;
   final Map<String, dynamic>? data;
 

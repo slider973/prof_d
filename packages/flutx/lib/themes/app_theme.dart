@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 enum FxAppThemeType { light, dark }
 
 class FxAppTheme {
-
   static FxAppThemeType defaultThemeType = FxAppThemeType.light;
 
   static TextDirection _textDirection = TextDirection.ltr;
@@ -25,13 +24,11 @@ class FxAppTheme {
   static TextDirection get textDirection => _textDirection;
 
   // ignore: unnecessary_getters_setters
-  static set textDirection(TextDirection textDirection){
+  static set textDirection(TextDirection textDirection) {
     _textDirection = textDirection;
   }
 
-
   static ThemeData get theme => FxAppTheme.getThemeFromThemeMode();
-
 
   static ThemeData lightTheme = ThemeData.light().copyWith(
     brightness: Brightness.light,
@@ -65,7 +62,6 @@ class FxAppTheme {
         surface: Color(0xffe2e7f1),
         background: Color(0xfffefefe),
         onBackground: Color(0xff495057)),
-
     cardTheme: CardTheme(
       color: Colors.white,
       shadowColor: Colors.black.withOpacity(0.4),
@@ -91,7 +87,6 @@ class FxAppTheme {
     iconTheme: IconThemeData(
       color: Colors.white,
     ),
-
     indicatorColor: Colors.white,
     disabledColor: Color(0xffdcc7ff),
     highlightColor: Colors.white,
@@ -108,7 +103,6 @@ class FxAppTheme {
     cardColor: Colors.white,
     popupMenuTheme: PopupMenuThemeData(
       color: Color(0xffffffff),
-
     ),
     bottomAppBarTheme:
         BottomAppBarTheme(color: Color(0xffffffff), elevation: 2),
@@ -172,10 +166,7 @@ class FxAppTheme {
       indicatorColor: Colors.white,
       disabledColor: Color(0xffa3a3a3),
       highlightColor: Colors.white,
-
-
       inputDecorationTheme: InputDecorationTheme(
-
         fillColor: Color(0xff3E444A),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -183,15 +174,12 @@ class FxAppTheme {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide(width: 1,
-              color: Colors.white70),
+          borderSide: BorderSide(width: 1, color: Colors.white70),
         ),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(4)),
             borderSide: BorderSide(width: 1, color: Colors.white70)),
       ),
-
-
       dividerColor: Color(0xff363636),
       errorColor: Colors.orange,
       cardColor: Color(0xff282a2b),
@@ -206,7 +194,6 @@ class FxAppTheme {
           foregroundColor: Colors.white),
       popupMenuTheme: PopupMenuThemeData(
         color: Color(0xff37404a),
-
       ),
       bottomAppBarTheme:
           BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
@@ -248,17 +235,15 @@ class FxAppTheme {
     }
   }
 
-
-  static void changeLightTheme(ThemeData themeData){
+  static void changeLightTheme(ThemeData themeData) {
     lightTheme = themeData;
   }
 
-  static void changeDarkTheme(ThemeData themeData){
+  static void changeDarkTheme(ThemeData themeData) {
     darkTheme = themeData;
   }
 
-  static void changeThemeType(FxAppThemeType? themeType){
+  static void changeThemeType(FxAppThemeType? themeType) {
     defaultThemeType = themeType!;
   }
-
 }

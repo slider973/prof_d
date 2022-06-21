@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'sizes.dart' show Sizes;
 import '../localization/app_localization.dart' show tr;
 
-
 class FontStyles {
   static get fontFamily => tr('fontFamily');
 
@@ -19,10 +18,10 @@ class FontStyles {
   static const fontStyleNormal = FontStyle.normal;
 
   static get mapSearchBarFontStyle => TextStyle(
-    fontSize: Sizes.fontSizes['h4'],
-    color: Get.context!.textTheme.subtitle1!.color,
-    fontFamily: fontFamily,
-    fontWeight: fontWeightNormal,
-    fontStyle: fontStyleNormal,
-  );
+        fontSize: Sizes.fontSizes['h4'],
+        color: Get.context!.textTheme.subtitle1!.color,
+        fontFamily: fontFamily,
+        fontWeight: fontWeightNormal,
+        fontStyle: fontStyleNormal,
+      );
 }

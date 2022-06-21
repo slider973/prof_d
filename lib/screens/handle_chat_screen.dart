@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,9 +8,7 @@ import 'search_screen.dart';
 import 'chat_screen.dart';
 
 class HandleChatScreen extends StatefulWidget {
-
-    const HandleChatScreen({Key? key}
-      ) : super(key: key);
+  const HandleChatScreen({Key? key}) : super(key: key);
 
   @override
   _HandleChatScreen createState() => _HandleChatScreen();
@@ -21,7 +17,6 @@ class HandleChatScreen extends StatefulWidget {
 class _HandleChatScreen extends State<HandleChatScreen> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -70,7 +65,8 @@ class _HandleChatScreen extends State<HandleChatScreen> {
                                   imageUrl: friend['image'],
                                   placeholder: (context, url) =>
                                       const CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) => const Icon(
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(
                                     Icons.error,
                                   ),
                                   height: 40,
@@ -92,7 +88,8 @@ class _HandleChatScreen extends State<HandleChatScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ChatScreen(
-                                    currentUser: FirebaseAuth.instance.currentUser,
+                                    currentUser:
+                                        FirebaseAuth.instance.currentUser,
                                     friendId: friend['id'],
                                     friendName: friend['firstname'],
                                     friendImage: friend['image'],
@@ -121,8 +118,7 @@ class _HandleChatScreen extends State<HandleChatScreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return SearchScreen(
-                );
+                return SearchScreen();
               },
             ),
           );

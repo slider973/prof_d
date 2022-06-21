@@ -1,7 +1,8 @@
 class AppointmentRules {
   AppointmentRules({
     int? id,
-    String? message,}){
+    String? message,
+  }) {
     _id = id;
     _message = message;
   }
@@ -22,5 +23,4 @@ class AppointmentRules {
     map['message'] = _message;
     return map;
   }
-
 }

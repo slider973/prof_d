@@ -121,6 +121,44 @@ extension $AppleLoginDtoExtension on AppleLoginDto {
 }
 
 @JsonSerializable(explicitToJson: true)
+class RefreshTokenDto {
+  RefreshTokenDto({
+    this.refreshToken,
+  });
+
+  factory RefreshTokenDto.fromJson(Map<String, dynamic> json) =>
+      _$RefreshTokenDtoFromJson(json);
+
+  @JsonKey(name: 'refreshToken', includeIfNull: true)
+  final String? refreshToken;
+  static const fromJsonFactory = _$RefreshTokenDtoFromJson;
+  static const toJsonFactory = _$RefreshTokenDtoToJson;
+  Map<String, dynamic> toJson() => _$RefreshTokenDtoToJson(this);
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RefreshTokenDto &&
+            (identical(other.refreshToken, refreshToken) ||
+                const DeepCollectionEquality()
+                    .equals(other.refreshToken, refreshToken)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(refreshToken) ^ runtimeType.hashCode;
+}
+
+extension $RefreshTokenDtoExtension on RefreshTokenDto {
+  RefreshTokenDto copyWith({String? refreshToken}) {
+    return RefreshTokenDto(refreshToken: refreshToken ?? this.refreshToken);
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class RegisterDto {
   RegisterDto({
     this.password,
@@ -552,11 +590,21 @@ class UpdateTimeTableDto {
 
 @JsonSerializable(explicitToJson: true)
 class CreateFollowUpDto {
-  CreateFollowUpDto();
+  CreateFollowUpDto({
+    this.stateBefore,
+    this.stateAfter,
+    this.child,
+  });
 
   factory CreateFollowUpDto.fromJson(Map<String, dynamic> json) =>
       _$CreateFollowUpDtoFromJson(json);
 
+  @JsonKey(name: 'stateBefore', includeIfNull: true)
+  final String? stateBefore;
+  @JsonKey(name: 'stateAfter', includeIfNull: true)
+  final String? stateAfter;
+  @JsonKey(name: 'child', includeIfNull: true)
+  final String? child;
   static const fromJsonFactory = _$CreateFollowUpDtoFromJson;
   static const toJsonFactory = _$CreateFollowUpDtoToJson;
   Map<String, dynamic> toJson() => _$CreateFollowUpDtoToJson(this);
@@ -565,34 +613,52 @@ class CreateFollowUpDto {
   String toString() => jsonEncode(this);
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreateFollowUpDto &&
+            (identical(other.stateBefore, stateBefore) ||
+                const DeepCollectionEquality()
+                    .equals(other.stateBefore, stateBefore)) &&
+            (identical(other.stateAfter, stateAfter) ||
+                const DeepCollectionEquality()
+                    .equals(other.stateAfter, stateAfter)) &&
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(stateBefore) ^
+      const DeepCollectionEquality().hash(stateAfter) ^
+      const DeepCollectionEquality().hash(child) ^
+      runtimeType.hashCode;
 }
 
-@JsonSerializable(explicitToJson: true)
-class UpdateFollowUpDto {
-  UpdateFollowUpDto();
-
-  factory UpdateFollowUpDto.fromJson(Map<String, dynamic> json) =>
-      _$UpdateFollowUpDtoFromJson(json);
-
-  static const fromJsonFactory = _$UpdateFollowUpDtoFromJson;
-  static const toJsonFactory = _$UpdateFollowUpDtoToJson;
-  Map<String, dynamic> toJson() => _$UpdateFollowUpDtoToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+extension $CreateFollowUpDtoExtension on CreateFollowUpDto {
+  CreateFollowUpDto copyWith(
+      {String? stateBefore, String? stateAfter, String? child}) {
+    return CreateFollowUpDto(
+        stateBefore: stateBefore ?? this.stateBefore,
+        stateAfter: stateAfter ?? this.stateAfter,
+        child: child ?? this.child);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
 class CreateFollowUpDetailDto {
-  CreateFollowUpDetailDto();
+  CreateFollowUpDetailDto({
+    this.appointment,
+    this.followUpSubjects,
+  });
 
   factory CreateFollowUpDetailDto.fromJson(Map<String, dynamic> json) =>
       _$CreateFollowUpDetailDtoFromJson(json);
 
+  @JsonKey(name: 'appointment', includeIfNull: true)
+  final String? appointment;
+  @JsonKey(
+      name: 'followUpSubjects', includeIfNull: true, defaultValue: <String>[])
+  final List<String>? followUpSubjects;
   static const fromJsonFactory = _$CreateFollowUpDetailDtoFromJson;
   static const toJsonFactory = _$CreateFollowUpDetailDtoToJson;
   Map<String, dynamic> toJson() => _$CreateFollowUpDetailDtoToJson(this);
@@ -601,25 +667,31 @@ class CreateFollowUpDetailDto {
   String toString() => jsonEncode(this);
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreateFollowUpDetailDto &&
+            (identical(other.appointment, appointment) ||
+                const DeepCollectionEquality()
+                    .equals(other.appointment, appointment)) &&
+            (identical(other.followUpSubjects, followUpSubjects) ||
+                const DeepCollectionEquality()
+                    .equals(other.followUpSubjects, followUpSubjects)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(appointment) ^
+      const DeepCollectionEquality().hash(followUpSubjects) ^
+      runtimeType.hashCode;
 }
 
-@JsonSerializable(explicitToJson: true)
-class UpdateFollowUpDetailDto {
-  UpdateFollowUpDetailDto();
-
-  factory UpdateFollowUpDetailDto.fromJson(Map<String, dynamic> json) =>
-      _$UpdateFollowUpDetailDtoFromJson(json);
-
-  static const fromJsonFactory = _$UpdateFollowUpDetailDtoFromJson;
-  static const toJsonFactory = _$UpdateFollowUpDetailDtoToJson;
-  Map<String, dynamic> toJson() => _$UpdateFollowUpDetailDtoToJson(this);
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+extension $CreateFollowUpDetailDtoExtension on CreateFollowUpDetailDto {
+  CreateFollowUpDetailDto copyWith(
+      {String? appointment, List<String>? followUpSubjects}) {
+    return CreateFollowUpDetailDto(
+        appointment: appointment ?? this.appointment,
+        followUpSubjects: followUpSubjects ?? this.followUpSubjects);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -731,6 +803,43 @@ class UpdatePdfDto {
 
   @override
   int get hashCode => runtimeType.hashCode;
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateFollowUpSubjectDto {
+  CreateFollowUpSubjectDto({
+    this.name,
+  });
+
+  factory CreateFollowUpSubjectDto.fromJson(Map<String, dynamic> json) =>
+      _$CreateFollowUpSubjectDtoFromJson(json);
+
+  @JsonKey(name: 'name', includeIfNull: true)
+  final String? name;
+  static const fromJsonFactory = _$CreateFollowUpSubjectDtoFromJson;
+  static const toJsonFactory = _$CreateFollowUpSubjectDtoToJson;
+  Map<String, dynamic> toJson() => _$CreateFollowUpSubjectDtoToJson(this);
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreateFollowUpSubjectDto &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(name) ^ runtimeType.hashCode;
+}
+
+extension $CreateFollowUpSubjectDtoExtension on CreateFollowUpSubjectDto {
+  CreateFollowUpSubjectDto copyWith({String? name}) {
+    return CreateFollowUpSubjectDto(name: name ?? this.name);
+  }
 }
 
 // ignore: unused_element

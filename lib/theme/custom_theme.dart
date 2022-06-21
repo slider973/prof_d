@@ -55,12 +55,7 @@ class CustomTheme {
       homemadeOnSecondary;
   final Color muviPrimary, muviOnPrimary;
 
-
-  final Color profDPrimary,
-      profDSecondary,
-      profDOnPrimary,
-      profDOnSecondary;
-
+  final Color profDPrimary, profDSecondary, profDOnPrimary, profDOnSecondary;
 
   @deprecated
   final Color learningPrimary,
@@ -156,8 +151,6 @@ class CustomTheme {
     this.profDOnPrimary = Colors.white,
     this.profDOnSecondary = Colors.yellow,
     this.profDSecondary = Colors.orange,
-
-
   });
 
   //--------------------------------------  Custom App Theme ----------------------------------------//

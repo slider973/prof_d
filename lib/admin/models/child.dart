@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'appointment_list.dart';
+
 class Child {
   Child({
     required this.firstname,
@@ -14,6 +16,7 @@ class Child {
     required this.arrangementsInTheClassroom,
     required this.behaviourInTheHome,
     required this.id,
+    required this.appointmentList,
   });
 
   final String firstname;
@@ -28,6 +31,7 @@ class Child {
   final String arrangementsInTheClassroom;
   final String behaviourInTheHome;
   final String id;
+  late final List<AppointmentList> appointmentList;
 
   Child copyWith({
     required String firstname,
@@ -44,20 +48,20 @@ class Child {
     required String id,
   }) =>
       Child(
-        firstname: firstname,
-        lastname: lastname,
-        dateOfBirth: dateOfBirth,
-        placeInTheSiblingGroup: placeInTheSiblingGroup,
-        placeOfSchooling: placeOfSchooling,
-        numberOfBrotherAndSister: numberOfBrotherAndSister,
-        classLevel: classLevel,
-        followUpsInProgress: followUpsInProgress,
-        identifiedDisordersAndOrDifficulties:
-            identifiedDisordersAndOrDifficulties,
-        arrangementsInTheClassroom: arrangementsInTheClassroom,
-        behaviourInTheHome: behaviourInTheHome,
-        id: id,
-      );
+          firstname: firstname,
+          lastname: lastname,
+          dateOfBirth: dateOfBirth,
+          placeInTheSiblingGroup: placeInTheSiblingGroup,
+          placeOfSchooling: placeOfSchooling,
+          numberOfBrotherAndSister: numberOfBrotherAndSister,
+          classLevel: classLevel,
+          followUpsInProgress: followUpsInProgress,
+          identifiedDisordersAndOrDifficulties:
+              identifiedDisordersAndOrDifficulties,
+          arrangementsInTheClassroom: arrangementsInTheClassroom,
+          behaviourInTheHome: behaviourInTheHome,
+          id: id,
+          appointmentList: appointmentList);
 
   factory Child.fromJson(String str) => Child.fromMap(json.decode(str));
 
@@ -68,7 +72,7 @@ class Child {
         lastname: json["lastname"],
         dateOfBirth: DateTime.parse(json["dateOfBirth"]),
         placeInTheSiblingGroup: json["placeInTheSiblingGroup"],
-    numberOfBrotherAndSister: json["numberOfBrotherAndSister"],
+        numberOfBrotherAndSister: json["numberOfBrotherAndSister"],
         placeOfSchooling: json["placeOfSchooling"],
         classLevel: json["classLevel"],
         followUpsInProgress: json["followUpsInProgress"],
@@ -77,6 +81,9 @@ class Child {
         arrangementsInTheClassroom: json["arrangementsInTheClassroom"],
         behaviourInTheHome: json["behaviourInTheHome"],
         id: json["id"],
+        appointmentList: List.from(json['appointmentList'])
+            .map((e) => AppointmentList.fromJson(e))
+            .toList(),
       );
 
   Map<String, dynamic> toMap() => {
@@ -93,11 +100,22 @@ class Child {
         "arrangementsInTheClassroom": arrangementsInTheClassroom,
         "behaviourInTheHome": behaviourInTheHome,
         "id": id,
+        "appointmentList": appointmentList.map((e) => e.toJson()).toList()
       };
 
   @override
   String toString() {
-    // TODO: implement toString
-    return 'firstname: ${firstname},lastname: $lastname, numberOfBrotherAndSister: $numberOfBrotherAndSister, dateOfBirth: ${dateOfBirth.toIso8601String()},placeInTheSiblingGroup: $placeInTheSiblingGroup,placeOfSchooling: $placeOfSchooling, classLevel: $classLevel, followUpsInProgress: $followUpsInProgress, identifiedDisordersAndOrDifficulties: $identifiedDisordersAndOrDifficulties, arrangementsInTheClassroom: $arrangementsInTheClassroom, behaviourInTheHome: $behaviourInTheHome, id: $id';
+    return 'firstname: $firstname,'
+        'lastname: $lastname,'
+        ' numberOfBrotherAndSister: $numberOfBrotherAndSister, '
+        'dateOfBirth: ${dateOfBirth.toIso8601String()},'
+        'placeInTheSiblingGroup: $placeInTheSiblingGroup,'
+        'placeOfSchooling: $placeOfSchooling, '
+        'classLevel: $classLevel, '
+        'followUpsInProgress: $followUpsInProgress, '
+        'identifiedDisordersAndOrDifficulties: $identifiedDisordersAndOrDifficulties,'
+        ' arrangementsInTheClassroom: $arrangementsInTheClassroom,'
+        ' behaviourInTheHome: $behaviourInTheHome, '
+        'id: $id';
   }
 }

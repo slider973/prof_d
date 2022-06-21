@@ -23,7 +23,8 @@ class Profile {
     bool? displayPaymentMeans,
     PaymentMeans? paymentMeans,
     bool? insuranceCard,
-    String? regulationSector,}){
+    String? regulationSector,
+  }) {
     _link = link;
     _cloudinaryPublicId = cloudinaryPublicId;
     _id = id;
@@ -68,7 +69,9 @@ class Profile {
     _specialityAllowMultipleBooking = json['speciality_allow_multiple_booking'];
     _allowOnlineBooking = json['allow_online_booking'];
     _displayPaymentMeans = json['display_payment_means'];
-    _paymentMeans = json['payment_means'] != null ? PaymentMeans.fromJson(json['paymentMeans']) : null;
+    _paymentMeans = json['payment_means'] != null
+        ? PaymentMeans.fromJson(json['paymentMeans'])
+        : null;
     _insuranceCard = json['insurance_card'];
     _regulationSector = json['regulation_sector'];
   }
@@ -146,5 +149,4 @@ class Profile {
     map['regulation_sector'] = _regulationSector;
     return map;
   }
-
 }

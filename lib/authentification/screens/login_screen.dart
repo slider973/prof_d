@@ -13,11 +13,10 @@ import '../viewmodels/auth_viewmodel.dart';
 class LoginScreen extends ConsumerWidget {
   final AuthType? authType;
 
-  const LoginScreen({Key? key,  this.authType}) : super(key: key);
+  const LoginScreen({Key? key, this.authType}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-
     return PopUpPage(
       child: SingleChildScrollView(
         child: Container(

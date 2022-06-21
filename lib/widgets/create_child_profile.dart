@@ -24,7 +24,8 @@ class CreateChildProfile extends StatefulWidget {
   final CreateChildProfileAction action;
   final String? idChild;
 
-  const CreateChildProfile({Key? key, required this.data, required this.action, this.idChild})
+  const CreateChildProfile(
+      {Key? key, required this.data, required this.action, this.idChild})
       : super(key: key);
 
   @override

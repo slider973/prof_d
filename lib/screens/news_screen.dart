@@ -32,24 +32,21 @@ class _NewsScreenState extends State<NewsScreen> {
         title: const Text('Actualité'),
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      body:  WebView(
+      body: WebView(
         initialUrl: 'https://sylvie-profd.fr/index.php/blog',
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
           _controller.complete(webViewController);
-          _onAddToCache(
-            webViewController,
-            context
-          );
+          _onAddToCache(webViewController, context);
         },
         gestureNavigationEnabled: true,
         backgroundColor: const Color(0x00000000),
       ),
     );
   }
+
   Future<void> _onAddToCache(
       WebViewController controller, BuildContext context) async {
-        // ignore: deprecated_member_use
+    // ignore: deprecated_member_use
   }
-
 }

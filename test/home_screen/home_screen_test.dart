@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,11 +6,9 @@ import 'package:prof_d/main.dart';
 
 import 'package:prof_d/modules/home/screens/home_screen.dart';
 
-
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-
 
 /*    // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

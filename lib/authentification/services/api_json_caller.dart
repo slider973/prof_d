@@ -1,32 +1,30 @@
 import 'package:chopper/chopper.dart';
 
 import '../../api_prof_d/api_json.swagger.dart';
+import '../interceptor/interceptor.dart';
 
 class ApiJsonCaller {
-  static const String _baseUrl = 'http://localhost:3000';
+  ChopperClient? chopperClient;
+
   ApiJson? apiJsonInstance;
 
-  ApiJsonCaller._() {
-    apiJsonInstance = ApiJson.create(baseUrl: _baseUrl);
+  setChopperClient(ChopperClient chopperClient) {
+    chopperClient = chopperClient;
   }
+
+  ApiJsonCaller._();
 
   static final instance = ApiJsonCaller._();
 
   get apiJsonCallerInstance {
-    if (apiJsonInstance != null) {
-      apiJsonInstance = ApiJson.create(baseUrl: _baseUrl);
-      return apiJsonInstance;
-    }
     return apiJsonInstance;
   }
 
-  getInstanceWithAuth(String token) {
-    if (apiJsonInstance != null) {
-      apiJsonInstance = ApiJson.create(baseUrl: _baseUrl, interceptors: [
-        HeadersInterceptor({'Authorization': "Bearer " + token})
-      ]);
-      return apiJsonInstance;
-    }
+  initClient(ChopperClient chopperClient){
+    apiJsonInstance = ApiJson.create(
+      client: chopperClient,
+    );
     return apiJsonInstance;
   }
+
 }

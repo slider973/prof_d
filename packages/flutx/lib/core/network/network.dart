@@ -5,7 +5,6 @@ import 'util.dart';
 import 'package:http/http.dart' as http;
 
 class FxNetwork {
-
   static Future<FxNetworkResponse> post(String url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
     http.Response response = await http.post(

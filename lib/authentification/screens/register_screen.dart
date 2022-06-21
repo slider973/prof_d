@@ -13,13 +13,10 @@ import '../viewmodels/auth_viewmodel.dart';
 class RegisterScreen extends ConsumerWidget {
   final AuthType? authType;
 
-  const RegisterScreen({Key? key,  this.authType}) : super(key: key);
+  const RegisterScreen({Key? key, this.authType}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-
-
-
     return PopUpPage(
       child: SingleChildScrollView(
         child: Container(

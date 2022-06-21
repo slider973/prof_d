@@ -37,13 +37,13 @@ class CardAppointmentListSection extends ConsumerWidget {
             return Center(child: Text(snapshot.error.toString()));
           }
 
-          if(!snapshot.hasData){
+          if (!snapshot.hasData) {
             return EmptyStateAppointment(appointmentRepos: _homeViewModel);
           }
 
           // IF IT WORKS IT GOES HERE!
-          return  MenuSectionStyleAppointment(
-            snapshot: snapshot,
+          return MenuSectionStyleAppointment(
+            appointment: snapshot,
           );
         },
         future: _homeViewModel.getAppointment(),

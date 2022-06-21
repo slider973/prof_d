@@ -5,7 +5,7 @@ class TextProfileComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       'Vous n\'avez pas de profil',
       style: Theme.of(context).textTheme.bodyText2,
     );

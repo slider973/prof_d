@@ -37,7 +37,7 @@ var newChild = AddChildDto.fromJson({
   "classLevel": "CE2",
   "followUpsInProgress": "Orthophoniste",
   "identifiedDisordersAndOrDifficulties":
-  "Il ne parle pas quand et il a du mal à ce mélanger au autre",
+      "Il ne parle pas quand et il a du mal à ce mélanger au autre",
   "arrangementsInTheClassroom": "Horaires aménagés"
 });
 
@@ -46,8 +46,7 @@ final addChildProvider = FutureProvider((ref) async {
   return accountRepository.addChild(newChild);
 });
 
-void main() {
-}
+void main() {}
 
 class FakeAccountRepository implements AccountRepo {
   @override

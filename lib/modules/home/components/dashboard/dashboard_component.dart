@@ -61,7 +61,7 @@ class DashboardComponent extends ConsumerWidget {
                         StaggeredGrid.count(
                           crossAxisCount: 4,
                           children: [
-                             StaggeredGridTile.count(
+                            StaggeredGridTile.count(
                               crossAxisCellCount: 4,
                               mainAxisCellCount: 2,
                               child: Center(

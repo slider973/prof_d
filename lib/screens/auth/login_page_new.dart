@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-          email: data.name, password: data.password);
+              email: data.name, password: data.password);
       if (userCredential != null) {
         return null;
       }
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-          email: data.name!, password: data.password!);
+              email: data.name!, password: data.password!);
 
       return null;
     } on FirebaseAuthException catch (e) {
@@ -77,27 +77,25 @@ class _LoginScreenState extends State<LoginScreen> {
         providers: [BlocProvider<AuthBloc>(create: (context) => AuthBloc())],
         child: Center(
           child: FlutterLogin(
-            title: null,
-            logo: 'assets/image/logo.jpg',
-            onLogin: _authUser,
-            onSignup: _signUser,
-            onSubmitAnimationCompleted: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const BottomTabBarController(),
-              ));
-            },
-            onRecoverPassword: _recoverPassword,
-            messages: LoginMessages(
-                userHint: 'Nom d\'utilisateur',
-                passwordHint: 'Mot de passe',
-                confirmPasswordHint: 'Confirmation de mot de passe',
-                loginButton: 'Se connecter',
-                signupButton:'S\'inscrire',
-                forgotPasswordButton:'Mot de passe oublié',
-                recoverPasswordButton:'Retrouver le mot de passe',
-                goBackButton: 'Retour'
-            )
-    ),
+              title: null,
+              logo: 'assets/image/logo.jpg',
+              onLogin: _authUser,
+              onSignup: _signUser,
+              onSubmitAnimationCompleted: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const BottomTabBarController(),
+                ));
+              },
+              onRecoverPassword: _recoverPassword,
+              messages: LoginMessages(
+                  userHint: 'Nom d\'utilisateur',
+                  passwordHint: 'Mot de passe',
+                  confirmPasswordHint: 'Confirmation de mot de passe',
+                  loginButton: 'Se connecter',
+                  signupButton: 'S\'inscrire',
+                  forgotPasswordButton: 'Mot de passe oublié',
+                  recoverPasswordButton: 'Retrouver le mot de passe',
+                  goBackButton: 'Retour')),
         ));
   }
 }

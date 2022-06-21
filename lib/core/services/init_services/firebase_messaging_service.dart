@@ -33,7 +33,7 @@ class FirebaseMessagingService {
     // default FCM channel to enable heads up notifications.
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
     // Update the iOS foreground notification presentation options to allow
@@ -67,7 +67,7 @@ class FirebaseMessagingService {
 
   _showNotification(RemoteMessage message) {
     RemoteNotification? notification = message.notification;
-    final _payloadModel = PayloadModel(route: message.data['route']);
+    final _payloadModel = PayloadModel(route: message.data['route'] ?? '/');
     if (notification != null && !kIsWeb) {
       flutterLocalNotificationsPlugin.show(
         notification.hashCode,

@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 
 import '../viewmodels/admin_appointement_viewmodel.dart';
 
-
-
 class CustomDatePickerComponent extends ConsumerWidget {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -17,7 +15,8 @@ class CustomDatePickerComponent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-  final adminDashboardMView = ref.watch<AdminAppointmentViewModel>(adminAppointmentViewModel);
+    final adminDashboardMView =
+        ref.watch<AdminAppointmentViewModel>(adminAppointmentViewModel);
     return OutlinedButton(
       onPressed: () {
         _openDatePicker(context, adminDashboardMView);
@@ -26,7 +25,8 @@ class CustomDatePickerComponent extends ConsumerWidget {
     );
   }
 
-  _openDatePicker(BuildContext context, AdminAppointmentViewModel adminMV) async {
+  _openDatePicker(
+      BuildContext context, AdminAppointmentViewModel adminMV) async {
     final DateTime? date = await showDatePicker(
         context: context,
         initialDate: selectedDate,
@@ -38,10 +38,10 @@ class CustomDatePickerComponent extends ConsumerWidget {
       adminMV.setDate(date);
       _openTimePicker(context, adminMV);
     }
-
   }
 
-  _openTimePicker(BuildContext context, AdminAppointmentViewModel adminMV) async {
+  _openTimePicker(
+      BuildContext context, AdminAppointmentViewModel adminMV) async {
     final TimeOfDay? time = await showTimePicker(
       context: context,
       initialTime: selectedTime,
@@ -50,7 +50,5 @@ class CustomDatePickerComponent extends ConsumerWidget {
     if (time != null && adminMV.newTimeTable != null) {
       adminMV.setTime(time);
     }
-
-
   }
 }

@@ -21,6 +21,7 @@ class NavigateUtils {
       navigationMethod: NavigationMethod.push,
     );
   }
+
   navigationToIntroductionScreen() {
     NavigationService.offAll(
       isNamed: true,
@@ -34,40 +35,32 @@ class NavigateUtils {
       page: RoutePaths.admin,
     );
   }
+
   navigationToRegisterScreen() {
     NavigationService.offAll(
       isNamed: true,
       page: RoutePaths.register,
     );
   }
+
   navigationToLoginScreen() {
     NavigationService.offAll(
       isNamed: true,
       page: RoutePaths.authLogin,
     );
   }
+
   navigationFromTheBottomAnimation(BuildContext context, page) {
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) =>
-        page,
-        transitionDuration:
-        const Duration(
-            milliseconds: 300),
-        transitionsBuilder: (_,
-            animation, __, child) =>
-            SlideTransition(
-                position: Tween<Offset>(
-                    begin:
-                    const Offset(
-                        0, 1),
-                    end:
-                    Offset.zero)
-                    .animate(animation),
-                child: child),
+        pageBuilder: (_, __, ___) => page,
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (_, animation, __, child) => SlideTransition(
+            position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                .animate(animation),
+            child: child),
       ),
     );
   }
-
 }

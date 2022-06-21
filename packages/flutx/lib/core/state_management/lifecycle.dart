@@ -1,6 +1,5 @@
 typedef ValueUpdater<T> = T Function();
 
-
 class InternalFinalCallback<T> {
   ValueUpdater<T>? _callback;
 

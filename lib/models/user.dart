@@ -13,7 +13,8 @@ class UserProfd {
   DateTime dateOfBirth = DateTime.now();
   String nameOfBirth = '';
   String cityOfBird = '';
-  String image =  'https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg';
+  String image =
+      'https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg';
   bool isProfileCreated = false;
 
   UserProfd();

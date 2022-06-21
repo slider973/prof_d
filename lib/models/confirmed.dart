@@ -30,8 +30,8 @@ class Confirmed {
     Practice? practice,
     List<AppointmentRules>? appointmentRules,
     String? country,
-
-    dynamic documentCount,}){
+    dynamic documentCount,
+  }) {
     _substituteName = substituteName;
     _substitutionWording = substitutionWording;
     _createdBy = createdBy;
@@ -62,14 +62,17 @@ class Confirmed {
   }
 
   Confirmed.fromJson(dynamic json) {
-
     _substituteName = json['substitute_name'];
     _substitutionWording = json['substitution_wording'];
     _createdBy = json['created_by'];
     _id = json['id'];
     print('start_date ${json['start_date']}');
-    _startDate = json['start_date'] != null ? DateTime.parse(json['start_date']) : DateTime.now();
-    _endDate = json['end_date'] != null ? DateTime.parse(json['end_date']) : DateTime.now() ;
+    _startDate = json['start_date'] != null
+        ? DateTime.parse(json['start_date'])
+        : DateTime.now();
+    _endDate = json['end_date'] != null
+        ? DateTime.parse(json['end_date'])
+        : DateTime.now();
     _branding = json['branding'];
     _confirmed = json['confirmed'];
     _canceled = json['canceled'];
@@ -85,8 +88,10 @@ class Confirmed {
     _noShow = json['no_show'];
     _agendaId = json['agenda_id'];
     _ehrSession = json['ehr_session'];
-    _profile = json['profile'] != null ? Profile.fromJson(json['profile']) : null;
-    _practice = json['practice'] != null ? Practice.fromJson(json['practice']) : null;
+    _profile =
+        json['profile'] != null ? Profile.fromJson(json['profile']) : null;
+    _practice =
+        json['practice'] != null ? Practice.fromJson(json['practice']) : null;
     if (json['appointment_rules'] != null) {
       _appointmentRules = [];
       json['appointment_rules'].forEach((v) {
@@ -185,12 +190,12 @@ class Confirmed {
       map['practice'] = _practice?.toJson();
     }
     if (_appointmentRules != null) {
-      map['appointment_rules'] = _appointmentRules?.map((v) => v.toJson()).toList();
+      map['appointment_rules'] =
+          _appointmentRules?.map((v) => v.toJson()).toList();
     }
     map['country'] = _country;
 
     map['document_count'] = _documentCount;
     return map;
   }
-
 }

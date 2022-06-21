@@ -1,7 +1,5 @@
 import 'dart:async';
 
-
-
 import 'models/models.dart';
 
 class UserRepository {
@@ -11,7 +9,7 @@ class UserRepository {
     if (_user != null) return _user;
     return Future.delayed(
       const Duration(milliseconds: 300),
-          () => _user = const User('lknbkknbeokrtjo'),
+      () => _user = const User('lknbkknbeokrtjo'),
     );
   }
 }

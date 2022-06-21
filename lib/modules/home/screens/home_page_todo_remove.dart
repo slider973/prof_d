@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-           Expanded(
+          Expanded(
             child: CardProfDContainer(),
           ),
         ],
@@ -78,5 +78,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-

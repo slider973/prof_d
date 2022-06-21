@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../localization/app_localization.dart';
@@ -66,6 +65,7 @@ class Validators {
       }
     };
   }
+
   String? Function(String?)? validateConfirmLoginPassword(String field1) {
     return (value) {
       debugPrint('field1: $field1');

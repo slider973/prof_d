@@ -11,7 +11,7 @@ import '../../../theme/app_theme.dart';
 import 'child_screen/child_list_screen.dart';
 
 class AccountScreen extends ConsumerWidget {
-   AccountScreen({Key? key}) : super(key: key);
+  AccountScreen({Key? key}) : super(key: key);
 
   late ThemeData theme = AppTheme.theme;
   late CustomTheme customTheme = AppTheme.customTheme;
@@ -111,7 +111,7 @@ class AccountScreen extends ConsumerWidget {
             FxSpacing.height(60),
             ListView.builder(
               itemCount: buildRowList.length,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Column(

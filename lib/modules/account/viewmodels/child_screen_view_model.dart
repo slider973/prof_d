@@ -15,7 +15,7 @@ class ChildViewModel extends ChangeNotifier {
   ChildViewModel(this.ref);
 
   Future<List<ChildModel>> getChildList() async {
-    if(childList.isNotEmpty){
+    if (childList.isNotEmpty) {
       return childList;
     }
 
@@ -24,6 +24,7 @@ class ChildViewModel extends ChangeNotifier {
       return ChildModel.fromJson(child);
     }).toList();
     childList = finalChildList;
+
     return childList;
   }
 

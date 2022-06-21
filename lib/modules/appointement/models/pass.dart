@@ -8,7 +8,7 @@ class Pass {
   late final String appointment;
   late final Patient patient;
 
-  Pass.fromJson(Map<String, dynamic> json){
+  Pass.fromJson(Map<String, dynamic> json) {
     appointment = json['appointment'];
     patient = Patient.fromJson(json['patient']);
   }

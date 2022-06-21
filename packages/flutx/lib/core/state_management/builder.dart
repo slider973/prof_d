@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'controller.dart';
 
@@ -8,8 +7,11 @@ class FxBuilder<T extends FxController> extends StatefulWidget {
   final FxControllerBuilder<T> builder;
   final T? controller;
 
-  final void Function(FxBuilderState<T> state)? initState, dispose, didChangeDependencies;
-  final void Function(FxBuilder oldWidget, FxBuilderState<T> state)? didUpdateWidget;
+  final void Function(FxBuilderState<T> state)? initState,
+      dispose,
+      didChangeDependencies;
+  final void Function(FxBuilder oldWidget, FxBuilderState<T> state)?
+      didUpdateWidget;
 
   const FxBuilder({
     Key? key,
@@ -41,12 +43,10 @@ class FxBuilderState<T extends FxController>
     _subscribeToController();
   }
 
-
   @override
   void deactivate() {
     super.deactivate();
   }
-
 
   /// Register to listen Controller's events.
   /// It gets a reference to the remove() callback, to delete the
@@ -69,8 +69,6 @@ class FxBuilderState<T extends FxController>
     controller = null;
     super.dispose();
   }
-
-
 
   @override
   void didChangeDependencies() {

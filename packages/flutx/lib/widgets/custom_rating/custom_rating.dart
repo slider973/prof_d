@@ -30,7 +30,6 @@ class FxCustomRating extends StatefulWidget {
 }
 
 class _FxCustomRatingState extends State<FxCustomRating> {
-
   late int rating;
   late List<Color> starColors;
 
@@ -59,9 +58,11 @@ class _FxCustomRatingState extends State<FxCustomRating> {
                 : widget.inactiveStarColor),
       ));
       if (i != 5) {
-        list.add(SizedBox(
-          width: widget.starSpacing,
-        ),);
+        list.add(
+          SizedBox(
+            width: widget.starSpacing,
+          ),
+        );
       }
     }
     return list;

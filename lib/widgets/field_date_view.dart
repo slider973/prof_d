@@ -5,7 +5,8 @@ import 'package:intl/intl.dart' show DateFormat;
 class FieldDateView extends StatefulWidget {
   final DateTime day;
   final DateTime hour;
-  const FieldDateView({Key? key, required this.day, required this.hour}) : super(key: key);
+  const FieldDateView({Key? key, required this.day, required this.hour})
+      : super(key: key);
 
   @override
   _FieldDateViewState createState() => _FieldDateViewState();
@@ -31,21 +32,14 @@ class _FieldDateViewState extends State<FieldDateView>
   Widget build(BuildContext context) {
     return AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        transform: Matrix4.translationValues(
-            0, 0, 0),
+        transform: Matrix4.translationValues(0, 0, 0),
         child: Column(
           children: [
             FxSpacing.height(25),
             const Text("Service demandé le:"),
-            FxText.h3(DateFormat.yMMMMEEEEd('fr').format(
-              widget.day
-            )),
-            FxText.h3(
-                'à ${DateFormat('HH:mm').format(widget.hour)} '),
+            FxText.h3(DateFormat.yMMMMEEEEd('fr').format(widget.day)),
+            FxText.h3('à ${DateFormat('HH:mm').format(widget.hour)} '),
           ],
-        )
-    );
+        ));
   }
-
-
 }

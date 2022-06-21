@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 Path dashPath(
-    Path source, {
-      required CircularIntervalList<double> dashArray,
-      DashOffset? dashOffset,
-    }) {
+  Path source, {
+  required CircularIntervalList<double> dashArray,
+  DashOffset? dashOffset,
+}) {
   assert(dashArray != null); // ignore: unnecessary_null_comparison
 
   dashOffset = dashOffset ?? const DashOffset.absolute(0.0);

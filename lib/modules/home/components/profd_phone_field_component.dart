@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class ProfdPhoneFieldComponent extends StatelessWidget {
@@ -20,21 +17,21 @@ class ProfdPhoneFieldComponent extends StatelessWidget {
       child: TextFormField(
         keyboardType: TextInputType.phone,
         decoration: InputDecoration(
-            labelText: labelText,
-            fillColor: Colors.white,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                color: Colors.teal,
-              ),
+          labelText: labelText,
+          fillColor: Colors.white,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: const BorderSide(
+              color: Colors.teal,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                color: Colors.black,
-                width: 0.5,
-              ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 0.5,
             ),
+          ),
         ),
         // The validator receives the text that the user has entered.
         validator: (value) {

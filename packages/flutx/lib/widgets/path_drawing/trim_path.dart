@@ -25,11 +25,11 @@ enum PathTrimOrigin {
 ///
 /// If `source` is empty, an empty path will be returned.
 Path trimPath(
-    Path source,
-    double percentage, {
-      bool firstOnly = true,
-      PathTrimOrigin origin = PathTrimOrigin.begin,
-    }) {
+  Path source,
+  double percentage, {
+  bool firstOnly = true,
+  PathTrimOrigin origin = PathTrimOrigin.begin,
+}) {
   assert(percentage != null); // ignore: unnecessary_null_comparison
   assert(firstOnly != null); // ignore: unnecessary_null_comparison
   assert(origin != null); // ignore: unnecessary_null_comparison

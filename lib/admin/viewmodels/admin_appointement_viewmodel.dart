@@ -64,9 +64,7 @@ class AdminAppointmentViewModel extends ChangeNotifier {
         if (kDebugMode) {
           print('timeTable added');
         }
-        const snackBar = SnackBar(
-          content: Text('La date à été ajouter')
-        );
+        const snackBar = SnackBar(content: Text('La date à été ajouter'));
 
         // Find the ScaffoldMessenger in the widget tree
         // and use it to show a SnackBar.
@@ -74,7 +72,6 @@ class AdminAppointmentViewModel extends ChangeNotifier {
 
         newTimeTable = null;
         notifyListeners();
-
       }
     } catch (e) {
       print('erreur');

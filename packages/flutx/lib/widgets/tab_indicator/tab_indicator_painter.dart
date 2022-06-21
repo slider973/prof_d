@@ -17,11 +17,13 @@ class FxTabIndicationPainter extends CustomPainter {
   final PageController? pageController;
   final Color? selectedBackground;
 
-
-
-  FxTabIndicationPainter({required this.indicatorWidth,
-    required this.xPadding, required this.indicatorRadius, required this.yPadding,
-    this.pageController, this.selectedBackground})
+  FxTabIndicationPainter(
+      {required this.indicatorWidth,
+      required this.xPadding,
+      required this.indicatorRadius,
+      required this.yPadding,
+      this.pageController,
+      this.selectedBackground})
       : super(repaint: pageController) {
     dxTarget = this.indicatorWidth;
     dxEntry = this.xPadding;
@@ -35,8 +37,8 @@ class FxTabIndicationPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final pos = pageController!.position;
-    double fullExtent = (pos.maxScrollExtent - pos.minScrollExtent +
-        pos.viewportDimension);
+    double fullExtent =
+        (pos.maxScrollExtent - pos.minScrollExtent + pos.viewportDimension);
 
     double pageOffset = pos.extentBefore / fullExtent;
 

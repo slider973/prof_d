@@ -4,7 +4,7 @@ Map<String, String> coreFr = {
   'dateFormat': 'en',
   'noInternetConnection': 'No internet connection',
   'pleaseCheckYourDeviceNetwork':
-  'Please check your device\'s network connection.',
+      'Please check your device\'s network connection.',
   'retry': 'Retry',
   'oops': 'Oops!',
   'somethingWentWrong': 'Something went wrong.',

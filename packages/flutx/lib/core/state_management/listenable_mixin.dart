@@ -5,9 +5,7 @@ typedef Disposer = void Function();
 typedef FxStateUpdate = void Function();
 
 mixin ListNotifierMixin on ListenableMixin {
-
   List<FxStateUpdate?>? _updaters = <FxStateUpdate?>[];
-
 
   @protected
   void refresh() {
@@ -25,7 +23,6 @@ mixin ListNotifierMixin on ListenableMixin {
     }
   }
 
-
   bool _debugAssertNotDisposed() {
     assert(() {
       if (_updaters == null) {
@@ -36,7 +33,6 @@ mixin ListNotifierMixin on ListenableMixin {
     }());
     return true;
   }
-
 
   bool get hasListeners {
     assert(_debugAssertNotDisposed());

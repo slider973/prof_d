@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
 class DateParser {
   DateParser._() {
     initializeDateFormatting();
@@ -21,8 +22,8 @@ class DateParser {
 
   String convertEpochToLocal(int date) {
     return DateFormat.yMMMd().add_jm().format(
-      DateTime.fromMillisecondsSinceEpoch(date).toLocal(),
-    );
+          DateTime.fromMillisecondsSinceEpoch(date).toLocal(),
+        );
   }
 
   DateTime convertEpochToLocalDate(int date) {

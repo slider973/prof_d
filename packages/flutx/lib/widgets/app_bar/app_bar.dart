@@ -8,5 +8,3 @@ class FxAppBar extends StatelessWidget {
     return Container();
   }
 }
-
-

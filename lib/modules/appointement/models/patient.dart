@@ -6,7 +6,7 @@ class Patient {
   late final String firstname;
   late final String lastname;
 
-  Patient.fromJson(Map<String, dynamic> json){
+  Patient.fromJson(Map<String, dynamic> json) {
     firstname = json['firstname'];
     lastname = json['lastname'];
   }

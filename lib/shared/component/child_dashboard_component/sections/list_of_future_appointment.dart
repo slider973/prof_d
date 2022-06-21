@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/sizes.dart';
-import '../../../../modules/appointement/models/coming_soon.dart';
 import '../../../../services/date_parser.dart';
 
 class ListComingAppointment<T> extends StatelessWidget {
   final List<dynamic> appointmentList;
   final bool isPast;
 
-  const ListComingAppointment({Key? key, required this.appointmentList, required this.isPast})
+  const ListComingAppointment(
+      {Key? key, required this.appointmentList, required this.isPast})
       : super(key: key);
 
   @override
@@ -19,7 +19,6 @@ class ListComingAppointment<T> extends StatelessWidget {
         final data = appointmentList[index];
         final appointment = DateTime.parse(data.appointment);
         final patient = data.patient;
-
 
         return Padding(
           padding: const EdgeInsets.only(left: 9.0, right: 9.0, bottom: 9.0),
@@ -50,7 +49,9 @@ class ListComingAppointment<T> extends StatelessWidget {
                     thickness: 0.1,
                     color: Colors.black,
                   ),
-                  isPast ? _buildMakeAppointmentAgainButton : _buildCancelButton,
+                  isPast
+                      ? _buildMakeAppointmentAgainButton
+                      : _buildCancelButton,
                 ],
               ),
             ),
@@ -63,7 +64,7 @@ class ListComingAppointment<T> extends StatelessWidget {
   ElevatedButton get _buildCancelButton {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.red,
+          primary: Colors.red,
           textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           shape: const StadiumBorder(),
           elevation: 0),
@@ -78,13 +79,13 @@ class ListComingAppointment<T> extends StatelessWidget {
   ElevatedButton get _buildMakeAppointmentAgainButton {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.teal,
+          primary: Colors.teal,
           textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           shape: const StadiumBorder(),
           elevation: 0),
       onPressed: () {},
       child: const Text(
-        'Reprendre rendez vous',
+        'Reprendre le rendez vous',
         style: TextStyle(height: 1.0, fontSize: 12),
       ),
     );
@@ -194,8 +195,9 @@ class ListComingAppointment<T> extends StatelessWidget {
       ),
     );
   }
-  _buildMarginHeader(int index){
-    if(index == 0){
+
+  _buildMarginHeader(int index) {
+    if (index == 0) {
       return SizedBox(
         height: Sizes.vPaddingHighest,
       );

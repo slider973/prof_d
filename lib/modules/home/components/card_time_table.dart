@@ -39,7 +39,8 @@ class CarteTimeTableComponent extends StatelessWidget {
               itemCount: slots.length,
               itemBuilder: (context, index) {
                 final DateFormat formatter = DateFormat("Hm", 'fr_FR');
-                final DateTime currentHours = DateTime.parse(slots[index]['date']);
+                final DateTime currentHours =
+                    DateTime.parse(slots[index]['date']);
                 final String slot = formatter.format(currentHours);
                 return SlotSection(
                   slot: slot,

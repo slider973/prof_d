@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 class ButtonCreateProfileFormComponent extends StatefulWidget {
   bool? isCanCalled;
 
-   ButtonCreateProfileFormComponent({Key? key, this.isCanCalled})
+  ButtonCreateProfileFormComponent({Key? key, this.isCanCalled})
       : super(key: key);
 
   @override
-  State<ButtonCreateProfileFormComponent> createState() => _ButtonCreateProfileFormComponentState();
+  State<ButtonCreateProfileFormComponent> createState() =>
+      _ButtonCreateProfileFormComponentState();
 }
 
-class _ButtonCreateProfileFormComponentState extends State<ButtonCreateProfileFormComponent> {
+class _ButtonCreateProfileFormComponentState
+    extends State<ButtonCreateProfileFormComponent> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(

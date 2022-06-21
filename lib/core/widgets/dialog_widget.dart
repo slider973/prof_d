@@ -50,15 +50,15 @@ class DialogWidget {
               backgroundColor: const Color(0xffffffff),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                    Sizes.dialogRadius,
-                  )),
+                Sizes.dialogRadius,
+              )),
             ),
           ),
         ),
       ),
       pageBuilder: (BuildContext context, Animation<double> animation,
-          Animation<double> secondaryAnimation) =>
-      const SizedBox(),
+              Animation<double> secondaryAnimation) =>
+          const SizedBox(),
     );
   }
 }

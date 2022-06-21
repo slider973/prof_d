@@ -5,9 +5,9 @@ import '../config/config_route_collection.dart';
 import '../models/user.dart';
 
 class ChildRepository {
-  static addChildToUserDoc(UserChildProfd child)  {
-        CollectionReference childRef =
-    FirebaseFirestore.instance.collection('users');
+  static addChildToUserDoc(UserChildProfd child) {
+    CollectionReference childRef =
+        FirebaseFirestore.instance.collection('users');
     childRef
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(childCollection)
@@ -16,9 +16,9 @@ class ChildRepository {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
-  static updateChildToUserDoc(String id, UserChildProfd child)  {
+  static updateChildToUserDoc(String id, UserChildProfd child) {
     CollectionReference childRef =
-    FirebaseFirestore.instance.collection('users');
+        FirebaseFirestore.instance.collection('users');
     childRef
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(childCollection)

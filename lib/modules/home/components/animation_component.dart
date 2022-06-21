@@ -8,7 +8,8 @@ class AnimationComponent extends StatefulWidget {
   State<AnimationComponent> createState() => _AnimationComponentState();
 }
 
-class _AnimationComponentState extends State<AnimationComponent> with TickerProviderStateMixin {
+class _AnimationComponentState extends State<AnimationComponent>
+    with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
@@ -23,9 +24,10 @@ class _AnimationComponentState extends State<AnimationComponent> with TickerProv
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Lottie.asset(
+    return Lottie.asset(
       'assets/animation/create_animation.json',
       controller: _controller,
       onLoaded: (composition) {

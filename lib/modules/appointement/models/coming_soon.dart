@@ -1,5 +1,3 @@
-
-
 import 'patient.dart';
 
 class ComingSoon {
@@ -10,7 +8,7 @@ class ComingSoon {
   late final String appointment;
   late final Patient patient;
 
-  ComingSoon.fromJson(Map<String, dynamic> json){
+  ComingSoon.fromJson(Map<String, dynamic> json) {
     appointment = json['appointment'];
     patient = Patient.fromJson(json['patient']);
   }

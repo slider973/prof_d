@@ -4,7 +4,6 @@
 
 /// [FxDistanceUtils] - gives different functions that can be used for calculating or formatting distance
 
-
 import 'dart:math';
 
 class FxLatLng {

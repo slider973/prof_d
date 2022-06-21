@@ -41,21 +41,19 @@ class Parent {
         childList: childList,
       );
 
-  factory Parent.fromJson(String str) =>
-      Parent.fromMap(json.decode(str));
+  factory Parent.fromJson(String str) => Parent.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Parent.fromMap(Map<String, dynamic> json) =>
-      Parent(
+  factory Parent.fromMap(Map<String, dynamic> json) => Parent(
         id: json["id"],
         isProfileCreated: json["isProfileCreated"],
         email: json["email"],
         firstname: json["firstname"],
         lastname: json["lastname"],
         phone: json["phone"],
-        childList: List<Child>.from(
-            json["childList"].map((x) => Child.fromMap(x))),
+        childList:
+            List<Child>.from(json["childList"].map((x) => Child.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {

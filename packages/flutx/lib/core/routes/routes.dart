@@ -13,58 +13,49 @@ export 'route_builders/scale_route.dart';
 export 'route_builders/size_route.dart';
 export 'route_builders/slide_left_route.dart';
 
-
 import 'package:flutter/material.dart';
 import 'middlewares/middleware.dart';
 import 'route.dart';
 
-
-class FxRoutes{
-
+class FxRoutes {
   static List<FxRoute> _routes = [];
 
-
-  static void create(List<FxRoute> routes){
+  static void create(List<FxRoute> routes) {
     _routes = [];
     _routes.addAll(routes);
   }
 
-  static void add(FxRoute route){
+  static void add(FxRoute route) {
     _routes.add(route);
   }
 
-  static void addAll(List<FxRoute> routes){
+  static void addAll(List<FxRoute> routes) {
     _routes.addAll(routes);
   }
 
-  static Map<String,WidgetBuilder> getMapped(){
-    Map<String,WidgetBuilder> routesMap ={};
+  static Map<String, WidgetBuilder> getMapped() {
+    Map<String, WidgetBuilder> routesMap = {};
 
-    for(FxRoute route in _routes){
+    for (FxRoute route in _routes) {
       routesMap[route.name] = route.widgetBuilder;
     }
 
-
-
     return routesMap;
-
   }
 
-  static Future<T?> pushNamed<T extends Object?> (
-      BuildContext context,
-      String routeName, {
-        Object? arguments,
-      }) async{
-
+  static Future<T?> pushNamed<T extends Object?>(
+    BuildContext context,
+    String routeName, {
+    Object? arguments,
+  }) async {
     FxRoute? fxRoute = getRouteFromName(routeName);
-    if(fxRoute==null)
-      throw("This route is not implemented");
+    if (fxRoute == null) throw ("This route is not implemented");
 
-    if(fxRoute.middlewares!=null) {
+    if (fxRoute.middlewares != null) {
       for (FxMiddleware middleware in fxRoute.middlewares!) {
         String redirectedRouteName = await middleware.handle(routeName);
-        if(redirectedRouteName.compareTo(routeName)!=0){
-          return pushNamed(context, redirectedRouteName,arguments: arguments);
+        if (redirectedRouteName.compareTo(routeName) != 0) {
+          return pushNamed(context, redirectedRouteName, arguments: arguments);
         }
       }
     }
@@ -72,14 +63,10 @@ class FxRoutes{
     return Navigator.of(context).pushNamed<T>(routeName, arguments: arguments);
   }
 
-  static FxRoute? getRouteFromName(String routeName){
-    for(FxRoute route in _routes){
-      if(route.name.compareTo(routeName)==0)
-        return route;
+  static FxRoute? getRouteFromName(String routeName) {
+    for (FxRoute route in _routes) {
+      if (route.name.compareTo(routeName) == 0) return route;
     }
     return null;
   }
-
-
-
 }

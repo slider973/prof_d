@@ -7,7 +7,8 @@ import '../viewmodels/dahsboard_viewmodel.dart';
 class ChildListParentScreen extends ConsumerWidget {
   final List<Child> childList;
 
-  const ChildListParentScreen({Key? key, required this.childList}) : super(key: key);
+  const ChildListParentScreen({Key? key, required this.childList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +24,7 @@ class ChildListParentScreen extends ConsumerWidget {
           final Child child = childList[index];
           return ListTile(
             title: Text('${child.firstname} ${child.lastname}'),
-            onTap: (){
+            onTap: () {
               _adminDashboardVM.navigateToChildSelectedScreen(child);
             },
           );

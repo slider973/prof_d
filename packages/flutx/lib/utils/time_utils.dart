@@ -4,13 +4,13 @@
 
 /// [FxTimeUtils] - provides different functions for formatting time
 
-class FxTimeUtils{
+class FxTimeUtils {
   static String getTextFromSeconds(
       {int time = 0,
-        bool withZeros = true,
-        bool withHours = true,
-        bool withMinutes = true,
-        bool withSpace = true}) {
+      bool withZeros = true,
+      bool withHours = true,
+      bool withMinutes = true,
+      bool withSpace = true}) {
     int hour = (time / 3600).floor();
     int minute = ((time - 3600 * hour) / 60).floor();
     int second = (time - 3600 * hour - 60 * minute);
@@ -41,5 +41,4 @@ class FxTimeUtils{
 
     return timeText;
   }
-
 }

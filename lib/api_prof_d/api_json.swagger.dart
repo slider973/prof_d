@@ -14,10 +14,12 @@ part 'api_json.swagger.chopper.dart';
 
 @ChopperApi()
 abstract class ApiJson extends ChopperService {
+
   static ApiJson create(
       {ChopperClient? client,
       String? baseUrl,
       Iterable<dynamic>? interceptors}) {
+    print('client $client');
     if (client != null) {
       return _$ApiJson(client);
     }
@@ -95,13 +97,15 @@ abstract class ApiJson extends ChopperService {
       {@Body() required AppleLoginDto? body});
 
   ///
-  Future<chopper.Response> authRefreshTokenPost() {
-    return _authRefreshTokenPost();
+  Future<chopper.Response> authRefreshTokenPost(
+      {required RefreshTokenDto? body}) {
+    return _authRefreshTokenPost(body: body);
   }
 
   ///
-  @Post(path: '/auth/refresh-token', optionalBody: true)
-  Future<chopper.Response> _authRefreshTokenPost();
+  @Post(path: '/auth/refresh-token')
+  Future<chopper.Response> _authRefreshTokenPost(
+      {@Body() required RefreshTokenDto? body});
 
   ///
   Future<chopper.Response> authRegisterPost({required RegisterDto? body}) {
@@ -659,39 +663,15 @@ abstract class ApiJson extends ChopperService {
 
   ///
   ///@param id
-  Future<chopper.Response> followUpIdGet({required String? id}) {
-    return _followUpIdGet(id: id);
+  Future<chopper.Response> followUpChildIdGet({required String? id}) {
+    return _followUpChildIdGet(id: id);
   }
 
   ///
   ///@param id
-  @Get(path: '/follow-up/{id}')
-  Future<chopper.Response> _followUpIdGet({@Path('id') required String? id});
-
-  ///
-  ///@param id
-  Future<chopper.Response> followUpIdPatch(
-      {required String? id, required UpdateFollowUpDto? body}) {
-    return _followUpIdPatch(id: id, body: body);
-  }
-
-  ///
-  ///@param id
-  @Patch(path: '/follow-up/{id}')
-  Future<chopper.Response> _followUpIdPatch(
-      {@Path('id') required String? id,
-      @Body() required UpdateFollowUpDto? body});
-
-  ///
-  ///@param id
-  Future<chopper.Response> followUpIdDelete({required String? id}) {
-    return _followUpIdDelete(id: id);
-  }
-
-  ///
-  ///@param id
-  @Delete(path: '/follow-up/{id}')
-  Future<chopper.Response> _followUpIdDelete({@Path('id') required String? id});
+  @Get(path: '/follow-up/child/{id}')
+  Future<chopper.Response> _followUpChildIdGet(
+      {@Path('id') required String? id});
 
   ///
   Future<chopper.Response> followUpDetailsPost(
@@ -723,32 +703,6 @@ abstract class ApiJson extends ChopperService {
   ///@param id
   @Get(path: '/follow-up-details/{id}')
   Future<chopper.Response> _followUpDetailsIdGet(
-      {@Path('id') required String? id});
-
-  ///
-  ///@param id
-  Future<chopper.Response> followUpDetailsIdPatch(
-      {required String? id, required UpdateFollowUpDetailDto? body}) {
-    return _followUpDetailsIdPatch(id: id, body: body);
-  }
-
-  ///
-  ///@param id
-  @Patch(path: '/follow-up-details/{id}')
-  Future<chopper.Response> _followUpDetailsIdPatch(
-      {@Path('id') required String? id,
-      @Body() required UpdateFollowUpDetailDto? body});
-
-  ///
-  ///@param id
-  Future<chopper.Response> followUpDetailsIdDelete({required String? id}) {
-    return _followUpDetailsIdDelete(id: id);
-  }
-
-  ///
-  ///@param id
-  @Delete(path: '/follow-up-details/{id}')
-  Future<chopper.Response> _followUpDetailsIdDelete(
       {@Path('id') required String? id});
 
   ///
@@ -883,6 +837,26 @@ abstract class ApiJson extends ChopperService {
   ///@param id
   @Get(path: '/mail/{id}')
   Future<chopper.Response> _mailIdGet({@Path('id') required String? id});
+
+  ///
+  Future<chopper.Response> followUpSubjectPost(
+      {required CreateFollowUpSubjectDto? body}) {
+    return _followUpSubjectPost(body: body);
+  }
+
+  ///
+  @Post(path: '/follow-up-subject')
+  Future<chopper.Response> _followUpSubjectPost(
+      {@Body() required CreateFollowUpSubjectDto? body});
+
+  ///
+  Future<chopper.Response> followUpSubjectGet() {
+    return _followUpSubjectGet();
+  }
+
+  ///
+  @Get(path: '/follow-up-subject')
+  Future<chopper.Response> _followUpSubjectGet();
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);

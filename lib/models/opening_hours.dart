@@ -2,7 +2,8 @@ class OpeningHours {
   OpeningHours({
     int? day,
     List<List<String>>? ranges,
-    bool? enabled,}){
+    bool? enabled,
+  }) {
     _day = day;
     _ranges = ranges;
     _enabled = enabled;
@@ -28,5 +29,4 @@ class OpeningHours {
     map['enabled'] = _enabled;
     return map;
   }
-
 }

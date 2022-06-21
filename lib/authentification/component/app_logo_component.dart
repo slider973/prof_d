@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/localization/app_localization.dart';
 import '../../core/styles/app_images.dart';
 import '../../core/styles/sizes.dart';
 import '../../core/widgets/custom_image.dart';

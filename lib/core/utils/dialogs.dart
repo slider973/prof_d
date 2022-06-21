@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-
 import '../localization/app_localization.dart';
 import '../services/navigation_service.dart';
 import '../widgets/dialog_widget.dart';

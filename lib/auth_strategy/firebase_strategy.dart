@@ -49,6 +49,4 @@ class FirebaseAuthStrategy implements AuthStrategy {
       }
     }
   }
-
-
 }

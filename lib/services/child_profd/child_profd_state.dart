@@ -16,4 +16,3 @@ class SetChildProfdState extends ChildProfdState {
   @override
   List<Object?> get props => [child];
 }
-

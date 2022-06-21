@@ -19,12 +19,12 @@ class SplashViewModel extends ChangeNotifier {
   late String secondPage;
 
   SplashViewModel(this._mainCoreVM) {
-    if(!kIsWeb) {
+    if (!kIsWeb) {
       ConnectivityService.instance.checkIfConnected().then((value) async {
         await Future.delayed(const Duration(seconds: 2), () {});
         if (value) {
           initializeData().then(
-                (_) {
+            (_) {
               NavigationService.offAll(
                 isNamed: true,
                 page: secondPage,
@@ -43,26 +43,23 @@ class SplashViewModel extends ChangeNotifier {
         }
       });
     }
-    if(kIsWeb){
+    if (kIsWeb) {
       initializeData().then(
-            (_) {
+        (_) {
           NavigationService.offAll(
             isNamed: true,
             page: RoutePaths.authLogin,
           );
-
         },
       );
     }
-
-
   }
 
   Future initializeData() async {
     List futures = [
       ServiceInitializer.instance.initializeData(),
     ];
-    if(!kIsWeb){
+    if (!kIsWeb) {
       futures.add(checkForCachedUser());
     }
     await Future.wait<dynamic>([...futures]);

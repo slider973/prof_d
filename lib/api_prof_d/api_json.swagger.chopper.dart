@@ -69,9 +69,11 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
-  Future<Response<dynamic>> _authRefreshTokenPost() {
+  Future<Response<dynamic>> _authRefreshTokenPost(
+      {required RefreshTokenDto? body}) {
     final $url = '/auth/refresh-token';
-    final $request = Request('POST', $url, client.baseUrl);
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<dynamic, dynamic>($request);
   }
 
@@ -480,25 +482,9 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
-  Future<Response<dynamic>> _followUpIdGet({required String? id}) {
-    final $url = '/follow-up/${id}';
+  Future<Response<dynamic>> _followUpChildIdGet({required String? id}) {
+    final $url = '/follow-up/child/${id}';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> _followUpIdPatch(
-      {required String? id, required UpdateFollowUpDto? body}) {
-    final $url = '/follow-up/${id}';
-    final $body = body;
-    final $request = Request('PATCH', $url, client.baseUrl, body: $body);
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> _followUpIdDelete({required String? id}) {
-    final $url = '/follow-up/${id}';
-    final $request = Request('DELETE', $url, client.baseUrl);
     return client.send<dynamic, dynamic>($request);
   }
 
@@ -522,22 +508,6 @@ class _$ApiJson extends ApiJson {
   Future<Response<dynamic>> _followUpDetailsIdGet({required String? id}) {
     final $url = '/follow-up-details/${id}';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> _followUpDetailsIdPatch(
-      {required String? id, required UpdateFollowUpDetailDto? body}) {
-    final $url = '/follow-up-details/${id}';
-    final $body = body;
-    final $request = Request('PATCH', $url, client.baseUrl, body: $body);
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> _followUpDetailsIdDelete({required String? id}) {
-    final $url = '/follow-up-details/${id}';
-    final $request = Request('DELETE', $url, client.baseUrl);
     return client.send<dynamic, dynamic>($request);
   }
 
@@ -628,6 +598,22 @@ class _$ApiJson extends ApiJson {
   @override
   Future<Response<dynamic>> _mailIdGet({required String? id}) {
     final $url = '/mail/${id}';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _followUpSubjectPost(
+      {required CreateFollowUpSubjectDto? body}) {
+    final $url = '/follow-up-subject';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _followUpSubjectGet() {
+    final $url = '/follow-up-subject';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<dynamic, dynamic>($request);
   }

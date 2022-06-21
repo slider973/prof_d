@@ -17,7 +17,6 @@ class FxTwoToneIcon extends StatefulWidget {
   final Color? color;
   final double? size;
 
-
   const FxTwoToneIcon(this.iconData, {this.color, this.size = 24});
 
   @override
@@ -36,15 +35,11 @@ class _FxTwoToneIconState extends State<FxTwoToneIcon> {
 
   @override
   Widget build(BuildContext context) {
-
     fetchCacheData();
 
-    if(iconData!=null ){
-      if(!(iconData==widget.iconData))
-        getIconDataString();
+    if (iconData != null) {
+      if (!(iconData == widget.iconData)) getIconDataString();
     }
-
-
 
     return iconDataString == null
         ? Container()
@@ -70,7 +65,4 @@ class _FxTwoToneIconState extends State<FxTwoToneIcon> {
   void fetchCacheData() {
     iconDataString = FxTwoToneIconDataCache.cache[widget.iconData];
   }
-
-
-
 }

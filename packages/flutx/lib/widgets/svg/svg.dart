@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +6,6 @@ class FxSvg extends StatefulWidget {
   final String image;
   final Color? color;
   final double? size;
-
 
   const FxSvg(this.image, {this.color, this.size = 24});
 
@@ -27,24 +25,20 @@ class _FxTwoToneIconState extends State<FxSvg> {
 
   @override
   Widget build(BuildContext context) {
-
     fetchCacheData();
 
-    if(image!=null ){
-      if(!(image==widget.image))
-        getIconDataString();
+    if (image != null) {
+      if (!(image == widget.image)) getIconDataString();
     }
-
-
 
     return iconDataString == null
         ? Container()
         : SvgPicture.string(
-      iconDataString!,
-      color: widget.color,
-      width: widget.size,
-      height: widget.size,
-    );
+            iconDataString!,
+            color: widget.color,
+            width: widget.size,
+            height: widget.size,
+          );
   }
 
   getIconDataString() async {
@@ -61,14 +55,8 @@ class _FxTwoToneIconState extends State<FxSvg> {
   void fetchCacheData() {
     iconDataString = FxSvgCache.cache[widget.image];
   }
-
-
-
 }
 
-
-class FxSvgCache{
-
-  static Map<String,String> cache = {};
-
+class FxSvgCache {
+  static Map<String, String> cache = {};
 }

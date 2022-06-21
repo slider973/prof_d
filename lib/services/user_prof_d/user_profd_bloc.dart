@@ -21,7 +21,6 @@ class UserProfdBloc extends Bloc<UserProfdEvent, UserProfdState> {
     on<UpdateUserProfdEvent>((event, emit) async {
       emit(GetProfdState(event.user));
       await UserRepository.updateUserDoc(event.user);
-
     });
   }
 }

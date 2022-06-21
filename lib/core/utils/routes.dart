@@ -43,7 +43,7 @@ class AppRouter {
           transitionDuration: const Duration(seconds: 1),
         );
 
-        //Introduce screen
+      //Introduce screen
       case RoutePaths.introduceScreen:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const MyCustomIntroductionScreen(),
@@ -51,8 +51,8 @@ class AppRouter {
               FadeTransition(opacity: a, child: c),
           transitionDuration: const Duration(seconds: 1),
         );
-        //AdminBar Screen
-        case RoutePaths.admin:
+      //AdminBar Screen
+      case RoutePaths.admin:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const AdminBottomTabBarController(),
           transitionsBuilder: (_, a, __, c) =>
@@ -69,7 +69,7 @@ class AppRouter {
 
       default:
         return MaterialPageRoute(
-            builder: (_) => const BottomTabBarController(),
+          builder: (_) => const BottomTabBarController(),
         );
     }
   }

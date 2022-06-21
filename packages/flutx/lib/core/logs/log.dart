@@ -6,28 +6,22 @@
 
 import 'dart:developer';
 
-class FxLog{
-
+class FxLog {
   static bool _enabled = true;
 
-  FxLog(dynamic message){
-    if(_enabled)
-      log(message.toString());
+  FxLog(dynamic message) {
+    if (_enabled) log(message.toString());
   }
 
-  static enable(){
+  static enable() {
     _enabled = true;
   }
 
-  static disable(){
+  static disable() {
     _enabled = false;
   }
 
-  static isEnabled(){
+  static isEnabled() {
     return _enabled;
   }
-
-
-
-
 }

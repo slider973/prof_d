@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import '../styles/sizes.dart';
 import '../utils/dialogs.dart';
 
-
 class ImageSelector {
   ImageSelector._();
 

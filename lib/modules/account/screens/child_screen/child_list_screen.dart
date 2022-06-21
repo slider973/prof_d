@@ -10,9 +10,8 @@ class ChildListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return Scaffold(
-      appBar: childAppBar(context) ,
-      floatingActionButton: childFloatingButtonAction(context),
-      body:childListFutureBuilder(context, ref)
-    );
+        appBar: childAppBar(context),
+        floatingActionButton: childFloatingButtonAction(context),
+        body: childListFutureBuilder(context, ref));
   }
 }

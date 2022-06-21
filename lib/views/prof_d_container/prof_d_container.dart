@@ -26,10 +26,8 @@ class ProfDContainer extends StatelessWidget {
   }
 }
 
-
-
 class _FieldSection extends StatelessWidget {
-  List<Widget> childrenList= [];
+  List<Widget> childrenList = [];
 
   _FieldSection({Key? key, required this.childrenList}) : super(key: key);
 
@@ -40,9 +38,7 @@ class _FieldSection extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(43.0),
-              topLeft: Radius.circular(43.0)
-          ),
+              topRight: Radius.circular(43.0), topLeft: Radius.circular(43.0)),
         ),
         child: Column(
           children: childrenList,

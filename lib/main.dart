@@ -10,8 +10,6 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-
-
 import 'theme/app_theme.dart';
 
 Future<void> main() async {

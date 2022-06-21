@@ -4,7 +4,6 @@ import '../../../core/viewmodels/main_core_viewmodel.dart';
 import '../components/dashboard/dashboard_component.dart';
 import '../components/not_profile_list_component.dart';
 
-
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -21,6 +20,5 @@ class HomeScreen extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: notProfileListComponent(),
     );
-
   }
 }

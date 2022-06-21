@@ -25,18 +25,18 @@ class UserRepo {
 
   Future<UserModel?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
+    final loginDto = LoginDto.fromJson(
+        {'username': email.toLowerCase(), 'password': password});
 
     final result = await apiJson.authLoginPost(
-        body: LoginDto.fromJson(
-            {'username': email.toLowerCase(), 'password': password}));
+        body: loginDto);
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
-
         authentificationModel = AuthentificationModel.fromJson(result.body);
-        if(authentificationModel.accessToken != null) {
+        if (authentificationModel.accessToken != null) {
           _authService.setUserTokenApi(authentificationModel.accessToken!);
+          _authService.setUserRefreshTokenApi(authentificationModel.refreshToken!);
         }
-
       }
     }
     return null;
@@ -72,13 +72,18 @@ class UserRepo {
   Future<UserModel?> getUserData({String? token}) async {
     final userToken = token ?? await _authService.getUserTokenApiStored();
     _apiCaller.dio.options.headers["Authorization"] = "Bearer " + userToken!;
-    return await _apiCaller.getData(
+    final result = await apiJson.authMeGet();
+    return UserModel.fromMap(result.body);
+
+      /* await _apiCaller.getData(
         path: ApisPaths.mePatch(),
         queryParameters: {},
         builder: (userData) {
           debugPrint(userData.toString());
           return UserModel.fromMap(userData!);
         });
+
+       */
   }
 
   Future updateUserName({required String name}) async {
@@ -95,7 +100,9 @@ class UserRepo {
         dataParams: user,
         builder: (user) {
           if (user != null) {
-            print('in updateUser $user');
+            if (kDebugMode) {
+              print('in updateUser $user');
+            }
             return UserModel.fromMap(user);
           }
         });

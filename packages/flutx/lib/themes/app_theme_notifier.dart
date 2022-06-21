@@ -18,12 +18,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app_theme.dart';
 
 class FxAppThemeNotifier extends ChangeNotifier {
-
-
   init() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
-    int fxAppThemeMode = sharedPreferences.getInt("fx_app_theme_mode")??FxAppThemeType.light.index;
+    int fxAppThemeMode = sharedPreferences.getInt("fx_app_theme_mode") ??
+        FxAppThemeType.light.index;
     changeAppThemeMode(FxAppThemeType.values[fxAppThemeMode]);
 
     // int fxCustomThemeMode = sharedPreferences.getInt("fx_custom_theme_mode")??FxAppThemeType.light.index;
@@ -39,7 +38,6 @@ class FxAppThemeNotifier extends ChangeNotifier {
 
     log(FxAppTheme.getThemeFromThemeMode().toString());
     notifyListeners();
-
   }
 
   // changeCustomThemeMode(FxCustomThemeType? themeType) async {

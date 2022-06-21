@@ -13,5 +13,3 @@ class _FxPageViewState extends State<FxPageView> {
     return PageView();
   }
 }
-
-

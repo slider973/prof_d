@@ -30,7 +30,8 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<Appointment> getAppointment() async {
-    if (appointmentList.comingSoon.isNotEmpty && appointmentList.pass.isNotEmpty) {
+    if (appointmentList.comingSoon.isNotEmpty &&
+        appointmentList.pass.isNotEmpty) {
       return appointmentList;
     }
 

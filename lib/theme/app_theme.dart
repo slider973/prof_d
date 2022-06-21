@@ -28,7 +28,6 @@ import 'package:sizer/sizer.dart';
 * Version : 1.0.0
 * */
 
-
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -70,7 +69,7 @@ class AppTheme {
 
   static ThemeData getTheme([ThemeType? themeType]) {
     themeType = themeType ?? AppTheme.themeType;
-    if (themeType == ThemeType.dark) return darkTheme ;
+    if (themeType == ThemeType.dark) return darkTheme;
     return lightTheme;
   }
 
@@ -114,7 +113,7 @@ class AppTheme {
         headline6: GoogleFonts.aBeeZee(), bodyText1: GoogleFonts.abel()),
 
     /// Colorscheme
-    colorScheme:  ColorScheme.light(
+    colorScheme: ColorScheme.light(
         primary: CustomTheme().profDPrimary,
         onPrimary: CustomTheme().profDOnPrimary,
         primaryVariant: CustomTheme().profDPrimary,
@@ -136,12 +135,13 @@ class AppTheme {
         foregroundColor: const Color(0xffeeeeee)),
 
     /// Divider Theme
-    dividerTheme: const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
+    dividerTheme:
+        const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
     dividerColor: const Color(0xffe8e8e8),
 
     /// Bottom AppBar Theme
     bottomAppBarTheme:
-    const BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
+        const BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
 
     /// Tab bar Theme
     tabBarTheme: const TabBarTheme(
@@ -264,7 +264,8 @@ class AppTheme {
     ),
 
     /// Divider Color
-    dividerTheme: const DividerThemeData(color: Color(0xff363636), thickness: 1),
+    dividerTheme:
+        const DividerThemeData(color: Color(0xff363636), thickness: 1),
     dividerColor: const Color(0xff363636),
 
     /// Floating Action Theme
@@ -279,7 +280,7 @@ class AppTheme {
 
     /// Bottom AppBar Theme
     bottomAppBarTheme:
-    const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
+        const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
 
     /// Tab bar Theme
     tabBarTheme: const TabBarTheme(
@@ -345,4 +346,3 @@ class AppTheme {
     splashColor: Colors.white.withAlpha(56),
   );
 }
-

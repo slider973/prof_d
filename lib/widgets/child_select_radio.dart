@@ -28,7 +28,8 @@ class _ChildRadioSelectState extends ConsumerState<ChildRadioSelect> {
 
   @override
   Widget build(BuildContext context) {
-    final _appointmentViewModel = ref.watch<AppointmentViewModel>(appointmentViewModel);
+    final _appointmentViewModel =
+        ref.watch<AppointmentViewModel>(appointmentViewModel);
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,

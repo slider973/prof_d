@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-
 import '../styles/app_images.dart';
 
 class CachedNetworkImageCircular extends StatelessWidget {
@@ -12,7 +11,7 @@ class CachedNetworkImageCircular extends StatelessWidget {
   const CachedNetworkImageCircular({
     required this.imageUrl,
     this.spareImageUrl =
-    'https://firebasestorage.googleapis.com/v0/b/deliverzler.appspot.com/o/profile_pic4.png?alt=media&token=60fc5dbb-93ab-4f2b-89fe-d378f3a0ae6f',
+        'https://firebasestorage.googleapis.com/v0/b/deliverzler.appspot.com/o/profile_pic4.png?alt=media&token=60fc5dbb-93ab-4f2b-89fe-d378f3a0ae6f',
     required this.radius,
     Key? key,
   }) : super(key: key);
@@ -29,7 +28,7 @@ class CachedNetworkImageCircular extends StatelessWidget {
       ),
       placeholder: (context, url) => CircleAvatar(
         radius: radius,
-        backgroundImage:  const AssetImage(AppImages.loadingGIF),
+        backgroundImage: const AssetImage(AppImages.loadingGIF),
       ),
       errorWidget: (context, url, error) => CircleAvatar(
         radius: radius,

@@ -14,7 +14,7 @@ class CardComponent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _userModel =
-    ref.watch(mainCoreViewModelProvider.notifier).getCurrentUser();
+        ref.watch(mainCoreViewModelProvider.notifier).getCurrentUser();
     return Card(
       elevation: 6,
       margin: EdgeInsets.zero,
@@ -28,11 +28,11 @@ class CardComponent extends ConsumerWidget {
         ),
         child: Column(
           children: [
-                  SizedBox(
+            SizedBox(
               height: Sizes.vMarginSmallest,
             ),
             CardUserDetailsComponent(
-             user: _userModel!,
+              user: _userModel!,
             ),
             SizedBox(
               height: Sizes.vMarginSmallest,

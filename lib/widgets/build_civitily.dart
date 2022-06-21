@@ -60,6 +60,7 @@ class _BuildCivitilyState extends State<BuildCivitily> {
       ],
     );
   }
+
   CivilityCharacter getRadioValueFromString(String value) {
     return CivilityCharacter.values
         .where((element) => element.toString().split('.').last == value)
