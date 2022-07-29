@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import '../admin/screens/admin_appointement_screen.dart';
 import '../admin/screens/dashboard_screen.dart';
-import '../modules/account/screens/account_screens.dart';
-import '../modules/appointement/screens/appointment_screen.dart';
-import '../modules/home/screens/home_screen.dart';
-import '../screens/news_screen.dart';
 
 class AdminBottomTabBarController extends StatefulWidget {
   const AdminBottomTabBarController({Key? key}) : super(key: key);
@@ -22,7 +18,10 @@ class _AdminBottomTabBarControllerState
   @override
   void initState() {
     super.initState();
-    listScreens = [const AdminDashboardScreen(), AdminAppointmentScreen()];
+    listScreens = [
+      const AdminDashboardScreen(),
+      const AdminAppointmentScreen()
+    ];
   }
 
   @override

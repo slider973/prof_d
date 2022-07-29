@@ -20,9 +20,7 @@ class _ChildSelectedScreenState extends State<ChildSelectedScreen>
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
-    if (kDebugMode) {
-      print(widget.childSelected.toString());
-    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('dossier patient'),

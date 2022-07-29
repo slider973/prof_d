@@ -771,11 +771,21 @@ class UpdateAppointmentDto {
 
 @JsonSerializable(explicitToJson: true)
 class CreatePdfDto {
-  CreatePdfDto();
+  CreatePdfDto({
+    this.firstname,
+    this.lastname,
+    this.city,
+  });
 
   factory CreatePdfDto.fromJson(Map<String, dynamic> json) =>
       _$CreatePdfDtoFromJson(json);
 
+  @JsonKey(name: 'firstname', includeIfNull: true)
+  final String? firstname;
+  @JsonKey(name: 'lastname', includeIfNull: true)
+  final String? lastname;
+  @JsonKey(name: 'city', includeIfNull: true)
+  final String? city;
   static const fromJsonFactory = _$CreatePdfDtoFromJson;
   static const toJsonFactory = _$CreatePdfDtoToJson;
   Map<String, dynamic> toJson() => _$CreatePdfDtoToJson(this);
@@ -784,7 +794,34 @@ class CreatePdfDto {
   String toString() => jsonEncode(this);
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreatePdfDto &&
+            (identical(other.firstname, firstname) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstname, firstname)) &&
+            (identical(other.lastname, lastname) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastname, lastname)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(firstname) ^
+      const DeepCollectionEquality().hash(lastname) ^
+      const DeepCollectionEquality().hash(city) ^
+      runtimeType.hashCode;
+}
+
+extension $CreatePdfDtoExtension on CreatePdfDto {
+  CreatePdfDto copyWith({String? firstname, String? lastname, String? city}) {
+    return CreatePdfDto(
+        firstname: firstname ?? this.firstname,
+        lastname: lastname ?? this.lastname,
+        city: city ?? this.city);
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -839,6 +876,63 @@ class CreateFollowUpSubjectDto {
 extension $CreateFollowUpSubjectDtoExtension on CreateFollowUpSubjectDto {
   CreateFollowUpSubjectDto copyWith({String? name}) {
     return CreateFollowUpSubjectDto(name: name ?? this.name);
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateInvoicesDto {
+  CreateInvoicesDto({
+    this.firstname,
+    this.lastname,
+    this.parentId,
+  });
+
+  factory CreateInvoicesDto.fromJson(Map<String, dynamic> json) =>
+      _$CreateInvoicesDtoFromJson(json);
+
+  @JsonKey(name: 'firstname', includeIfNull: true)
+  final String? firstname;
+  @JsonKey(name: 'lastname', includeIfNull: true)
+  final String? lastname;
+  @JsonKey(name: 'parentId', includeIfNull: true)
+  final String? parentId;
+  static const fromJsonFactory = _$CreateInvoicesDtoFromJson;
+  static const toJsonFactory = _$CreateInvoicesDtoToJson;
+  Map<String, dynamic> toJson() => _$CreateInvoicesDtoToJson(this);
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CreateInvoicesDto &&
+            (identical(other.firstname, firstname) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstname, firstname)) &&
+            (identical(other.lastname, lastname) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastname, lastname)) &&
+            (identical(other.parentId, parentId) ||
+                const DeepCollectionEquality()
+                    .equals(other.parentId, parentId)));
+  }
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(firstname) ^
+      const DeepCollectionEquality().hash(lastname) ^
+      const DeepCollectionEquality().hash(parentId) ^
+      runtimeType.hashCode;
+}
+
+extension $CreateInvoicesDtoExtension on CreateInvoicesDto {
+  CreateInvoicesDto copyWith(
+      {String? firstname, String? lastname, String? parentId}) {
+    return CreateInvoicesDto(
+        firstname: firstname ?? this.firstname,
+        lastname: lastname ?? this.lastname,
+        parentId: parentId ?? this.parentId);
   }
 }
 

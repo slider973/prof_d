@@ -74,6 +74,10 @@ class ServiceInitializer {
     await FirebaseMessagingService.instance.initFirebaseMessaging();
   }
 
+  initAppointmentList() async {
+
+  }
+
   initHistoryService() async {
     await HistoryService.instance.initialize();
   }

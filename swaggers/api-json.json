@@ -10,142 +10,61 @@
   "servers": [],
   "components": {
     "securitySchemes": {
-      "bearer": {
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "type": "http"
-      }
+      "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" }
     },
     "schemas": {
       "LoginDto": {
         "type": "object",
         "properties": {
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
+          "username": { "type": "string" },
+          "password": { "type": "string" }
         },
-        "required": [
-          "username",
-          "password"
-        ]
+        "required": ["username", "password"]
       },
       "AppleLoginDto": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
-          "accessToken": {
-            "type": "string"
-          },
-          "authorizationCode": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
+          "name": { "type": "string" },
+          "accessToken": { "type": "string" },
+          "authorizationCode": { "type": "string" },
+          "type": { "type": "string" }
         },
-        "required": [
-          "name",
-          "accessToken",
-          "authorizationCode",
-          "type"
-        ]
+        "required": ["name", "accessToken", "authorizationCode", "type"]
       },
       "RefreshTokenDto": {
         "type": "object",
-        "properties": {
-          "refreshToken": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "refreshToken"
-        ]
+        "properties": { "refreshToken": { "type": "string" } },
+        "required": ["refreshToken"]
       },
       "RegisterDto": {
         "type": "object",
         "properties": {
-          "password": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          }
+          "password": { "type": "string" },
+          "email": { "type": "string" }
         },
-        "required": [
-          "password",
-          "email"
-        ]
+        "required": ["password", "email"]
       },
-      "UpdateEmailDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateProfileDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdatePasswordDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "RecoverPasswordDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "RoomDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "DeleteDirectMessageDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "DeleteRoomMessageDto": {
-        "type": "object",
-        "properties": {}
-      },
+      "UpdateEmailDto": { "type": "object", "properties": {} },
+      "UpdateProfileDto": { "type": "object", "properties": {} },
+      "UpdatePasswordDto": { "type": "object", "properties": {} },
+      "RecoverPasswordDto": { "type": "object", "properties": {} },
+      "RoomDto": { "type": "object", "properties": {} },
+      "DeleteDirectMessageDto": { "type": "object", "properties": {} },
+      "DeleteRoomMessageDto": { "type": "object", "properties": {} },
       "AddChildDto": {
         "type": "object",
         "properties": {
-          "firstname": {
-            "type": "string"
-          },
-          "lastname": {
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "numberOfBrotherAndSister": {
-            "type": "number"
-          },
-          "placeInTheSiblingGroup": {
-            "type": "string"
-          },
-          "placeOfSchooling": {
-            "type": "string"
-          },
-          "classLevel": {
-            "type": "string"
-          },
-          "followUpsInProgress": {
-            "type": "string"
-          },
-          "identifiedDisordersAndOrDifficulties": {
-            "type": "string"
-          },
-          "arrangementsInTheClassroom": {
-            "type": "string"
-          },
-          "behaviourInTheHome": {
-            "type": "string"
-          }
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "dateOfBirth": { "format": "date-time", "type": "string" },
+          "numberOfBrotherAndSister": { "type": "number" },
+          "placeInTheSiblingGroup": { "type": "string" },
+          "placeOfSchooling": { "type": "string" },
+          "classLevel": { "type": "string" },
+          "followUpsInProgress": { "type": "string" },
+          "identifiedDisordersAndOrDifficulties": { "type": "string" },
+          "arrangementsInTheClassroom": { "type": "string" },
+          "behaviourInTheHome": { "type": "string" }
         },
         "required": [
           "firstname",
@@ -161,121 +80,69 @@
           "behaviourInTheHome"
         ]
       },
-      "CreateAddressDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateAddressDto": {
-        "type": "object",
-        "properties": {}
-      },
+      "CreateAddressDto": { "type": "object", "properties": {} },
+      "UpdateAddressDto": { "type": "object", "properties": {} },
       "CreateTimeTableDto": {
         "type": "object",
         "properties": {
-          "title": {
-            "type": "string"
-          },
-          "start": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "end": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "desc": {
-            "type": "string"
-          }
+          "title": { "type": "string" },
+          "start": { "format": "date-time", "type": "string" },
+          "end": { "format": "date-time", "type": "string" },
+          "desc": { "type": "string" }
         },
-        "required": [
-          "title",
-          "start",
-          "end",
-          "desc"
-        ]
+        "required": ["title", "start", "end", "desc"]
       },
-      "UpdateTimeTableDto": {
-        "type": "object",
-        "properties": {}
-      },
+      "UpdateTimeTableDto": { "type": "object", "properties": {} },
       "CreateFollowUpDto": {
         "type": "object",
         "properties": {
-          "stateBefore": {
-            "type": "string"
-          },
-          "stateAfter": {
-            "type": "string"
-          },
-          "child": {
-            "type": "string"
-          }
+          "stateBefore": { "type": "string" },
+          "stateAfter": { "type": "string" },
+          "child": { "type": "string" }
         },
-        "required": [
-          "stateBefore",
-          "stateAfter",
-          "child"
-        ]
+        "required": ["stateBefore", "stateAfter", "child"]
       },
       "CreateFollowUpDetailDto": {
         "type": "object",
         "properties": {
-          "appointment": {
-            "type": "string"
-          },
-          "followUpSubjects": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
+          "appointment": { "type": "string" },
+          "followUpSubjects": { "type": "array", "items": { "type": "string" } }
         },
-        "required": [
-          "appointment",
-          "followUpSubjects"
-        ]
+        "required": ["appointment", "followUpSubjects"]
       },
       "CreateAppointmentDto": {
         "type": "object",
         "properties": {
-          "patient": {
-            "type": "string"
-          },
-          "profile": {
-            "type": "string"
-          },
-          "timeTableId": {
-            "type": "string"
-          }
+          "patient": { "type": "string" },
+          "profile": { "type": "string" },
+          "timeTableId": { "type": "string" }
         },
-        "required": [
-          "patient",
-          "profile",
-          "timeTableId"
-        ]
+        "required": ["patient", "profile", "timeTableId"]
       },
-      "UpdateAppointmentDto": {
-        "type": "object",
-        "properties": {}
-      },
+      "UpdateAppointmentDto": { "type": "object", "properties": {} },
       "CreatePdfDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "city": { "type": "string" }
+        },
+        "required": ["firstname", "lastname", "city"]
       },
-      "UpdatePdfDto": {
-        "type": "object",
-        "properties": {}
-      },
+      "UpdatePdfDto": { "type": "object", "properties": {} },
       "CreateFollowUpSubjectDto": {
         "type": "object",
+        "properties": { "name": { "type": "string" } },
+        "required": ["name"]
+      },
+      "CreateInvoicesDto": {
+        "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          }
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "parentId": { "type": "string" }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["firstname", "lastname", "parentId"]
       }
     }
   },
@@ -284,33 +151,21 @@
       "get": {
         "operationId": "AppController_main",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/test": {
       "get": {
         "operationId": "AppController_test",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/mail": {
       "get": {
         "operationId": "AppController_root",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/auth/login": {
@@ -321,48 +176,28 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDto"
-              }
+              "schema": { "$ref": "#/components/schemas/LoginDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/facebook-login": {
       "post": {
         "operationId": "AuthController_facebookLogin",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/google-login": {
       "post": {
         "operationId": "AuthController_googleLogin",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/apple-login": {
@@ -373,20 +208,12 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AppleLoginDto"
-              }
+              "schema": { "$ref": "#/components/schemas/AppleLoginDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/refresh-token": {
@@ -397,26 +224,16 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RefreshTokenDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RefreshTokenDto" }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "The user has been successfully created."
-          },
-          "400": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "200": { "description": "The user has been successfully created." },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "auth"
-        ]
+        "tags": ["auth"]
       }
     },
     "/auth/register": {
@@ -427,68 +244,40 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RegisterDto" }
             }
           }
         },
         "responses": {
-          "201": {
-            "description": "The user has been successfully created."
-          },
-          "400": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "201": { "description": "The user has been successfully created." },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "auth"
-        ]
+        "tags": ["auth"]
       }
     },
     "/auth/apple-callback": {
       "post": {
         "operationId": "AuthController_appleCallback",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/logout-from-all-devices": {
       "delete": {
         "operationId": "AuthController_logoutFromAllDevices",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/auth/me": {
       "get": {
         "operationId": "AuthController_me",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "auth"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
       }
     },
     "/user/getParentList": {
@@ -499,16 +288,10 @@
           "200": {
             "description": "The Parent list as been successfully founded."
           },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "user"
-        ]
+        "tags": ["user"]
       }
     },
     "/user/{username}": {
@@ -519,30 +302,18 @@
             "name": "username",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "user"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["user"]
       }
     },
     "/settings/username": {
       "put": {
         "operationId": "SettingsController_updateUsername",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/settings/email": {
@@ -553,17 +324,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateEmailDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdateEmailDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/settings/profile": {
@@ -574,17 +339,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateProfileDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdateProfileDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/settings/password": {
@@ -595,79 +354,49 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePasswordDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdatePasswordDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/subscription": {
       "get": {
         "operationId": "SubscriptionController_sendTestingNotification",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/subscription/web": {
       "post": {
         "operationId": "SubscriptionController_createWebSubscription",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       },
       "delete": {
         "operationId": "SubscriptionController_deleteWebSubscription",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/subscription/mobile": {
       "post": {
         "operationId": "SubscriptionController_createMobileSubscription",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       },
       "delete": {
         "operationId": "SubscriptionController_deleteMobileSubscription",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/recover/{code}": {
       "get": {
         "operationId": "RecoverController_validateRecoverCode",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "post": {
         "operationId": "RecoverController_changePassword",
@@ -676,17 +405,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePasswordDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdatePasswordDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       }
     },
     "/recover": {
@@ -697,39 +420,25 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RecoverPasswordDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RecoverPasswordDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       }
     },
     "/notification/config": {
       "get": {
         "operationId": "NotificationController_getConfig",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room": {
       "get": {
         "operationId": "RoomController_getUserRooms",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "post": {
         "operationId": "RoomController_create",
@@ -738,17 +447,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RoomDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RoomDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       }
     },
     "/room/id/{id}": {
@@ -759,38 +462,24 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room/public": {
       "get": {
         "operationId": "RoomController_getPublicRooms",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room/member": {
       "get": {
         "operationId": "RoomController_getRoomsByMember",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room/delete/{id}": {
@@ -801,16 +490,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room/{id}": {
@@ -821,37 +504,25 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RoomDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RoomDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/room/join": {
       "post": {
         "operationId": "RoomController_join",
         "parameters": [],
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       }
     },
     "/room/leave/{id}": {
@@ -862,16 +533,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/direct-first-message/{userId}": {
@@ -882,16 +547,10 @@
             "name": "userId",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/direct/{userId}": {
@@ -902,16 +561,10 @@
             "name": "userId",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/direct": {
@@ -928,11 +581,7 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/direct/all": {
@@ -949,11 +598,7 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/room-first-message/{roomId}": {
@@ -964,16 +609,10 @@
             "name": "roomId",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/room/{roomId}": {
@@ -984,16 +623,10 @@
             "name": "roomId",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/room": {
@@ -1004,17 +637,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteRoomMessageDto"
-              }
+              "schema": { "$ref": "#/components/schemas/DeleteRoomMessageDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/message/room/all": {
@@ -1025,17 +652,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteRoomMessageDto"
-              }
+              "schema": { "$ref": "#/components/schemas/DeleteRoomMessageDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/parents/findChildById/{id}": {
@@ -1046,16 +667,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/child": {
@@ -1066,21 +681,11 @@
           "200": {
             "description": "The Child list as been successfully founded."
           },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "child"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
       }
     },
     "/child/addChildToParent": {
@@ -1091,9 +696,7 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddChildDto"
-              }
+              "schema": { "$ref": "#/components/schemas/AddChildDto" }
             }
           }
         },
@@ -1101,21 +704,11 @@
           "201": {
             "description": "The Child has been successfully added to parent."
           },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "child"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
       }
     },
     "/child/{id}": {
@@ -1126,24 +719,12 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "child"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
       }
     },
     "/address": {
@@ -1154,26 +735,16 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateAddressDto"
-              }
+              "schema": { "$ref": "#/components/schemas/CreateAddressDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       },
       "get": {
         "operationId": "AddressController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/address/{id}": {
@@ -1184,16 +755,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "patch": {
         "operationId": "AddressController_update",
@@ -1202,26 +767,18 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAddressDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdateAddressDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "delete": {
         "operationId": "AddressController_remove",
@@ -1230,16 +787,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/time-table": {
@@ -1250,32 +801,18 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTimeTableDto"
-              }
+              "schema": { "$ref": "#/components/schemas/CreateTimeTableDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["time-table"]
       },
       "get": {
         "operationId": "TimeTableController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
       }
     },
     "/time-table/findByDate": {
@@ -1287,19 +824,11 @@
             "required": false,
             "in": "query",
             "allowEmptyValue": true,
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
       }
     },
     "/time-table/{id}": {
@@ -1310,19 +839,11 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
       },
       "patch": {
         "operationId": "TimeTableController_update",
@@ -1331,29 +852,19 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTimeTableDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdateTimeTableDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
       },
       "delete": {
         "operationId": "TimeTableController_remove",
@@ -1362,19 +873,11 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "time-table"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
       }
     },
     "/follow-up": {
@@ -1385,32 +888,18 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateFollowUpDto"
-              }
+              "schema": { "$ref": "#/components/schemas/CreateFollowUpDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "follow-up"
-        ]
+        "responses": { "201": { "description": "" } },
+        "tags": ["follow-up"]
       },
       "get": {
         "operationId": "FollowUpController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "follow-up"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up"]
       }
     },
     "/follow-up/child/{id}": {
@@ -1421,25 +910,17 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "201": {
             "description": "The follow-up  has been successfully founded."
           },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "follow-up"
-        ]
+        "tags": ["follow-up"]
       }
     },
     "/follow-up-details": {
@@ -1460,28 +941,16 @@
           "201": {
             "description": "The follow-up details has been successfully created."
           },
-          "400": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "follow-up-details"
-        ]
+        "tags": ["follow-up-details"]
       },
       "get": {
         "operationId": "FollowUpDetailsController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "follow-up-details"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up-details"]
       }
     },
     "/follow-up-details/{id}": {
@@ -1492,19 +961,11 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "follow-up-details"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up-details"]
       }
     },
     "/appointment": {
@@ -1515,9 +976,7 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateAppointmentDto"
-              }
+              "schema": { "$ref": "#/components/schemas/CreateAppointmentDto" }
             }
           }
         },
@@ -1525,28 +984,16 @@
           "201": {
             "description": "The Appointment as been successfully created."
           },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "appointment"
-        ]
+        "tags": ["appointment"]
       },
       "get": {
         "operationId": "AppointmentController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "appointment"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
       }
     },
     "/appointment/getByParent": {
@@ -1557,16 +1004,10 @@
           "200": {
             "description": "The Appointment list as been successfully founded."
           },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "appointment"
-        ]
+        "tags": ["appointment"]
       }
     },
     "/appointment/{id}": {
@@ -1577,19 +1018,11 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "appointment"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
       },
       "patch": {
         "operationId": "AppointmentController_update",
@@ -1598,29 +1031,19 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAppointmentDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdateAppointmentDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "appointment"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
       },
       "delete": {
         "operationId": "AppointmentController_remove",
@@ -1629,19 +1052,11 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "appointment"
-        ]
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
       }
     },
     "/pdf": {
@@ -1652,17 +1067,11 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreatePdfDto"
-              }
+              "schema": { "$ref": "#/components/schemas/CreatePdfDto" }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "responses": { "201": { "description": "" } }
       }
     },
     "/pdf/report-child/{id}": {
@@ -1673,16 +1082,25 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/pdf/invoice-appointment": {
+      "post": {
+        "operationId": "PdfController_findAllInvoices",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreatePdfDto" }
+            }
           }
-        }
+        },
+        "responses": { "201": { "description": "" } }
       }
     },
     "/pdf/{id}": {
@@ -1693,16 +1111,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "patch": {
         "operationId": "PdfController_update",
@@ -1711,26 +1123,18 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePdfDto"
-              }
+              "schema": { "$ref": "#/components/schemas/UpdatePdfDto" }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       },
       "delete": {
         "operationId": "PdfController_remove",
@@ -1739,16 +1143,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/mail/{id}": {
@@ -1759,16 +1157,10 @@
             "name": "id",
             "required": true,
             "in": "path",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        "responses": { "200": { "description": "" } }
       }
     },
     "/follow-up-subject": {
@@ -1789,16 +1181,10 @@
           "201": {
             "description": "The follow-up subject has been successfully created."
           },
-          "400": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
-          }
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
         },
-        "tags": [
-          "follow-up-subject"
-        ]
+        "tags": ["follow-up-subject"]
       },
       "get": {
         "operationId": "FollowUpSubjectController_findAll",
@@ -1807,16 +1193,32 @@
           "200": {
             "description": "The follow-up details has been successfully find all."
           },
-          "400": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden."
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["follow-up-subject"]
+      }
+    },
+    "/invoices": {
+      "post": {
+        "operationId": "InvoicesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateInvoicesDto" }
+            }
           }
         },
-        "tags": [
-          "follow-up-subject"
-        ]
+        "responses": {
+          "201": {
+            "description": "The invoices has been successfully created."
+          },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["invoices"]
       }
     }
   }

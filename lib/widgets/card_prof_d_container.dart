@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../views/create_events.dart';
-
 class CardProfDContainer extends StatelessWidget {
   CardProfDContainer({
     Key? key,

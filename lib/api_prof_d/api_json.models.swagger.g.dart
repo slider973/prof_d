@@ -222,11 +222,18 @@ Map<String, dynamic> _$UpdateAppointmentDtoToJson(
         UpdateAppointmentDto instance) =>
     <String, dynamic>{};
 
-CreatePdfDto _$CreatePdfDtoFromJson(Map<String, dynamic> json) =>
-    CreatePdfDto();
+CreatePdfDto _$CreatePdfDtoFromJson(Map<String, dynamic> json) => CreatePdfDto(
+      firstname: json['firstname'] as String?,
+      lastname: json['lastname'] as String?,
+      city: json['city'] as String?,
+    );
 
 Map<String, dynamic> _$CreatePdfDtoToJson(CreatePdfDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'firstname': instance.firstname,
+      'lastname': instance.lastname,
+      'city': instance.city,
+    };
 
 UpdatePdfDto _$UpdatePdfDtoFromJson(Map<String, dynamic> json) =>
     UpdatePdfDto();
@@ -244,4 +251,18 @@ Map<String, dynamic> _$CreateFollowUpSubjectDtoToJson(
         CreateFollowUpSubjectDto instance) =>
     <String, dynamic>{
       'name': instance.name,
+    };
+
+CreateInvoicesDto _$CreateInvoicesDtoFromJson(Map<String, dynamic> json) =>
+    CreateInvoicesDto(
+      firstname: json['firstname'] as String?,
+      lastname: json['lastname'] as String?,
+      parentId: json['parentId'] as String?,
+    );
+
+Map<String, dynamic> _$CreateInvoicesDtoToJson(CreateInvoicesDto instance) =>
+    <String, dynamic>{
+      'firstname': instance.firstname,
+      'lastname': instance.lastname,
+      'parentId': instance.parentId,
     };

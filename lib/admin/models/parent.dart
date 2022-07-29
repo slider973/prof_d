@@ -65,4 +65,12 @@ class Parent {
         "phone": phone,
         "childList": List<Child>.from(childList.map((x) => x.toMap())),
       };
+
+  @override
+  String toString() {
+    return 'firstname: $firstname,'
+        'lastname: $lastname,'
+    'childList: $childList,'
+        'id: $id';
+  }
 }

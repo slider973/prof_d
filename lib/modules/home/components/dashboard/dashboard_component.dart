@@ -1,19 +1,16 @@
 // flutter
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // package
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../../authentification/models/user_model.dart';
-import '../../../../core/widgets/custom_text.dart';
 import '../../../../shared/component/my_custom_box_decoration.dart';
 import '../../../../shared/component/my_custom_box_decoration_with_border_radius.dart';
-import '../../viewmodel/home_viewmodel.dart';
-import '../empty_state_consulting.dart';
-import 'card_component/consulting_component.dart';
-import 'text_accueil.dart';
+import 'section/book_history_section.dart';
+import 'section/consultation_section.dart';
+import 'section/invoice_section.dart';
+import 'home_text.dart';
 import '../../../../core/styles/sizes.dart';
 import '../../../../core/viewmodels/main_core_viewmodel.dart';
 import '../../../../shared/component/header_section.dart';
@@ -28,11 +25,6 @@ class DashboardComponent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final currentUser = ref.watch(mainCoreViewModelProvider).getCurrentUser();
-    final _homeVM = ref.watch(homeViewModelViewModelProvider);
-
-    Widget? hasAppointment = _homeVM.appointmentList.comingSoon.isNotEmpty
-        ? const ConsultingComponent()
-        : const EmptyStateConsulting();
 
     return Scaffold(
       appBar: buildAppBarComponent,
@@ -47,7 +39,7 @@ class DashboardComponent extends ConsumerWidget {
                   height: Sizes.designHeightSmallest,
                   child: headerSection('Accueil', context),
                   decoration: myCustomBoxDecorationWithBorderRadius()),
-              subTitleSection(context, TextAccueil(currentUser: currentUser)),
+              subTitleSection(context, HomeText(currentUser: currentUser)),
               Expanded(
                 flex: 1,
                 child: Container(
@@ -61,83 +53,9 @@ class DashboardComponent extends ConsumerWidget {
                         StaggeredGrid.count(
                           crossAxisCount: 4,
                           children: [
-                            StaggeredGridTile.count(
-                              crossAxisCellCount: 4,
-                              mainAxisCellCount: 2,
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Card(
-                                  child: hasAppointment,
-                                ),
-                              )),
-                            ),
-                            StaggeredGridTile.count(
-                              crossAxisCellCount: 2,
-                              mainAxisCellCount: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, top: 1.0, bottom: 8.0),
-                                child: Card(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      CustomText.h3(
-                                        context,
-                                        'Mes Factures',
-                                        alignment: Alignment.center,
-                                        weight: FontWeight.bold,
-                                      ),
-                                      SvgPicture.asset(
-                                        'assets/images/home/empty_state/invoices.svg',
-                                        height: 70,
-                                      ),
-                                      const Text('Test 1'),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            StaggeredGridTile.count(
-                              crossAxisCellCount: 2,
-                              mainAxisCellCount: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 8.0, top: 1.0, bottom: 8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (kDebugMode) {
-                                      print('it\'s works');
-                                    }
-                                  },
-                                  child: Card(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        CustomText.h3(
-                                          context,
-                                          'Mon livret',
-                                          alignment: Alignment.center,
-                                          weight: FontWeight.bold,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/images/home/empty_state/undraw_personal_documents_re_vcf2.svg',
-                                          height: 70,
-                                        ),
-                                        CustomText.h6(
-                                          context,
-                                          'Pas de suivi',
-                                          alignment: Alignment.center,
-                                          textAlign: TextAlign.center,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            const ConsultationSection(),
+                            const InvoicesSection(),
+                            bookHistorySection(context),
                           ],
                         )
                       ],

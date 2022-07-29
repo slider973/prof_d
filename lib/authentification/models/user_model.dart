@@ -1,3 +1,5 @@
+import 'invoices.dart';
+
 class UserModel {
   final String email;
   final String? name;
@@ -11,21 +13,22 @@ class UserModel {
   final String? role;
   final String? username;
   final String? id;
+  List<Invoice?>? invoices;
 
-  UserModel({
-    required this.email,
-    required this.name,
-    required this.phone,
-    required this.image,
-    required this.token,
-    required this.firstname,
-    required this.lastname,
-    required this.online,
-    required this.isProfileCreated,
-    required this.role,
-    required this.username,
-    required this.id,
-  });
+  UserModel(
+      {required this.email,
+      required this.name,
+      required this.phone,
+      required this.image,
+      required this.token,
+      required this.firstname,
+      required this.lastname,
+      required this.online,
+      required this.isProfileCreated,
+      required this.role,
+      required this.username,
+      required this.id,
+      required this.invoices});
 
   Map<String, dynamic> toMap() {
     return {
@@ -44,6 +47,12 @@ class UserModel {
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
+    final invoices = <Invoice>[];
+    if (map['invoices'] != null) {
+      map['invoices'].forEach((v) {
+        invoices.add(Invoice.fromJson(v));
+      });
+    }
     return UserModel(
         email: map['email'] ?? '',
         name: map['name'] ?? '',
@@ -56,6 +65,7 @@ class UserModel {
         online: map['online'] ?? '',
         role: map['role'] ?? '',
         username: map['username'] ?? '',
+        invoices: invoices,
         id: map['id'] ?? '');
   }
 
@@ -75,19 +85,19 @@ class UserModel {
     String? username,
   }) {
     return UserModel(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      image: image ?? this.image,
-      firstname: firstname ?? this.firstname,
-      lastname: lastname ?? this.lastname,
-      phone: phone ?? this.phone,
-      isProfileCreated: isProfileCreated ?? this.isProfileCreated,
-      token: token ?? this.token,
-      online: online != null ? this.online : false,
-      role: token ?? this.role,
-      id: id ?? this.id,
-      username: username ?? this.username,
-    );
+        name: name ?? this.name,
+        email: email ?? this.email,
+        image: image ?? this.image,
+        firstname: firstname ?? this.firstname,
+        lastname: lastname ?? this.lastname,
+        phone: phone ?? this.phone,
+        isProfileCreated: isProfileCreated ?? this.isProfileCreated,
+        token: token ?? this.token,
+        online: online != null ? this.online : false,
+        role: token ?? this.role,
+        id: id ?? this.id,
+        username: username ?? this.username,
+        invoices: invoices ?? invoices);
   }
 
   @override
@@ -102,6 +112,8 @@ class UserModel {
         'online: $online, '
         'role: $role, '
         'username: $username, '
-        'isProfileCreated: $isProfileCreated}';
+        'isProfileCreated: $isProfileCreated}'
+        'invoices: $invoices'
+        '}';
   }
 }

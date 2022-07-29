@@ -11,7 +11,7 @@ class ApisCaller {
   ApisCaller._() {
     dio = Dio(
       BaseOptions(
-          baseUrl: 'http://192.168.68.120:3000',
+          baseUrl: 'http://localhost:3000',
           connectTimeout: 20000,
           receiveTimeout: 20000),
     );
@@ -22,7 +22,7 @@ class ApisCaller {
   late Dio dio;
 
   getApiJsonInstance() {
-    return ApiJson.create(baseUrl: 'http://192.168.68.120:3000');
+    return ApiJson.create(baseUrl: 'http://localhost:3000');
   }
 
   Future<T> getData<T>({

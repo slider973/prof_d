@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/utils/navigate.dart';
@@ -5,6 +6,7 @@ import '../../../core/viewmodels/main_core_viewmodel.dart';
 import '../../../shared/component/child_dashboard_component/sections/card_time_tableList_section.dart';
 import '../../appointement/models/appointment.dart';
 import '../../appointement/repos/time_table_repo.dart';
+import '../screens/invoices_list_screen.dart';
 
 final homeViewModelViewModelProvider =
     ChangeNotifierProvider<HomeViewModel>((ref) => HomeViewModel(ref));
@@ -20,7 +22,9 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   getCurrentUser() {
-    print('HomeViewModel.getCurrentUser');
+    if (kDebugMode) {
+      print('HomeViewModel.getCurrentUser');
+    }
     _mainCoreVM.getCurrentUser();
   }
 
@@ -30,7 +34,7 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<Appointment> getAppointment() async {
-    if (appointmentList.comingSoon.isNotEmpty &&
+    if (appointmentList.comingSoon.isNotEmpty ||
         appointmentList.pass.isNotEmpty) {
       return appointmentList;
     }
@@ -44,5 +48,10 @@ class HomeViewModel extends ChangeNotifier {
   navigateToCreateAppointment(BuildContext context) {
     NavigateUtils.instance.navigationFromTheBottomAnimation(
         context, const CardTimeTableListSection());
+  }
+
+  navigateToInvoicesListScreen(BuildContext context) {
+    NavigateUtils.instance
+        .navigationFromTheBottomAnimation(context, const InvoicesListScreen());
   }
 }

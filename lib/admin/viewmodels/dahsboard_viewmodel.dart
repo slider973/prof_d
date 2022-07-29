@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../api_prof_d/api_json.swagger.dart';
 import '../../core/utils/navigate.dart';
 import '../models/child.dart';
 import '../models/meeting.dart';
+import '../models/parent.dart';
 import '../models/time_table.dart';
 import '../repos/admin_repo.dart';
 import '../screens/child_list_parent_screen.dart';
@@ -17,12 +19,25 @@ final adminDashboardModelViewProvider =
 class AdminDashboardModelView extends ChangeNotifier {
   final AdminRepo _adminRepo = AdminRepo.instance;
   final Ref ref;
+  Parent? _parent;
 
   AdminDashboardModelView(this.ref);
 
   navigateToPatientView(BuildContext context) {
     NavigateUtils.instance
         .navigationFromTheBottomAnimation(context, const PatientScreen());
+  }
+
+  setParent(Parent parent) {
+    _parent = parent;
+    notifyListeners();
+  }
+
+  Parent? getParent() => _parent;
+
+  sendInvoices(CreateInvoicesDto createInvoicesDto) async {
+    final resultRequest = await _adminRepo.createInvoices(createInvoicesDto);
+    return resultRequest.body;
   }
 
   getParentList() async {

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../authentification/models/user_model.dart';
 import '../../../../core/widgets/custom_text.dart';
 
-class TextAccueil extends StatelessWidget {
-  const TextAccueil({
+class HomeText extends StatelessWidget {
+  const HomeText({
     Key? key,
     required this.currentUser,
   }) : super(key: key);

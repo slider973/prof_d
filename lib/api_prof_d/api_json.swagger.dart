@@ -14,12 +14,10 @@ part 'api_json.swagger.chopper.dart';
 
 @ChopperApi()
 abstract class ApiJson extends ChopperService {
-
   static ApiJson create(
       {ChopperClient? client,
       String? baseUrl,
       Iterable<dynamic>? interceptors}) {
-    print('client $client');
     if (client != null) {
       return _$ApiJson(client);
     }
@@ -793,6 +791,17 @@ abstract class ApiJson extends ChopperService {
       {@Path('id') required String? id});
 
   ///
+  Future<chopper.Response> pdfInvoiceAppointmentPost(
+      {required CreatePdfDto? body}) {
+    return _pdfInvoiceAppointmentPost(body: body);
+  }
+
+  ///
+  @Post(path: '/pdf/invoice-appointment')
+  Future<chopper.Response> _pdfInvoiceAppointmentPost(
+      {@Body() required CreatePdfDto? body});
+
+  ///
   ///@param id
   Future<chopper.Response> pdfIdGet({required String? id}) {
     return _pdfIdGet(id: id);
@@ -857,6 +866,16 @@ abstract class ApiJson extends ChopperService {
   ///
   @Get(path: '/follow-up-subject')
   Future<chopper.Response> _followUpSubjectGet();
+
+  ///
+  Future<chopper.Response> invoicesPost({required CreateInvoicesDto? body}) {
+    return _invoicesPost(body: body);
+  }
+
+  ///
+  @Post(path: '/invoices')
+  Future<chopper.Response> _invoicesPost(
+      {@Body() required CreateInvoicesDto? body});
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);

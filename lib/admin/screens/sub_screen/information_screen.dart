@@ -38,7 +38,10 @@ class InformationScreen extends StatelessWidget {
                   'Aménagements mis en place dans la classe',
                   style: TextStyle(color: Colors.white),
                 ),
-                Text(childSelected.arrangementsInTheClassroom)
+                SizedBox(
+                  width: 360,
+                  child: Text(childSelected.arrangementsInTheClassroom, textAlign: TextAlign.center,),
+                )
               ],
             ),
             BuildRow(

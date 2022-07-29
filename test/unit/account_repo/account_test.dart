@@ -2,6 +2,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prof_d/api_prof_d/api_json.models.swagger.dart';
+import 'package:prof_d/api_prof_d/api_json.swagger.dart';
 import 'package:prof_d/modules/account/repos/account_repo.dart';
 
 var result = [
@@ -59,4 +60,8 @@ class FakeAccountRepository implements AccountRepo {
     // TODO: implement getChildList
     throw UnimplementedError();
   }
+
+  @override
+  // TODO: implement apiJson
+  ApiJson get apiJson => throw UnimplementedError();
 }

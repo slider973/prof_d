@@ -107,6 +107,7 @@ dependencies:
   timezone: ^0.8.0
   syncfusion_flutter_calendar: ^20.1.51 # TODO à ranger
   syncfusion_localizations: ^20.1.51
+  flutter_pdfview: ^1.2.2
 
   # UI
   flutx:

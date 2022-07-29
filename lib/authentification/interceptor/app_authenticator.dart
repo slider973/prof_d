@@ -15,7 +15,6 @@ class AppAuthenticator extends Authenticator {
     if (response.statusCode == HttpStatus.unauthorized) {
       String refreshTokenValue =
           await AuthService.instance.getUserRefreshTokenApiStored() ?? '';
-      print('AppAuthenticator');
       final ApiJson jsonApi = ApiJsonCaller.instance.apiJsonCallerInstance;
       var tokens = await jsonApi.authRefreshTokenPost(
           body: RefreshTokenDto.fromJson({'refreshToken': refreshTokenValue}));

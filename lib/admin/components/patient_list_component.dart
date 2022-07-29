@@ -37,6 +37,7 @@ class PatientListComponent extends ConsumerWidget {
                   title: GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
+                      _adminDashVM.setParent(parent);
                       _adminDashVM.navigateToChildListScreen(parent.childList);
                     },
                     child: Text(

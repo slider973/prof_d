@@ -66,7 +66,6 @@ class Confirmed {
     _substitutionWording = json['substitution_wording'];
     _createdBy = json['created_by'];
     _id = json['id'];
-    print('start_date ${json['start_date']}');
     _startDate = json['start_date'] != null
         ? DateTime.parse(json['start_date'])
         : DateTime.now();

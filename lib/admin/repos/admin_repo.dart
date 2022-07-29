@@ -2,8 +2,6 @@ import '../../api_prof_d/api_json.swagger.dart';
 import '../../authentification/services/api_json_caller.dart';
 import 'package:chopper/chopper.dart' as chopper;
 
-import '../../core/services/init_services/auth_service.dart';
-
 class AdminRepo {
   AdminRepo._();
 
@@ -31,13 +29,16 @@ class AdminRepo {
     return await apiJson.followUpDetailsPost(body: body);
   }
 
-  Future<chopper.Response> sendFollowUp(
-      CreateFollowUpDto body) async {
+  Future<chopper.Response> sendFollowUp(CreateFollowUpDto body) async {
     return await apiJson.followUpPost(body: body);
   }
 
-  Future<chopper.Response> getFollowUpByChild(
-      String id) async {
+  Future<chopper.Response> getFollowUpByChild(String id) async {
     return await apiJson.followUpChildIdGet(id: id);
+  }
+
+  Future<chopper.Response> createInvoices(
+      CreateInvoicesDto createInvoicesDto) async {
+    return await apiJson.invoicesPost(body: createInvoicesDto);
   }
 }

@@ -2,7 +2,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutx/flutx.dart';
-import 'package:flutx/widgets/widgets.dart';
 import '../models/user_child_prod.dart';
 import '../services/child_profd/child_profd_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +12,7 @@ import 'package:intl/intl.dart';
 import '../widgets/build_civitily.dart';
 import '../modules/home/components/profd_text_field_component.dart';
 import '../widgets/profd_date_time_field.dart';
-import '../services/user_prof_d/user_profd_bloc.dart';
 import '../widgets/place_google_field.dart';
-import '../models/user.dart';
 
 enum CreateChildProfileAction { update, create }
 

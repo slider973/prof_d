@@ -68,21 +68,15 @@ class AuthViewModel extends ChangeNotifier {
 
   signInWithEmailAndPassword(context) async {
     try {
-      print('1');
       ref.read(authLoadingProvider.notifier).state = true;
-      print('2');
       removeAllFocus(context);
-      print('3');
       await UserRepo.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
-      print('4');
       if (UserRepo.instance.authentificationModel.accessToken != null) {
         await submitLogin();
       }
-      print('2');
       ref.read(authLoadingProvider.notifier).state = false;
     } catch (e) {
-      print(e);
       AppDialogs.showEmailOrPassIncorrectDialog().then((value) {
         ref.read(authLoadingProvider.notifier).state = false;
       });
@@ -108,23 +102,22 @@ class AuthViewModel extends ChangeNotifier {
   Future submitLogin() async {
     debugPrint('start to get me with token');
     try {
-      print('submitLogin 1');
+
       UserModel? client = await UserRepo.instance.getUserData(
           token: UserRepo.instance.authentificationModel.accessToken,
       );
-      print('submitLogin 2');
+
       _mainCoreVM.setCurrentUser(userModel: client!);
       // subscribeUserToTopic();
       if (client.role != 'admin') {
-        print('submitLogin 3');
+
         NavigateUtils.instance.navigationToIntroductionScreen();
       } else {
-        print('submitLogin 4');
+
         NavigateUtils.instance.navigationToAdminScreen();
       }
     } catch (e) {
-      print('error toto: $e');
-      //AppDialogs.showDefaultErrorDialog();
+      AppDialogs.showDefaultErrorDialog();
     }
   }
 

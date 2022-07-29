@@ -17,6 +17,7 @@ final followingViewModelProvider = ChangeNotifierProvider<FollowingViewModel>(
 class FollowingViewModel extends ChangeNotifier {
   final Ref ref;
   final AdminRepo _adminRepo = AdminRepo.instance;
+
   List<FollowUpSubject> followingSubject = [];
   CreateFollowUpDetailDto createFollowUpDetailDto =
       CreateFollowUpDetailDto(followUpSubjects: [], appointment: null);
@@ -68,6 +69,7 @@ class FollowingViewModel extends ChangeNotifier {
   Future<ResultFollowUpChild> getFollowUp(String id) async {
     final summaryResponseChildSelected =
         await _adminRepo.getFollowUpByChild(id);
+
     return ResultFollowUpChild.fromJson(summaryResponseChildSelected.body);
   }
 

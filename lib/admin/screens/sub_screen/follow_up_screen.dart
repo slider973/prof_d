@@ -25,7 +25,11 @@ class FollowUpScreen extends ConsumerWidget {
             return const CircularProgressIndicator.adaptive();
           } else if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
-              return const Text('Error');
+              return EmptyStateFollowUp(
+                followingVM: followingVM,
+                createFollowUpVM: createFollowUpVM,
+                childSelected: childSelected,
+              );
             } else if (snapshot.hasData) {
               final data = snapshot.data!;
               final followUpChild = data.result;

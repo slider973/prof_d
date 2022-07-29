@@ -573,6 +573,15 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
+  Future<Response<dynamic>> _pdfInvoiceAppointmentPost(
+      {required CreatePdfDto? body}) {
+    final $url = '/pdf/invoice-appointment';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _pdfIdGet({required String? id}) {
     final $url = '/pdf/${id}';
     final $request = Request('GET', $url, client.baseUrl);
@@ -615,6 +624,14 @@ class _$ApiJson extends ApiJson {
   Future<Response<dynamic>> _followUpSubjectGet() {
     final $url = '/follow-up-subject';
     final $request = Request('GET', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _invoicesPost({required CreateInvoicesDto? body}) {
+    final $url = '/invoices';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<dynamic, dynamic>($request);
   }
 }

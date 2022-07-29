@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/widgets/custom_app_bar_widget.dart';
 import '../../../../modules/home/components/card_time_table.dart';
-import '../../../../modules/home/components/dashboard/app_bar.dart';
 import '../../../../modules/home/viewmodel/home_viewmodel.dart';
 
 class CardTimeTableListSection extends ConsumerWidget {

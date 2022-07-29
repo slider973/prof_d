@@ -28,14 +28,14 @@ class UserRepo {
     final loginDto = LoginDto.fromJson(
         {'username': email.toLowerCase(), 'password': password});
 
-    final result = await apiJson.authLoginPost(
-        body: loginDto);
+    final result = await apiJson.authLoginPost(body: loginDto);
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
         authentificationModel = AuthentificationModel.fromJson(result.body);
         if (authentificationModel.accessToken != null) {
           _authService.setUserTokenApi(authentificationModel.accessToken!);
-          _authService.setUserRefreshTokenApi(authentificationModel.refreshToken!);
+          _authService
+              .setUserRefreshTokenApi(authentificationModel.refreshToken!);
         }
       }
     }
@@ -75,7 +75,7 @@ class UserRepo {
     final result = await apiJson.authMeGet();
     return UserModel.fromMap(result.body);
 
-      /* await _apiCaller.getData(
+    /* await _apiCaller.getData(
         path: ApisPaths.mePatch(),
         queryParameters: {},
         builder: (userData) {
