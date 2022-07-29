@@ -1,0 +1,1225 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ProfD API",
+    "description": "The ProfD API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" }
+    },
+    "schemas": {
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "username": { "type": "string" },
+          "password": { "type": "string" }
+        },
+        "required": ["username", "password"]
+      },
+      "AppleLoginDto": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "accessToken": { "type": "string" },
+          "authorizationCode": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["name", "accessToken", "authorizationCode", "type"]
+      },
+      "RefreshTokenDto": {
+        "type": "object",
+        "properties": { "refreshToken": { "type": "string" } },
+        "required": ["refreshToken"]
+      },
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "password": { "type": "string" },
+          "email": { "type": "string" }
+        },
+        "required": ["password", "email"]
+      },
+      "UpdateEmailDto": { "type": "object", "properties": {} },
+      "UpdateProfileDto": { "type": "object", "properties": {} },
+      "UpdatePasswordDto": { "type": "object", "properties": {} },
+      "RecoverPasswordDto": { "type": "object", "properties": {} },
+      "RoomDto": { "type": "object", "properties": {} },
+      "DeleteDirectMessageDto": { "type": "object", "properties": {} },
+      "DeleteRoomMessageDto": { "type": "object", "properties": {} },
+      "AddChildDto": {
+        "type": "object",
+        "properties": {
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "dateOfBirth": { "format": "date-time", "type": "string" },
+          "numberOfBrotherAndSister": { "type": "number" },
+          "placeInTheSiblingGroup": { "type": "string" },
+          "placeOfSchooling": { "type": "string" },
+          "classLevel": { "type": "string" },
+          "followUpsInProgress": { "type": "string" },
+          "identifiedDisordersAndOrDifficulties": { "type": "string" },
+          "arrangementsInTheClassroom": { "type": "string" },
+          "behaviourInTheHome": { "type": "string" }
+        },
+        "required": [
+          "firstname",
+          "lastname",
+          "dateOfBirth",
+          "numberOfBrotherAndSister",
+          "placeInTheSiblingGroup",
+          "placeOfSchooling",
+          "classLevel",
+          "followUpsInProgress",
+          "identifiedDisordersAndOrDifficulties",
+          "arrangementsInTheClassroom",
+          "behaviourInTheHome"
+        ]
+      },
+      "CreateAddressDto": { "type": "object", "properties": {} },
+      "UpdateAddressDto": { "type": "object", "properties": {} },
+      "CreateTimeTableDto": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "start": { "format": "date-time", "type": "string" },
+          "end": { "format": "date-time", "type": "string" },
+          "desc": { "type": "string" }
+        },
+        "required": ["title", "start", "end", "desc"]
+      },
+      "UpdateTimeTableDto": { "type": "object", "properties": {} },
+      "CreateFollowUpDto": {
+        "type": "object",
+        "properties": {
+          "stateBefore": { "type": "string" },
+          "stateAfter": { "type": "string" },
+          "child": { "type": "string" }
+        },
+        "required": ["stateBefore", "stateAfter", "child"]
+      },
+      "CreateFollowUpDetailDto": {
+        "type": "object",
+        "properties": {
+          "appointment": { "type": "string" },
+          "followUpSubjects": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["appointment", "followUpSubjects"]
+      },
+      "CreateAppointmentDto": {
+        "type": "object",
+        "properties": {
+          "patient": { "type": "string" },
+          "profile": { "type": "string" },
+          "timeTableId": { "type": "string" }
+        },
+        "required": ["patient", "profile", "timeTableId"]
+      },
+      "UpdateAppointmentDto": { "type": "object", "properties": {} },
+      "CreatePdfDto": {
+        "type": "object",
+        "properties": {
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "city": { "type": "string" }
+        },
+        "required": ["firstname", "lastname", "city"]
+      },
+      "UpdatePdfDto": { "type": "object", "properties": {} },
+      "CreateFollowUpSubjectDto": {
+        "type": "object",
+        "properties": { "name": { "type": "string" } },
+        "required": ["name"]
+      },
+      "CreateInvoicesDto": {
+        "type": "object",
+        "properties": {
+          "firstname": { "type": "string" },
+          "lastname": { "type": "string" },
+          "parentId": { "type": "string" }
+        },
+        "required": ["firstname", "lastname", "parentId"]
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_main",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/test": {
+      "get": {
+        "operationId": "AppController_test",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/mail": {
+      "get": {
+        "operationId": "AppController_root",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/facebook-login": {
+      "post": {
+        "operationId": "AuthController_facebookLogin",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/google-login": {
+      "post": {
+        "operationId": "AuthController_googleLogin",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/apple-login": {
+      "post": {
+        "operationId": "AuthController_appleLogin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AppleLoginDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/refresh-token": {
+      "post": {
+        "operationId": "AuthController_refreshToken",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RefreshTokenDto" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "The user has been successfully created." },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RegisterDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "The user has been successfully created." },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/apple-callback": {
+      "post": {
+        "operationId": "AuthController_appleCallback",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/logout-from-all-devices": {
+      "delete": {
+        "operationId": "AuthController_logoutFromAllDevices",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/user/getParentList": {
+      "get": {
+        "operationId": "UserController_getParentList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Parent list as been successfully founded."
+          },
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["user"]
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "operationId": "UserController_getUser",
+        "parameters": [
+          {
+            "name": "username",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["user"]
+      }
+    },
+    "/settings/username": {
+      "put": {
+        "operationId": "SettingsController_updateUsername",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/settings/email": {
+      "put": {
+        "operationId": "SettingsController_updateEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateEmailDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/settings/profile": {
+      "patch": {
+        "operationId": "SettingsController_updateProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateProfileDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/settings/password": {
+      "put": {
+        "operationId": "SettingsController_updatePassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdatePasswordDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/subscription": {
+      "get": {
+        "operationId": "SubscriptionController_sendTestingNotification",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/subscription/web": {
+      "post": {
+        "operationId": "SubscriptionController_createWebSubscription",
+        "parameters": [],
+        "responses": { "201": { "description": "" } }
+      },
+      "delete": {
+        "operationId": "SubscriptionController_deleteWebSubscription",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/subscription/mobile": {
+      "post": {
+        "operationId": "SubscriptionController_createMobileSubscription",
+        "parameters": [],
+        "responses": { "201": { "description": "" } }
+      },
+      "delete": {
+        "operationId": "SubscriptionController_deleteMobileSubscription",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/recover/{code}": {
+      "get": {
+        "operationId": "RecoverController_validateRecoverCode",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      },
+      "post": {
+        "operationId": "RecoverController_changePassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdatePasswordDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/recover": {
+      "post": {
+        "operationId": "RecoverController_recoverPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RecoverPasswordDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/notification/config": {
+      "get": {
+        "operationId": "NotificationController_getConfig",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room": {
+      "get": {
+        "operationId": "RoomController_getUserRooms",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      },
+      "post": {
+        "operationId": "RoomController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoomDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/room/id/{id}": {
+      "get": {
+        "operationId": "RoomController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room/public": {
+      "get": {
+        "operationId": "RoomController_getPublicRooms",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room/member": {
+      "get": {
+        "operationId": "RoomController_getRoomsByMember",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room/delete/{id}": {
+      "delete": {
+        "operationId": "RoomController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room/{id}": {
+      "put": {
+        "operationId": "RoomController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoomDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/room/join": {
+      "post": {
+        "operationId": "RoomController_join",
+        "parameters": [],
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/room/leave/{id}": {
+      "delete": {
+        "operationId": "RoomController_leave",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/direct-first-message/{userId}": {
+      "get": {
+        "operationId": "MessageController_getFirstDirectMessage",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/direct/{userId}": {
+      "get": {
+        "operationId": "MessageController_getDirectMessages",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/direct": {
+      "delete": {
+        "operationId": "MessageController_deleteDirectMessage",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDirectMessageDto"
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/direct/all": {
+      "delete": {
+        "operationId": "MessageController_deleteDirectMessages",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDirectMessageDto"
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/room-first-message/{roomId}": {
+      "get": {
+        "operationId": "MessageController_getFirstRoomMessage",
+        "parameters": [
+          {
+            "name": "roomId",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/room/{roomId}": {
+      "get": {
+        "operationId": "MessageController_getRoomMessages",
+        "parameters": [
+          {
+            "name": "roomId",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/room": {
+      "delete": {
+        "operationId": "MessageController_deleteRoomMessage",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DeleteRoomMessageDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/message/room/all": {
+      "delete": {
+        "operationId": "MessageController_deleteRoomMessages",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DeleteRoomMessageDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/parents/findChildById/{id}": {
+      "get": {
+        "operationId": "ParentsController_findChildById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/child": {
+      "get": {
+        "operationId": "ChildController_GetChildByParent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Child list as been successfully founded."
+          },
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/child/addChildToParent": {
+      "post": {
+        "operationId": "ChildController_CreateAndAddChildToParent",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddChildDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The Child has been successfully added to parent."
+          },
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/child/{id}": {
+      "get": {
+        "operationId": "ChildController_GetByIdFromAdmin",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["child"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/address": {
+      "post": {
+        "operationId": "AddressController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateAddressDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      },
+      "get": {
+        "operationId": "AddressController_findAll",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/address/{id}": {
+      "get": {
+        "operationId": "AddressController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      },
+      "patch": {
+        "operationId": "AddressController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateAddressDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      },
+      "delete": {
+        "operationId": "AddressController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/time-table": {
+      "post": {
+        "operationId": "TimeTableController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateTimeTableDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["time-table"]
+      },
+      "get": {
+        "operationId": "TimeTableController_findAll",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
+      }
+    },
+    "/time-table/findByDate": {
+      "get": {
+        "operationId": "TimeTableController_findByDay",
+        "parameters": [
+          {
+            "name": "date",
+            "required": false,
+            "in": "query",
+            "allowEmptyValue": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
+      }
+    },
+    "/time-table/{id}": {
+      "get": {
+        "operationId": "TimeTableController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
+      },
+      "patch": {
+        "operationId": "TimeTableController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateTimeTableDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
+      },
+      "delete": {
+        "operationId": "TimeTableController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["time-table"]
+      }
+    },
+    "/follow-up": {
+      "post": {
+        "operationId": "FollowUpController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateFollowUpDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["follow-up"]
+      },
+      "get": {
+        "operationId": "FollowUpController_findAll",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up"]
+      }
+    },
+    "/follow-up/child/{id}": {
+      "get": {
+        "operationId": "FollowUpController_findOneBidChild",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The follow-up  has been successfully founded."
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["follow-up"]
+      }
+    },
+    "/follow-up-details": {
+      "post": {
+        "operationId": "FollowUpDetailsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFollowUpDetailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The follow-up details has been successfully created."
+          },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["follow-up-details"]
+      },
+      "get": {
+        "operationId": "FollowUpDetailsController_findAll",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up-details"]
+      }
+    },
+    "/follow-up-details/{id}": {
+      "get": {
+        "operationId": "FollowUpDetailsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["follow-up-details"]
+      }
+    },
+    "/appointment": {
+      "post": {
+        "operationId": "AppointmentController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateAppointmentDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The Appointment as been successfully created."
+          },
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["appointment"]
+      },
+      "get": {
+        "operationId": "AppointmentController_findAll",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
+      }
+    },
+    "/appointment/getByParent": {
+      "get": {
+        "operationId": "AppointmentController_getByParent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Appointment list as been successfully founded."
+          },
+          "401": { "description": "Unauthorized." },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["appointment"]
+      }
+    },
+    "/appointment/{id}": {
+      "get": {
+        "operationId": "AppointmentController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
+      },
+      "patch": {
+        "operationId": "AppointmentController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateAppointmentDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
+      },
+      "delete": {
+        "operationId": "AppointmentController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["appointment"]
+      }
+    },
+    "/pdf": {
+      "post": {
+        "operationId": "PdfController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreatePdfDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/pdf/report-child/{id}": {
+      "get": {
+        "operationId": "PdfController_findAll",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/pdf/invoice-appointment": {
+      "post": {
+        "operationId": "PdfController_findAllInvoices",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreatePdfDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/pdf/{id}": {
+      "get": {
+        "operationId": "PdfController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      },
+      "patch": {
+        "operationId": "PdfController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdatePdfDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } }
+      },
+      "delete": {
+        "operationId": "PdfController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/mail/{id}": {
+      "get": {
+        "operationId": "MailController_findChildById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/follow-up-subject": {
+      "post": {
+        "operationId": "FollowUpSubjectController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFollowUpSubjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The follow-up subject has been successfully created."
+          },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["follow-up-subject"]
+      },
+      "get": {
+        "operationId": "FollowUpSubjectController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The follow-up details has been successfully find all."
+          },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["follow-up-subject"]
+      }
+    },
+    "/invoices": {
+      "post": {
+        "operationId": "InvoicesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateInvoicesDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The invoices has been successfully created."
+          },
+          "400": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden." }
+        },
+        "tags": ["invoices"]
+      }
+    }
+  }
+}

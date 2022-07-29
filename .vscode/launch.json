@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "prof_b",
+            "name": "prof_d",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "prof_b (profile mode)",
+            "name": "prof_d (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"

@@ -1,45 +1,73 @@
-import 'app/services/auth_service.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'app/services/global_service.dart';
-import 'app/services/settings_service.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'app/routes/app_pages.dart';
-import 'app/services/translation_service.dart';
+import 'core/services/init_services/services_initializer.dart';
+import 'core/utils/routes.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-void initServices() async{
-  Get.log('starting services ...');
-  await Get.putAsync(() => TranslationService().init());
-  await Get.putAsync(() => GlobalService().init());
-  await Get.putAsync(() => AuthService().init());
-  await Get.putAsync(() => SettingsService().init());
-  Firebase.initializeApp();
-  Get.log('All services started...');
-}
+import 'theme/app_theme.dart';
 
-
-void main() async {
+Future<void> main() async {
+  tz.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation('Europe/Paris'));
   WidgetsFlutterBinding.ensureInitialized();
-  await initServices();
-
-  runApp(
-   GetMaterialApp(
-     title: Get.find<SettingsService>().setting.value.appName,
-     initialRoute: AppPages.INITIAL,
-     getPages: AppPages.routes,
-     localizationsDelegates: [GlobalMaterialLocalizations.delegate],
-     supportedLocales: Get.find<TranslationService>().supportedLocales(),
-     translationsKeys: Get.find<TranslationService>().translations,
-     locale: Get.find<SettingsService>().getLocale(),
-     fallbackLocale: Get.find<TranslationService>().fallbackLocale,
-     debugShowCheckedModeBanner: false,
-     defaultTransition: Transition.cupertino,
-     themeMode: Get.find<SettingsService>().getThemeMode(),
-     theme: Get.find<SettingsService>().getLightTheme(), //Get.find<SettingsService>().getLightTheme.value,
-     darkTheme: Get.find<SettingsService>().getDarkTheme(),
-   )
-  );
+  List results = await ServiceInitializer.instance.initializeSettings();
+  runApp(ProviderScope(
+    child: ProfBApp(
+      locale: results[0],
+    ),
+  ));
 }
 
+class ProfBApp extends StatelessWidget {
+  const ProfBApp({Key? key, required this.locale}) : super(key: key);
+  final Locale locale;
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return OrientationBuilder(builder: (context, orientation) {
+      return ScreenUtilInit(
+        builder: () => AnnotatedRegion<SystemUiOverlayStyle>(
+          value: const SystemUiOverlayStyle(
+            // For both Android + iOS
+            statusBarColor: Colors.transparent,
+            // For apps with a light background:
+            // For Android (dark icons)
+            statusBarIconBrightness: Brightness.dark,
+            // For iOS (dark icons)
+            statusBarBrightness: Brightness.light,
+          ),
+          child: GetMaterialApp(
+            builder: (context, widget) {
+              ScreenUtil.setContext(context);
+              return widget!;
+            },
+            title: 'Prof D',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.theme,
+            initialRoute: RoutePaths.coreSplash,
+            locale: locale,
+            fallbackLocale: const Locale('fr'),
+            onGenerateRoute: AppRouter.generateRoute,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              SfGlobalLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('fr'),
+              Locale('en'), // English, no country code
+            ],
+          ),
+        ),
+      );
+    });
+  }
+}
