@@ -15,4 +15,6 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.0.5'
-      - run:  cd ios && ls && fastlane beta
+      - run: gem install bundler
+      - run: bundle install
+      - run:  cd ios && ls && bundle exec fastlane beta
