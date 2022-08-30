@@ -15,5 +15,4 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.0.5'
-      - run: cd ios
-      - run: fastlane beta
+      - run:  cd ios && ls && fastlane beta
