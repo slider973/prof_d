@@ -16,6 +16,5 @@ jobs:
         with:
           flutter-version: '2.0.5'
       - run: gem install bundler
-      - run: cd ios
-      - run: ls && bundle install
-      - run: git bundle exec fastlane beta
+      - run: cd ios && bundle install
+      - run: cd ios && bundle exec fastlane beta
