@@ -1,0 +1,21 @@
+on: push
+name: Deploy
+env:
+  API_UR: "google.fr"
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.5'
+      - run: gem install bundler
+      - run: cd ios
+      - run: bundle install
+      - run: git bundle exec fastlane beta
