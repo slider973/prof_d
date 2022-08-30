@@ -3,6 +3,7 @@ name: Deploy
 env:
   API_UR: "google.fr"
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
 jobs:
   build:
     runs-on: macos-latest
