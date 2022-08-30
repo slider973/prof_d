@@ -13,7 +13,7 @@ class CardAppointmentListSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _homeViewModel = ref.watch(homeViewModelViewModelProvider);
+      final homeViewModel = ref.watch(homeViewModelViewModelProvider);
     return Expanded(
         child: Container(
       color: Colors.grey[300],
@@ -21,7 +21,7 @@ class CardAppointmentListSection extends ConsumerWidget {
         builder: (BuildContext context, AsyncSnapshot<Appointment> snapshot) {
           // WHILE THE CALL IS BEING MADE AKA LOADING
           if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator()) ;
           }
 
           // WHEN THE CALL IS DONE BUT HAPPENS TO HAVE AN ERROR
@@ -30,7 +30,7 @@ class CardAppointmentListSection extends ConsumerWidget {
           }
 
           if (!snapshot.hasData) {
-            return EmptyStateAppointment(appointmentRepos: _homeViewModel);
+            return const EmptyStateAppointment(true);
           }
 
           // IF IT WORKS IT GOES HERE!
@@ -38,7 +38,7 @@ class CardAppointmentListSection extends ConsumerWidget {
             appointment: snapshot,
           );
         },
-        future: _homeViewModel.getAppointment(),
+        future: homeViewModel.getAppointment(),
       ),
     ));
   }

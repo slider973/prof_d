@@ -6,13 +6,13 @@ class Invoice {
 
   Invoice.fromJson(Map<String, dynamic> json) {
     invoiceDate = DateTime.parse(json['invoiceDate']);
-    id = json['id'];
+    id = json['_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['invoiceDate'] = invoiceDate;
-    data['id'] = id;
+    data['_id'] = id;
     return data;
   }
 

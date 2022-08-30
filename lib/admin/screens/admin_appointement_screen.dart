@@ -41,14 +41,14 @@ class AdminAppointmentScreen extends ConsumerWidget {
                       CustomText.h3(
                         context,
                         DateFormat("EEEE d MMM yyyy", "fr_FR")
-                            .format(_adminAppointmentVM.newTimeTable!.start!),
+                            .format(_adminAppointmentVM.newTimeTable!.start),
                         alignment: Alignment.center,
                       ),
                       const Text("à"),
                       CustomText.h3(
                         context,
                         DateFormat("HH:mm", "fr_FR")
-                            .format(_adminAppointmentVM.newTimeTable!.start!),
+                            .format(_adminAppointmentVM.newTimeTable!.start),
                         alignment: Alignment.center,
                       ),
                       SizedBox(

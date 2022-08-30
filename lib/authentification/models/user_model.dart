@@ -83,6 +83,7 @@ class UserModel {
     String? role,
     String? id,
     String? username,
+    List<Invoice?>? invoices
   }) {
     return UserModel(
         name: name ?? this.name,

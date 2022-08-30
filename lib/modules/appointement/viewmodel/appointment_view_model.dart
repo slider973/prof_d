@@ -9,7 +9,7 @@ final appointmentViewModel = ChangeNotifierProvider<AppointmentViewModel>(
 
 class AppointmentViewModel extends ChangeNotifier {
   final Ref ref;
-  CreateAppointmentDto newAppointment = CreateAppointmentDto();
+  CreateAppointmentDto newAppointment = CreateAppointmentDto(timeTableId: '');
 
   AppointmentViewModel(this.ref);
 
@@ -33,6 +33,6 @@ class AppointmentViewModel extends ChangeNotifier {
   }
 
   createAppointment() async {
-    AppointmentRepo.instance.createAppointment(newAppointment);
+    return AppointmentRepo.instance.createAppointment(newAppointment);
   }
 }

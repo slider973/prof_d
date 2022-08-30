@@ -1,6 +1,5 @@
 import 'api_json.models.swagger.dart';
 import 'package:chopper/chopper.dart';
-import 'dart:convert';
 
 import 'client_mapping.dart';
 import 'package:chopper/chopper.dart' as chopper;
@@ -16,6 +15,7 @@ part 'api_json.swagger.chopper.dart';
 abstract class ApiJson extends ChopperService {
   static ApiJson create(
       {ChopperClient? client,
+      Authenticator? authenticator,
       String? baseUrl,
       Iterable<dynamic>? interceptors}) {
     if (client != null) {
@@ -26,6 +26,7 @@ abstract class ApiJson extends ChopperService {
         services: [_$ApiJson()],
         converter: $JsonSerializableConverter(),
         interceptors: interceptors ?? [],
+        authenticator: authenticator,
         baseUrl: baseUrl ?? 'http://');
     return _$ApiJson(newClient);
   }
@@ -162,6 +163,18 @@ abstract class ApiJson extends ChopperService {
   @Get(path: '/user/{username}')
   Future<chopper.Response> _userUsernameGet(
       {@Path('username') required String? username});
+
+  ///
+  ///@param token
+  Future<chopper.Response> userAddTokenPushTokenPost({required String? token}) {
+    return _userAddTokenPushTokenPost(token: token);
+  }
+
+  ///
+  ///@param token
+  @Post(path: '/user/addTokenPush/{token}', optionalBody: true)
+  Future<chopper.Response> _userAddTokenPushTokenPost(
+      {@Path('token') required String? token});
 
   ///
   Future<chopper.Response> settingsUsernamePut() {
@@ -803,6 +816,18 @@ abstract class ApiJson extends ChopperService {
 
   ///
   ///@param id
+  Future<chopper.Response> pdfInvoiceAppointmentIdGet({required String? id}) {
+    return _pdfInvoiceAppointmentIdGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/pdf/invoice-appointment/{id}')
+  Future<chopper.Response> _pdfInvoiceAppointmentIdGet(
+      {@Path('id') required String? id});
+
+  ///
+  ///@param id
   Future<chopper.Response> pdfIdGet({required String? id}) {
     return _pdfIdGet(id: id);
   }
@@ -876,6 +901,15 @@ abstract class ApiJson extends ChopperService {
   @Post(path: '/invoices')
   Future<chopper.Response> _invoicesPost(
       {@Body() required CreateInvoicesDto? body});
+
+  ///
+  Future<chopper.Response> invoicesGet() {
+    return _invoicesGet();
+  }
+
+  ///
+  @Get(path: '/invoices')
+  Future<chopper.Response> _invoicesGet();
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);
@@ -891,6 +925,14 @@ class $CustomJsonDecoder {
     }
 
     if (entity is T) {
+      return entity;
+    }
+
+    if (isTypeOf<T, Map>()) {
+      return entity;
+    }
+
+    if (isTypeOf<T, Iterable>()) {
       return entity;
     }
 

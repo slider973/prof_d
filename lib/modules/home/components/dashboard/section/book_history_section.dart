@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../core/utils/dialogs.dart';
 import '../../../../../core/widgets/custom_text.dart';
 
 StaggeredGridTile bookHistorySection(BuildContext context) {
@@ -16,6 +17,7 @@ StaggeredGridTile bookHistorySection(BuildContext context) {
           if (kDebugMode) {
             print('it\'s works');
           }
+        AppDialogs.featureNotReadyDialog();
         },
         child: Card(
           child: Column(

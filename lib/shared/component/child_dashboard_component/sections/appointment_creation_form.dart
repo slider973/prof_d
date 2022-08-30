@@ -6,6 +6,7 @@ import 'package:flutx/flutx.dart';
 import '../../../../core/styles/sizes.dart';
 import '../../../../modules/account/viewmodels/child_screen_view_model.dart';
 import '../../../../modules/appointement/viewmodel/appointment_view_model.dart';
+import '../../../../modules/home/viewmodel/home_viewmodel.dart';
 import '../../../../widgets/child_select_radio.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +20,8 @@ class AppointmentCreationForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _appointmentViewModel =
+    final homeViewModel = ref.watch(homeViewModelViewModelProvider);
+    final _appointmentVM =
         ref.watch<AppointmentViewModel>(appointmentViewModel);
     final _childViewModel = ref.watch<ChildViewModel>(childViewModelProvider);
     return Scaffold(
@@ -84,8 +86,11 @@ class AppointmentCreationForm extends ConsumerWidget {
                                     TextButton(
                                         child: const Text('Oui'),
                                         onPressed: () async {
-                                          _appointmentViewModel
+                                        final result = await _appointmentVM
                                               .createAppointment();
+                                        if(result['success'] == true) {
+                                          homeViewModel.getAppointment(force: true);
+                                        }
                                           int count = 0;
                                           Navigator.popUntil(
                                               context, (_) => count++ >= 3);

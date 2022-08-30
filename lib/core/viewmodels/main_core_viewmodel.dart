@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location/location.dart';
 
@@ -40,6 +41,12 @@ class MainCoreViewModel extends ChangeNotifier {
 
   setCurrentUser({required UserModel userModel}) {
     UserRepo.instance.userModel = userModel;
+  }
+  Future getInvoices() async {
+    if (kDebugMode) {
+      print('getInvoices');
+    }
+   return await UserRepo.instance.getInvoices();
   }
 
   Future logoutUser() async {

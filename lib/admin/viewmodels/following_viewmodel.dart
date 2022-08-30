@@ -54,11 +54,11 @@ class FollowingViewModel extends ChangeNotifier {
   }
 
   addFollowUpSubject(String idFollowUpSubject) {
-    createFollowUpDetailDto.followUpSubjects?.add(idFollowUpSubject);
+    createFollowUpDetailDto.followUpSubjects.add(idFollowUpSubject);
   }
 
   removeFollowUpSubject(String idFollowUpSubject) {
-    createFollowUpDetailDto.followUpSubjects?.remove(idFollowUpSubject);
+    createFollowUpDetailDto.followUpSubjects.remove(idFollowUpSubject);
   }
 
   goCreateFollowUp(BuildContext context) {

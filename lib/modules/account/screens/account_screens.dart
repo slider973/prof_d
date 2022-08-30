@@ -53,25 +53,25 @@ class AccountScreen extends ConsumerWidget {
     final _userModel =
         ref.watch(mainCoreViewModelProvider.notifier).getCurrentUser();
     final List buildRowList = [
-      _buildSingleRow(
-        title: 'Paramètres du profil',
-        icon: FeatherIcons.user,
-        cb: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HandleUpdateProfile()),
-          );
-        },
-      ),
-      _buildSingleRow(
-          title: 'Mot de passe',
-          icon: FeatherIcons.lock,
-          cb: () {
-            PushNotificationService.showNotification(
-                title: 'Mot de passe',
-                body: 'erlkgnbherznboerbhoeiroibth',
-                payload: 'sarah.abs');
-          }),
+      // _buildSingleRow(
+      //   title: 'Paramètres du profil',
+      //   icon: FeatherIcons.user,
+      //   cb: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => HandleUpdateProfile()),
+      //     );
+      //   },
+      // ),
+      // _buildSingleRow(
+      //     title: 'Mot de passe',
+      //     icon: FeatherIcons.lock,
+      //     cb: () {
+      //       PushNotificationService.showNotification(
+      //           title: 'Mot de passe',
+      //           body: 'erlkgnbherznboerbhoeiroibth',
+      //           payload: 'sarah.abs');
+      //     }),
       _buildSingleRow(
           title: 'Les enfants',
           icon: FeatherIcons.users,
@@ -83,16 +83,16 @@ class AccountScreen extends ConsumerWidget {
               ),
             );
           }),
-      _buildSingleRow(
-          title: 'Se déconnecter',
-          icon: FeatherIcons.logOut,
-          cb: () async {
-            await FirebaseAuth.instance.signOut();
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-                (route) => false);
-          }),
+    //   _buildSingleRow(
+    //       title: 'Se déconnecter',
+    //       icon: FeatherIcons.logOut,
+    //       cb: () async {
+    // /*        await FirebaseAuth.instance.signOut();
+    //         Navigator.pushAndRemoveUntil(
+    //             context,
+    //             MaterialPageRoute(builder: (context) => const LoginScreen()),
+    //             (route) => false);*/
+    //       }),
     ];
 
     return Scaffold(

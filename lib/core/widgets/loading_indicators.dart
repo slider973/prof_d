@@ -25,4 +25,21 @@ class LoadingIndicators {
       ),
     );
   }
+
+  Widget otherLoadingAnimation(
+    BuildContext context, {
+    double? height,
+    double? width,
+  }) {
+    return Center(
+      child: Container(
+        color: Colors.transparent,
+        child: Lottie.asset(
+          AppImages.loadingGIF,
+          height: height ?? Sizes.loadingAnimationDefaultHeight,
+          width: width ?? Sizes.loadingAnimationDefaultWidth,
+        ),
+      ),
+    );
+  }
 }

@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 import '../../api_prof_d/api_json.swagger.dart';
 import '../../core/services/apis_services/api_caller.dart';
 import '../../core/services/apis_services/apis_paths.dart';
 import '../../core/services/init_services/auth_service.dart';
 import '../models/authentification_model.dart';
+import '../models/invoices.dart';
 import '../models/user_model.dart';
 import '../services/api_json_caller.dart';
 import '../services/firebase_auth_api.dart';
@@ -27,7 +29,6 @@ class UserRepo {
       {required String email, required String password}) async {
     final loginDto = LoginDto.fromJson(
         {'username': email.toLowerCase(), 'password': password});
-
     final result = await apiJson.authLoginPost(body: loginDto);
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
@@ -44,15 +45,20 @@ class UserRepo {
 
   Future<UserModel?> signUpWithEmailAndPassword(
       {required String email, required String password}) async {
-    return await _apiCaller.postData(
-        path: ApisPaths.signUpWithEmailAndPasswordPath(),
-        builder: (data) {
-          if (data != null) {
-            authentificationModel = AuthentificationModel.fromJson(data);
-          }
-          return null;
-        },
-        dataParams: {'email': email.toLowerCase(), 'password': password});
+    try {
+      return await _apiCaller.postData(
+          path: ApisPaths.signUpWithEmailAndPasswordPath(),
+          builder: (data) {
+            print('data: $data');
+            if (data != null) {
+              authentificationModel = AuthentificationModel.fromJson(data);
+            }
+            return null;
+          },
+          dataParams: {'email': email.toLowerCase(), 'password': password});
+    } catch (e) {
+      print(e);
+    }
   }
 
   // Future<UserModel?> setUserData({required String token}) async {
@@ -91,6 +97,7 @@ class UserRepo {
   }
 
   Future updateUserTokenPush({required String token}) async {
+    await apiJson.userAddTokenPushTokenPost(token: token);
     userModel = userModel!.copyWith(token: token);
   }
 
@@ -106,6 +113,19 @@ class UserRepo {
             return UserModel.fromMap(user);
           }
         });
+  }
+
+  Future getInvoices() async {
+    final result = await apiJson.invoicesGet();
+    if (result.statusCode == 200) {
+      final invoices = <Invoice>[];
+      result.body.forEach((invoice)  {
+        invoices.add(Invoice.fromJson(invoice)) ;
+      });
+      userModel = userModel!.copyWith(invoices: invoices);
+      return invoices;
+    }
+    return [];
   }
 
   Future updateUserImage({required File? imageFile}) async {

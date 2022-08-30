@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../../../api_prof_d/api_json.swagger.dart';
+import '../../../config/config_route_collection.dart';
 import '../../utils/dialogs.dart';
 
 
@@ -11,7 +12,7 @@ class ApisCaller {
   ApisCaller._() {
     dio = Dio(
       BaseOptions(
-          baseUrl: 'http://localhost:3000',
+          baseUrl: getBackendUrl,
           connectTimeout: 20000,
           receiveTimeout: 20000),
     );
@@ -22,7 +23,7 @@ class ApisCaller {
   late Dio dio;
 
   getApiJsonInstance() {
-    return ApiJson.create(baseUrl: 'http://localhost:3000');
+    return ApiJson.create(baseUrl: getBackendUrl);
   }
 
   Future<T> getData<T>({

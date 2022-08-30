@@ -10,7 +10,7 @@ final createFollowUpViewModel = ChangeNotifierProvider.autoDispose<CreateFollowU
 class CreateFollowUpViewModel  extends ChangeNotifier {
   CreateFollowUpViewModel(AutoDisposeChangeNotifierProviderRef<CreateFollowUpViewModel> this.ref);
   final Ref ref;
-  CreateFollowUpDto newFollowUp = CreateFollowUpDto();
+  CreateFollowUpDto newFollowUp = CreateFollowUpDto(stateAfter: '', stateBefore: '', child: '');
   String childId = '';
   final AdminRepo _adminRepo = AdminRepo.instance;
 

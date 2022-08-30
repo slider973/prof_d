@@ -23,15 +23,22 @@ class AuthViewModel extends ChangeNotifier {
     _mainCoreVM = ref.watch(mainCoreViewModelProvider);
   }
 
+  static final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   final Ref ref;
   late MainCoreViewModel _mainCoreVM;
 
-  TextEditingController emailController =
-      TextEditingController(text: "test@test.fr");
-  TextEditingController passwordController =
-      TextEditingController(text: "Jonathan5");
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController passwordController = TextEditingController(text: "");
   TextEditingController confirmPasswordController =
       TextEditingController(text: "");
+
+  @override
+  void dispose() {
+    confirmPasswordController.dispose();
+    passwordController.dispose();
+    emailController.dispose();
+    super.dispose();
+  }
 
   String? Function(String?)? validateLoginEmail() {
     return Validators.instance.validateEmail();
@@ -41,9 +48,9 @@ class AuthViewModel extends ChangeNotifier {
     return Validators.instance.validateLoginPassword();
   }
 
-  String? Function(String? p1)? validateConfirmLoginPassword() {
+  String? Function(String? p1)? validateConfirmLoginPassword(text) {
     return Validators.instance
-        .validateConfirmLoginPassword(passwordController.text);
+        .validateConfirmLoginPassword(text);
   }
 
   signUpWithEmailAndPassword(context) async {
@@ -102,18 +109,15 @@ class AuthViewModel extends ChangeNotifier {
   Future submitLogin() async {
     debugPrint('start to get me with token');
     try {
-
       UserModel? client = await UserRepo.instance.getUserData(
-          token: UserRepo.instance.authentificationModel.accessToken,
+        token: UserRepo.instance.authentificationModel.accessToken,
       );
 
       _mainCoreVM.setCurrentUser(userModel: client!);
       // subscribeUserToTopic();
       if (client.role != 'admin') {
-
         NavigateUtils.instance.navigationToIntroductionScreen();
       } else {
-
         NavigateUtils.instance.navigationToAdminScreen();
       }
     } catch (e) {

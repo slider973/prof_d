@@ -7,18 +7,30 @@ import '../../core/widgets/custom_text_field.dart';
 import '../../core/widgets/loading_indicators.dart';
 import '../viewmodels/auth_loading_provider_viewmodel.dart';
 import '../viewmodels/auth_viewmodel.dart';
-
-class RegisterFormComponent extends ConsumerWidget {
-  const RegisterFormComponent({Key? key}) : super(key: key);
-
-  static final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+class RegisterFormComponent extends ConsumerStatefulWidget {
+  const RegisterFormComponent({Key? key}): super(key: key);
 
   @override
-  Widget build(BuildContext context, ref) {
+  RegisterFormComponentState createState() =>  RegisterFormComponentState();
+}
+class RegisterFormComponentState extends ConsumerState<RegisterFormComponent> {
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    // "ref" peut être utilisé dans tous les cycles de vie d'un ConsumerStatefulWidget.
+    ref.read(authViewModel);
+  }
+  final registerFormKey = AuthViewModel.registerFormKey;
+  @override
+  Widget build(BuildContext context) {
     final authVM = ref.watch(authViewModel.notifier);
 
+
     return Form(
-      key: _registerFormKey,
+      key: registerFormKey,
       child: Column(
         children: [
           CustomTextField(
@@ -42,10 +54,11 @@ class RegisterFormComponent extends ConsumerWidget {
             controller: authVM.passwordController,
             validator: authVM.validateLoginPassword(),
             onFieldSubmitted: (value) {
-              if (_registerFormKey.currentState!.validate()) {
+              if (registerFormKey.currentState!.validate()) {
                 authVM.signInWithEmailAndPassword(context);
               }
             },
+            autoFocus: true,
             validationColor: AppColors.primaryColor,
             textInputAction: TextInputAction.go,
             obscureText: true,
@@ -62,9 +75,16 @@ class RegisterFormComponent extends ConsumerWidget {
           ),
           CustomTextField(
             controller: authVM.confirmPasswordController,
-            validator: authVM.validateConfirmLoginPassword(),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Ce champ est vide';
+              } else if (authVM.passwordController.text != value) {
+                return 'Les 2 mot de passe doivent être identique';
+              }
+              return null;
+            },
             onFieldSubmitted: (value) {
-              if (_registerFormKey.currentState!.validate()) {
+              if (registerFormKey.currentState!.validate()) {
                 authVM.signUpWithEmailAndPassword(context);
               }
             },
@@ -93,7 +113,7 @@ class RegisterFormComponent extends ConsumerWidget {
                   buttonColor: Colors.teal,
                   splashColor: Colors.white,
                   onPressed: () {
-                    if (_registerFormKey.currentState!.validate()) {
+                    if (registerFormKey.currentState!.validate()) {
                       authVM.signUpWithEmailAndPassword(context);
                     }
                   },

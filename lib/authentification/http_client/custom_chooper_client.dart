@@ -1,12 +1,13 @@
 import 'package:chopper/chopper.dart';
 
+import '../../config/config_route_collection.dart';
 import '../../core/services/init_services/auth_service.dart';
 import '../interceptor/app_authenticator.dart';
 
 class CustomChopperClient {
   static ChopperClient createChopperClient() {
     final client = ChopperClient(
-      baseUrl: 'http://localhost:3000',
+      baseUrl: getBackendUrl,
       converter: const JsonConverter(),
       interceptors: [
         HttpLoggingInterceptor(),

@@ -69,6 +69,7 @@ class Validators {
   String? Function(String?)? validateConfirmLoginPassword(String field1) {
     return (value) {
       debugPrint('field1: $field1');
+      debugPrint('value: $value');
       if (value!.isEmpty) {
         return 'Ce champ est vide';
       } else if (field1 != value) {

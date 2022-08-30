@@ -17,46 +17,48 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return PopUpPage(
-      child: SingleChildScrollView(
-        child: Container(
-          constraints:
-              BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                AppImages.loginBackground,
+    return Scaffold(
+      body: PopUpPage(
+        child: SingleChildScrollView(
+          child: Container(
+            constraints:
+                BoxConstraints(minHeight: MediaQuery.of(context).size.height),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  AppImages.loginBackground,
+                ),
+                fit: BoxFit.fitHeight,
               ),
-              fit: BoxFit.fill,
             ),
-          ),
-          padding: EdgeInsets.symmetric(
-            vertical: Sizes.screenVPaddingHigh,
-            horizontal: Sizes.screenHPaddingDefault,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const AppLogoComponent(),
-              SizedBox(
-                height: Sizes.vMarginHigh,
-              ),
-              const WelcomeComponent(
-                subTitle: 'Connectez-vous à votre compte',
-              ),
-              SizedBox(
-                height: Sizes.vMarginHigh,
-              ),
-              const LoginFormComponent(),
-              SizedBox(
-                height: Sizes.vMarginHigh,
-              ),
-              const AuthQuestionComponent(
-                question: 'Si vous n\'avez pas de compte inscrivez vous ',
-                richText: 'ici',
-                isLoginQuestion: true,
-              )
-            ],
+            padding: EdgeInsets.symmetric(
+              vertical: Sizes.screenVPaddingHigh,
+              horizontal: Sizes.screenHPaddingDefault,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const AppLogoComponent(),
+                SizedBox(
+                  height: Sizes.vMarginHigh,
+                ),
+                const WelcomeComponent(
+                  subTitle: 'Connectez-vous à votre compte',
+                ),
+                SizedBox(
+                  height: Sizes.vMarginHigh,
+                ),
+                const LoginFormComponent(),
+                SizedBox(
+                  height: Sizes.vMarginHigh,
+                ),
+                const AuthQuestionComponent(
+                  question: 'Si vous n\'avez pas de compte inscrivez vous ',
+                  richText: 'ici',
+                  isLoginQuestion: true,
+                )
+              ],
+            ),
           ),
         ),
       ),

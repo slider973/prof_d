@@ -10,6 +10,7 @@ final adminAppointmentViewModel =
         (ref) => AdminAppointmentViewModel(ref));
 
 class AdminAppointmentViewModel extends ChangeNotifier {
+
   final ChangeNotifierProviderRef<AdminAppointmentViewModel> ref;
   CreateTimeTableDto? newTimeTable;
   DateTime selectedDate = DateTime.now();
@@ -17,6 +18,8 @@ class AdminAppointmentViewModel extends ChangeNotifier {
   AdminRepo repo = AdminRepo.instance;
 
   AdminAppointmentViewModel(this.ref);
+
+
 
   setDate(DateTime date) {
     newTimeTable = CreateTimeTableDto(start: date);
@@ -29,9 +32,9 @@ class AdminAppointmentViewModel extends ChangeNotifier {
   setTime(TimeOfDay time) {
     newTimeTable = CreateTimeTableDto(
       start: DateTime(
-        newTimeTable!.start!.year,
-        newTimeTable!.start!.month,
-        newTimeTable!.start!.day,
+        newTimeTable!.start.year,
+        newTimeTable!.start.month,
+        newTimeTable!.start.day,
       ).add(
         Duration(
           minutes: time.minute,
@@ -39,9 +42,9 @@ class AdminAppointmentViewModel extends ChangeNotifier {
         ),
       ),
       end: DateTime(
-        newTimeTable!.start!.year,
-        newTimeTable!.start!.month,
-        newTimeTable!.start!.day,
+        newTimeTable!.start.year,
+        newTimeTable!.start.month,
+        newTimeTable!.start.day,
       ).add(
         Duration(
           minutes: time.minute,
@@ -57,8 +60,9 @@ class AdminAppointmentViewModel extends ChangeNotifier {
       if (kDebugMode) {
         print('add appointment...');
       }
-      if (newTimeTable != null) {
-        repo.createTimeTable(newTimeTable!);
+      CreateTimeTableDto? copyNewTimeTable = newTimeTable;
+      if (copyNewTimeTable != null) {
+        repo.createTimeTable(copyNewTimeTable);
         if (kDebugMode) {
           print('timeTable added');
         }
@@ -72,7 +76,9 @@ class AdminAppointmentViewModel extends ChangeNotifier {
         notifyListeners();
       }
     } catch (e) {
-      print('erreur');
+      if (kDebugMode) {
+        print('erreur');
+      }
     }
   }
 }

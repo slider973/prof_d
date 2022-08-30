@@ -121,6 +121,14 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
+  Future<Response<dynamic>> _userAddTokenPushTokenPost(
+      {required String? token}) {
+    final $url = '/user/addTokenPush/${token}';
+    final $request = Request('POST', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _settingsUsernamePut() {
     final $url = '/settings/username';
     final $request = Request('PUT', $url, client.baseUrl);
@@ -582,6 +590,13 @@ class _$ApiJson extends ApiJson {
   }
 
   @override
+  Future<Response<dynamic>> _pdfInvoiceAppointmentIdGet({required String? id}) {
+    final $url = '/pdf/invoice-appointment/${id}';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> _pdfIdGet({required String? id}) {
     final $url = '/pdf/${id}';
     final $request = Request('GET', $url, client.baseUrl);
@@ -632,6 +647,13 @@ class _$ApiJson extends ApiJson {
     final $url = '/invoices';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _invoicesGet() {
+    final $url = '/invoices';
+    final $request = Request('GET', $url, client.baseUrl);
     return client.send<dynamic, dynamic>($request);
   }
 }

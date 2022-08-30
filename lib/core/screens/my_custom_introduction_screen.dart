@@ -91,6 +91,7 @@ class _MyCustomIntroductionScreenState
         ],
         onDone: () {
           // When done button is press
+          _onIntroEnd(context);
         },
         showBackButton: false,
         showSkipButton: true,

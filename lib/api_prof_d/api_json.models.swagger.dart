@@ -9,17 +9,17 @@ part 'api_json.models.swagger.g.dart';
 @JsonSerializable(explicitToJson: true)
 class LoginDto {
   LoginDto({
-    this.username,
-    this.password,
+    required this.username,
+    required this.password,
   });
 
   factory LoginDto.fromJson(Map<String, dynamic> json) =>
       _$LoginDtoFromJson(json);
 
   @JsonKey(name: 'username', includeIfNull: true)
-  final String? username;
+  final String username;
   @JsonKey(name: 'password', includeIfNull: true)
-  final String? password;
+  final String password;
   static const fromJsonFactory = _$LoginDtoFromJson;
   static const toJsonFactory = _$LoginDtoToJson;
   Map<String, dynamic> toJson() => _$LoginDtoToJson(this);
@@ -57,23 +57,23 @@ extension $LoginDtoExtension on LoginDto {
 @JsonSerializable(explicitToJson: true)
 class AppleLoginDto {
   AppleLoginDto({
-    this.name,
-    this.accessToken,
-    this.authorizationCode,
-    this.type,
+    required this.name,
+    required this.accessToken,
+    required this.authorizationCode,
+    required this.type,
   });
 
   factory AppleLoginDto.fromJson(Map<String, dynamic> json) =>
       _$AppleLoginDtoFromJson(json);
 
   @JsonKey(name: 'name', includeIfNull: true)
-  final String? name;
+  final String name;
   @JsonKey(name: 'accessToken', includeIfNull: true)
-  final String? accessToken;
+  final String accessToken;
   @JsonKey(name: 'authorizationCode', includeIfNull: true)
-  final String? authorizationCode;
+  final String authorizationCode;
   @JsonKey(name: 'type', includeIfNull: true)
-  final String? type;
+  final String type;
   static const fromJsonFactory = _$AppleLoginDtoFromJson;
   static const toJsonFactory = _$AppleLoginDtoToJson;
   Map<String, dynamic> toJson() => _$AppleLoginDtoToJson(this);
@@ -123,14 +123,14 @@ extension $AppleLoginDtoExtension on AppleLoginDto {
 @JsonSerializable(explicitToJson: true)
 class RefreshTokenDto {
   RefreshTokenDto({
-    this.refreshToken,
+    required this.refreshToken,
   });
 
   factory RefreshTokenDto.fromJson(Map<String, dynamic> json) =>
       _$RefreshTokenDtoFromJson(json);
 
   @JsonKey(name: 'refreshToken', includeIfNull: true)
-  final String? refreshToken;
+  final String refreshToken;
   static const fromJsonFactory = _$RefreshTokenDtoFromJson;
   static const toJsonFactory = _$RefreshTokenDtoToJson;
   Map<String, dynamic> toJson() => _$RefreshTokenDtoToJson(this);
@@ -161,17 +161,17 @@ extension $RefreshTokenDtoExtension on RefreshTokenDto {
 @JsonSerializable(explicitToJson: true)
 class RegisterDto {
   RegisterDto({
-    this.password,
-    this.email,
+    required this.password,
+    required this.email,
   });
 
   factory RegisterDto.fromJson(Map<String, dynamic> json) =>
       _$RegisterDtoFromJson(json);
 
   @JsonKey(name: 'password', includeIfNull: true)
-  final String? password;
+  final String password;
   @JsonKey(name: 'email', includeIfNull: true)
-  final String? email;
+  final String email;
   static const fromJsonFactory = _$RegisterDtoFromJson;
   static const toJsonFactory = _$RegisterDtoToJson;
   Map<String, dynamic> toJson() => _$RegisterDtoToJson(this);
@@ -333,44 +333,44 @@ class DeleteRoomMessageDto {
 @JsonSerializable(explicitToJson: true)
 class AddChildDto {
   AddChildDto({
-    this.firstname,
-    this.lastname,
-    this.dateOfBirth,
-    this.numberOfBrotherAndSister,
-    this.placeInTheSiblingGroup,
-    this.placeOfSchooling,
-    this.classLevel,
-    this.followUpsInProgress,
-    this.identifiedDisordersAndOrDifficulties,
-    this.arrangementsInTheClassroom,
-    this.behaviourInTheHome,
+    required this.firstname,
+    required this.lastname,
+    required this.dateOfBirth,
+    required this.numberOfBrotherAndSister,
+    required this.placeInTheSiblingGroup,
+    required this.placeOfSchooling,
+    required this.classLevel,
+    required this.followUpsInProgress,
+    required this.identifiedDisordersAndOrDifficulties,
+    required this.arrangementsInTheClassroom,
+    required this.behaviourInTheHome,
   });
 
   factory AddChildDto.fromJson(Map<String, dynamic> json) =>
       _$AddChildDtoFromJson(json);
 
   @JsonKey(name: 'firstname', includeIfNull: true)
-  final String? firstname;
+  final String firstname;
   @JsonKey(name: 'lastname', includeIfNull: true)
-  final String? lastname;
+  final String lastname;
   @JsonKey(name: 'dateOfBirth', includeIfNull: true)
-  final DateTime? dateOfBirth;
+  final DateTime dateOfBirth;
   @JsonKey(name: 'numberOfBrotherAndSister', includeIfNull: true)
-  final double? numberOfBrotherAndSister;
+  final double numberOfBrotherAndSister;
   @JsonKey(name: 'placeInTheSiblingGroup', includeIfNull: true)
-  final String? placeInTheSiblingGroup;
+  final String placeInTheSiblingGroup;
   @JsonKey(name: 'placeOfSchooling', includeIfNull: true)
-  final String? placeOfSchooling;
+  final String placeOfSchooling;
   @JsonKey(name: 'classLevel', includeIfNull: true)
-  final String? classLevel;
+  final String classLevel;
   @JsonKey(name: 'followUpsInProgress', includeIfNull: true)
-  final String? followUpsInProgress;
+  final String followUpsInProgress;
   @JsonKey(name: 'identifiedDisordersAndOrDifficulties', includeIfNull: true)
-  final String? identifiedDisordersAndOrDifficulties;
+  final String identifiedDisordersAndOrDifficulties;
   @JsonKey(name: 'arrangementsInTheClassroom', includeIfNull: true)
-  final String? arrangementsInTheClassroom;
+  final String arrangementsInTheClassroom;
   @JsonKey(name: 'behaviourInTheHome', includeIfNull: true)
-  final String? behaviourInTheHome;
+  final String behaviourInTheHome;
   static const fromJsonFactory = _$AddChildDtoFromJson;
   static const toJsonFactory = _$AddChildDtoToJson;
   Map<String, dynamic> toJson() => _$AddChildDtoToJson(this);
@@ -513,7 +513,7 @@ class UpdateAddressDto {
 class CreateTimeTableDto {
   CreateTimeTableDto({
     this.title,
-    this.start,
+    required this.start,
     this.end,
     this.desc,
   });
@@ -524,7 +524,7 @@ class CreateTimeTableDto {
   @JsonKey(name: 'title', includeIfNull: true)
   final String? title;
   @JsonKey(name: 'start', includeIfNull: true)
-  final DateTime? start;
+  final DateTime start;
   @JsonKey(name: 'end', includeIfNull: true)
   final DateTime? end;
   @JsonKey(name: 'desc', includeIfNull: true)
@@ -591,20 +591,20 @@ class UpdateTimeTableDto {
 @JsonSerializable(explicitToJson: true)
 class CreateFollowUpDto {
   CreateFollowUpDto({
-    this.stateBefore,
-    this.stateAfter,
-    this.child,
+    required this.stateBefore,
+    required this.stateAfter,
+    required this.child,
   });
 
   factory CreateFollowUpDto.fromJson(Map<String, dynamic> json) =>
       _$CreateFollowUpDtoFromJson(json);
 
   @JsonKey(name: 'stateBefore', includeIfNull: true)
-  final String? stateBefore;
+  final String stateBefore;
   @JsonKey(name: 'stateAfter', includeIfNull: true)
-  final String? stateAfter;
+  final String stateAfter;
   @JsonKey(name: 'child', includeIfNull: true)
-  final String? child;
+  final String child;
   static const fromJsonFactory = _$CreateFollowUpDtoFromJson;
   static const toJsonFactory = _$CreateFollowUpDtoToJson;
   Map<String, dynamic> toJson() => _$CreateFollowUpDtoToJson(this);
@@ -647,18 +647,18 @@ extension $CreateFollowUpDtoExtension on CreateFollowUpDto {
 @JsonSerializable(explicitToJson: true)
 class CreateFollowUpDetailDto {
   CreateFollowUpDetailDto({
-    this.appointment,
-    this.followUpSubjects,
+    required this.appointment,
+    required this.followUpSubjects,
   });
 
   factory CreateFollowUpDetailDto.fromJson(Map<String, dynamic> json) =>
       _$CreateFollowUpDetailDtoFromJson(json);
 
   @JsonKey(name: 'appointment', includeIfNull: true)
-  final String? appointment;
+  final Object? appointment;
   @JsonKey(
       name: 'followUpSubjects', includeIfNull: true, defaultValue: <String>[])
-  final List<String>? followUpSubjects;
+  final List<String> followUpSubjects;
   static const fromJsonFactory = _$CreateFollowUpDetailDtoFromJson;
   static const toJsonFactory = _$CreateFollowUpDetailDtoToJson;
   Map<String, dynamic> toJson() => _$CreateFollowUpDetailDtoToJson(this);
@@ -687,7 +687,7 @@ class CreateFollowUpDetailDto {
 
 extension $CreateFollowUpDetailDtoExtension on CreateFollowUpDetailDto {
   CreateFollowUpDetailDto copyWith(
-      {String? appointment, List<String>? followUpSubjects}) {
+      {Object? appointment, List<String>? followUpSubjects}) {
     return CreateFollowUpDetailDto(
         appointment: appointment ?? this.appointment,
         followUpSubjects: followUpSubjects ?? this.followUpSubjects);
@@ -699,7 +699,7 @@ class CreateAppointmentDto {
   CreateAppointmentDto({
     this.patient,
     this.profile,
-    this.timeTableId,
+    required this.timeTableId,
   });
 
   factory CreateAppointmentDto.fromJson(Map<String, dynamic> json) =>
@@ -710,7 +710,7 @@ class CreateAppointmentDto {
   @JsonKey(name: 'profile', includeIfNull: true)
   final String? profile;
   @JsonKey(name: 'timeTableId', includeIfNull: true)
-  final String? timeTableId;
+  final String timeTableId;
   static const fromJsonFactory = _$CreateAppointmentDtoFromJson;
   static const toJsonFactory = _$CreateAppointmentDtoToJson;
   Map<String, dynamic> toJson() => _$CreateAppointmentDtoToJson(this);
@@ -772,20 +772,20 @@ class UpdateAppointmentDto {
 @JsonSerializable(explicitToJson: true)
 class CreatePdfDto {
   CreatePdfDto({
-    this.firstname,
-    this.lastname,
-    this.city,
+    required this.firstname,
+    required this.lastname,
+    required this.city,
   });
 
   factory CreatePdfDto.fromJson(Map<String, dynamic> json) =>
       _$CreatePdfDtoFromJson(json);
 
   @JsonKey(name: 'firstname', includeIfNull: true)
-  final String? firstname;
+  final String firstname;
   @JsonKey(name: 'lastname', includeIfNull: true)
-  final String? lastname;
+  final String lastname;
   @JsonKey(name: 'city', includeIfNull: true)
-  final String? city;
+  final String city;
   static const fromJsonFactory = _$CreatePdfDtoFromJson;
   static const toJsonFactory = _$CreatePdfDtoToJson;
   Map<String, dynamic> toJson() => _$CreatePdfDtoToJson(this);
@@ -845,14 +845,14 @@ class UpdatePdfDto {
 @JsonSerializable(explicitToJson: true)
 class CreateFollowUpSubjectDto {
   CreateFollowUpSubjectDto({
-    this.name,
+    required this.name,
   });
 
   factory CreateFollowUpSubjectDto.fromJson(Map<String, dynamic> json) =>
       _$CreateFollowUpSubjectDtoFromJson(json);
 
   @JsonKey(name: 'name', includeIfNull: true)
-  final String? name;
+  final String name;
   static const fromJsonFactory = _$CreateFollowUpSubjectDtoFromJson;
   static const toJsonFactory = _$CreateFollowUpSubjectDtoToJson;
   Map<String, dynamic> toJson() => _$CreateFollowUpSubjectDtoToJson(this);
@@ -882,20 +882,20 @@ extension $CreateFollowUpSubjectDtoExtension on CreateFollowUpSubjectDto {
 @JsonSerializable(explicitToJson: true)
 class CreateInvoicesDto {
   CreateInvoicesDto({
-    this.firstname,
-    this.lastname,
-    this.parentId,
+    required this.firstname,
+    required this.lastname,
+    required this.parentId,
   });
 
   factory CreateInvoicesDto.fromJson(Map<String, dynamic> json) =>
       _$CreateInvoicesDtoFromJson(json);
 
   @JsonKey(name: 'firstname', includeIfNull: true)
-  final String? firstname;
+  final String firstname;
   @JsonKey(name: 'lastname', includeIfNull: true)
-  final String? lastname;
+  final String lastname;
   @JsonKey(name: 'parentId', includeIfNull: true)
-  final String? parentId;
+  final String parentId;
   static const fromJsonFactory = _$CreateInvoicesDtoFromJson;
   static const toJsonFactory = _$CreateInvoicesDtoToJson;
   Map<String, dynamic> toJson() => _$CreateInvoicesDtoToJson(this);

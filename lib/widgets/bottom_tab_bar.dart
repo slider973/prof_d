@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../modules/account/screens/account_screens.dart';
 import '../modules/appointement/screens/appointment_screen.dart';
 import '../modules/home/screens/home_screen.dart';

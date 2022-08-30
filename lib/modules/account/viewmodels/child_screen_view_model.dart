@@ -15,16 +15,19 @@ class ChildViewModel extends ChangeNotifier {
   ChildViewModel(this.ref);
 
   Future<List<ChildModel>> getChildList() async {
+    print(childList);
+    print(childList.isNotEmpty);
     if (childList.isNotEmpty) {
       return childList;
     }
 
     final resultChildList = await AccountRepo.instance.getChildList();
+
     List<ChildModel> finalChildList = resultChildList.map((child) {
       return ChildModel.fromJson(child);
     }).toList();
     childList = finalChildList;
-
+    print('finalChildList: $finalChildList');
     return childList;
   }
 

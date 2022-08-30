@@ -1,0 +1,1 @@
+const featureNotReady = 'cette fonctionnalité sera bientôt disponible';

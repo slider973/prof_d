@@ -11,7 +11,6 @@ class AppointmentRepo {
 
   createAppointment(CreateAppointmentDto body) async {
     final result = await apiJson.appointmentPost(body: body);
-    print(result.headers);
     if (result.statusCode == 200 | 201) {
       if (result.body != null) {
         return result.body;

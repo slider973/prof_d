@@ -33,9 +33,9 @@ class HomeViewModel extends ChangeNotifier {
     return timeTableList.body;
   }
 
-  Future<Appointment> getAppointment() async {
-    if (appointmentList.comingSoon.isNotEmpty ||
-        appointmentList.pass.isNotEmpty) {
+  Future<Appointment> getAppointment({bool force = false}) async {
+    if ((appointmentList.comingSoon.isNotEmpty  && force == false) ||
+       ( appointmentList.pass.isNotEmpty && force == false) ) {
       return appointmentList;
     }
 

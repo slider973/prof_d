@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/sizes.dart';
+import '../../../../core/utils/dialogs.dart';
 import '../../../../services/date_parser.dart';
+import 'empty_state_appointment.dart';
 
 class ListComingAppointment<T> extends StatelessWidget {
   final List<dynamic> appointmentList;
@@ -13,6 +15,9 @@ class ListComingAppointment<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   if(appointmentList.isEmpty){
+     return const EmptyStateAppointment(false);
+   }
     return ListView.builder(
       itemCount: appointmentList.length,
       itemBuilder: (context, index) {
@@ -68,7 +73,9 @@ class ListComingAppointment<T> extends StatelessWidget {
           textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           shape: const StadiumBorder(),
           elevation: 0),
-      onPressed: () {},
+      onPressed: () {
+        AppDialogs.featureNotReadyDialog();
+      },
       child: const Text(
         'Annulez le rendez vous',
         style: TextStyle(height: 1.0, fontSize: 12),

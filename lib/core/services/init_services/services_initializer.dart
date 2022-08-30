@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../../../authentification/http_client/custom_chooper_client.dart';
 import '../../../authentification/services/api_json_caller.dart';
+import 'configuration_service.dart';
 import 'connectivity_service.dart';
 import 'firebase_messaging_service.dart';
 import 'history_service.dart';
@@ -45,6 +46,10 @@ class ServiceInitializer {
    ApiJsonCaller.instance.initClient(client);
   }
 
+  initConfiguration() async {
+    await ConfigurationService.instance.init();
+  }
+
   initializeLocalization() async {
     return await AppLocalizations.instance.getUserStoredLocale();
   }
@@ -72,10 +77,6 @@ class ServiceInitializer {
 
   initializeFirebaseMessaging() async {
     await FirebaseMessagingService.instance.initFirebaseMessaging();
-  }
-
-  initAppointmentList() async {
-
   }
 
   initHistoryService() async {

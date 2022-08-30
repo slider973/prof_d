@@ -4,6 +4,7 @@ import '../localization/app_localization.dart';
 import '../services/navigation_service.dart';
 import '../widgets/dialog_widget.dart';
 import 'dialog_message_state.dart';
+import '../../config/phrases.dart';
 
 class AppDialogs {
   static Future showDefaultErrorDialog() async {
@@ -36,6 +37,17 @@ class AppDialogs {
       context: Get.context!,
       dialogWidgetState: DialogWidgetState.error,
       title: tr('emailOrPasswordIsInCorrect'),
+      textButton: tr('OK'),
+      onPressed: () {
+        NavigationService.goBack();
+      },
+    );
+  }
+  static Future featureNotReadyDialog() async {
+    DialogWidget.showCustomDialog(
+      context: Get.context!,
+      dialogWidgetState: DialogWidgetState.warning,
+      title: featureNotReady,
       textButton: tr('OK'),
       onPressed: () {
         NavigationService.goBack();

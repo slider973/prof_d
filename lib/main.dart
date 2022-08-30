@@ -13,9 +13,9 @@ import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'theme/app_theme.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   tz.initializeTimeZones();
   tz.setLocalLocation(tz.getLocation('Europe/Paris'));
-  WidgetsFlutterBinding.ensureInitialized();
   List results = await ServiceInitializer.instance.initializeSettings();
   runApp(ProviderScope(
     child: ProfBApp(
@@ -33,7 +33,7 @@ class ProfBApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
       return ScreenUtilInit(
-        builder: () => AnnotatedRegion<SystemUiOverlayStyle>(
+        builder: (context, widget) => AnnotatedRegion<SystemUiOverlayStyle>(
           value: const SystemUiOverlayStyle(
             // For both Android + iOS
             statusBarColor: Colors.transparent,
@@ -45,7 +45,7 @@ class ProfBApp extends StatelessWidget {
           ),
           child: GetMaterialApp(
             builder: (context, widget) {
-              ScreenUtil.setContext(context);
+              ScreenUtil.init(context);
               return widget!;
             },
             title: 'Prof D',
