@@ -47,7 +47,7 @@ class ServiceInitializer {
   }
 
   initConfiguration() async {
-    await ConfigurationService.instance.init();
+   // await ConfigurationService.instance.init();
   }
 
   initializeLocalization() async {
