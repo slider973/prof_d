@@ -8,6 +8,7 @@ import 'package:location/location.dart';
 
 import '../../authentification/models/user_model.dart';
 import '../../authentification/repos/user_repo.dart';
+import '../services/init_services/auth_service.dart';
 import '../services/location_service.dart';
 
 final mainCoreViewModelProvider =
@@ -15,14 +16,15 @@ final mainCoreViewModelProvider =
 
 class MainCoreViewModel extends ChangeNotifier {
   ///User module methods
-  String? getCurrentUserAuthUid() {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return FirebaseAuth.instance.currentUser!.uid;
+  Future<String?> getCurrentUserAuthUid() async {
+   final token = await  AuthService.instance.getUserTokenApiStored();
+    if (token != null) {
+      return token;
     }
     return null;
   }
 
-  Future<UserModel?>? getUserDataFromFirebase({required String uid}) async {
+  Future<UserModel?>? getUserData() async {
     try {
       return await UserRepo.instance.getUserData();
     } catch (e) {

@@ -66,11 +66,11 @@ class SplashViewModel extends ChangeNotifier {
   }
 
   Future checkForCachedUser() async {
-    String? uid = _mainCoreVM.getCurrentUserAuthUid();
+    String? token = await _mainCoreVM.getCurrentUserAuthUid();
 
-    if (uid != null) {
+    if (token != null) {
       UserModel? userModel =
-          await _mainCoreVM.getUserDataFromFirebase(uid: uid);
+          await _mainCoreVM.getUserData();
       if (userModel != null) {
         _mainCoreVM.setCurrentUser(userModel: userModel);
         secondPage = RoutePaths.home;
