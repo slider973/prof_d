@@ -77,19 +77,9 @@ class UserRepo {
 
   Future<UserModel?> getUserData({String? token}) async {
     final userToken = token ?? await _authService.getUserTokenApiStored();
-    _apiCaller.dio.options.headers["Authorization"] = "Bearer " + userToken!;
+    _apiCaller.dio.options.headers["Authorization"] = "Bearer ${userToken!}";
     final result = await apiJson.authMeGet();
     return UserModel.fromMap(result.body);
-
-    /* await _apiCaller.getData(
-        path: ApisPaths.mePatch(),
-        queryParameters: {},
-        builder: (userData) {
-          debugPrint(userData.toString());
-          return UserModel.fromMap(userData!);
-        });
-
-       */
   }
 
   Future updateUserName({required String name}) async {
