@@ -83,16 +83,16 @@ class AccountScreen extends ConsumerWidget {
               ),
             );
           }),
-    //   _buildSingleRow(
-    //       title: 'Se déconnecter',
-    //       icon: FeatherIcons.logOut,
-    //       cb: () async {
-    // /*        await FirebaseAuth.instance.signOut();
-    //         Navigator.pushAndRemoveUntil(
-    //             context,
-    //             MaterialPageRoute(builder: (context) => const LoginScreen()),
-    //             (route) => false);*/
-    //       }),
+      _buildSingleRow(
+          title: 'Se déconnecter',
+          icon: FeatherIcons.logOut,
+          cb: () async {
+    /*        await FirebaseAuth.instance.signOut();
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                (route) => false);*/
+          }),
     ];
 
     return Scaffold(
