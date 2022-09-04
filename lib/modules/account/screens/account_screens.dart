@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutx/flutx.dart';
+import '../../../authentification/screens/login_screen.dart';
 import '../../../core/viewmodels/main_core_viewmodel.dart';
 import '../../../services/notification/notification.dart';
 import '../../../widgets/handle_update_profil.dart';
-import '../../../screens/auth/login_page_new.dart';
 import '../../../theme/app_theme.dart';
 import 'child_screen/child_list_screen.dart';
 
@@ -52,6 +52,7 @@ class AccountScreen extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final _userModel =
         ref.watch(mainCoreViewModelProvider.notifier).getCurrentUser();
+    final mainVM = ref.watch(mainCoreViewModelProvider);
     final List buildRowList = [
       // _buildSingleRow(
       //   title: 'Paramètres du profil',
@@ -87,11 +88,12 @@ class AccountScreen extends ConsumerWidget {
           title: 'Se déconnecter',
           icon: FeatherIcons.logOut,
           cb: () async {
-    /*        await FirebaseAuth.instance.signOut();
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginScreen()),
-                (route) => false);*/
+                    (route) => false);
+            await mainVM.logoutUser();
+
           }),
     ];
 

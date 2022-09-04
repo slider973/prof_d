@@ -16,8 +16,8 @@ final mainCoreViewModelProvider =
 
 class MainCoreViewModel extends ChangeNotifier {
   ///User module methods
-  Future<String?> getCurrentUserAuthUid() async {
-   final token = await  AuthService.instance.getUserTokenApiStored();
+  Future<String?> getCurrentUserAuthToken() async {
+    final token = await AuthService.instance.getUserTokenApiStored();
     if (token != null) {
       return token;
     }
@@ -33,6 +33,10 @@ class MainCoreViewModel extends ChangeNotifier {
     }
   }
 
+  clearCurrentUser() {
+    UserRepo.instance.logoutUser();
+  }
+
   setUserTokenPush({required String uid, required String token}) async {
     await UserRepo.instance.updateUserTokenPush(token: token);
   }
@@ -44,15 +48,17 @@ class MainCoreViewModel extends ChangeNotifier {
   setCurrentUser({required UserModel userModel}) {
     UserRepo.instance.userModel = userModel;
   }
+
   Future getInvoices() async {
     if (kDebugMode) {
       print('getInvoices');
     }
-   return await UserRepo.instance.getInvoices();
+    return await UserRepo.instance.getInvoices();
   }
 
-  Future logoutUser() async {
-    await UserRepo.instance.logoutUser();
+  logoutUser() async {
+    await AuthService.instance.clearUserTokenApi();
+    UserRepo.instance.logoutUser();
   }
 
   ///Location module related...

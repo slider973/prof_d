@@ -16,6 +16,16 @@ class AuthService {
     );
   }
 
+  Future clearUserTokenApi() async {
+    try {
+       await HistoryService.instance.clearKey(key: userStoredTokenApi);
+       await HistoryService.instance.clearKey(key: userStoredRefreshTokenApi);
+       return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<String?> getUserTokenApiStored() async {
     String? userStoredTokenApiGot = await HistoryService.instance.restoreData(
       key: userStoredTokenApi,
@@ -23,7 +33,6 @@ class AuthService {
     );
     return userStoredTokenApiGot;
   }
-
 
   Future setUserRefreshTokenApi(String token) async {
     await HistoryService.instance.saveData(

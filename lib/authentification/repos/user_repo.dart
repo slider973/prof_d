@@ -122,9 +122,8 @@ class UserRepo {
     userModel = userModel!.copyWith(image: imageFile?.path);
   }
 
-  Future logoutUser() async {
+   logoutUser() {
     uid = null;
     userModel = null;
-    await FirebaseAuthAPI.instance.signOut();
   }
 }

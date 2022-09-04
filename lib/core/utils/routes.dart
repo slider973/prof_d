@@ -25,7 +25,6 @@ class AppRouter {
     switch (settings.name) {
       //Core
       case RoutePaths.coreSplash:
-        print('verifier sur l utilisateur a une session ouvert');
         return MaterialPageRoute(builder: (_) => const SplashScreenProfD());
       case RoutePaths.coreNoInternet:
         final args = settings.arguments as Map?;
