@@ -66,15 +66,16 @@ class SplashViewModel extends ChangeNotifier {
   }
 
   Future checkForCachedUser() async {
-    String? token = await _mainCoreVM.getCurrentUserAuthUid();
-
+    String? token = await _mainCoreVM.getCurrentUserAuthToken();
+    if (kDebugMode) {
+      print(token);
+    }
     if (token != null) {
-      UserModel? userModel =
-          await _mainCoreVM.getUserData();
+      UserModel? userModel = await _mainCoreVM.getUserData();
       if (userModel != null) {
         _mainCoreVM.setCurrentUser(userModel: userModel);
         secondPage = RoutePaths.home;
-        precacheImage(NetworkImage(userModel.image as String), Get.context!);
+        //precacheImage(NetworkImage(userModel.image as String), Get.context!);
       } else {
         await _mainCoreVM.logoutUser();
         secondPage = RoutePaths.authLogin;

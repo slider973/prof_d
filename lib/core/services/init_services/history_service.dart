@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter/foundation.dart' show debugPrint, kDebugMode;
 import 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
 
@@ -25,8 +25,6 @@ class HistoryService {
           dataType: DataType.bool,
         ) ??
         false;
-    debugPrint(hasHistory.toString());
-    debugPrint("hasHistory");
     if (!hasHistory) _setHistory();
   }
 

@@ -90,7 +90,9 @@ class ListComingAppointment<T> extends StatelessWidget {
           textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           shape: const StadiumBorder(),
           elevation: 0),
-      onPressed: () {},
+      onPressed: () {
+        AppDialogs.featureNotReadyDialog();
+      },
       child: const Text(
         'Reprendre le rendez vous',
         style: TextStyle(height: 1.0, fontSize: 12),
