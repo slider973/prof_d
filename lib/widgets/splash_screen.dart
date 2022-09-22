@@ -2,10 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import '../authentification/screens/login_screen.dart';
 import 'bottom_tab_bar.dart';
 
 import '../services/auth/auth_bloc.dart';
-import '../screens/auth/login_page_new.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

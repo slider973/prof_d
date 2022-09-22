@@ -48,9 +48,9 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     final invoices = <Invoice>[];
-    if (map['invoices'] != null) {
-      map['invoices'].forEach((v) {
-        invoices.add(Invoice.fromJson(v));
+    if (map['invoices'] != null && invoices.runtimeType == 'Map<String, dynamic>') {
+      map['invoices'].forEach((invoice) {
+        invoices.add(Invoice.fromJson(invoice));
       });
     }
     return UserModel(
@@ -69,22 +69,21 @@ class UserModel {
         id: map['id'] ?? '');
   }
 
-  UserModel copyWith({
-    String? uId,
-    String? name,
-    String? email,
-    String? image,
-    String? phone,
-    String? token,
-    String? firstname,
-    String? lastname,
-    String? online,
-    bool? isProfileCreated,
-    String? role,
-    String? id,
-    String? username,
-    List<Invoice?>? invoices
-  }) {
+  UserModel copyWith(
+      {String? uId,
+      String? name,
+      String? email,
+      String? image,
+      String? phone,
+      String? token,
+      String? firstname,
+      String? lastname,
+      String? online,
+      bool? isProfileCreated,
+      String? role,
+      String? id,
+      String? username,
+      List<Invoice?>? invoices}) {
     return UserModel(
         name: name ?? this.name,
         email: email ?? this.email,

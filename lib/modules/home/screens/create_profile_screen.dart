@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/styles/sizes.dart';
 
+import '../../../widgets/address_fled.dart';
 ///widgets
 import '../../../widgets/profd_field_phone.dart';
 import '../../../widgets/build_civitily.dart';
@@ -52,6 +53,22 @@ class CreateProfileScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
+                      Row(
+                          children: const <Widget>[
+                            Expanded(
+                                child: Divider()
+                            ),
+
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text("Information"),
+                            ),
+
+                            Expanded(
+                                child: Divider()
+                            ),
+                          ]
+                      ),
                       ProfdTextFieldComponent(
                         labelText: "Prénom",
                         controller: createProfileMV.firstnameController,
@@ -59,10 +76,6 @@ class CreateProfileScreen extends ConsumerWidget {
                       ProfdTextFieldComponent(
                         labelText: "Nom",
                         controller: createProfileMV.lastnameController,
-                      ),
-                      ProfdTextFieldComponent(
-                        labelText: "Nom de naissance",
-                        controller: createProfileMV.nameOfBirdController,
                       ),
                       ProfdDateTimeField(
                         labelText: "Date de naissance",
@@ -72,8 +85,28 @@ class CreateProfileScreen extends ConsumerWidget {
                         labelText: "Téléphone",
                         controller: createProfileMV.phoneController,
                       ),
+
                       GooglePlaceField(
                         controller: createProfileMV.cityOfBirdController,
+                      ),
+                      Row(
+                          children: const <Widget>[
+                            Expanded(
+                                child: Divider()
+                            ),
+
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text("Adresse"),
+                            ),
+
+                            Expanded(
+                                child: Divider()
+                            ),
+                          ]
+                      ),
+                      AddressField(
+                        controller: createProfileMV.addressController,
                       ),
                     ],
                   ),
@@ -86,7 +119,6 @@ class CreateProfileScreen extends ConsumerWidget {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               createProfileMV.sendData(context);
-              print('yes');
             }
           },
           label: const Text('Créer un profil'),
