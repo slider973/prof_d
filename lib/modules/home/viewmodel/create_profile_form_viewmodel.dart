@@ -22,20 +22,20 @@ class CreateProfileFormViewModel extends ChangeNotifier {
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController lastnameController = TextEditingController();
   final TextEditingController dateOfBirthController = TextEditingController();
-  final TextEditingController nameOfBirdController = TextEditingController();
   final TextEditingController cityOfBirdController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController civilityController = TextEditingController();
   final TextEditingController imageController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   Map<String, dynamic> buildNewProfileObject() {
     return {
       "firstname": firstnameController.value.text,
       "lastname": lastnameController.value.text,
       "civility": civilityController.text,
-      "nameOfBirth": nameOfBirdController.text,
       "cityOfBird": cityOfBirdController.text,
       "phone": phoneController.text,
+      "address": addressController.text,
       "isProfileCreated": true,
     };
   }

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_place/google_place.dart';
 
-class GooglePlaceField extends StatefulWidget {
+class AddressField extends StatefulWidget {
   final TextEditingController controller;
 
-  const GooglePlaceField({Key? key, required this.controller})
+  const AddressField({Key? key, required this.controller})
       : super(key: key);
 
   @override
-  _GooglePlaceFieldState createState() => _GooglePlaceFieldState();
+  _AddressFieldState createState() => _AddressFieldState();
 }
 
-class _GooglePlaceFieldState extends State<GooglePlaceField> {
+class _AddressFieldState extends State<AddressField> {
   late GooglePlace googlePlace;
 
   List<AutocompletePrediction> predictions = [];
@@ -66,14 +66,18 @@ class _GooglePlaceFieldState extends State<GooglePlaceField> {
   }
 
   void autoCompleteSearch(String value) async {
-    var result = await googlePlace.autocomplete.get(value,
-        language: "fr",
-        types: '(regions)',
-        components: [Component("country", "fr")]);
-    if (result != null && result.predictions != null && mounted) {
-      setState(() {
-        predictions = result.predictions!;
-      });
+    try {
+      var result = await googlePlace.autocomplete.get(value,
+          language: "fr",
+          types: 'address',
+          components: [Component("country", "fr")]);
+      if (result != null && result.predictions != null && mounted) {
+        setState(() {
+          predictions = result.predictions!;
+        });
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -81,7 +85,7 @@ class _GooglePlaceFieldState extends State<GooglePlaceField> {
     return TextField(
       controller: widget.controller,
       decoration: InputDecoration(
-        labelText: "Ville de naissance",
+        labelText: "Address",
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
           borderSide: const BorderSide(
@@ -100,11 +104,7 @@ class _GooglePlaceFieldState extends State<GooglePlaceField> {
       onChanged: (value) {
         ;
         if (value.isNotEmpty) {
-          try {
-            autoCompleteSearch(value);
-          } catch (e) {
-            print(e);
-          }
+          autoCompleteSearch(value);
         } else {
           if (predictions.isNotEmpty && mounted) {
             setState(() {

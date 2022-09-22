@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
+
 
 import '../../api_prof_d/api_json.swagger.dart';
 import '../../core/services/apis_services/api_caller.dart';
@@ -11,7 +11,6 @@ import '../models/authentification_model.dart';
 import '../models/invoices.dart';
 import '../models/user_model.dart';
 import '../services/api_json_caller.dart';
-import '../services/firebase_auth_api.dart';
 
 class UserRepo {
   UserRepo._();
@@ -88,7 +87,9 @@ class UserRepo {
 
   Future updateUserTokenPush({required String token}) async {
     await apiJson.userAddTokenPushTokenPost(token: token);
+    if(userModel != null) {
     userModel = userModel!.copyWith(token: token);
+    }
   }
 
   Future updateUser({required Map<String, dynamic> user}) async {
