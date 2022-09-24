@@ -66,7 +66,8 @@ class UserModel {
         role: map['role'] ?? '',
         username: map['username'] ?? '',
         invoices: invoices,
-        id: map['id'] ?? '');
+        id: map['id'] ?? '',
+    );
   }
 
   UserModel copyWith(

@@ -68,8 +68,7 @@ class _GooglePlaceFieldState extends State<GooglePlaceField> {
   void autoCompleteSearch(String value) async {
     var result = await googlePlace.autocomplete.get(value,
         language: "fr",
-        types: '(regions)',
-        components: [Component("country", "fr")]);
+        types: '(regions)',);
     if (result != null && result.predictions != null && mounted) {
       setState(() {
         predictions = result.predictions!;
