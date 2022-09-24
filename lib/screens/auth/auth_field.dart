@@ -22,7 +22,7 @@ class AuthField extends StatefulWidget {
 class _AuthFieldState extends State<AuthField> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  final TextEditingController _confirmpassword = TextEditingController();
+  final TextEditingController _confirmPassword = TextEditingController();
   bool _submitted = false;
 
   @override
@@ -55,7 +55,7 @@ class _AuthFieldState extends State<AuthField> {
     if (text.length < 4) {
       return 'Trop court';
     }
-    if (_passwordController.text != _confirmpassword.text) {
+    if (_passwordController.text != _confirmPassword.text) {
       return "Le mot de passe ne correspond pas";
     }
     // return null if the text is valid
@@ -88,9 +88,6 @@ class _AuthFieldState extends State<AuthField> {
       SizedBox(
         width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
-          child: widget.typeAuth == TypeAuth.login
-              ? const Text('Se connecter')
-              : const Text('S\'enregistrer'),
           style: ElevatedButton.styleFrom(
             primary: Colors.teal,
             onPrimary: Colors.white,
@@ -119,6 +116,9 @@ class _AuthFieldState extends State<AuthField> {
                   (route) => false);
             }
           },
+          child: widget.typeAuth == TypeAuth.login
+              ? const Text('Se connecter')
+              : const Text('S\'enregistrer'),
         ),
       )
     ];
@@ -127,7 +127,7 @@ class _AuthFieldState extends State<AuthField> {
       childrenList.insert(
           4,
           TextField(
-            controller: _confirmpassword,
+            controller: _confirmPassword,
             decoration: InputDecoration(
                 hintText: "Confirmation du mot de passe",
                 errorText: _submitted ? _errorText : null),

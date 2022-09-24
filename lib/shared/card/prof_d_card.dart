@@ -27,7 +27,6 @@ class ProfDCard extends ConsumerWidget {
     navigateToDeploymentInvoices() {
       if (kDebugMode) {
         print('deploi the invoices');
-        print(_adminDashVM.getParent());
       }
 
       final parent = _adminDashVM.getParent()!;
