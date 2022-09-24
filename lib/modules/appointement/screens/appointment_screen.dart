@@ -17,7 +17,7 @@ class AppointmentScreen extends ConsumerWidget {
         onPressed: () {
           _homeViewModel.navigateToCreateAppointment(context);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.search),
       ),
       appBar: buildAppBarComponent,
       body: const Center(
