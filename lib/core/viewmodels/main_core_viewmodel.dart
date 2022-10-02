@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location/location.dart';
@@ -34,10 +33,6 @@ class MainCoreViewModel extends ChangeNotifier {
 
   clearCurrentUser() {
     UserRepo.instance.logoutUser();
-  }
-
-  setUserTokenPush({required String uid, required String token}) async {
-    await UserRepo.instance.updateUserTokenPush(token: token);
   }
 
   UserModel? getCurrentUser() {

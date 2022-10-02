@@ -13,12 +13,15 @@ class CustomChopperClient {
         HttpLoggingInterceptor(),
         (Request request) async {
           final token = await AuthService.instance.getUserTokenApiStored();
-          return request.copyWith(headers: {
-            'Accept': "application/json",
-            'Content-type': "application/json",
-            'Authorization':
-                "Bearer $token",
-          });
+          var newRequest = request;
+          if (token != null) {
+            newRequest = request.copyWith(headers: {
+              'Accept': "application/json",
+              'Content-type': "application/json",
+              'Authorization': "Bearer $token",
+            });
+          }
+          return newRequest;
         },
       ],
       authenticator: AppAuthenticator(),
@@ -26,3 +29,10 @@ class CustomChopperClient {
     return client;
   }
 }
+
+
+// .copyWith(headers: {
+//             'Accept': "application/json",
+//             'Content-type': "application/json",
+//             'Authorization': "Bearer $token",
+//           });

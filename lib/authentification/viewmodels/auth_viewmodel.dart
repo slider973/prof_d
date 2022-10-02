@@ -49,8 +49,7 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   String? Function(String? p1)? validateConfirmLoginPassword(text) {
-    return Validators.instance
-        .validateConfirmLoginPassword(text);
+    return Validators.instance.validateConfirmLoginPassword(text);
   }
 
   signUpWithEmailAndPassword(context) async {

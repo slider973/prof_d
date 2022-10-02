@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../authentification/repos/user_repo.dart';
+import 'auth_service.dart';
 
 class PushNotificationService {
   PushNotificationService._();
@@ -9,13 +10,14 @@ class PushNotificationService {
   static final instance = PushNotificationService._();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   Future initPushNotificationSettings() async {
-   final tokenPush = await _getToken();
-   if (kDebugMode) {
-     print('Get token push: $tokenPush');
-   }
-   if(tokenPush != null) {
-     UserRepo.instance.updateUserTokenPush(token: tokenPush);
-   }
+    final tokenPush = await _getToken();
+    final token = await AuthService.instance.getUserTokenApiStored();
+    if (kDebugMode) {
+      print('Get token push: $tokenPush');
+    }
+    if (tokenPush != null && token != null) {
+      UserRepo.instance.updateUserTokenPush(token: tokenPush);
+    }
   }
 
   _getToken() async {
