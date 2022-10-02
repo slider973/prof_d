@@ -1,4 +1,4 @@
-import '../core/services/init_services/configuration_service.dart';
+import 'environement.dart';
 
 const userCollection = 'users';
 const childCollection = 'childs';
@@ -8,4 +8,4 @@ const appointmentCollection = 'appointments';
 const eventsCollection = '$userCollection/:id/booked-events';
 
 //pdf
-const getBackendUrl = 'https://api.sylvie-profd.com';
+final getBackendUrl = Environement.apiUrl;

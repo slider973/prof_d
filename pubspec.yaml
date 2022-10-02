@@ -110,6 +110,9 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^20.2.40-beta
   flutter_pdfview: ^1.2.2
   share_plus: ^4.0.10
+
+
+  # Environement
   flutter_dotenv: ^5.0.2
 
   # UI
@@ -151,6 +154,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
+    - .env.development
+    - .env.production
     - assets/animation/loading.json
     - assets/images/core/dialog_widget_icons/
     - assets/images/core/dialog_widget_icons/warning.png

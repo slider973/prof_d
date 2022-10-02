@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'config/environement.dart';
 import 'core/services/init_services/services_initializer.dart';
 import 'core/utils/routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,6 +15,7 @@ import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'theme/app_theme.dart';
 
 Future<void> main() async {
+  await dotenv.load(fileName: Environement.fileName);
   WidgetsFlutterBinding.ensureInitialized();
   tz.initializeTimeZones();
   tz.setLocalLocation(tz.getLocation('Europe/Paris'));
