@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/services/init_services/firebase_messaging_service.dart';
+import '../../core/services/init_services/history_service.dart';
 import '../../core/utils/dialogs.dart';
 import '../../core/utils/navigate.dart';
 import '../../core/utils/validators.dart';
@@ -14,6 +15,8 @@ import '../services/api_json_caller.dart';
 import 'auth_loading_provider_viewmodel.dart';
 
 enum AuthType { login, register }
+
+const isUserIntroductionDoneKey = 'is_user_introduction_done';
 
 final authViewModel = ChangeNotifierProvider.autoDispose<AuthViewModel>(
     (ref) => AuthViewModel(ref));
@@ -120,7 +123,15 @@ class AuthViewModel extends ChangeNotifier {
       _mainCoreVM.setCurrentUser(userModel: client!);
       // subscribeUserToTopic();
       if (client.role != 'admin') {
-        NavigateUtils.instance.navigationToIntroductionScreen();
+        final bool isIntroductionDone = await HistoryService.instance
+                .restoreData(
+                    key: isUserIntroductionDoneKey, dataType: DataType.bool) ??
+            false;
+        if (isIntroductionDone) {
+          NavigateUtils.instance.navigationToHome();
+        } else {
+          NavigateUtils.instance.navigationToIntroductionScreen();
+        }
       } else {
         NavigateUtils.instance.navigationToAdminScreen();
       }

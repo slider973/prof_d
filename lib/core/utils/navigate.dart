@@ -43,6 +43,13 @@ class NavigateUtils {
     );
   }
 
+  navigationToHome() {
+    NavigationService.offAll(
+      isNamed: true,
+      page: RoutePaths.home,
+    );
+  }
+
   navigationToLoginScreen() {
     NavigationService.offAll(
       isNamed: true,

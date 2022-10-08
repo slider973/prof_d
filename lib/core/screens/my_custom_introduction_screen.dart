@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 
+import '../../authentification/viewmodels/auth_viewmodel.dart';
 import '../../widgets/bottom_tab_bar.dart';
+import '../services/init_services/history_service.dart';
 
 class MyCustomIntroductionScreen extends StatefulWidget {
   const MyCustomIntroductionScreen({Key? key}) : super(key: key);
@@ -91,6 +93,11 @@ class _MyCustomIntroductionScreenState
         ],
         onDone: () {
           // When done button is press
+          HistoryService.instance.saveData(
+            key: isUserIntroductionDoneKey,
+            value: true,
+            dataType: DataType.bool,
+          );
           _onIntroEnd(context);
         },
         showBackButton: false,

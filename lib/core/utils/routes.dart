@@ -66,7 +66,13 @@ class AppRouter {
               FadeTransition(opacity: a, child: c),
           transitionDuration: const Duration(seconds: 1),
         );
-
+      case RoutePaths.home:
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const BottomTabBarController(),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: const Duration(seconds: 1),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const BottomTabBarController(),
