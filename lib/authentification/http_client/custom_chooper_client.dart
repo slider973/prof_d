@@ -29,10 +29,3 @@ class CustomChopperClient {
     return client;
   }
 }
-
-
-// .copyWith(headers: {
-//             'Accept': "application/json",
-//             'Content-type': "application/json",
-//             'Authorization': "Bearer $token",
-//           });

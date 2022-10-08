@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../modules/account/models/child_model.dart';
 import '../modules/appointement/viewmodel/appointment_view_model.dart';
-import '../views/create_events.dart';
 
 class ChildRadioSelect extends ConsumerStatefulWidget {
   final List<ChildModel> dataList;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../modules/home/screens/home_page_todo_remove.dart';
+
+enum CivilityCharacter { mrs, mr }
 
 class BuildCivitily extends StatefulWidget {
   CivilityCharacter? _character = CivilityCharacter.mr;

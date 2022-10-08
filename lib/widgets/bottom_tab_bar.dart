@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../modules/account/screens/account_screens.dart';
 import '../modules/appointement/screens/appointment_screen.dart';
 import '../modules/home/screens/home_screen.dart';
-import '../screens/news_screen.dart';
+import '../modules/news/screens/news_screen.dart';
 
 class BottomTabBarController extends StatefulWidget {
   const BottomTabBarController({Key? key}) : super(key: key);
