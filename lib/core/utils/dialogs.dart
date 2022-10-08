@@ -12,7 +12,7 @@ class AppDialogs {
       context: Get.context!,
       dialogWidgetState: DialogWidgetState.error,
       title: tr('oops'),
-      description: tr('somethingWentWrong') + '\n' + tr('pleaseTryAgainLater'),
+      description: '${tr('somethingWentWrong')}\n${tr('pleaseTryAgainLater')}',
       textButton: tr('OK'),
       onPressed: () {
         NavigationService.goBack();
@@ -36,13 +36,14 @@ class AppDialogs {
     DialogWidget.showCustomDialog(
       context: Get.context!,
       dialogWidgetState: DialogWidgetState.error,
-      title: tr('emailOrPasswordIsInCorrect'),
+      title: 'votre email ou Mot de passe est incorrect',
       textButton: tr('OK'),
       onPressed: () {
         NavigationService.goBack();
       },
     );
   }
+
   static Future featureNotReadyDialog() async {
     DialogWidget.showCustomDialog(
       context: Get.context!,

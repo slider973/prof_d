@@ -56,16 +56,15 @@ class AuthViewModel extends ChangeNotifier {
     try {
       ref.read(authLoadingProvider.notifier).state = true;
       removeAllFocus(context);
-
       await UserRepo.instance.signUpWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
 
       if (UserRepo.instance.authentificationModel.accessToken != null) {
         await submitLogin();
       }
+
       ref.read(authLoadingProvider.notifier).state = false;
     } catch (e) {
-      debugPrint(e.toString());
       AppDialogs.showEmailOrPassIncorrectDialog().then((value) {
         ref.read(authLoadingProvider.notifier).state = false;
       });
@@ -76,10 +75,16 @@ class AuthViewModel extends ChangeNotifier {
     try {
       ref.read(authLoadingProvider.notifier).state = true;
       removeAllFocus(context);
-      await UserRepo.instance.signInWithEmailAndPassword(
+      final result = await UserRepo.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
-      if (UserRepo.instance.authentificationModel.accessToken != null) {
-        await submitLogin();
+      if (result == null) {
+        await AppDialogs.showEmailOrPassIncorrectDialog();
+      }
+
+      if (result != null) {
+        if (UserRepo.instance.authentificationModel.accessToken != null) {
+          await submitLogin();
+        }
       }
       ref.read(authLoadingProvider.notifier).state = false;
     } catch (e) {

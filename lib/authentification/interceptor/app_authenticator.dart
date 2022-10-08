@@ -15,18 +15,21 @@ class AppAuthenticator extends Authenticator {
     if (response.statusCode == HttpStatus.unauthorized) {
       String refreshTokenValue =
           await AuthService.instance.getUserRefreshTokenApiStored() ?? '';
-      final ApiJson jsonApi = ApiJsonCaller.instance.apiJsonCallerInstance;
-      var tokens = await jsonApi.authRefreshTokenPost(
-          body: RefreshTokenDto.fromJson({'refreshToken': refreshTokenValue}));
-      final theTokens = AuthentificationModel.fromJson(tokens.body);
-      await AuthService.instance
-          .setUserRefreshTokenApi(theTokens.refreshToken!);
-      await AuthService.instance.setUserTokenApi(theTokens.accessToken!);
-      request.headers.remove('Authorization');
-      request.headers.putIfAbsent(
-          'Authorization', () => 'Bearer ${theTokens.accessToken}');
+      if (refreshTokenValue.isNotEmpty) {
+        final ApiJson jsonApi = ApiJsonCaller.instance.apiJsonCallerInstance;
+        var tokens = await jsonApi.authRefreshTokenPost(
+            body:
+                RefreshTokenDto.fromJson({'refreshToken': refreshTokenValue}));
+        final theTokens = AuthentificationModel.fromJson(tokens.body);
+        await AuthService.instance
+            .setUserRefreshTokenApi(theTokens.refreshToken!);
+        await AuthService.instance.setUserTokenApi(theTokens.accessToken!);
+        request.headers.remove('Authorization');
+        request.headers.putIfAbsent(
+            'Authorization', () => 'Bearer ${theTokens.accessToken}');
 
-      return request;
+        return request;
+      }
     }
     return null;
   }

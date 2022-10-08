@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-
 import '../../api_prof_d/api_json.swagger.dart';
 import '../../core/services/apis_services/api_caller.dart';
 import '../../core/services/apis_services/apis_paths.dart';
@@ -24,7 +23,7 @@ class UserRepo {
   UserModel? userModel;
   AuthentificationModel authentificationModel = AuthentificationModel();
 
-  Future<UserModel?> signInWithEmailAndPassword(
+  Future<bool?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     final loginDto = LoginDto.fromJson(
         {'username': email.toLowerCase(), 'password': password});
@@ -38,41 +37,28 @@ class UserRepo {
               .setUserRefreshTokenApi(authentificationModel.refreshToken!);
         }
       }
+      return true;
     }
     return null;
   }
 
   Future<UserModel?> signUpWithEmailAndPassword(
       {required String email, required String password}) async {
-    try {
-      return await _apiCaller.postData(
-          path: ApisPaths.signUpWithEmailAndPasswordPath(),
-          builder: (data) {
-            print('data: $data');
-            if (data != null) {
-              authentificationModel = AuthentificationModel.fromJson(data);
-            }
-            return null;
-          },
-          dataParams: {'email': email.toLowerCase(), 'password': password});
-    } catch (e) {
-      print(e);
+    final registerDto = RegisterDto.fromJson(
+        {'email': email.toLowerCase(), 'password': password});
+    final result = await apiJson.authRegisterPost(body: registerDto);
+    if (result.statusCode == 200 | 201) {
+      if (result.body != null) {
+        authentificationModel = AuthentificationModel.fromJson(result.body);
+        if (authentificationModel.accessToken != null) {
+          _authService.setUserTokenApi(authentificationModel.accessToken!);
+          _authService
+              .setUserRefreshTokenApi(authentificationModel.refreshToken!);
+        }
+      }
     }
+    return null;
   }
-
-  // Future<UserModel?> setUserData({required String token}) async {
-  //   final _currentStoredUser = await getUserData(token: token);
-  //   if (_currentStoredUser == null) {
-  //     _firebaseCaller.setData(
-  //       path: FirestorePaths.userDocument(userData.uId),
-  //       data: userData.toMap(),
-  //     );
-  //     userModel = userData;
-  //     return userModel;
-  //   } else {
-  //     return _currentStoredUser;
-  //   }
-  // }
 
   Future<UserModel?> getUserData({String? token}) async {
     final userToken = token ?? await _authService.getUserTokenApiStored();
@@ -87,8 +73,8 @@ class UserRepo {
 
   Future updateUserTokenPush({required String token}) async {
     await apiJson.userAddTokenPushTokenPost(token: token);
-    if(userModel != null) {
-    userModel = userModel!.copyWith(token: token);
+    if (userModel != null) {
+      userModel = userModel!.copyWith(token: token);
     }
   }
 
@@ -110,8 +96,8 @@ class UserRepo {
     final result = await apiJson.invoicesGet();
     if (result.statusCode == 200) {
       final invoices = <Invoice>[];
-      result.body.forEach((invoice)  {
-        invoices.add(Invoice.fromJson(invoice)) ;
+      result.body.forEach((invoice) {
+        invoices.add(Invoice.fromJson(invoice));
       });
       userModel = userModel!.copyWith(invoices: invoices);
       return invoices;
@@ -123,7 +109,7 @@ class UserRepo {
     userModel = userModel!.copyWith(image: imageFile?.path);
   }
 
-   logoutUser() {
+  logoutUser() {
     uid = null;
     userModel = null;
   }
